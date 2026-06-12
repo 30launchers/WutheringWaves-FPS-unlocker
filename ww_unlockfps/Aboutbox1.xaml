@@ -1,0 +1,35 @@
+﻿<Window x:Class="ww_unlockfps.Aboutbox1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ww_unlockfps"
+        mc:Ignorable="d"
+        Title="About" Height="250" Width="450" ResizeMode="NoResize">
+
+    <DockPanel Background="{DynamicResource GradientBackground}">
+
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" >
+
+            <Label Content="Wuthering Waves FPS unlocker" VerticalAlignment="Center" FontFamily="Meiryo" FontSize="15" HorizontalAlignment="Center"/>
+            <Label Content="v1.6.3 _beta date:20260612" FontFamily="Meiryo" FontSize="13" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center" Foreground="DarkBlue" Margin="5"/>
+            <Label Content="Please keep the program in the background otherwise" FontFamily="Meiryo" FontSize="13" Foreground="#FFD51515" HorizontalAlignment="Center" FontWeight="Bold" Margin="5"/>
+            <Label Content="the unlocking frame rate will not work!" HorizontalAlignment="Center" FontFamily="Meiryo" FontSize="13" Foreground="#FFE72A2A" FontWeight="Bold"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,35,0,0">
+                <TextBlock Text="Author:30launcher  " FontSize="16" FontFamily="Meiryo" Foreground="DarkOrange"/>
+                <TextBlock TextWrapping="Wrap" FontSize="16" FontFamily="Meiryo"><Hyperlink NavigateUri="https://space.bilibili.com/456492426" RequestNavigate="Hyperlink_RequestNavigate">bilibili</Hyperlink>
+                </TextBlock>
+            </StackPanel>
+
+        </StackPanel>
+
+    </DockPanel>
+    <Window.Resources>
+        <LinearGradientBrush x:Key="GradientBackground" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="#FFD2E3FE" Offset="1" />
+            <GradientStop Color="White" Offset="0" />
+        </LinearGradientBrush>
+    </Window.Resources>
+
+</Window>
