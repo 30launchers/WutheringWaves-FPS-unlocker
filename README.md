@@ -14,20 +14,9 @@
 - **托盘最小化**
 - **配置自动保存** (ww_fps_config.ini)
 
-## 项目结构
+## 软件界面
 
-```
-├── ww_unlockfps/          # WPF前端 (.NET 8.0)
-├── ww_plugin/             # C++插件 (高级功能: FOV/UID)
-└── ww_plugin_base/        # C++插件 (核心FPS解锁)
-```
-
-## 架构
-
-```
-[WPF GUI] --NamedPipe--> [ww_plugin_base.dll]  FPS解锁
-              +----------> [ww_plugin.dll]      高级功能
-```
+![Wuther FPS Unlocker](assets/show.png)
 
 ## 构建
 
