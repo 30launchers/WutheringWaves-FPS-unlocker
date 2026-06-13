@@ -639,6 +639,11 @@ namespace ww_unlockfps
                 //if (!int.TryParse(e.Text, out t) && e.Text != ".") //allow mount point
                 e.Handled = true;
             System.Windows.Controls.TextBox textBox = sender as System.Windows.Controls.TextBox;
+
+            // 修复textbox对象是null导致的异常 260614
+            if (textBox == null)
+                return;
+
             if (textBox.Text == "0" && textBox.SelectionStart == 1 && e.Text != ".")
             //if ((textBox.SelectionStart == 0 && e.Text == "0") || (textBox.Text == "0" && textBox.SelectionStart == 1 && e.Text != ".")) //not allowed first zero
             {

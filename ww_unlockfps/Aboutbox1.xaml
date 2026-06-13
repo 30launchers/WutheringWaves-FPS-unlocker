@@ -12,13 +12,15 @@
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" >
 
             <Label Content="Wuthering Waves FPS unlocker" VerticalAlignment="Center" FontFamily="Meiryo" FontSize="15" HorizontalAlignment="Center"/>
-            <Label Content="v1.6.3 _beta date:20260612" FontFamily="Meiryo" FontSize="13" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center" Foreground="DarkBlue" Margin="5"/>
+            <Label Content="v1.6.4 _beta date:20260614" FontFamily="Meiryo" FontSize="13" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center" Foreground="DarkBlue" Margin="5"/>
             <Label Content="Please keep the program in the background otherwise" FontFamily="Meiryo" FontSize="13" Foreground="#FFD51515" HorizontalAlignment="Center" FontWeight="Bold" Margin="5"/>
             <Label Content="the unlocking frame rate will not work!" HorizontalAlignment="Center" FontFamily="Meiryo" FontSize="13" Foreground="#FFE72A2A" FontWeight="Bold"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,35,0,0">
                 <TextBlock Text="Author:30launcher  " FontSize="16" FontFamily="Meiryo" Foreground="DarkOrange"/>
-                <TextBlock TextWrapping="Wrap" FontSize="16" FontFamily="Meiryo"><Hyperlink NavigateUri="https://space.bilibili.com/456492426" RequestNavigate="Hyperlink_RequestNavigate">bilibili</Hyperlink>
+                <TextBlock TextWrapping="Wrap" FontSize="16" FontFamily="Meiryo"><Hyperlink NavigateUri="https://space.bilibili.com/456492426" RequestNavigate="Hyperlink_RequestNavigate">Bilibili</Hyperlink>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" FontSize="16" FontFamily="Meiryo" Margin="10,0,0,0"><Hyperlink NavigateUri="https://github.com/30launchers/WutheringWaves-FPS-unlocker" RequestNavigate="Hyperlink_RequestNavigate">GitHub</Hyperlink>
                 </TextBlock>
             </StackPanel>
 
