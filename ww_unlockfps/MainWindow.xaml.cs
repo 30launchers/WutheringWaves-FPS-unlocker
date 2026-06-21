@@ -2891,9 +2891,17 @@ namespace ww_unlockfps
                     // 去除模糊配置260621
                     try
                     {
-                        bool enabledremoveblur = check_removeblur.Dispatcher.Invoke(() => check_removeblur.IsChecked == true);
+                        bool enableRemoveBlur = check_removeblur.Dispatcher.Invoke(() => check_removeblur.IsChecked == true);
+                        bool enableAdvan = cb_advanced.Dispatcher.Invoke(() => cb_advanced.IsChecked == true);
+
                         string filePath = Path.Combine(AppContext.BaseDirectory, "ulk_ww_tools", "configww.ini");
-                        WritePrivateProfileString("Configs", "EnableRemoveBlur", enabledremoveblur ? "1" : "0", filePath);
+
+                        if (!enableAdvan)
+                        {
+                            enableRemoveBlur = false;
+                        }
+
+                        WritePrivateProfileString("Configs","EnableRemoveBlur", enableRemoveBlur ? "1" : "0", filePath);
                     }
                     catch (Exception ex)
                     {
