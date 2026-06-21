@@ -4,6 +4,7 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ww_unlockfps", "ww_unlockfps\ww_unlockfps.csproj", "{4D1AEF98-1009-4D50-9444-5619B961DB02}"
 	ProjectSection(ProjectDependencies) = postProject
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890} = {A1B2C3D4-E5F6-7890-ABCD-EF1234567890}
 		{E0901C08-CDEC-4BB4-8B84-9AA6FBE795FF} = {E0901C08-CDEC-4BB4-8B84-9AA6FBE795FF}
 	EndProjectSection
 EndProject
