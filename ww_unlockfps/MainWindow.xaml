@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ww_unlockfps"
         mc:Ignorable="d"
         xmlns:xctk="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
-        Title="Wuther FPS Unlocker" Height="335" Width="350" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        Title="Wuther FPS Unlocker" Height="365" Width="350" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
 
     <DockPanel Background="{DynamicResource GradientBackground}">
         <Menu DockPanel.Dock="Top">
@@ -175,6 +175,25 @@
 
             </Grid>
 
+
+            <!-- 使用 Grid 替代 StackPanel -->
+            <Grid Margin="0,15,0,0">
+
+                <!-- 左边的 CheckBox：默认靠左 -->
+                <CheckBox 
+                  x:Name="check_removeblur"
+                  IsEnabled="{Binding IsChecked, ElementName=cb_advanced}"
+                  Content="Disable View Blur (Enable Before Launch)" Foreground="RoyalBlue"
+                  VerticalContentAlignment="Center" 
+                  FontSize="13"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Left">
+
+                    <CheckBox.ToolTip>
+                        <ToolTip Content="Enable before starting the game, otherwise it won’t work"/>
+                    </CheckBox.ToolTip>
+                </CheckBox>
+            </Grid>
 
             <!-- 使用 Grid 替代 StackPanel -->
             <Grid Margin="0,12,0,0">

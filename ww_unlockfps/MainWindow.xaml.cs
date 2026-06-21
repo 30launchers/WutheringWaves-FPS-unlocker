@@ -73,6 +73,7 @@ namespace ww_unlockfps
         private const string OptionKey9 = "FovEnabled";
         private const string OptionKey10 = "HideUidEnabled";
         private const string OptionKey11 = "FovValue";
+        private const string OptionKey12 = "RemoveBlurEnabled";
 
         private bool ShouldCenterWindow { get; set; }
         private bool checkautostart = false;
@@ -122,6 +123,21 @@ namespace ww_unlockfps
                 //System.Windows.MessageBox.Show(message, "Error:", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
+            // 写入配置文件 260621
+            try
+            {
+                string dir = Path.Combine(AppContext.BaseDirectory, "ulk_ww_tools");
+                Directory.CreateDirectory(dir);
+                string filePath = Path.Combine(dir, "configww.ini");
+                if (!File.Exists(filePath))
+                {
+                    File.WriteAllText(filePath,"[Configs]" + Environment.NewLine + "EnableRemoveBlur=0" + Environment.NewLine + "RemoveBlurMode=0");
+                }
+            }
+            catch (Exception ex)
+            {
+                //
+            }
 
             if (!createdNew)
             {
@@ -533,6 +549,7 @@ namespace ww_unlockfps
                 cb_advanced.IsChecked = bool.Parse(data[Section][OptionKey8]);
                 check_fov.IsChecked = bool.Parse(data[Section][OptionKey9]);
                 check_hideuid.IsChecked = bool.Parse(data[Section][OptionKey10]);
+                check_removeblur.IsChecked = bool.Parse(data[Section][OptionKey12]);
                 string FovValueStr = data[Section][OptionKey11];
                 if (double.TryParse(FovValueStr, out double fovValue))
                 {
@@ -586,6 +603,7 @@ namespace ww_unlockfps
             data[Section][OptionKey9] = false.ToString();
             data[Section][OptionKey10] = false.ToString();
             data[Section][OptionKey11] = 45.ToString("F1");
+            data[Section][OptionKey12] = false.ToString();
             check_auto_start.IsChecked = false;
             check_power_saving.IsChecked = false;
             ck_default.IsChecked = true;
@@ -626,6 +644,7 @@ namespace ww_unlockfps
             data[Section][OptionKey9] = check_fov.IsChecked.ToString();
             data[Section][OptionKey10] = check_hideuid.IsChecked.ToString();
             data[Section][OptionKey11] = sli_fov.Value.ToString("F1");
+            data[Section][OptionKey12] = check_removeblur.IsChecked.ToString();
             parser.WriteFile(ConfigFileName, data);
         }
 
@@ -1005,6 +1024,18 @@ namespace ww_unlockfps
             string GameServerA = data[Section][OptionKey5];
             GameServerAvalue = int.Parse(GameServerA);
             Console.WriteLine(GameServerAvalue + "GameServerAvalue");
+
+
+            // 写入是否去除模糊的设置到configww.ini，供插件读取 260621
+            try
+            {
+                string filePath = Path.Combine(AppContext.BaseDirectory, "ulk_ww_tools", "configww.ini");
+                WritePrivateProfileString("Configs", "EnableRemoveBlur", check_removeblur.IsChecked == true ? "1" : "0", filePath);
+            }
+            catch (Exception ex)
+            {
+                //
+            }
 
             bool startgame_test = true;
             try
@@ -2857,6 +2888,18 @@ namespace ww_unlockfps
                         }
                     }
 
+                    // 去除模糊配置260621
+                    try
+                    {
+                        bool enabledremoveblur = check_removeblur.Dispatcher.Invoke(() => check_removeblur.IsChecked == true);
+                        string filePath = Path.Combine(AppContext.BaseDirectory, "ulk_ww_tools", "configww.ini");
+                        WritePrivateProfileString("Configs", "EnableRemoveBlur", enabledremoveblur ? "1" : "0", filePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        //
+                    }
+
                 }
             }
             catch (Exception)
@@ -2921,6 +2964,16 @@ namespace ww_unlockfps
             string GameServerA = data[Section][OptionKey5];
             GameServerAvalue = int.Parse(GameServerA);
 
+            // 写入是否去除模糊的设置到configww.ini，供插件读取 260621
+            try
+            {
+                string filePath = Path.Combine(AppContext.BaseDirectory, "ulk_ww_tools", "configww.ini");
+                WritePrivateProfileString("Configs", "EnableRemoveBlur", check_removeblur.IsChecked == true ? "1" : "0", filePath);
+            }
+            catch (Exception ex)
+            {
+                //
+            }
 
             const string processNametest = "Client-Win64-Shipping";
             try

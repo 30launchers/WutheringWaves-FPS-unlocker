@@ -11,6 +11,9 @@ namespace ww_unlockfps.Utils
 {
     internal class Natives
     {
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+        public static extern bool WritePrivateProfileString(string lpAppName, string lpKeyName, string lpString, string lpFileName);
+
         [DllImport("user32.dll")]
         private static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
 

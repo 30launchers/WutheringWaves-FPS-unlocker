@@ -77,15 +77,20 @@ namespace Offsets
 	// constexpr int32 AppendString      = 0x02B519D0;
 	inline int32 GObjects              = 0x00000000;
 	inline int32 AppendString          = 0x00000000;
+	inline int32 ProcessEvent          = 0x00000000;
+
 	// constexpr int32 GObjects          = 0x09148208;
 	// constexpr int32 AppendString      = 0x02B67DB0;
+
+	//constexpr int32 ProcessEvent = 0x02F6F890;
 	constexpr int32 GNames            = 0x00000000;
 	constexpr int32 GWorld            = 0x00000000;
-	constexpr int32 ProcessEvent      = 0x00000000;
+	//constexpr int32 ProcessEvent      = 0x00000000;
 	constexpr int32 ProcessEventIdx   = 0x00000049;
 
 	static void SetGObjects(int32 offset) { GObjects = offset; }
 	static void SetAppendString(int32 offset) { AppendString = offset; }
+	static void SetProcessEvent(int32 offset) { ProcessEvent = offset; }
 }
 
 namespace InSDKUtils

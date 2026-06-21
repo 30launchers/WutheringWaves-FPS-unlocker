@@ -14,6 +14,7 @@
 #include "HookUtility.h"
 
 #include <SDK.hpp>
+#include "src/MinHookManager.h"
 
 using namespace SDK;
 
@@ -38,6 +39,15 @@ extern "C" {
         int MAX_FOUND,
         bool (*IsUIDWidgetName)(const wchar_t*));
 }
+
+// ==================== 新增：去除模糊相关全局变量 ====================
+typedef void(*ProcessEventFn)(UObject*, UFunction*, void*);
+static ProcessEventFn OriginalProcessEvent = nullptr;
+static volatile bool g_hookInit = false;
+static volatile ULONGLONG g_lastApplyTime = 0;
+static ULONGLONG g_lastRestoreTime = 0;
+static volatile bool g_firstApply = true;
+static DWORD g_gameThreadId = 0;
 
 //constexpr float TARGET_FOV = 150.0f;
 constexpr SIZE_T DUMP_RANGE = 128;
@@ -930,39 +940,441 @@ DWORD WINAPI MainThread(HMODULE hModule) {
 }
 
 
+static int removeblurmode = -1;
+bool EnableRemoveBlur = 0;
+int RemoveBlurMode = 0;
+static bool g_EnableBlurFix = true;
+// For Remove Dither: All Characters
+static bool IsObjectValid(UObject* o)
+{
+    if (!o || reinterpret_cast<uintptr_t>(o) < 0x10000) {
+        return false;
+    }
+    __try {
+        void** v = *reinterpret_cast<void***>(o);
+        if (!v || reinterpret_cast<uintptr_t>(v) < 0x10000) {
+            return false;
+        }
+        int32 i = *reinterpret_cast<int32*>(reinterpret_cast<uintptr_t>(o) + 0x0C);
+        return i >= 0;
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER) { 
+        return false; 
+    }
+}
+
+static void FixAllCharacters_GetActors(UWorld* w, UClass* tsBaseCharClass, TArray<AActor*>* outActors)
+{
+    __try {
+        UGameplayStatics::GetAllActorsOfClass(w, tsBaseCharClass, outActors);
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER) {
+        return;
+    }
+}
+
+static bool FixSingleCharacter(UObject* ch)
+{
+    __try {
+        if (!ch || !IsObjectValid(ch)) {
+            return false;
+        }
+        auto* crc = *reinterpret_cast<UObject**>(reinterpret_cast<uintptr_t>(ch) + 0x0698);
+        if (!crc || !IsObjectValid(crc)) {
+            return false;
+        }
+
+		// Check if we should disable blur based on the global setting
+        bool disbaleBlur = true;
+        if (g_EnableBlurFix) {
+			disbaleBlur = true;
+        }
+        else {
+            disbaleBlur = false;
+        }
+
+        UFunction* disFunc = crc->Class->GetFunction("CharRenderingComponent_C", "SetDisableFightDither");
+        if (disFunc) {
+            struct { bool disable; } parms;
+            //parms.disable = true;
+            parms.disable = disbaleBlur;
+            crc->ProcessEvent(disFunc, &parms);
+        }
+
+        return true;
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER) { return false; }
+}
+
+static UClass* FindClassByNamePart(const char* part)
+{
+    for (int i = 0; i < UObject::GObjects->Num(); i++) {
+        UObject* item = UObject::GObjects->GetByIndex(i);
+        if (!item || !IsObjectValid(item)) {
+            continue;
+        }
+        if (!item->IsA(UClass::StaticClass())) {
+            continue;
+        }
+        UClass* cls = static_cast<UClass*>(item);
+        if (cls && cls->GetName().find(part) != std::string::npos) {
+            return cls;
+        }
+    }
+    return nullptr;
+}
+
+static void FixAllCharacters(UWorld* w)
+{
+    if (!w || !IsObjectValid(w)){ 
+        return; 
+    }
+
+    UClass* tsBaseCharClass = FindClassByNamePart("TsBaseCharacter_C");
+    if (!tsBaseCharClass){
+        return; 
+    }
+
+    TArray<AActor*> actors;
+    FixAllCharacters_GetActors(w, tsBaseCharClass, &actors);
+
+    int fixed = 0;
+    for (int i = 0; i < actors.Num(); i++) {
+        if (FixSingleCharacter(actors[i])) {
+            fixed++;
+        }
+    }
+
+    if (fixed > 0 && g_firstApply) {
+        //LOG(L"[WWremoveblur] Fixed dither on %d characters", fixed);
+    }
+}
+
+// For Remove Dither: PlayerOnly Character
+static void FixPlayerCharacter(UWorld* w)
+{
+    if (!w || !IsObjectValid(w)){ 
+        return; 
+    }
+
+    __try {
+        APawn* playerPawn = UGameplayStatics::GetPlayerPawn(w, 0);
+        if (!playerPawn || !IsObjectValid(playerPawn)) {
+            return;
+        }
+
+        auto* crc = *reinterpret_cast<UObject**>(reinterpret_cast<uintptr_t>(playerPawn) + 0x0698);
+        if (!crc || !IsObjectValid(crc)) {
+            return;
+        }
+
+        // Call SetDisableFightDither(true) via ProcessEvent
+        UFunction* disFunc = crc->Class->GetFunction("CharRenderingComponent_C", "SetDisableFightDither");
+        if (disFunc) {
+            struct { bool disable; } parms;
+            parms.disable = true;
+            crc->ProcessEvent(disFunc, &parms);
+
+            if (g_firstApply) {
+                //LOG(L"[WWremoveblur] Fixed dither on player character");
+            }
+        }
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER) {
+		//LOG(L"[WWremoveblur] Exception occurred while fixing player character dither");
+    }
+}
+
+static void ApplyDitherFix()
+{
+    UWorld* w = GetWorld();
+    if (!w || !IsObjectValid(w)){ 
+        return; 
+    }
+    FixPlayerCharacter(w);
+    g_firstApply = false;
+}
+
+static void ApplyDitherFixMode2()
+{
+    UWorld* w = GetWorld();
+    if (!w || !IsObjectValid(w)) {
+        return;
+    }
+    FixAllCharacters(w);
+    g_firstApply = false;
+}
+
+static void RestoreDither()
+{
+    UWorld* w = GetWorld();
+    if (!w) { 
+        return; 
+    }
+
+    APawn* playerPawn = UGameplayStatics::GetPlayerPawn(w, 0);
+    if (!playerPawn) { 
+        return; 
+    }
+
+    auto* crc = *reinterpret_cast<UObject**>(reinterpret_cast<uintptr_t>(playerPawn) + 0x0698);
+    if (!crc) { 
+        return; 
+    }
+
+    UFunction* disFunc = crc->Class->GetFunction("CharRenderingComponent_C", "SetDisableFightDither");
+    if (disFunc)
+    {
+        struct { bool disable; } parms;
+        parms.disable = false;
+        crc->ProcessEvent(disFunc, &parms);
+    }
+}
 
 
+static void HookedProcessEvent(UObject* o, UFunction* f, void* p)
+{
+    OriginalProcessEvent(o, f, p);
 
+    if (!g_hookInit) {
+        return;
+    }
+
+    if (g_gameThreadId == 0) {
+        g_gameThreadId = GetCurrentThreadId();
+    }
+
+    if (GetCurrentThreadId() != g_gameThreadId) {
+        return;
+    }
+
+    ULONGLONG n = GetTickCount64();
+
+    if (g_EnableBlurFix)
+    {
+        if (n - g_lastApplyTime >= 517)
+        {
+            g_lastApplyTime = n;
+
+            if (removeblurmode == 0) {
+                ApplyDitherFix();
+            }
+
+            if (removeblurmode == 1) {
+                ApplyDitherFixMode2();
+            }
+        }
+    }
+    else
+    {
+        if (n - g_lastRestoreTime >= 1517)
+        {
+            g_lastRestoreTime = n;
+
+            if(removeblurmode == 0) {
+                RestoreDither();
+			}
+
+            if (removeblurmode == 1) {
+                ApplyDitherFixMode2();
+            }
+        }
+    }
+}
+
+DWORD WINAPI MainThreadBlur(HMODULE hModule) {
+
+    while (true)
+    {
+        if (GetAsyncKeyState(VK_F8) & 1)
+        {
+            g_EnableBlurFix = !g_EnableBlurFix;
+        }
+        Sleep(50);
+    }
+}
+
+// Resolve ProcessEvent RVA dynamically via vtable[ProcessEventIdx]
+static int32 ResolveProcessEventRVA()
+{
+    __try {
+        auto& objArray = *SDK::UObject::GObjects;
+        if (!objArray.Num()) return 0;
+
+        int count = objArray.Num();
+        if (count > 50000) count = 50000;
+
+        for (int i = 0; i < count; i++) {
+            SDK::UObject* obj = objArray.GetByIndex(i);
+            if (!obj) continue;
+
+            void** vtable = *reinterpret_cast<void***>(obj);
+            if (!vtable || reinterpret_cast<uintptr_t>(vtable) < 0x10000) continue;
+
+            uintptr_t funcAddr = reinterpret_cast<uintptr_t>(vtable[Offsets::ProcessEventIdx]);
+            if (funcAddr < 0x10000) continue;
+
+            uintptr_t imageBase = (uintptr_t)GetModuleHandleA(NULL);
+            return static_cast<int32>(funcAddr - imageBase);
+        }
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER) {}
+    return 0;
+}
+
+
+DWORD WINAPI HookInitThread(LPVOID)
+{
+#ifdef ENABLE_CONSOLE
+    InitConsole();
+#endif
+
+    while (!FindWindowA("UnrealWindow", nullptr)) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    }
+
+    Sleep(1015); 
+
+    // Wait for GObjects to initialize, then dynamically calculate the ProcessEvent RVA through the vtable.
+    int maxRetry = 60;
+    while (maxRetry-- > 0)
+    {
+        int32 rva = ResolveProcessEventRVA();
+        if (rva != 0)
+        {
+            Offsets::SetProcessEvent(rva);
+            break;
+        }
+        Sleep(500);
+    }
+
+    if (Offsets::ProcessEvent == 0)
+    {
+        //LOG(L"[WWremoveblur] ResolveProcessEventRVA failed");
+        MessageBoxA(NULL, "ResolveProcessEventRVA timed out!", "Error", MB_OK | MB_ICONERROR);
+        return 1;
+    }
+
+    uintptr_t base = (uintptr_t)GetModuleHandleA(NULL);
+    void* addr = (void*)(base + Offsets::ProcessEvent);  
+
+    if (!MinHookManager::Add(addr, &HookedProcessEvent, (void**)&OriginalProcessEvent)) {
+        //LOG(L"[WWremoveblur] MinHookManager::Add failed");
+        MessageBoxA(NULL, "ProcessEvent hook add failed!", "Error", MB_OK | MB_ICONERROR);
+        return 1;
+    }
+
+    g_hookInit = true;
+    //LOG(L"[WWremoveblur] Hook active");
+    return 0;
+}
+
+std::wstring g_ConfigPath;
+
+static void InitConfig(HMODULE hModule)
+{
+    wchar_t dllPath[MAX_PATH]{};
+    GetModuleFileNameW(hModule, dllPath, MAX_PATH);
+
+    std::wstring path = dllPath;
+    size_t pos = path.find_last_of(L"\\/");
+    if (pos != std::wstring::npos) {
+        path = path.substr(0, pos + 1);
+    }
+
+    g_ConfigPath = path + L"configww.ini";
+    if (GetFileAttributesW(g_ConfigPath.c_str()) == INVALID_FILE_ATTRIBUTES)
+    {
+        WritePrivateProfileStringW(L"Configs", L"EnableRemoveBlur", L"0", g_ConfigPath.c_str());
+        WritePrivateProfileStringW(L"Configs", L"RemoveBlurMode", L"0", g_ConfigPath.c_str());
+    }
+}
+
+
+static void LoadConfig()
+{
+    EnableRemoveBlur = GetPrivateProfileIntW(L"Configs", L"EnableRemoveBlur", EnableRemoveBlur ? 1 : 0, g_ConfigPath.c_str()) != 0;
+    RemoveBlurMode = GetPrivateProfileIntW(L"Configs",L"RemoveBlurMode", RemoveBlurMode, g_ConfigPath.c_str());
+}
+
+DWORD WINAPI LoadConfigThread(LPVOID lpParam)
+{
+    HMODULE hModule = (HMODULE)lpParam;
+
+    InitConfig(hModule);
+    LoadConfig();
+
+    removeblurmode = RemoveBlurMode;
+    if (EnableRemoveBlur == 1)
+    {
+		OutputDebugStringA("[Config] starting HookInitThread and MainThreadBlur...\n");
+        CreateThread(nullptr, 0, HookInitThread, nullptr, 0, nullptr);
+        //CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(MainThreadBlur), hModule, 0, nullptr);
+    }
+
+    while (true)
+    {
+        LoadConfig();
+
+        char buf[128];
+        sprintf_s(buf, "[Config] EnableRemoveBlur=%d, RemoveBlurMode=%d\n", EnableRemoveBlur, RemoveBlurMode); 
+        //OutputDebugStringA(buf);
+
+		g_EnableBlurFix = (EnableRemoveBlur == 1);
+
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+
+    return 0;
+}
+
+// ==================== DllMain ====================
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved) {
     switch (dwReason) {
     case DLL_PROCESS_ATTACH: {
         DisableThreadLibraryCalls(hModule);
 
-        // 检查是否是目标进程 260202
+        // 检查是否是目标进程
         HMODULE hWuWa = GetModuleHandleA("Client-Win64-Shipping.exe");
         HMODULE hGenshinImpact = GetModuleHandleA("GenshinImpactNAN.exe");
-        HMODULE hStarRail = GetModuleHandleA("StarRialNAN.exe");
+        HMODULE hStarRail = GetModuleHandleA("StarRailNAN.exe");
 
-        // 如果不是目标进程，直接返回TRUE（DLL加载成功但不初始化）
         if (!hWuWa && !hGenshinImpact && !hStarRail) {
             return TRUE;
         }
 
-        CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(MainThread), hModule, 0, nullptr);
+        CreateThread(nullptr, 0, LoadConfigThread, hModule, 0, nullptr);
 
+        // 原有线程
+        CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(MainThread), hModule, 0, nullptr);
         CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(MainThreadUID), hModule, 0, nullptr);
 
-        // 启动网络服务线程
+        // 网络服务
         const auto hThreadNet = CreateThread(nullptr, 0, RunNetService, nullptr, 0, nullptr);
-        if (!hThreadNet)
-        {
+        if (!hThreadNet) {
             return OnWinError("CreateThreadNet", GetLastError());
         }
         CloseHandle(hThreadNet);
 
+        // 启动Hook初始化线程
+        //CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(CheckNeedEnableRemoveBlur), hModule, 0, nullptr);
+        //CreateThread(nullptr, 0, HookInitThread, nullptr, 0, nullptr);
+        //CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(MainThreadBlur), hModule, 0, nullptr);
+
         break;
     }
     case DLL_PROCESS_DETACH: {
+        // ========== 新增：清理 Hook ==========
+        if (g_hookInit) {
+            g_hookInit = false;
+            uintptr_t base = (uintptr_t)GetModuleHandleA(NULL);
+            void* addr = (void*)(base + Offsets::ProcessEvent);
+            MinHookManager::Remove(addr);
+        }
+#ifdef ENABLE_CONSOLE
+        if (g_hConOut != INVALID_HANDLE_VALUE) CloseHandle(g_hConOut);
+        FreeConsole();
+#endif
         break;
     }
     }

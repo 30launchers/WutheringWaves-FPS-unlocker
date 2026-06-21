@@ -131,4 +131,8 @@
       <Filter>头文件</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="src\MinHook\lib\libMinHook.x64.lib" />
+    <Library Include="src\MinHook\lib\libMinHook.x86.lib" />
+  </ItemGroup>
 </Project>

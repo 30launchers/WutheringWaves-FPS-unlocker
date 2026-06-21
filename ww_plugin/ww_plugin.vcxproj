@@ -101,7 +101,9 @@
     <ClCompile Include="seh_helpers.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Library Include="src\MinHook\lib\libMinHook.x64.lib" />
     <Library Include="src\MinHook\lib\libMinHook.x86.lib" Condition="'$(Platform)'=='x86'" />
+    <Library Include="src\MinHook\lib\libMinHook.x86.lib" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ext\CppSDK\PropertyFixup.hpp" />
