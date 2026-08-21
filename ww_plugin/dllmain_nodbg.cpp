@@ -1291,13 +1291,8 @@ DWORD WINAPI HookInitThread(LPVOID)
 
     Sleep(1015); 
     
-	// 检查是否已经完成了偏移量扫描，如果没有完成，则等待
-    while(!scanOffsetsDone) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(21));
-	}
-
     // Wait for GObjects to initialize, then dynamically calculate the ProcessEvent RVA through the vtable.
-    int maxRetry = 60;
+    int maxRetry = 155;
     while (maxRetry-- > 0)
     {
         int32 rva = ResolveProcessEventRVA();
@@ -1319,11 +1314,34 @@ DWORD WINAPI HookInitThread(LPVOID)
     uintptr_t base = (uintptr_t)GetModuleHandleA(NULL);
     void* addr = (void*)(base + Offsets::ProcessEvent);  
 
-    if (!MinHookManager::Add(addr, &HookedProcessEvent, (void**)&OriginalProcessEvent)) {
-        //LOG(L"[WWremoveblur] MinHookManager::Add failed");
-        MessageBoxA(NULL, "ProcessEvent hook add failed!", "Error", MB_OK | MB_ICONERROR);
-        return 1;
+    //if (!MinHookManager::Add(addr, &HookedProcessEvent, (void**)&OriginalProcessEvent)) {
+    //    //LOG(L"[WWremoveblur] MinHookManager::Add failed");
+    //    MessageBoxA(NULL, "ProcessEvent hook add failed!", "Error", MB_OK | MB_ICONERROR);
+    //    return 1;
+    //}
+
+
+    auto hookStartTime = std::chrono::steady_clock::now();
+    constexpr auto hookTimeout = std::chrono::seconds(30);
+
+    while (true)
+    {
+        if (MinHookManager::Add(addr, &HookedProcessEvent,(void**)&OriginalProcessEvent)){
+            // Hook 安装成功
+            break;
+        }
+
+        auto currentTime = std::chrono::steady_clock::now();
+
+        if (currentTime - hookStartTime >= hookTimeout)
+        {
+            MessageBoxA(NULL, "ProcessEvent hook add failed! Timeout after 30 seconds.", "Error", MB_OK | MB_ICONERROR);
+            return 1;
+        }
+
+        Sleep(500);
     }
+
 
     g_hookInit = true;
     //LOG(L"[WWremoveblur] Hook active");
