@@ -135,6 +135,7 @@
     <ClInclude Include="src\MinHook\include\MinHook.h" />
     <ClInclude Include="src\PatternScanner.hpp" />
     <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\UEOffsets.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ext\CppSDK\Assertions.inl" />

@@ -24,15 +24,6 @@ enum class ExpandMode : uint8
 	ExpandMode_MAX                           = 4,
 };
 
-// ScriptStruct KuroDynamicAtlas.TextureExpandParam
-// 0x0020 (0x0020 - 0x0000)
-struct alignas(0x08) FTextureExpandParam final
-{
-public:
-	uint8                                         Pad_0[0x20];                                       // 0x0000(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FTextureExpandParam;
-
 // ScriptStruct KuroDynamicAtlas.DynamicAtlasSlotManagedHandle
 // 0x0010 (0x0010 - 0x0000)
 struct alignas(0x08) FDynamicAtlasSlotManagedHandle final
@@ -41,6 +32,15 @@ public:
 	uint8                                         Pad_0[0x10];                                       // 0x0000(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FDynamicAtlasSlotManagedHandle;
+
+// ScriptStruct KuroDynamicAtlas.TextureExpandParam
+// 0x0020 (0x0020 - 0x0000)
+struct alignas(0x08) FTextureExpandParam final
+{
+public:
+	uint8                                         Pad_0[0x20];                                       // 0x0000(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FTextureExpandParam;
 
 // ScriptStruct KuroDynamicAtlas.DynamicTextureAtlasSetting
 // 0x0038 (0x0038 - 0x0000)

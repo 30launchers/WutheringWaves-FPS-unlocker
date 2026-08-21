@@ -228,14 +228,15 @@ enum class EUserInterfaceActionType : uint8
 	EUserInterfaceActionType_MAX             = 6,
 };
 
-// ScriptStruct Slate.CustomizedToolMenuEntry
-// 0x0004 (0x0004 - 0x0000)
-struct FCustomizedToolMenuEntry final
+// ScriptStruct Slate.Anchors
+// 0x0010 (0x0010 - 0x0000)
+struct FAnchors final
 {
 public:
-	ECustomizedToolMenuVisibility                 Visibility;                                        // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector2D                              Minimum;                                           // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector2D                              Maximum;                                           // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_FCustomizedToolMenuEntry;
+DUMPER7_ASSERTS_FAnchors;
 
 // ScriptStruct Slate.VirtualKeyboardOptions
 // 0x0001 (0x0001 - 0x0000)
@@ -246,15 +247,14 @@ public:
 };
 DUMPER7_ASSERTS_FVirtualKeyboardOptions;
 
-// ScriptStruct Slate.Anchors
-// 0x0010 (0x0010 - 0x0000)
-struct FAnchors final
+// ScriptStruct Slate.CustomizedToolMenuEntry
+// 0x0004 (0x0004 - 0x0000)
+struct FCustomizedToolMenuEntry final
 {
 public:
-	struct FVector2D                              Minimum;                                           // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector2D                              Maximum;                                           // 0x0008(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ECustomizedToolMenuVisibility                 Visibility;                                        // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_FAnchors;
+DUMPER7_ASSERTS_FCustomizedToolMenuEntry;
 
 // ScriptStruct Slate.InputChord
 // 0x0028 (0x0028 - 0x0000)

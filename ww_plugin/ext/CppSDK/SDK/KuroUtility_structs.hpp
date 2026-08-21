@@ -15,6 +15,29 @@
 
 SDK_NAMESPACE_START
 
+// Enum KuroUtility.EXboxPermission
+// NumValues: 0x0011
+enum class EXboxPermission : uint8
+{
+	CommunicateUsingText                     = 0,
+	CommunicateUsingVoice                    = 1,
+	ViewTargetProfile                        = 2,
+	ViewTargetGameHistory                    = 3,
+	ViewTargetVideoHistory                   = 4,
+	ViewTargetMusicHistory                   = 5,
+	ViewTargetExerciseInfo                   = 6,
+	ViewTargetPresence                       = 7,
+	ViewTargetVideoStatus                    = 8,
+	ViewTargetMusicStatus                    = 9,
+	ViewTargetExerciseStatus                 = 10,
+	ViewTargetMemberList                     = 11,
+	ViewTargetFriendList                     = 12,
+	ViewTargetPinnedLists                    = 13,
+	ViewTargetCaptureRecord                  = 14,
+	ViewTargetVideoRecord                    = 15,
+	EXboxPermission_MAX                      = 16,
+};
+
 // Enum KuroUtility.EActorPartitionVolumeType
 // NumValues: 0x0004
 enum class EActorPartitionVolumeType : uint8
@@ -32,6 +55,89 @@ enum class ECollectActorType : uint8
 	Default                                  = 0,
 	UI                                       = 1,
 	ECollectActorType_MAX                    = 2,
+};
+
+// Enum KuroUtility.EXboxAchievementOrderBy
+// NumValues: 0x0004
+enum class EXboxAchievementOrderBy : uint8
+{
+	DefaultOrder                             = 0,
+	TitleId                                  = 1,
+	UnlockTime                               = 2,
+	EXboxAchievementOrderBy_MAX              = 3,
+};
+
+// Enum KuroUtility.EXboxAchievementType
+// NumValues: 0x0005
+enum class EXboxAchievementType : uint8
+{
+	Unknown                                  = 0,
+	All                                      = 1,
+	Persistent                               = 2,
+	Challenge                                = 3,
+	EXboxAchievementType_MAX                 = 4,
+};
+
+// Enum KuroUtility.EXboxMultiplayerActivityEncounterType
+// NumValues: 0x0004
+enum class EXboxMultiplayerActivityEncounterType : uint8
+{
+	Default                                  = 0,
+	Teammate                                 = 1,
+	Opponent                                 = 2,
+	EXboxMultiplayerActivityEncounterType_MAX = 3,
+};
+
+// Enum KuroUtility.EXboxMultiplayerActivityJoinRestriction
+// NumValues: 0x0004
+enum class EXboxMultiplayerActivityJoinRestriction : uint8
+{
+	Activity_Public                          = 0,
+	Activity_InviteOnly                      = 1,
+	Activity_Followed                        = 2,
+	Activity_MAX                             = 3,
+};
+
+// Enum KuroUtility.EXboxUserPrivilegeOptions
+// NumValues: 0x0003
+enum class EXboxUserPrivilegeOptions : uint8
+{
+	None                                     = 0,
+	AllUsers                                 = 1,
+	EXboxUserPrivilegeOptions_MAX            = 2,
+};
+
+// Enum KuroUtility.EXboxUserPrivilege
+// NumValues: 0x0010
+enum class EXboxUserPrivilege : uint8
+{
+	CrossPlay                                = 0,
+	Clubs                                    = 1,
+	Sessions                                 = 2,
+	Broadcast                                = 3,
+	ManageProfilePrivacy                     = 4,
+	GameDvr                                  = 5,
+	MultiplayerParties                       = 6,
+	CloudManageSession                       = 7,
+	CloudJoinSession                         = 8,
+	CloudSavedGames                          = 9,
+	SocialNetworkSharing                     = 10,
+	UserGeneratedContent                     = 11,
+	Communications                           = 12,
+	Multiplayer                              = 13,
+	AddFriends                               = 14,
+	EXboxUserPrivilege_MAX                   = 15,
+};
+
+// Enum KuroUtility.EXboxGamertagComponent
+// NumValues: 0x0005
+enum class EXboxGamertagComponent : uint8
+{
+	Modern                                   = 0,
+	ModernSuffix                             = 1,
+	UniqueModern                             = 2,
+	Classic                                  = 3,
+	EXboxGamertagComponent_MAX               = 4,
 };
 
 // Enum KuroUtility.ESendStage
@@ -93,6 +199,79 @@ public:
 };
 DUMPER7_ASSERTS_FTrophyInfoData;
 
+// ScriptStruct KuroUtility.XboxPermissionCheckResult
+// 0x0020 (0x0020 - 0x0000)
+struct FXboxPermissionCheckResult final
+{
+public:
+	bool                                          bSuccess;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bIsAllowed;                                        // 0x0001(0x0001)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	int64                                         TargetXuid;                                        // 0x0008(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EXboxPermission                               Permission;                                        // 0x0010(0x0001)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         DeniedPermission;                                  // 0x0014(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         DenyReason;                                        // 0x0018(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FXboxPermissionCheckResult;
+
+// ScriptStruct KuroUtility.BlockUserData
+// 0x0018 (0x0018 - 0x0000)
+struct FBlockUserData final
+{
+public:
+	int32                                         nextOffset;                                        // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         previousOffset;                                    // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<class FString>                         blockUsers;                                        // 0x0008(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FBlockUserData;
+
+// ScriptStruct KuroUtility.XboxAvoidListResult
+// 0x0018 (0x0018 - 0x0000)
+struct FXboxAvoidListResult final
+{
+public:
+	bool                                          bSuccess;                                          // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<int64>                                 Xuids;                                             // 0x0008(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FXboxAvoidListResult;
+
+// ScriptStruct KuroUtility.XboxUserIdResult
+// 0x0010 (0x0010 - 0x0000)
+struct FXboxUserIdResult final
+{
+public:
+	bool                                          bSuccess;                                          // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	int64                                         UserId;                                            // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FXboxUserIdResult;
+
+// ScriptStruct KuroUtility.XboxTokenAndSignatureResult
+// 0x0028 (0x0028 - 0x0000)
+struct FXboxTokenAndSignatureResult final
+{
+public:
+	bool                                          bSuccess;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 Token;                                             // 0x0008(0x0010)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 Signature;                                         // 0x0018(0x0010)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FXboxTokenAndSignatureResult;
+
+// ScriptStruct KuroUtility.XboxUserStoreIdResult
+// 0x0018 (0x0018 - 0x0000)
+struct FXboxUserStoreIdResult final
+{
+public:
+	bool                                          bSuccess;                                          // 0x0000(0x0001)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 UserStoreId;                                       // 0x0008(0x0010)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FXboxUserStoreIdResult;
+
 // ScriptStruct KuroUtility.PropertyPair
 // 0x0010 (0x0010 - 0x0000)
 struct FPropertyPair final
@@ -103,6 +282,43 @@ public:
 	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FPropertyPair;
+
+// ScriptStruct KuroUtility.XboxInviteInfo
+// 0x0058 (0x0058 - 0x0000)
+struct FXboxInviteInfo final
+{
+public:
+	bool                                          bHasInvite;                                        // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 HandleId;                                          // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int64                                         InvitedXuid;                                       // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int64                                         SenderXuid;                                        // 0x0020(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 Context;                                           // 0x0028(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 ConnectionString;                                  // 0x0038(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 RawInviteUri;                                      // 0x0048(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FXboxInviteInfo;
+
+// ScriptStruct KuroUtility.XboxAchievementInfo
+// 0x0018 (0x0018 - 0x0000)
+struct FXboxAchievementInfo final
+{
+public:
+	class FString                                 Id;                                                // 0x0000(0x0010)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bIsAchieved;                                       // 0x0010(0x0001)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         ProgressState;                                     // 0x0014(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FXboxAchievementInfo;
+
+// ScriptStruct KuroUtility.PreloadObjectCollection
+// 0x0010 (0x0010 - 0x0000)
+struct FPreloadObjectCollection final
+{
+public:
+	TArray<class UObject*>                        Assets;                                            // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FPreloadObjectCollection;
 
 // ScriptStruct KuroUtility.OverlapActorInfo
 // 0x0050 (0x0050 - 0x0000)
@@ -119,25 +335,45 @@ public:
 };
 DUMPER7_ASSERTS_FOverlapActorInfo;
 
-// ScriptStruct KuroUtility.BlockUserData
-// 0x0018 (0x0018 - 0x0000)
-struct FBlockUserData final
+// ScriptStruct KuroUtility.KuroHarmonyGameConfigInfo
+// 0x0040 (0x0040 - 0x0000)
+struct FKuroHarmonyGameConfigInfo final
 {
 public:
-	int32                                         nextOffset;                                        // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         previousOffset;                                    // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<class FString>                         blockUsers;                                        // 0x0008(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	int32                                         MessageType;                                       // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         MaxPictureQualityLevel;                            // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         CurrentPictureQualityLevel;                        // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         MaxFrameRate;                                      // 0x000C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         CurrentFrameRate;                                  // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 MaxResolution;                                     // 0x0018(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 CurrentResolution;                                 // 0x0028(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAntiAliasing;                                     // 0x0038(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bShadow;                                           // 0x0039(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bMultithreading;                                   // 0x003A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bParticle;                                         // 0x003B(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bHdMode;                                           // 0x003C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_3D[0x3];                                       // 0x003D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_FBlockUserData;
+DUMPER7_ASSERTS_FKuroHarmonyGameConfigInfo;
 
-// ScriptStruct KuroUtility.PreloadObjectCollection
-// 0x0010 (0x0010 - 0x0000)
-struct FPreloadObjectCollection final
+// ScriptStruct KuroUtility.KuroHarmonyGamePackageInfo
+// 0x0048 (0x0048 - 0x0000)
+struct FKuroHarmonyGamePackageInfo final
 {
 public:
-	TArray<class UObject*>                        Assets;                                            // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	int32                                         MessageType;                                       // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 BundleName;                                        // 0x0008(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 AppVersion;                                        // 0x0018(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         EngineType;                                        // 0x0028(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 EngineVersion;                                     // 0x0030(0x0010)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         GameType;                                          // 0x0040(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bVulkanSupported;                                  // 0x0044(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_45[0x3];                                       // 0x0045(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_FPreloadObjectCollection;
+DUMPER7_ASSERTS_FKuroHarmonyGamePackageInfo;
 
 // ScriptStruct KuroUtility.ProductData
 // 0x0090 (0x0090 - 0x0000)
@@ -167,5 +403,64 @@ public:
 	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FBasicPresenceData;
+
+// ScriptStruct KuroUtility.XboxMultiplayerEvent
+// 0x0018 (0x0018 - 0x0000)
+struct FXboxMultiplayerEvent final
+{
+public:
+	bool                                          bValid;                                            // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         EventType;                                         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Result;                                            // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         SessionType;                                       // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int64                                         EventArgsHandle;                                   // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FXboxMultiplayerEvent;
+
+// ScriptStruct KuroUtility.XboxMultiplayerPrivilegeResult
+// 0x000C (0x000C - 0x0000)
+struct FXboxMultiplayerPrivilegeResult final
+{
+public:
+	bool                                          bHasPrivilege;                                     // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         HResult;                                           // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         DenyReason;                                        // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FXboxMultiplayerPrivilegeResult;
+
+// ScriptStruct KuroUtility.XboxRecentPlayerUpdate
+// 0x0010 (0x0010 - 0x0000)
+struct FXboxRecentPlayerUpdate final
+{
+public:
+	int64                                         Xuid;                                              // 0x0000(0x0008)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EXboxMultiplayerActivityEncounterType         EncounterType;                                     // 0x0008(0x0001)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FXboxRecentPlayerUpdate;
+
+// ScriptStruct KuroUtility.XboxUserHandleResult
+// 0x0010 (0x0010 - 0x0000)
+struct FXboxUserHandleResult final
+{
+public:
+	bool                                          bSuccess;                                          // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	int64                                         UserHandle;                                        // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FXboxUserHandleResult;
+
+// ScriptStruct KuroUtility.XboxGamertagResult
+// 0x0018 (0x0018 - 0x0000)
+struct FXboxGamertagResult final
+{
+public:
+	bool                                          bSuccess;                                          // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 Gamertag;                                          // 0x0008(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FXboxGamertagResult;
 
 SDK_NAMESPACE_END

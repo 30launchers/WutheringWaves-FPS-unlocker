@@ -72,17 +72,6 @@ enum class EGameplayTagSourceType : uint8
 	EGameplayTagSourceType_MAX               = 7,
 };
 
-// ScriptStruct GameplayTags.GameplayTagTableRow
-// 0x0020 (0x0028 - 0x0008)
-struct FGameplayTagTableRow : public FTableRowBase
-{
-public:
-	class FName                                   Tag;                                               // 0x0008(0x000C)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 DevComment;                                        // 0x0018(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FGameplayTagTableRow;
-
 // ScriptStruct GameplayTags.GameplayTag
 // 0x000C (0x000C - 0x0000)
 struct FGameplayTag final
@@ -91,16 +80,6 @@ public:
 	class FName                                   TagName;                                           // 0x0000(0x000C)(Edit, ZeroConstructor, EditConst, SaveGame, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 };
 DUMPER7_ASSERTS_FGameplayTag;
-
-// ScriptStruct GameplayTags.GameplayTagContainer
-// 0x0020 (0x0020 - 0x0000)
-struct FGameplayTagContainer final
-{
-public:
-	TArray<struct FGameplayTag>                   GameplayTags;                                      // 0x0000(0x0010)(BlueprintVisible, ZeroConstructor, SaveGame, Protected, NativeAccessSpecifierProtected)
-	TArray<struct FGameplayTag>                   ParentTags;                                        // 0x0010(0x0010)(ZeroConstructor, Transient, Protected, NativeAccessSpecifierProtected)
-};
-DUMPER7_ASSERTS_FGameplayTagContainer;
 
 // ScriptStruct GameplayTags.GameplayTagQuery
 // 0x0048 (0x0048 - 0x0000)
@@ -115,6 +94,16 @@ public:
 	class FString                                 AutoDescription;                                   // 0x0038(0x0010)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 };
 DUMPER7_ASSERTS_FGameplayTagQuery;
+
+// ScriptStruct GameplayTags.GameplayTagContainer
+// 0x0020 (0x0020 - 0x0000)
+struct FGameplayTagContainer final
+{
+public:
+	TArray<struct FGameplayTag>                   GameplayTags;                                      // 0x0000(0x0010)(BlueprintVisible, ZeroConstructor, SaveGame, Protected, NativeAccessSpecifierProtected)
+	TArray<struct FGameplayTag>                   ParentTags;                                        // 0x0010(0x0010)(ZeroConstructor, Transient, Protected, NativeAccessSpecifierProtected)
+};
+DUMPER7_ASSERTS_FGameplayTagContainer;
 
 // ScriptStruct GameplayTags.GameplayTagCreationWidgetHelper
 // 0x0001 (0x0001 - 0x0000)
@@ -155,6 +144,17 @@ public:
 	class URestrictedGameplayTagsList*            SourceRestrictedTagList;                           // 0x0018(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FGameplayTagSource;
+
+// ScriptStruct GameplayTags.GameplayTagTableRow
+// 0x0020 (0x0028 - 0x0008)
+struct FGameplayTagTableRow : public FTableRowBase
+{
+public:
+	class FName                                   Tag;                                               // 0x0008(0x000C)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 DevComment;                                        // 0x0018(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FGameplayTagTableRow;
 
 // ScriptStruct GameplayTags.RestrictedGameplayTagTableRow
 // 0x0008 (0x0030 - 0x0028)

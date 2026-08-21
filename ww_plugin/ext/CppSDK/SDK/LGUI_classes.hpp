@@ -10,44 +10,20 @@
 
 #include "Basic.hpp"
 
-#include "SlateCore_structs.hpp"
-#include "LTween_structs.hpp"
+#include "KuroCurve_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "LGUI_structs.hpp"
+#include "LTween_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "CoreUObject_classes.hpp"
+#include "LGUI_structs.hpp"
+#include "SlateCore_structs.hpp"
 #include "Niagara_classes.hpp"
-#include "KuroCurve_structs.hpp"
 #include "InputCore_structs.hpp"
 #include "Slate_structs.hpp"
 
 
 SDK_NAMESPACE_START
-
-// Class LGUI.UIItemEditorHelperComp
-// 0x0010 (0x0580 - 0x0570)
-class UUIItemEditorHelperComp final : public UPrimitiveComponent
-{
-public:
-	class UUIItem*                                Parent;                                            // 0x0570(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UBodySetup*                             BodySetup;                                         // 0x0578(0x0008)(ZeroConstructor, Transient, DuplicateTransient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIItemEditorHelperComp")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIItemEditorHelperComp")
-	}
-	static class UUIItemEditorHelperComp* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIItemEditorHelperComp>();
-	}
-};
-DUMPER7_ASSERTS_UUIItemEditorHelperComp;
 
 // Class LGUI.LGUIPrefabActor
 // 0x0008 (0x02B8 - 0x02B0)
@@ -95,6 +71,30 @@ public:
 };
 DUMPER7_ASSERTS_UGuideHookRegistry;
 
+// Class LGUI.UIItemEditorHelperComp
+// 0x0010 (0x05A0 - 0x0590)
+class UUIItemEditorHelperComp final : public UPrimitiveComponent
+{
+public:
+	class UUIItem*                                Parent;                                            // 0x0590(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UBodySetup*                             BodySetup;                                         // 0x0598(0x0008)(ZeroConstructor, Transient, DuplicateTransient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIItemEditorHelperComp")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIItemEditorHelperComp")
+	}
+	static class UUIItemEditorHelperComp* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIItemEditorHelperComp>();
+	}
+};
+DUMPER7_ASSERTS_UUIItemEditorHelperComp;
+
 // Class LGUI.LGUIPrefabCheckerInterface
 // 0x0000 (0x0000 - 0x0000)
 class ILGUIPrefabCheckerInterface final
@@ -123,6 +123,55 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ILGUIPrefabCheckerInterface;
+
+// Class LGUI.LGUITextAnimationTarget
+// 0x0000 (0x0000 - 0x0000)
+class ILGUITextAnimationTarget final
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LGUITextAnimationTarget")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LGUITextAnimationTarget")
+	}
+	static class ILGUITextAnimationTarget* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ILGUITextAnimationTarget>();
+	}
+
+	class UObject* AsUObject()
+	{
+		return reinterpret_cast<UObject*>(this);
+	}
+	const class UObject* AsUObject() const
+	{
+		return reinterpret_cast<const UObject*>(this);
+	}
+};
+DUMPER7_ASSERTS_ILGUITextAnimationTarget;
+
+// Class LGUI.PrefabActorHierarchyData
+// 0x0000 (0x0030 - 0x0030)
+class UPrefabActorHierarchyData final : public UObject
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("PrefabActorHierarchyData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"PrefabActorHierarchyData")
+	}
+	static class UPrefabActorHierarchyData* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UPrefabActorHierarchyData>();
+	}
+};
+DUMPER7_ASSERTS_UPrefabActorHierarchyData;
 
 // Class LGUI.KuroWorldMapUIParams
 // 0x0020 (0x00E0 - 0x00C0)
@@ -153,109 +202,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UKuroWorldMapUIParams;
-
-// Class LGUI.UIBaseActor
-// 0x0140 (0x03F0 - 0x02B0)
-class AUIBaseActor : public AActor
-{
-public:
-	uint8                                         Pad_2B0[0x8];                                      // 0x02B0(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<struct FSoftObjectPath, class ALevelSequenceActor*> CurBindingSeqActors;                    // 0x02B8(0x0050)(Transient, NativeAccessSpecifierPublic)
-	TDelegate<void(const class FString& sequenceName, const class FString& eventName)> OnSequencePlayEvent; // 0x0308(0x0028)(ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-	FMulticastSparseDelegateProperty_             OnPreDestroyed;                                    // 0x0330(0x0001)(InstancedReference, BlueprintAssignable, NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_331[0x3];                                      // 0x0331(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGuid                                  LGUIGuid;                                          // 0x0334(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_344[0x4];                                      // 0x0344(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<struct FSoftObjectPath, class USequencePlayContext*> AllSequencePlayContexts;               // 0x0348(0x0050)(Transient, NativeAccessSpecifierPrivate)
-	TMap<class FString, class USequencePlayContext*> PlayContextsByKey;                              // 0x0398(0x0050)(Transient, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_3E8[0x8];                                      // 0x03E8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void ActivateAllChildrenInteraction();
-	void CleanIdleAnimSeqActorCache();
-	void ClearAllSequence();
-	ESequenceLoadState GetLoadStateOfSequenceByKey(const class FString& Key);
-	struct FSequenceInfo GetSeqInfoByKey(const class FString& Key);
-	class USequencePlayContext* GetSequencePlayContextOfKey(const class FString& Key);
-	class ALevelSequenceActor* GetSequencePlayerByKey(const class FString& Name_0);
-	void LoadSequenceAssetAsyncByKey(const class FString& Key, const TDelegate<void(class ULevelSequence* Sequence)>& OnLoaded);
-	void PauseSequenceByKey(const class FString& Name_0);
-	void PlayLevelSequenceByKey(const class FString& Name_0);
-	void ReplaySequenceByKey(const class FString& Name_0);
-	void ResumeSequenceByKey(const class FString& Name_0);
-	void SequenceJumpToEnd(const struct FSoftObjectPath& SoftPath);
-	void SequenceJumpToSecondByKey(const class FString& Name_0, const struct FFrameTime& Time);
-	void SequencePlayReverseByKey(const class FString& Name_0);
-	void StopSequenceByKey(const class FString& Name_0);
-
-	void ExecuteSequencePlayEvent(const class FString& sequenceName, const class FString& eventName) const;
-	class UUIItem* GetUIItem() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIBaseActor")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIBaseActor")
-	}
-	static class AUIBaseActor* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<AUIBaseActor>();
-	}
-};
-DUMPER7_ASSERTS_AUIBaseActor;
-
-// Class LGUI.UINiagaraActor
-// 0x0008 (0x03F8 - 0x03F0)
-class AUINiagaraActor final : public AUIBaseActor
-{
-public:
-	class UUINiagara*                             UINiagara;                                         // 0x03F0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-
-public:
-	void ActivateSystem();
-	void DeactivateSystem();
-	void SwitchToStop();
-
-	class UUINiagara* GetUINiagara() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UINiagaraActor")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UINiagaraActor")
-	}
-	static class AUINiagaraActor* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<AUINiagaraActor>();
-	}
-};
-DUMPER7_ASSERTS_AUINiagaraActor;
-
-// Class LGUI.PrefabActorHierarchyData
-// 0x0000 (0x0030 - 0x0030)
-class UPrefabActorHierarchyData final : public UObject
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("PrefabActorHierarchyData")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"PrefabActorHierarchyData")
-	}
-	static class UPrefabActorHierarchyData* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UPrefabActorHierarchyData>();
-	}
-};
-DUMPER7_ASSERTS_UPrefabActorHierarchyData;
 
 // Class LGUI.LGUIBaseRayEmitter
 // 0x0030 (0x00F0 - 0x00C0)
@@ -290,26 +236,6 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIBaseRayEmitter;
 
-// Class LGUI.LGUIPrefabHelperObject
-// 0x0000 (0x0030 - 0x0030)
-class ULGUIPrefabHelperObject final : public UObject
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LGUIPrefabHelperObject")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LGUIPrefabHelperObject")
-	}
-	static class ULGUIPrefabHelperObject* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULGUIPrefabHelperObject>();
-	}
-};
-DUMPER7_ASSERTS_ULGUIPrefabHelperObject;
-
 // Class LGUI.LGUI_CenterScreenRayemitter
 // 0x0008 (0x00F8 - 0x00F0)
 class ULGUI_CenterScreenRayemitter final : public ULGUIBaseRayEmitter
@@ -333,197 +259,6 @@ public:
 };
 DUMPER7_ASSERTS_ULGUI_CenterScreenRayemitter;
 
-// Class LGUI.LGUIBehaviour
-// 0x0040 (0x0100 - 0x00C0)
-class ULGUIBehaviour : public UActorComponent
-{
-public:
-	bool                                          enable;                                            // 0x00C0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_C1[0x7];                                       // 0x00C1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(float DeltaTime)>              OnLateUpdate;                                      // 0x00C8(0x0028)(Edit, ZeroConstructor, InstancedReference, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_F0[0x4];                                       // 0x00F0(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class UUIItem>                 RootUIComp;                                        // 0x00F4(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_FC[0x4];                                       // 0x00FC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void AwakeBP();
-	class AActor* InstantiateActor(class AActor* OriginObject, class USceneComponent* Parent);
-	class AActor* InstantiatePrefab(class ULGUIPrefab* OriginObject, class USceneComponent* Parent);
-	class AActor* InstantiatePrefabWithTransform(class ULGUIPrefab* OriginObject, class USceneComponent* Parent, const struct FVector& Location, const struct FRotator& Rotation, const struct FVector& Scale);
-	void LateUpdateBP(float DeltaTime);
-	void OnDestroyBP();
-	void OnDisableBP();
-	void OnEnableBP();
-	void OnPreDestroyBP();
-	void OnUIActiveInHierarchyBP(bool activeOrInactive);
-	void OnUIAttachmentChangedBP();
-	void OnUIChildAcitveInHierarchyBP(class UUIItem* child, bool ativeOrInactive);
-	void OnUIChildAttachmentChangedBP(class UUIItem* child, bool attachOrDetach);
-	void OnUIChildHierarchyIndexChangedBP(class UUIItem* child);
-	void OnUIDimensionsChangedBP(bool positionChanged, bool sizeChanged);
-	void OnUIInteractionStateChangedBP(bool interactableOrNot);
-	void SetEnable(bool value);
-	void StartBP();
-	void UpdateBP(float DeltaTime);
-
-	bool CheckRootUIComponent() const;
-	bool GetEnable() const;
-	bool GetIsActiveAndEnable() const;
-	class UUIItem* GetRootComponent() const;
-	class USceneComponent* GetRootSceneComponent() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LGUIBehaviour")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LGUIBehaviour")
-	}
-	static class ULGUIBehaviour* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULGUIBehaviour>();
-	}
-};
-DUMPER7_ASSERTS_ULGUIBehaviour;
-
-// Class LGUI.UILayoutBase
-// 0x0070 (0x0170 - 0x0100)
-class UUILayoutBase : public ULGUIBehaviour
-{
-public:
-	uint8                                         Pad_100[0x20];                                     // 0x0100(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         GridAnimationStartTime;                            // 0x0120(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         GridAnimationInterval;                             // 0x0124(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          IsInAnimation;                                     // 0x0128(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bIsScaleCalculated;                                // 0x0129(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bUseOriginalChildrenOrder;                         // 0x012A(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_12B[0x1D];                                     // 0x012B(0x001D)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(class UUILayoutBase* Layout)>  OnRebuildLayoutDelegate;                           // 0x0148(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-
-public:
-	void SetGridAnimationInterval(float value);
-	void SetGridAnimationStartTime(float value);
-	void SetInAnimation(bool state);
-
-	float GetGridAnimationInterval() const;
-	float GetGridAnimationStartTime() const;
-	bool GetInAnimation() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UILayoutBase")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UILayoutBase")
-	}
-	static class UUILayoutBase* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUILayoutBase>();
-	}
-};
-DUMPER7_ASSERTS_UUILayoutBase;
-
-// Class LGUI.UILayoutWithAnimation
-// 0x0020 (0x0190 - 0x0170)
-class UUILayoutWithAnimation : public UUILayoutBase
-{
-public:
-	EUILayoutChangePositionAnimationType          AnimationType;                                     // 0x0170(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_171[0x3];                                      // 0x0171(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         AnimationDuration;                                 // 0x0174(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TArray<class ULTweener*>                      TweenerArray;                                      // 0x0178(0x0010)(ZeroConstructor, Transient, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_188[0x8];                                      // 0x0188(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void CancelAnimation(bool callComplete);
-	void SetAnimationDuration(float value);
-	void SetAnimationType(EUILayoutChangePositionAnimationType value);
-
-	float GetAnimationDuration() const;
-	EUILayoutChangePositionAnimationType GetAnimationType() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UILayoutWithAnimation")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UILayoutWithAnimation")
-	}
-	static class UUILayoutWithAnimation* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUILayoutWithAnimation>();
-	}
-};
-DUMPER7_ASSERTS_UUILayoutWithAnimation;
-
-// Class LGUI.UIMultiTemplateLayout
-// 0x0040 (0x01D0 - 0x0190)
-class UUIMultiTemplateLayout final : public UUILayoutWithAnimation
-{
-public:
-	ELGUILayoutDirectionType                      DirectionType;                                     // 0x0190(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_191[0x3];                                      // 0x0191(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FMargin                                Padding;                                           // 0x0194(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	struct FVector2D                              Spacing;                                           // 0x01A4(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          SizeFitToChildren;                                 // 0x01AC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bAutoAdjustScale;                                  // 0x01AD(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_1AE[0x22];                                     // 0x01AE(0x0022)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetAutoAdjustScale(bool Value);
-	void SetDirectionType(ELGUILayoutDirectionType NewDirectionType);
-	void SetPadding(const struct FMargin& value);
-	void SetSizeFitToChildren(bool Value);
-	void SetSpacing(const struct FVector2D& value);
-
-	bool GetAutoAdjustScale() const;
-	ELGUILayoutDirectionType GetDirectionType() const;
-	struct FMargin GetPadding() const;
-	bool GetSizeFitToChildren() const;
-	struct FVector2D GetSpacing() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIMultiTemplateLayout")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIMultiTemplateLayout")
-	}
-	static class UUIMultiTemplateLayout* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIMultiTemplateLayout>();
-	}
-};
-DUMPER7_ASSERTS_UUIMultiTemplateLayout;
-
-// Class LGUI.LGUIPrefabHelperActor
-// 0x0000 (0x02B0 - 0x02B0)
-class ALGUIPrefabHelperActor final : public AActor
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LGUIPrefabHelperActor")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LGUIPrefabHelperActor")
-	}
-	static class ALGUIPrefabHelperActor* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ALGUIPrefabHelperActor>();
-	}
-};
-DUMPER7_ASSERTS_ALGUIPrefabHelperActor;
-
 // Class LGUI.LGUI_MainViewportMouseRayEmitter
 // 0x0008 (0x00F8 - 0x00F0)
 class ULGUI_MainViewportMouseRayEmitter final : public ULGUIBaseRayEmitter
@@ -546,26 +281,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ULGUI_MainViewportMouseRayEmitter;
-
-// Class LGUI.LGUIPrefabHelperComponent
-// 0x0000 (0x0220 - 0x0220)
-class ULGUIPrefabHelperComponent final : public USceneComponent
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LGUIPrefabHelperComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LGUIPrefabHelperComponent")
-	}
-	static class ULGUIPrefabHelperComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULGUIPrefabHelperComponent>();
-	}
-};
-DUMPER7_ASSERTS_ULGUIPrefabHelperComponent;
 
 // Class LGUI.LGUIBaseInputModule
 // 0x0000 (0x00C0 - 0x00C0)
@@ -660,6 +375,114 @@ public:
 };
 DUMPER7_ASSERTS_ULGUI_SceneCapture2DMouseRayEmitter;
 
+// Class LGUI.LGUIBehaviour
+// 0x0040 (0x0100 - 0x00C0)
+class ULGUIBehaviour : public UActorComponent
+{
+public:
+	bool                                          enable;                                            // 0x00C0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_C1[0x7];                                       // 0x00C1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(float DeltaTime)>              OnLateUpdate;                                      // 0x00C8(0x0028)(Edit, ZeroConstructor, InstancedReference, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_F0[0x4];                                       // 0x00F0(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class UUIItem>                 RootUIComp;                                        // 0x00F4(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_FC[0x4];                                       // 0x00FC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void AwakeBP();
+	class AActor* InstantiateActor(class AActor* OriginObject, class USceneComponent* Parent);
+	class AActor* InstantiatePrefab(class ULGUIPrefab* OriginObject, class USceneComponent* Parent);
+	class AActor* InstantiatePrefabWithTransform(class ULGUIPrefab* OriginObject, class USceneComponent* Parent, const struct FVector& Location, const struct FRotator& Rotation, const struct FVector& Scale);
+	void LateUpdateBP(float DeltaTime);
+	void OnDestroyBP();
+	void OnDisableBP();
+	void OnEnableBP();
+	void OnPreDestroyBP();
+	void OnUIActiveInHierarchyBP(bool activeOrInactive);
+	void OnUIAttachmentChangedBP();
+	void OnUIChildAcitveInHierarchyBP(class UUIItem* child, bool ativeOrInactive);
+	void OnUIChildAttachmentChangedBP(class UUIItem* child, bool attachOrDetach);
+	void OnUIChildHierarchyIndexChangedBP(class UUIItem* child);
+	void OnUIDimensionsChangedBP(bool positionChanged, bool sizeChanged);
+	void OnUIInteractionStateChangedBP(bool interactableOrNot);
+	void SetEnable(bool value);
+	void StartBP();
+	void UpdateBP(float DeltaTime);
+
+	bool CheckRootUIComponent() const;
+	bool GetEnable() const;
+	bool GetIsActiveAndEnable() const;
+	class UUIItem* GetRootComponent() const;
+	class USceneComponent* GetRootSceneComponent() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LGUIBehaviour")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LGUIBehaviour")
+	}
+	static class ULGUIBehaviour* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULGUIBehaviour>();
+	}
+};
+DUMPER7_ASSERTS_ULGUIBehaviour;
+
+// Class LGUI.UINavigationGroupComponent
+// 0x0108 (0x0208 - 0x0100)
+class UUINavigationGroupComponent final : public ULGUIBehaviour
+{
+public:
+	uint8                                         Pad_100[0xA0];                                     // 0x0100(0x00A0)(Fixing Size After Last Property [ Dumper-7 ])
+	EUINavigationWrapMode                         HorizontalWrapMode;                                // 0x01A0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EUINavigationPriorityMode                     HorizontalPriorityMode;                            // 0x01A1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EUINavigationWrapMode                         VerticalWrapMode;                                  // 0x01A2(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EUINavigationPriorityMode                     VerticalPriorityMode;                              // 0x01A3(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TWeakObjectPtr<class AActor>                  PrevNavigationGroupActor;                          // 0x01A4(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TWeakObjectPtr<class UUINavigationGroupComponent> PrevNavigationGroup;                           // 0x01AC(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TWeakObjectPtr<class AActor>                  NextNavigationGroupActor;                          // 0x01B4(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TWeakObjectPtr<class UUINavigationGroupComponent> NextNavigationGroup;                           // 0x01BC(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   PrevNavigationGroupName;                           // 0x01C4(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   NextNavigationGroupName;                           // 0x01D0(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   NavigationGroupName;                               // 0x01DC(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<TWeakObjectPtr<class AActor>>          DefaultNavigateActors;                             // 0x01E8(0x0010)(Edit, ZeroConstructor, UObjectWrapper, NativeAccessSpecifierPublic)
+	bool                                          BookMark;                                          // 0x01F8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ScrollBall;                                        // 0x01F9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          MouseCanJump;                                      // 0x01FA(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          AutoSearch;                                        // 0x01FB(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          SelectableMemory;                                  // 0x01FC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1FD[0x3];                                      // 0x01FD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         ViewId;                                            // 0x0200(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_204[0x4];                                      // 0x0204(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static void ResetNavigateGroupDelegate();
+	static void SetNavigateGroupDelegate(const TDelegate<void(class UUINavigationGroupComponent* NavigationGroupComponent, EUINavigationGroupMode mode)>& Delegate);
+	static void SetNavigateTolerance(const float Tolerance);
+
+	void GetRootNavigationGrade(TArray<class UUISelectableComponent*>* Result);
+	void Navigate();
+	void NavigateToNextGroup();
+	void NavigateToPrevGroup();
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UINavigationGroupComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UINavigationGroupComponent")
+	}
+	static class UUINavigationGroupComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUINavigationGroupComponent>();
+	}
+};
+DUMPER7_ASSERTS_UUINavigationGroupComponent;
+
 // Class LGUI.LGUI_SceneComponentRayEmitter
 // 0x0018 (0x0108 - 0x00F0)
 class ULGUI_SceneComponentRayEmitter final : public ULGUIBaseRayEmitter
@@ -716,6 +539,80 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ULGUI_ScreenSpaceUIMouseRayemitter;
+
+// Class LGUI.UIGeometryModifierBase
+// 0x0020 (0x00E0 - 0x00C0)
+class UUIGeometryModifierBase : public UActorComponent
+{
+public:
+	int32                                         executeOrder;                                      // 0x00C0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class FName                                   componentName;                                     // 0x00C4(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bModifierEnabled;                                  // 0x00D0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_D1[0xF];                                       // 0x00D1(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetModifierEnable(bool bNewEnabled);
+
+	bool GetModifierEnable() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIGeometryModifierBase")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIGeometryModifierBase")
+	}
+	static class UUIGeometryModifierBase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIGeometryModifierBase>();
+	}
+};
+DUMPER7_ASSERTS_UUIGeometryModifierBase;
+
+// Class LGUI.UIEffectLongShadow
+// 0x0020 (0x0100 - 0x00E0)
+class UUIEffectLongShadow final : public UUIGeometryModifierBase
+{
+public:
+	struct FColor                                 shadowColor;                                       // 0x00E0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FVector                                shadowSize;                                        // 0x00E4(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         shadowSegment;                                     // 0x00F0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          useGradientColor;                                  // 0x00F1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_F2[0x2];                                       // 0x00F2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FColor                                 gradientColor;                                     // 0x00F4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          multiplySourceAlpha;                               // 0x00F8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_F9[0x7];                                       // 0x00F9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetGradientColor(const struct FColor& newColor);
+	void SetShadowColor(const struct FColor& newColor);
+	void SetShadowSegment(uint8 newSegment);
+	void SetShadowSize(const struct FVector& newSize);
+	void SetUseGradientColor(bool newBool);
+
+	struct FColor GetGradientColor() const;
+	struct FColor GetShadowColor() const;
+	uint8 GetShadowSegments() const;
+	struct FVector GetShadowSize() const;
+	bool GetUseGradientColor() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIEffectLongShadow")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIEffectLongShadow")
+	}
+	static class UUIEffectLongShadow* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIEffectLongShadow>();
+	}
+};
+DUMPER7_ASSERTS_UUIEffectLongShadow;
 
 // Class LGUI.LGUI_StandaloneInputModule
 // 0x0008 (0x0128 - 0x0120)
@@ -778,6 +675,39 @@ public:
 };
 DUMPER7_ASSERTS_ULGUI_TouchInputModule;
 
+// Class LGUI.UISelectableTransitionComponent
+// 0x0010 (0x0110 - 0x0100)
+class UUISelectableTransitionComponent : public ULGUIBehaviour
+{
+public:
+	TArray<class ULTweener*>                      TweenerCollection;                                 // 0x0100(0x0010)(Edit, BlueprintVisible, ZeroConstructor, EditConst, Protected, NativeAccessSpecifierProtected)
+
+public:
+	void CollectTweener(class ULTweener* InItem);
+	void CollectTweeners(const TSet<class ULTweener*>& InItems);
+	void OnDisabledBP(bool InImmediateSet);
+	void OnHighlightedBP(bool InImmediateSet);
+	void OnNormalBP(bool InImmediateSet);
+	void OnPressedBP(bool InImmediateSet);
+	void OnStartCustomTransitionBP(class FName InTransitionName, bool InImmediateSet);
+	void StopTransition();
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UISelectableTransitionComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UISelectableTransitionComponent")
+	}
+	static class UUISelectableTransitionComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUISelectableTransitionComponent>();
+	}
+};
+DUMPER7_ASSERTS_UUISelectableTransitionComponent;
+
 // Class LGUI.LGUIBaseRaycaster
 // 0x0030 (0x0250 - 0x0220)
 class ULGUIBaseRaycaster : public USceneComponent
@@ -838,6 +768,217 @@ public:
 };
 #pragma pack(pop)
 DUMPER7_ASSERTS_ULGUI_UIRaycaster;
+
+// Class LGUI.UIScrollViewComponent
+// 0x0180 (0x0280 - 0x0100)
+class UUIScrollViewComponent : public ULGUIBehaviour
+{
+public:
+	uint8                                         Pad_100[0x20];                                     // 0x0100(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class AUIBaseActor>            Content;                                           // 0x0120(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          Horizontal;                                        // 0x0128(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          Vertical;                                          // 0x0129(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_12A[0x2];                                      // 0x012A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ScrollSensitivity;                                 // 0x012C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          AllowEventBubbleUp;                                // 0x0130(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_131[0x3];                                      // 0x0131(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         DecelerationRate;                                  // 0x0134(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	ELTweenEase                                   ScrollToEaseType;                                  // 0x0138(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_139[0x3];                                      // 0x0139(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ScrollToDuration;                                  // 0x013C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         Elasticity;                                        // 0x0140(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         ScrollOutOfRangeModulus;                           // 0x0144(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bCallTweenerCompleteCallbackWhenKill;              // 0x0148(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bUnderSizeScrollEnabled;                           // 0x0149(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          CanScroll;                                         // 0x014A(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          RayCastTargetForScrollView;                        // 0x014B(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_14C[0x4];                                      // 0x014C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(class ULGUIPointerEventData* eventData)> OnPointerBeginDragCallBack;              // 0x0150(0x0028)(Edit, ZeroConstructor, InstancedReference, Protected, NativeAccessSpecifierProtected)
+	TDelegate<void(class ULGUIPointerEventData* eventData)> OnPointerEndDragCallBack;                // 0x0178(0x0028)(Edit, ZeroConstructor, InstancedReference, Protected, NativeAccessSpecifierProtected)
+	TDelegate<void(class ULGUIPointerEventData* EventData)> OnScrollViewDownUpCallback;              // 0x01A0(0x0028)(Edit, ZeroConstructor, InstancedReference, Protected, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class UUIItem>                 ContentUIItem;                                     // 0x01C8(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class UUIItem>                 ContentParentUIItem;                               // 0x01D0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FVector2D                              Progress;                                          // 0x01D8(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1E0[0x68];                                     // 0x01E0(0x0068)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULTweener*                              Tweener;                                           // 0x0248(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_250[0x8];                                      // 0x0250(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(const struct FVector2D& InVector2)> OnScrollValueChange;                          // 0x0258(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+
+public:
+	static float GetDecelerationRateDegbug();
+	static float GetElasticityDegbug();
+	static float GetScrollOutOfRangeModulusDebug();
+	static float GetScrollSensitivityDebug();
+	static bool GetScrollUseDebug();
+	static void SetDecelerationRateDebug(float value);
+	static void SetElasticityDebug(float value);
+	static void SetScrollOutOfRangeModulusDebug(float value);
+	static void SetScrollSensitivityDebug(float value);
+	static void SetScrollUseDebug(bool value);
+
+	void SetCanScroll(bool bCanScroll);
+	void SetHorizontal(bool Value);
+	void SetHorizontalVelocity(float Value);
+	void SetRayCastTargetForScrollView(bool newRayCastTarget);
+	void SetScrollProgress(float Value);
+	void SetScrollProgressIncrement(float Value);
+	void SetScrollValue(const struct FVector2D& Value);
+	void SetUnderSizeScrollEnabled(bool bEnabled);
+	void SetVelocity(float Value);
+	void SetVertical(bool Value);
+	void SetVerticalVelocity(float Value);
+	void StopMovement();
+	void TriggerScrollEventManually(class ULGUIPointerEventData* PointerEventData);
+
+	bool CheckContentUnderSize() const;
+	bool GetCanScroll() const;
+	class AUIBaseActor* GetContent() const;
+	bool GetHorizontal() const;
+	bool GetRayCastTargetForScrollView() const;
+	bool GetUnderSizeScrollEnabled() const;
+	struct FVector2D GetVelocity() const;
+	bool GetVertical() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIScrollViewComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIScrollViewComponent")
+	}
+	static class UUIScrollViewComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIScrollViewComponent>();
+	}
+};
+DUMPER7_ASSERTS_UUIScrollViewComponent;
+
+// Class LGUI.UIScrollViewWithScrollbarComponent
+// 0x0048 (0x02C8 - 0x0280)
+class UUIScrollViewWithScrollbarComponent : public UUIScrollViewComponent
+{
+public:
+	TWeakObjectPtr<class AUIBaseActor>            Viewport;                                          // 0x0280(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class AUIBaseActor>            HorizontalScrollbar;                               // 0x0288(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EScrollViewScrollbarVisibility                HorizontalScrollbarVisibility;                     // 0x0290(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_291[0x3];                                      // 0x0291(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class AUIBaseActor>            VerticalScrollbar;                                 // 0x0294(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EScrollViewScrollbarVisibility                VerticalScrollbarVisibility;                       // 0x029C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_29D[0x3];                                      // 0x029D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class UUIScrollbarComponent>   HorizontalScrollbarComp;                           // 0x02A0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class UUIScrollbarComponent>   VerticalScrollbarComp;                             // 0x02A8(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_2B0[0x2];                                      // 0x02B0(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          IsChangeNavigation;                                // 0x02B2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_2B3[0x11];                                     // 0x02B3(0x0011)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          AllowScrollEventBubbleUp;                          // 0x02C4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2C5[0x3];                                      // 0x02C5(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void BindParentUIItem(class UUISelectableComponent* Component);
+	class UUISelectableComponent* FindNavigationComponent(class UUISelectableComponent* Component, const struct FVector& Direction, EUINavigationWrapMode Mode, bool bHasOtherNode);
+	void GetOutOfBottomBoundsType(class UUIItem* UIItem, EOutOfBoundsType* OutOfTopOrBottomType, EOutOfBoundsType* OutOfLeftOrRightType, float ErrorTolerance);
+	void ResetIsChangeNavigation();
+	void ScrollTo(class UUIItem* UIItem, bool bTweenAnim);
+	void ScrollToBottom(struct FVector2D* NewPosition, class UUIItem* UIItem, bool bTweenAnim);
+	void ScrollToBottomLater(class UUIItem* UIItem, bool bTweenAnim);
+	void ScrollToEnd();
+	void ScrollToLeft(struct FVector2D* NewPosition, class UUIItem* UIItem, bool bTweenAnim);
+	void ScrollToLeftLater(class UUIItem* UIItem, bool bTweenAnim);
+	void ScrollToRight(struct FVector2D* NewPosition, class UUIItem* UIItem, bool bTweenAnim);
+	void ScrollToRightLater(class UUIItem* UIItem, bool bTweenAnim);
+	void ScrollToSelectableComponent(class UUISelectableComponent* Component);
+	void ScrollToTop(struct FVector2D* NewPosition, class UUIItem* UIItem, bool bTweenAnim);
+	void ScrollToTopLater(class UUIItem* UIItem, bool bTweenAnim);
+	void SetHorizontalScrollbarVisibility(EScrollViewScrollbarVisibility value);
+	void SetVerticalScrollbarVisibility(EScrollViewScrollbarVisibility value);
+	void UnBindParentUIItem(class UUISelectableComponent* Component);
+
+	class AUIBaseActor* GetHorizontalScrollbar() const;
+	EScrollViewScrollbarVisibility GetHorizontalScrollbarVisibility() const;
+	class AUIBaseActor* GetVerticalScrollbar() const;
+	EScrollViewScrollbarVisibility GetVerticalScrollbarVisibility() const;
+	class AUIBaseActor* GetViewport() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIScrollViewWithScrollbarComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIScrollViewWithScrollbarComponent")
+	}
+	static class UUIScrollViewWithScrollbarComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIScrollViewWithScrollbarComponent>();
+	}
+};
+DUMPER7_ASSERTS_UUIScrollViewWithScrollbarComponent;
+
+// Class LGUI.UIMultiTemplateScrollViewComponent
+// 0x01D8 (0x04A0 - 0x02C8)
+class UUIMultiTemplateScrollViewComponent final : public UUIScrollViewWithScrollbarComponent
+{
+public:
+	TArray<struct FMultiTemplateScrollViewTemplateInfo> TemplateInfoArray;                           // 0x02C8(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPrivate)
+	float                                         ViewportSizeTolerance;                             // 0x02D8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_2DC[0xBC];                                     // 0x02DC(0x00BC)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         AreaSpacing;                                       // 0x0398(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FMargin                                ContentPadding;                                    // 0x039C(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_3AC[0x4];                                      // 0x03AC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(int32 GridIndex, class AUIBaseActor* Actor)> OnItemCreate;                        // 0x03B0(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+	TDelegate<void(int32 GridIndex, class AUIBaseActor* Actor)> OnItemRefresh;                       // 0x03D8(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+	TDelegate<void(int32 GridIndex, class AUIBaseActor* Actor)> OnItemClear;                         // 0x0400(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+	TDelegate<void(int32 GridIndex)>              OnCheckItemNavigable;                              // 0x0428(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+	uint8                                         Pad_450[0x50];                                     // 0x0450(0x0050)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	bool CheckScrollViewValid();
+	int32 FindNavigationIndex(class UUISelectableComponent* Component, const struct FVector& Direction, EUINavigationWrapMode WrapMode, EUINavigationPriorityMode PriorityMode, float NavigateTolerance, float NavigateToleranceReverse);
+	int32 GetGridIndexByChildComponent(class UUISelectableComponent* Component);
+	class UUIItem* GetGridItem(int32 GridIndex);
+	class UUIItem* GetGridItemByChildComponent(class UUISelectableComponent* Component);
+	class UUISelectableComponent* GetNavigationComponentByGridIndex(int32 GridIndex);
+	bool IsAllItemDisplayed();
+	bool IsInDisplayRange(int32 GridIndex, bool OnlyCheckData);
+	void Refresh();
+	void RefreshByData(const TArray<int32>& InTemplateIndexArray, bool KeepContentPosition, int32 ScrollToItemIndex);
+	void ScrollToGridIndex(int32 GridIndex, bool bScrollToTop);
+	void ScrollToGridIndexLater(int32 GridIndex, bool bScrollToTop);
+	void SetContentPadding(const struct FMargin& InContentPadding);
+	void TryScrollToGridIndex(int32 GridIndex, bool bScrollToTop);
+
+	void GetAreaGridIndexRange(int32 InAreaIndex, int32* OutStartGridIndex, int32* OutEndGridIndex) const;
+	struct FMargin GetAreaPadding(int32 InAreaIndex) const;
+	void GetAreaSize(int32 InAreaIndex, float* OutWidth, float* OutHeight) const;
+	struct FMargin GetContentPadding() const;
+	int32 GetEndDisplayGridIndex() const;
+	struct FVector2D GetGridSpacingInArea(int32 InAreaIndex) const;
+	int32 GetGridTemplateIndexInArea(int32 InAreaIndex) const;
+	float GetLineHeightWhenVertical(int32 InLineIndex) const;
+	float GetLineWidthWhenHorizontal(int32 InLineIndex) const;
+	int32 GetStartDisplayGridIndex() const;
+	void SetContentOffsetAlignGrid(int32 GridIndex, bool bClamp, bool bScrollToTop) const;
+	void SetContentOffsetXWhenHorizontal(float NewOffset, bool bClamp) const;
+	void SetContentOffsetYWhenVertical(float NewOffset, bool bClamp) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIMultiTemplateScrollViewComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIMultiTemplateScrollViewComponent")
+	}
+	static class UUIMultiTemplateScrollViewComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIMultiTemplateScrollViewComponent>();
+	}
+};
+DUMPER7_ASSERTS_UUIMultiTemplateScrollViewComponent;
 
 // Class LGUI.LGUI_WorldRaycaster
 // 0x0010 (0x0260 - 0x0250)
@@ -943,6 +1084,90 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIBaseEventData;
 
+// Class LGUI.UIEffectTextAnimation_Property
+// 0x0000 (0x0030 - 0x0030)
+class UUIEffectTextAnimation_Property : public UObject
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIEffectTextAnimation_Property")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIEffectTextAnimation_Property")
+	}
+	static class UUIEffectTextAnimation_Property* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIEffectTextAnimation_Property>();
+	}
+};
+DUMPER7_ASSERTS_UUIEffectTextAnimation_Property;
+
+// Class LGUI.UIEffectTextAnimation_PropertyWithEase
+// 0x0020 (0x0050 - 0x0030)
+class UUIEffectTextAnimation_PropertyWithEase : public UUIEffectTextAnimation_Property
+{
+public:
+	ELTweenEase                                   easeType;                                          // 0x0030(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UCurveFloat*                            easeCurve;                                         // 0x0038(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_40[0x10];                                      // 0x0040(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetEaseCurve(class UCurveFloat* value);
+	void SetEaseType(ELTweenEase value);
+
+	class UCurveFloat* GetCurveFloat() const;
+	ELTweenEase GetEaseType() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIEffectTextAnimation_PropertyWithEase")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIEffectTextAnimation_PropertyWithEase")
+	}
+	static class UUIEffectTextAnimation_PropertyWithEase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIEffectTextAnimation_PropertyWithEase>();
+	}
+};
+DUMPER7_ASSERTS_UUIEffectTextAnimation_PropertyWithEase;
+
+// Class LGUI.UIEffectTextAnimation_PositionProperty
+// 0x0020 (0x0070 - 0x0050)
+class UUIEffectTextAnimation_PositionProperty final : public UUIEffectTextAnimation_PropertyWithEase
+{
+public:
+	struct FVector                                position;                                          // 0x0050(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FVector                                initialPosition;                                   // 0x005C(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          bUseInitialPosition;                               // 0x0068(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_69[0x7];                                       // 0x0069(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetPosition(const struct FVector& value);
+
+	struct FVector GetPosition() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIEffectTextAnimation_PositionProperty")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIEffectTextAnimation_PositionProperty")
+	}
+	static class UUIEffectTextAnimation_PositionProperty* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIEffectTextAnimation_PositionProperty>();
+	}
+};
+DUMPER7_ASSERTS_UUIEffectTextAnimation_PositionProperty;
+
 // Class LGUI.LGUIBPLibrary
 // 0x0000 (0x0030 - 0x0030)
 class ULGUIBPLibrary final : public UBlueprintFunctionLibrary
@@ -980,6 +1205,7 @@ public:
 	static class UUIItem* GetPrefabRoot(class UUIItem* InUiItem);
 	static class FString GetRelativePathWithRoot(class UUIItem* Target, class UUIItem* Root);
 	static class FName GetRootActorMemoryTag(class UUIItem* UIItem);
+	static TArray<class UUIItem*> GetSortedItemsWithFlattenHierarchyIndex(const TArray<class UUIItem*>& Items, bool bUpSorted);
 	static void GetSpriteBorderSize(const struct FLGUISpriteInfo& SpriteInfo, int32* borderLeft, int32* borderRight, int32* borderTop, int32* borderBottom);
 	static void GetSpriteBorderUV(const struct FLGUISpriteInfo& SpriteInfo, float* borderUV0X, float* borderUV0Y, float* borderUV3X, float* borderUV3Y);
 	static void GetSpriteSize(const struct FLGUISpriteInfo& SpriteInfo, int32* width, int32* height);
@@ -1090,6 +1316,7 @@ public:
 	static class ULGUIPointerEventData* SimulationLineTrace(const struct FVector2D& Pos, class UObject* WorldContext, TArray<class UUIItem*>* TraceOnlyItems);
 	static class ULGUIPointerEventData* SimulationLineTraceOnCenterScreen(class UObject* WorldContext, TArray<class UUIItem*>* TraceOnlyItems);
 	static TArray<class AActor*> SortActorsWithDistance(const TArray<class AActor*>& ActorList, class AController* Controller);
+	static void SortItemsWithFlattenHierarchyIndex(TArray<class UUIItem*>* Items, bool bUpSorted);
 	static class ULTweener* StretchBottomTo(class UUIItem* target, float endValue, float duration, float delay, ELTweenEase ease);
 	static class ULTweener* StretchLeftTo(class UUIItem* target, float endValue, float duration, float delay, ELTweenEase ease);
 	static class ULTweener* StretchRightTo(class UUIItem* target, float endValue, float duration, float delay, ELTweenEase ease);
@@ -1116,8 +1343,32 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIBPLibrary;
 
+// Class LGUI.UIEffectPositionAsUV
+// 0x0008 (0x00E8 - 0x00E0)
+class UUIEffectPositionAsUV final : public UUIGeometryModifierBase
+{
+public:
+	uint8                                         uvChannel;                                         // 0x00E0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_E1[0x7];                                       // 0x00E1(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIEffectPositionAsUV")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIEffectPositionAsUV")
+	}
+	static class UUIEffectPositionAsUV* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIEffectPositionAsUV>();
+	}
+};
+DUMPER7_ASSERTS_UUIEffectPositionAsUV;
+
 // Class LGUI.LGUICanvas
-// 0x0560 (0x0620 - 0x00C0)
+// 0x0570 (0x0630 - 0x00C0)
 class ULGUICanvas final : public UActorComponent
 {
 public:
@@ -1134,47 +1385,51 @@ public:
 	int32                                         sortOrder;                                         // 0x01AC(0x0004)(Edit, ZeroConstructor, Transient, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 	int32                                         AdditionalSortOrder;                               // 0x01B0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 	bool                                          bOverrideSortOrder;                                // 0x01B4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	ELGUICanvasClipType                           clipType;                                          // 0x01B5(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bIsMainLayer;                                      // 0x01B5(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 	uint8                                         Pad_1B6[0x2];                                      // 0x01B6(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector2D                              clipFeather;                                       // 0x01B8(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FMargin                                clipFeatherNew;                                    // 0x01C0(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	struct FMargin                                clipRectOffset;                                    // 0x01D0(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	class UTexture*                               clipTexture;                                       // 0x01E0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bEnableSliceBorder;                                // 0x01E8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_1E9[0x7];                                      // 0x01E9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector4                               SliceBorder;                                       // 0x01F0(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         clipTextureAlpha;                                  // 0x0200(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          inheritRectClip;                                   // 0x0204(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          inheritRectClipFull;                               // 0x0205(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bScreenSpaceRectClip;                              // 0x0206(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bFlipClipArea;                                     // 0x0207(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bClipWithRectOp;                                   // 0x0208(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bForceTopmostText;                                 // 0x0209(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_20A[0x2];                                      // 0x020A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         dynamicPixelsPerUnit;                              // 0x020C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int8                                          additionalShaderChannels;                          // 0x0210(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_211[0x7];                                      // 0x0211(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInterface*                     DefaultMaterials[0x3];                             // 0x0218(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          ownerNoSee;                                        // 0x0230(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          onlyOwnerSee;                                      // 0x0231(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int8                                          overrideParameters;                                // 0x0232(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bClipOutOfScreenRenderables;                       // 0x0233(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FVector2D                              ProjectCenterOffset;                               // 0x0234(0x0008)(Edit, ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bEnableOnlyCanvasMovedOpt;                         // 0x023C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bCheckSameMaterialAndSkipBatchCal;                 // 0x023D(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bEnableCalBatchDepth;                              // 0x023E(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_23F[0x59];                                     // 0x023F(0x0059)(Fixing Size After Last Property [ Dumper-7 ])
-	TSet<class UUIBaseRenderable*>                RenderableSet;                                     // 0x0298(0x0050)(Edit, ExportObject, Transient, EditConst, ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	TArray<class UUIBaseRenderable*>              ToRenderList;                                      // 0x02E8(0x0010)(Edit, ExportObject, ZeroConstructor, Transient, EditConst, ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_2F8[0x60];                                     // 0x02F8(0x0060)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FLGUIMaterialArrayContainer>    PooledUIMaterialList;                              // 0x0358(0x0010)(Edit, ZeroConstructor, Transient, EditConst, NativeAccessSpecifierPrivate)
-	TArray<class UUIRenderableMask*>              RenderableMasks;                                   // 0x0368(0x0010)(Edit, ExportObject, ZeroConstructor, Transient, EditConst, ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	uint8                                         IsUiScenePrimitive : 1;                            // 0x0378(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	bool                                          bPostTickUpdate;                                   // 0x0379(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_37A[0x296];                                    // 0x037A(0x0296)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          bUseNewBatchDepthCalculator;                       // 0x0610(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bPrintBatchDepthCost;                              // 0x0611(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_612[0xE];                                      // 0x0612(0x000E)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         SubLayerOrder;                                     // 0x01B8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1BC[0x8];                                      // 0x01BC(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	ELGUICanvasClipType                           clipType;                                          // 0x01C4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1C5[0x3];                                      // 0x01C5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              clipFeather;                                       // 0x01C8(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FMargin                                clipFeatherNew;                                    // 0x01D0(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	struct FMargin                                clipRectOffset;                                    // 0x01E0(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	class UTexture*                               clipTexture;                                       // 0x01F0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bEnableSliceBorder;                                // 0x01F8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1F9[0x7];                                      // 0x01F9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector4                               SliceBorder;                                       // 0x0200(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         clipTextureAlpha;                                  // 0x0210(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          inheritRectClip;                                   // 0x0214(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          inheritRectClipFull;                               // 0x0215(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bScreenSpaceRectClip;                              // 0x0216(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bFlipClipArea;                                     // 0x0217(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bClipWithRectOp;                                   // 0x0218(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bForceTopmostText;                                 // 0x0219(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_21A[0x2];                                      // 0x021A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         dynamicPixelsPerUnit;                              // 0x021C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int8                                          additionalShaderChannels;                          // 0x0220(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_221[0x7];                                      // 0x0221(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMaterialInterface*                     DefaultMaterials[0x3];                             // 0x0228(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          ownerNoSee;                                        // 0x0240(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          onlyOwnerSee;                                      // 0x0241(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int8                                          overrideParameters;                                // 0x0242(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bClipOutOfScreenRenderables;                       // 0x0243(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FVector2D                              ProjectCenterOffset;                               // 0x0244(0x0008)(Edit, ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bEnableOnlyCanvasMovedOpt;                         // 0x024C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bCheckSameMaterialAndSkipBatchCal;                 // 0x024D(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bEnableCalBatchDepth;                              // 0x024E(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_24F[0x59];                                     // 0x024F(0x0059)(Fixing Size After Last Property [ Dumper-7 ])
+	TSet<class UUIBaseRenderable*>                RenderableSet;                                     // 0x02A8(0x0050)(Edit, ExportObject, Transient, EditConst, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	TArray<class UUIBaseRenderable*>              ToRenderList;                                      // 0x02F8(0x0010)(Edit, ExportObject, ZeroConstructor, Transient, EditConst, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_308[0x60];                                     // 0x0308(0x0060)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FLGUIMaterialArrayContainer>    PooledUIMaterialList;                              // 0x0368(0x0010)(Edit, ZeroConstructor, Transient, EditConst, NativeAccessSpecifierPrivate)
+	TArray<class UUIRenderableMask*>              RenderableMasks;                                   // 0x0378(0x0010)(Edit, ExportObject, ZeroConstructor, Transient, EditConst, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	uint8                                         IsUiScenePrimitive : 1;                            // 0x0388(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	bool                                          bPostTickUpdate;                                   // 0x0389(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_38A[0x296];                                    // 0x038A(0x0296)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          bUseNewBatchDepthCalculator;                       // 0x0620(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bPrintBatchDepthCost;                              // 0x0621(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_622[0xE];                                      // 0x0622(0x000E)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	ELGUICanvasClipType GetActualClipType();
@@ -1309,6 +1564,59 @@ public:
 };
 DUMPER7_ASSERTS_ULGUICanvasScaler;
 
+// Class LGUI.LGUISpriteData_BaseObject
+// 0x0000 (0x0030 - 0x0030)
+class ULGUISpriteData_BaseObject : public UObject
+{
+public:
+	class UTexture2D* GetAtlasTexture();
+	struct FLGUISpriteInfo GetSpriteInfo();
+
+	bool IsIndividual() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LGUISpriteData_BaseObject")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LGUISpriteData_BaseObject")
+	}
+	static class ULGUISpriteData_BaseObject* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULGUISpriteData_BaseObject>();
+	}
+};
+DUMPER7_ASSERTS_ULGUISpriteData_BaseObject;
+
+// Class LGUI.UIDynSpriteData
+// 0x00C0 (0x00F0 - 0x0030)
+class UUIDynSpriteData final : public ULGUISpriteData_BaseObject
+{
+public:
+	class UTexture2D*                             DynAtlasTexture;                                   // 0x0030(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FLGUISpriteInfo                        SpriteInfo;                                        // 0x0038(0x0090)(Edit, EditConst, Protected, NativeAccessSpecifierProtected)
+	struct FSoftObjectPath                        OriginSpritePath;                                  // 0x00C8(0x0020)(Edit, ZeroConstructor, EditConst, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         CustomUVOffsetX;                                   // 0x00E8(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         CustomUVOffsetY;                                   // 0x00EC(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIDynSpriteData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIDynSpriteData")
+	}
+	static class UUIDynSpriteData* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIDynSpriteData>();
+	}
+};
+DUMPER7_ASSERTS_UUIDynSpriteData;
+
 // Class LGUI.LGUIComponentsRegistry
 // 0x00C0 (0x0180 - 0x00C0)
 class ULGUIComponentsRegistry final : public UActorComponent
@@ -1339,29 +1647,6 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIComponentsRegistry;
 
-// Class LGUI.UIScrollViewHelper
-// 0x0008 (0x0108 - 0x0100)
-class UUIScrollViewHelper final : public ULGUIBehaviour
-{
-public:
-	TWeakObjectPtr<class UUIScrollViewComponent>  TargetComp;                                        // 0x0100(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIScrollViewHelper")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIScrollViewHelper")
-	}
-	static class UUIScrollViewHelper* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIScrollViewHelper>();
-	}
-};
-DUMPER7_ASSERTS_UUIScrollViewHelper;
-
 // Class LGUI.LGUIEditorLevelDataStorageActor
 // 0x0000 (0x02B0 - 0x02B0)
 class ALGUIEditorLevelDataStorageActor final : public AActor
@@ -1381,6 +1666,43 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ALGUIEditorLevelDataStorageActor;
+
+// Class LGUI.UIEffectTextAnimation
+// 0x0048 (0x0128 - 0x00E0)
+class UUIEffectTextAnimation final : public UUIGeometryModifierBase
+{
+public:
+	class UUIEffectTextAnimation_Selector*        selector;                                          // 0x00E0(0x0008)(Edit, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, Protected, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TArray<class UUIEffectTextAnimation_Property*> properties;                                       // 0x00E8(0x0010)(Edit, ExportObject, ZeroConstructor, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
+	class UUIItem*                                textTargetObject;                                  // 0x00F8(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_100[0x28];                                     // 0x0100(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetProperties(const TArray<class UUIEffectTextAnimation_Property*>& value);
+	void SetProperty(int32 index, class UUIEffectTextAnimation_Property* value);
+	void SetSelector(class UUIEffectTextAnimation_Selector* value);
+	void SetSelectorOffset(float value);
+
+	const TArray<class UUIEffectTextAnimation_Property*> GetProperties() const;
+	class UUIEffectTextAnimation_Property* GetProperty(int32 index) const;
+	class UUIEffectTextAnimation_Selector* GetSelector() const;
+	float GetSelectorOffset() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIEffectTextAnimation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIEffectTextAnimation")
+	}
+	static class UUIEffectTextAnimation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIEffectTextAnimation>();
+	}
+};
+DUMPER7_ASSERTS_UUIEffectTextAnimation;
 
 // Class LGUI.LGUIEditorManagerObject
 // 0x0008 (0x0038 - 0x0030)
@@ -1405,99 +1727,8 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIEditorManagerObject;
 
-// Class LGUI.UIEffectTextAnimation_Property
-// 0x0000 (0x0030 - 0x0030)
-class UUIEffectTextAnimation_Property : public UObject
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIEffectTextAnimation_Property")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIEffectTextAnimation_Property")
-	}
-	static class UUIEffectTextAnimation_Property* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIEffectTextAnimation_Property>();
-	}
-};
-DUMPER7_ASSERTS_UUIEffectTextAnimation_Property;
-
-// Class LGUI.UIEffectTextAnimation_PropertyWithEase
-// 0x0020 (0x0050 - 0x0030)
-class UUIEffectTextAnimation_PropertyWithEase : public UUIEffectTextAnimation_Property
-{
-public:
-	ELTweenEase                                   easeType;                                          // 0x0030(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UCurveFloat*                            easeCurve;                                         // 0x0038(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_40[0x10];                                      // 0x0040(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetEaseCurve(class UCurveFloat* value);
-	void SetEaseType(ELTweenEase value);
-
-	class UCurveFloat* GetCurveFloat() const;
-	ELTweenEase GetEaseType() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIEffectTextAnimation_PropertyWithEase")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIEffectTextAnimation_PropertyWithEase")
-	}
-	static class UUIEffectTextAnimation_PropertyWithEase* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIEffectTextAnimation_PropertyWithEase>();
-	}
-};
-DUMPER7_ASSERTS_UUIEffectTextAnimation_PropertyWithEase;
-
-// Class LGUI.UIEffectTextAnimation_ColorRandomProperty
-// 0x0010 (0x0060 - 0x0050)
-class UUIEffectTextAnimation_ColorRandomProperty final : public UUIEffectTextAnimation_PropertyWithEase
-{
-public:
-	int32                                         seed;                                              // 0x0050(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FColor                                 min_0;                                             // 0x0054(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FColor                                 max_0;                                             // 0x0058(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          useHSV;                                            // 0x005C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_5D[0x3];                                       // 0x005D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetMax(const struct FColor& value);
-	void SetMin(const struct FColor& value);
-	void SetSeed(int32 value);
-	void SetUseHSV(bool value);
-
-	struct FColor GetMax() const;
-	struct FColor GetMin() const;
-	int32 GetSeed() const;
-	bool GetUseHSV() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIEffectTextAnimation_ColorRandomProperty")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIEffectTextAnimation_ColorRandomProperty")
-	}
-	static class UUIEffectTextAnimation_ColorRandomProperty* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIEffectTextAnimation_ColorRandomProperty>();
-	}
-};
-DUMPER7_ASSERTS_UUIEffectTextAnimation_ColorRandomProperty;
-
 // Class LGUI.LGUIEventSystem
-// 0x0170 (0x0230 - 0x00C0)
+// 0x0198 (0x0258 - 0x00C0)
 class ULGUIEventSystem final : public UActorComponent
 {
 public:
@@ -1521,7 +1752,8 @@ public:
 	class USceneComponent*                        navigationComponent;                               // 0x01E8(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 	uint8                                         Pad_1F0[0x10];                                     // 0x01F0(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
 	class USceneComponent*                        preSelectedComponent;                              // 0x0200(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_208[0x28];                                     // 0x0208(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_208[0x28];                                     // 0x0208(0x0028)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(class ULGUIPointerEventData* eventData)> OnScrollTriggeredDelegate;               // 0x0230(0x0028)(Edit, ZeroConstructor, EditConst, InstancedReference, NativeAccessSpecifierPublic)
 
 public:
 	static class ULGUIEventSystem* GetLGUIEventSystemInstance(class UObject* WorldContextObject);
@@ -1569,6 +1801,44 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIEventSystem;
 
+// Class LGUI.UIEffectTextAnimation_ColorRandomProperty
+// 0x0010 (0x0060 - 0x0050)
+class UUIEffectTextAnimation_ColorRandomProperty final : public UUIEffectTextAnimation_PropertyWithEase
+{
+public:
+	int32                                         seed;                                              // 0x0050(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FColor                                 min_0;                                             // 0x0054(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FColor                                 max_0;                                             // 0x0058(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          useHSV;                                            // 0x005C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_5D[0x3];                                       // 0x005D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetMax(const struct FColor& value);
+	void SetMin(const struct FColor& value);
+	void SetSeed(int32 value);
+	void SetUseHSV(bool value);
+
+	struct FColor GetMax() const;
+	struct FColor GetMin() const;
+	int32 GetSeed() const;
+	bool GetUseHSV() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIEffectTextAnimation_ColorRandomProperty")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIEffectTextAnimation_ColorRandomProperty")
+	}
+	static class UUIEffectTextAnimation_ColorRandomProperty* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIEffectTextAnimation_ColorRandomProperty>();
+	}
+};
+DUMPER7_ASSERTS_UUIEffectTextAnimation_ColorRandomProperty;
+
 // Class LGUI.LGUIEventSystemActor
 // 0x0008 (0x02B8 - 0x02B0)
 class ALGUIEventSystemActor : public AActor
@@ -1595,66 +1865,57 @@ public:
 };
 DUMPER7_ASSERTS_ALGUIEventSystemActor;
 
-// Class LGUI.UISelectableTransitionComponent
-// 0x0010 (0x0110 - 0x0100)
-class UUISelectableTransitionComponent : public ULGUIBehaviour
+// Class LGUI.LGUIMobileFontAtlasTextureSizeWhiteList
+// 0x0050 (0x0088 - 0x0038)
+class ULGUIMobileFontAtlasTextureSizeWhiteList final : public UDataAsset
 {
 public:
-	TArray<class ULTweener*>                      TweenerCollection;                                 // 0x0100(0x0010)(Edit, BlueprintVisible, ZeroConstructor, EditConst, Protected, NativeAccessSpecifierProtected)
-
-public:
-	void CollectTweener(class ULTweener* InItem);
-	void CollectTweeners(const TSet<class ULTweener*>& InItems);
-	void OnDisabledBP(bool InImmediateSet);
-	void OnHighlightedBP(bool InImmediateSet);
-	void OnNormalBP(bool InImmediateSet);
-	void OnPressedBP(bool InImmediateSet);
-	void OnStartCustomTransitionBP(class FName InTransitionName, bool InImmediateSet);
-	void StopTransition();
+	TSet<class FString>                           CustomDevice;                                      // 0x0038(0x0050)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UISelectableTransitionComponent")
+		STATIC_CLASS_IMPL("LGUIMobileFontAtlasTextureSizeWhiteList")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UISelectableTransitionComponent")
+		STATIC_NAME_IMPL(L"LGUIMobileFontAtlasTextureSizeWhiteList")
 	}
-	static class UUISelectableTransitionComponent* GetDefaultObj()
+	static class ULGUIMobileFontAtlasTextureSizeWhiteList* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUISelectableTransitionComponent>();
+		return GetDefaultObjImpl<ULGUIMobileFontAtlasTextureSizeWhiteList>();
 	}
 };
-DUMPER7_ASSERTS_UUISelectableTransitionComponent;
+DUMPER7_ASSERTS_ULGUIMobileFontAtlasTextureSizeWhiteList;
 
-// Class LGUI.UISelectableStateHolder
-// 0x0018 (0x0128 - 0x0110)
-class UUISelectableStateHolder final : public UUISelectableTransitionComponent
+// Class LGUI.UIEffectTextAnimation_RotationProperty
+// 0x0010 (0x0060 - 0x0050)
+class UUIEffectTextAnimation_RotationProperty final : public UUIEffectTextAnimation_PropertyWithEase
 {
 public:
-	uint8                                         Pad_110[0x10];                                     // 0x0110(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	EStateTransitionType                          TransitionType;                                    // 0x0120(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_121[0x7];                                      // 0x0121(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FRotator                               rotator;                                           // 0x0050(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	void SetAllTransitionsEnable(bool bEnable);
+	void SetRotator(const struct FRotator& value);
+
+	struct FRotator GetRotator() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UISelectableStateHolder")
+		STATIC_CLASS_IMPL("UIEffectTextAnimation_RotationProperty")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UISelectableStateHolder")
+		STATIC_NAME_IMPL(L"UIEffectTextAnimation_RotationProperty")
 	}
-	static class UUISelectableStateHolder* GetDefaultObj()
+	static class UUIEffectTextAnimation_RotationProperty* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUISelectableStateHolder>();
+		return GetDefaultObjImpl<UUIEffectTextAnimation_RotationProperty>();
 	}
 };
-DUMPER7_ASSERTS_UUISelectableStateHolder;
+DUMPER7_ASSERTS_UUIEffectTextAnimation_RotationProperty;
 
 // Class LGUI.LGUIFontData_BaseObject
 // 0x0050 (0x0080 - 0x0030)
@@ -1680,7 +1941,7 @@ public:
 DUMPER7_ASSERTS_ULGUIFontData_BaseObject;
 
 // Class LGUI.LGUIFontData
-// 0x0468 (0x04E8 - 0x0080)
+// 0x0478 (0x04F8 - 0x0080)
 class ULGUIFontData final : public ULGUIFontData_BaseObject
 {
 public:
@@ -1704,12 +1965,14 @@ public:
 	uint8                                         Pad_D1[0x7];                                       // 0x00D1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FLGUISubFontData>               SubFonts;                                          // 0x00D8(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPrivate)
 	class UDataAsset*                             ThConfig;                                          // 0x00E8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class UDataTable*                             ThDict;                                            // 0x00F0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_F8[0x8];                                       // 0x00F8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<TWeakObjectPtr<class UUIText>>         renderTextArray;                                   // 0x0100(0x0010)(Edit, ExportObject, ZeroConstructor, Transient, EditConst, ContainsInstancedReference, UObjectWrapper, NativeAccessSpecifierPrivate)
-	TArray<uint8>                                 fontBinaryArray;                                   // 0x0110(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
-	TArray<uint8>                                 tempFontBinaryArray;                               // 0x0120(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_130[0x3B8];                                    // 0x0130(0x03B8)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UDataTable*                             ThDict;                                            // 0x00F0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class UDataTable*                             CachedThDict;                                      // 0x00F8(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class ULGUIMobileFontAtlasTextureSizeWhiteList* MobileFontAtlasTextureSizeWhiteList;             // 0x0100(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_108[0x8];                                      // 0x0108(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<TWeakObjectPtr<class UUIText>>         renderTextArray;                                   // 0x0110(0x0010)(Edit, ExportObject, ZeroConstructor, Transient, EditConst, ContainsInstancedReference, UObjectWrapper, NativeAccessSpecifierPrivate)
+	TArray<uint8>                                 fontBinaryArray;                                   // 0x0120(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
+	TArray<uint8>                                 tempFontBinaryArray;                               // 0x0130(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_140[0x3B8];                                    // 0x0140(0x03B8)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class ULGUIFontData* GetDefaultFont();
@@ -1740,43 +2003,34 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIFontData;
 
-// Class LGUI.UISafeZone
-// 0x0118 (0x0218 - 0x0100)
-class UUISafeZone final : public ULGUIBehaviour
+// Class LGUI.UIEffectTextAnimation_Selector
+// 0x0008 (0x0038 - 0x0030)
+class UUIEffectTextAnimation_Selector : public UObject
 {
 public:
-	ESafeZoneAdaptionStrategy                     AdaptionStrategy;                                  // 0x0100(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_101[0x3];                                      // 0x0101(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FMargin                                Padding;                                           // 0x0104(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_114[0x10];                                     // 0x0114(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FMargin                                DefaultMargin;                                     // 0x0124(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	struct FMargin                                PadMargin;                                         // 0x0134(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	struct FMargin                                DefFoldableSquareMargin;                           // 0x0144(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_154[0x4];                                      // 0x0154(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<class FString, struct FMargin>           CustomDeviceMargins;                               // 0x0158(0x0050)(Edit, Protected, NativeAccessSpecifierProtected)
-	class ULGUICustomDeviceMarginsParam*          CustomDeviceMarginsParam;                          // 0x01A8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TMap<class FString, struct FFoldableMargins>  FoldableDeviceMargins;                             // 0x01B0(0x0050)(Edit, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_200[0x18];                                     // 0x0200(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	float                                         offset;                                            // 0x0030(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_34[0x4];                                       // 0x0034(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	void ForceApplyScreenAdaptation();
-	void SetWidthAndHeightRadio(float Left, float Right, float Top, float Bottom);
+	void SetOffset(float value);
+
+	float GetOffset() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UISafeZone")
+		STATIC_CLASS_IMPL("UIEffectTextAnimation_Selector")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UISafeZone")
+		STATIC_NAME_IMPL(L"UIEffectTextAnimation_Selector")
 	}
-	static class UUISafeZone* GetDefaultObj()
+	static class UUIEffectTextAnimation_Selector* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUISafeZone>();
+		return GetDefaultObjImpl<UUIEffectTextAnimation_Selector>();
 	}
 };
-DUMPER7_ASSERTS_UUISafeZone;
+DUMPER7_ASSERTS_UUIEffectTextAnimation_Selector;
 
 // Class LGUI.LGUIGridAnimationInterface
 // 0x0000 (0x0000 - 0x0000)
@@ -1848,12 +2102,14 @@ public:
 DUMPER7_ASSERTS_ULGUIImageSequencePlayer;
 
 // Class LGUI.UIEffectTextAnimation_AlphaProperty
-// 0x0008 (0x0058 - 0x0050)
+// 0x0010 (0x0060 - 0x0050)
 class UUIEffectTextAnimation_AlphaProperty final : public UUIEffectTextAnimation_PropertyWithEase
 {
 public:
 	float                                         alpha;                                             // 0x0050(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	float                                         initialAlpha;                                      // 0x0054(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          bUseInitialAlpha;                                  // 0x0058(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_59[0x7];                                       // 0x0059(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void SetAlpha(float value);
@@ -1876,38 +2132,65 @@ public:
 };
 DUMPER7_ASSERTS_UUIEffectTextAnimation_AlphaProperty;
 
+// Class LGUI.LGUILangTextureData
+// 0x0018 (0x0048 - 0x0030)
+class ULGUILangTextureData final : public UObject
+{
+public:
+	ELangTextureLanguageType                      DefaultLanguage;                                   // 0x0030(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FLangTextureInfo>               LangTextureList;                                   // 0x0038(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LGUILangTextureData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LGUILangTextureData")
+	}
+	static class ULGUILangTextureData* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULGUILangTextureData>();
+	}
+};
+DUMPER7_ASSERTS_ULGUILangTextureData;
+
 // Class LGUI.LGUIManagerActor
-// 0x02B0 (0x0560 - 0x02B0)
+// 0x0370 (0x0620 - 0x02B0)
 class alignas(0x10) ALGUIManagerActor final : public AActor
 {
 public:
-	uint8                                         Pad_2B0[0x8];                                      // 0x02B0(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<TWeakObjectPtr<class UUIItem>>         AllUIItem;                                         // 0x02B8(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
-	TArray<class ULGUICanvas*>                    AllCanvas;                                         // 0x02C8(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-	TArray<class ULGUICanvas*>                    PostTickCanvas;                                    // 0x02D8(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-	TArray<class ULGUIBaseRaycaster*>             raycasterArray;                                    // 0x02E8(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-	class ULGUIBaseInputModule*                   currentInputModule;                                // 0x02F8(0x0008)(Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TArray<class UUISelectableComponent*>         allSelectableArray;                                // 0x0300(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-	class USequencerManager*                      SequencerManager;                                  // 0x0310(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UUISpineManager*                        UISpineManager;                                    // 0x0318(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UUIDynmaicTextureAtlasMgr*              DynmaicTextureAtlasMgr;                            // 0x0320(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UUIDynamicSpriteAtlasMgr*               DynamicSpriteAtlasMgr;                             // 0x0328(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TArray<TWeakObjectPtr<class UUIItem>>         AllRaycastTarget;                                  // 0x0330(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
-	TArray<TWeakObjectPtr<class ULGUIBehaviour>>  LGUIBehavioursForUpdate;                           // 0x0340(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
-	TArray<TWeakObjectPtr<class ULGUIBehaviour>>  LGUIBehavioursUpdateAfterGeometryUp;               // 0x0350(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
-	TArray<class UUINiagara*>                     allUINiagara;                                      // 0x0360(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-	TWeakObjectPtr<class ULGUICanvas>             ScreenRootPtr;                                     // 0x0370(0x0008)(Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_378[0x50];                                     // 0x0378(0x0050)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FLGUIBehaviourArrayContainer>   LGUIBehaviours_PrefabSystemProcessing;             // 0x03C8(0x0010)(Edit, ZeroConstructor, EditConst, ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_3D8[0x4];                                      // 0x03D8(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class UUIItem>                 DebugRootLayer;                                    // 0x03DC(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_3E4[0x5C];                                     // 0x03E4(0x005C)(Fixing Size After Last Property [ Dumper-7 ])
-	TSet<class UUIItem*>                          DirtyHierarchyRootSet;                             // 0x0440(0x0050)(ExportObject, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	TArray<class UUILayoutBase*>                  AutoLayoutRebuildList_ParentFirst;                 // 0x0490(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	TArray<class UUILayoutBase*>                  AutoLayoutRebuildList_ChildrenFirst;               // 0x04A0(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	TSet<class UUILayoutBase*>                    AutoLayoutPostRebuildList;                         // 0x04B0(0x0050)(ExportObject, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	TSet<class UUILayoutBase*>                    AutoLayoutPostHasRebuildThisFrame;                 // 0x0500(0x0050)(ExportObject, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_550[0x10];                                     // 0x0550(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_2B0[0x68];                                     // 0x02B0(0x0068)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<TWeakObjectPtr<class UUIItem>>         AllUIItem;                                         // 0x0318(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
+	TArray<class ULGUICanvas*>                    AllCanvas;                                         // 0x0328(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
+	TArray<class ULGUICanvas*>                    PostTickCanvas;                                    // 0x0338(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
+	TArray<class ULGUIBaseRaycaster*>             raycasterArray;                                    // 0x0348(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
+	class ULGUIBaseInputModule*                   currentInputModule;                                // 0x0358(0x0008)(Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TArray<class UUISelectableComponent*>         allSelectableArray;                                // 0x0360(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
+	class USequencerManager*                      SequencerManager;                                  // 0x0370(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UUISpineManager*                        UISpineManager;                                    // 0x0378(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UUIDynmaicTextureAtlasMgr*              DynmaicTextureAtlasMgr;                            // 0x0380(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UUIDynamicSpriteAtlasMgr*               DynamicSpriteAtlasMgr;                             // 0x0388(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TArray<TWeakObjectPtr<class UUIItem>>         AllRaycastTarget;                                  // 0x0390(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
+	TArray<TWeakObjectPtr<class ULGUIBehaviour>>  LGUIBehavioursForUpdate;                           // 0x03A0(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
+	TArray<TWeakObjectPtr<class ULGUIBehaviour>>  LGUIBehavioursUpdateAfterGeometryUp;               // 0x03B0(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, UObjectWrapper, NativeAccessSpecifierProtected)
+	TArray<class UUINiagara*>                     allUINiagara;                                      // 0x03C0(0x0010)(Edit, ExportObject, ZeroConstructor, EditConst, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class ULGUICanvas>             ScreenRootPtr;                                     // 0x03D0(0x0008)(Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_3D8[0x50];                                     // 0x03D8(0x0050)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FLGUIBehaviourArrayContainer>   LGUIBehaviours_PrefabSystemProcessing;             // 0x0428(0x0010)(Edit, ZeroConstructor, EditConst, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_438[0x4];                                      // 0x0438(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class UUIItem>                 DebugRootLayer;                                    // 0x043C(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_444[0x5C];                                     // 0x0444(0x005C)(Fixing Size After Last Property [ Dumper-7 ])
+	TSet<class UUIItem*>                          DirtyHierarchyRootSet;                             // 0x04A0(0x0050)(ExportObject, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	TArray<class UUILayoutBase*>                  AutoLayoutRebuildList_ParentFirst;                 // 0x04F0(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	TArray<class UUILayoutBase*>                  AutoLayoutRebuildList_ChildrenFirst;               // 0x0500(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	TSet<class UUILayoutBase*>                    AutoLayoutPostRebuildList;                         // 0x0510(0x0050)(ExportObject, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	TSet<class UUILayoutBase*>                    AutoLayoutPostHasRebuildThisFrame;                 // 0x0560(0x0050)(ExportObject, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_5B0[0x10];                                     // 0x05B0(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class ULGUICanvas*>                    InternalHierarchyDirtyCanvases;                    // 0x05C0(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	TSet<class ULGUICanvas*>                      DirtyRootCanvasSet;                                // 0x05D0(0x0050)(ExportObject, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
 
 public:
 	static void ForceClearBatchDestroyUIBaseActors();
@@ -1934,12 +2217,111 @@ public:
 };
 DUMPER7_ASSERTS_ALGUIManagerActor;
 
+// Class LGUI.UIBaseActor
+// 0x0140 (0x03F0 - 0x02B0)
+class AUIBaseActor : public AActor
+{
+public:
+	uint8                                         Pad_2B0[0x8];                                      // 0x02B0(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<struct FSoftObjectPath, class ALevelSequenceActor*> CurBindingSeqActors;                    // 0x02B8(0x0050)(Transient, NativeAccessSpecifierPublic)
+	TDelegate<void(const class FString& sequenceName, const class FString& eventName)> OnSequencePlayEvent; // 0x0308(0x0028)(ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+	FMulticastSparseDelegateProperty_             OnPreDestroyed;                                    // 0x0330(0x0001)(InstancedReference, BlueprintAssignable, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_331[0x3];                                      // 0x0331(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGuid                                  LGUIGuid;                                          // 0x0334(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_344[0x4];                                      // 0x0344(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<struct FSoftObjectPath, class USequencePlayContext*> AllSequencePlayContexts;               // 0x0348(0x0050)(Transient, NativeAccessSpecifierPrivate)
+	TMap<class FString, class USequencePlayContext*> PlayContextsByKey;                              // 0x0398(0x0050)(Transient, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_3E8[0x8];                                      // 0x03E8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void ActivateAllChildrenInteraction();
+	void CleanIdleAnimSeqActorCache();
+	void ClearAllSequence();
+	ESequenceLoadState GetLoadStateOfSequenceByKey(const class FString& Key);
+	struct FSequenceInfo GetSeqInfoByKey(const class FString& Key);
+	class USequencePlayContext* GetSequencePlayContextOfKey(const class FString& Key);
+	class ALevelSequenceActor* GetSequencePlayerByKey(const class FString& Name_0);
+	void LoadSequenceAssetAsyncByKey(const class FString& Key, const TDelegate<void(class ULevelSequence* Sequence)>& OnLoaded);
+	void PauseSequenceByKey(const class FString& Name_0);
+	void PlayLevelSequenceByKey(const class FString& Name_0);
+	void ReplaySequenceByKey(const class FString& Name_0);
+	void ResumeSequenceByKey(const class FString& Name_0);
+	void SequenceJumpToEnd(const struct FSoftObjectPath& SoftPath);
+	void SequenceJumpToSecondByKey(const class FString& Name_0, const struct FFrameTime& Time);
+	void SequencePlayReverseByKey(const class FString& Name_0);
+	void StopSequenceByKey(const class FString& Name_0);
+
+	void ExecuteSequencePlayEvent(const class FString& sequenceName, const class FString& eventName) const;
+	class UUIItem* GetUIItem() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIBaseActor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIBaseActor")
+	}
+	static class AUIBaseActor* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<AUIBaseActor>();
+	}
+};
+DUMPER7_ASSERTS_AUIBaseActor;
+
+// Class LGUI.UIContainerActor
+// 0x0008 (0x03F8 - 0x03F0)
+class AUIContainerActor : public AUIBaseActor
+{
+public:
+	class UUIItem*                                UIItem;                                            // 0x03F0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIContainerActor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIContainerActor")
+	}
+	static class AUIContainerActor* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<AUIContainerActor>();
+	}
+};
+DUMPER7_ASSERTS_AUIContainerActor;
+
+// Class LGUI.UIEventBlocker
+// 0x0010 (0x0408 - 0x03F8)
+class AUIEventBlocker final : public AUIContainerActor
+{
+public:
+	uint8                                         Pad_3F8[0x10];                                     // 0x03F8(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIEventBlocker")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIEventBlocker")
+	}
+	static class AUIEventBlocker* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<AUIEventBlocker>();
+	}
+};
+DUMPER7_ASSERTS_AUIEventBlocker;
+
 // Class LGUI.LGUIMeshComponent
-// 0x0060 (0x0610 - 0x05B0)
+// 0x0060 (0x0630 - 0x05D0)
 class ULGUIMeshComponent : public UMeshComponent
 {
 public:
-	uint8                                         Pad_5A8[0x68];                                     // 0x05A8(0x0068)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_5C8[0x68];                                     // 0x05C8(0x0068)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
@@ -1957,14 +2339,43 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIMeshComponent;
 
+// Class LGUI.UIEffectTextAnimation_ScaleProperty
+// 0x0018 (0x0068 - 0x0050)
+class UUIEffectTextAnimation_ScaleProperty final : public UUIEffectTextAnimation_PropertyWithEase
+{
+public:
+	struct FVector                                scale;                                             // 0x0050(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FVector                                initialScale;                                      // 0x005C(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	void SetScale(const struct FVector& value);
+
+	struct FVector GetScale() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIEffectTextAnimation_ScaleProperty")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIEffectTextAnimation_ScaleProperty")
+	}
+	static class UUIEffectTextAnimation_ScaleProperty* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIEffectTextAnimation_ScaleProperty>();
+	}
+};
+DUMPER7_ASSERTS_UUIEffectTextAnimation_ScaleProperty;
+
 // Class LGUI.LGUINiagaraComponent
-// 0x0020 (0x07A0 - 0x0780)
+// 0x0020 (0x07D0 - 0x07B0)
 class ULGUINiagaraComponent final : public UNiagaraComponent
 {
 public:
-	bool                                          IsUIDrawCallVisible;                               // 0x0780(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          IsSupportWorldSpace;                               // 0x0781(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_782[0x1E];                                     // 0x0782(0x001E)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          IsUIDrawCallVisible;                               // 0x07A8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          IsSupportWorldSpace;                               // 0x07A9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_7AA[0x26];                                     // 0x07AA(0x0026)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
@@ -1981,70 +2392,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ULGUINiagaraComponent;
-
-// Class LGUI.UIEffectTextAnimation_Selector
-// 0x0008 (0x0038 - 0x0030)
-class UUIEffectTextAnimation_Selector : public UObject
-{
-public:
-	float                                         offset;                                            // 0x0030(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_34[0x4];                                       // 0x0034(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetOffset(float value);
-
-	float GetOffset() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIEffectTextAnimation_Selector")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIEffectTextAnimation_Selector")
-	}
-	static class UUIEffectTextAnimation_Selector* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIEffectTextAnimation_Selector>();
-	}
-};
-DUMPER7_ASSERTS_UUIEffectTextAnimation_Selector;
-
-// Class LGUI.UIEffectTextAnimation_RandomSelector
-// 0x0010 (0x0048 - 0x0038)
-class UUIEffectTextAnimation_RandomSelector final : public UUIEffectTextAnimation_Selector
-{
-public:
-	int32                                         seed;                                              // 0x0038(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	float                                         start;                                             // 0x003C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	float                                         end;                                               // 0x0040(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetEnd(float value);
-	void SetSeed(int32 value);
-	void SetStart(float value);
-
-	float GetEnd() const;
-	int32 GetSeed() const;
-	float GetStart() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIEffectTextAnimation_RandomSelector")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIEffectTextAnimation_RandomSelector")
-	}
-	static class UUIEffectTextAnimation_RandomSelector* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIEffectTextAnimation_RandomSelector>();
-	}
-};
-DUMPER7_ASSERTS_UUIEffectTextAnimation_RandomSelector;
 
 // Class LGUI.LGUIPlayTween
 // 0x0090 (0x00C0 - 0x0030)
@@ -2118,6 +2465,31 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIPlayTween_Float;
 
+// Class LGUI.LGUIPlayTween_Color
+// 0x0020 (0x00E0 - 0x00C0)
+class ULGUIPlayTween_Color final : public ULGUIPlayTween
+{
+public:
+	struct FColor                                 from;                                              // 0x00C0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FColor                                 to;                                                // 0x00C4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     onUpdateValue;                                     // 0x00C8(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LGUIPlayTween_Color")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LGUIPlayTween_Color")
+	}
+	static class ULGUIPlayTween_Color* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULGUIPlayTween_Color>();
+	}
+};
+DUMPER7_ASSERTS_ULGUIPlayTween_Color;
+
 // Class LGUI.UIExtendToggleTransitionBase
 // 0x0058 (0x0158 - 0x0100)
 class UUIExtendToggleTransitionBase : public ULGUIBehaviour
@@ -2168,31 +2540,6 @@ public:
 };
 DUMPER7_ASSERTS_UUIExtendToggleTextTransition;
 
-// Class LGUI.LGUIPlayTween_Color
-// 0x0020 (0x00E0 - 0x00C0)
-class ULGUIPlayTween_Color final : public ULGUIPlayTween
-{
-public:
-	struct FColor                                 from;                                              // 0x00C0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FColor                                 to;                                                // 0x00C4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     onUpdateValue;                                     // 0x00C8(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LGUIPlayTween_Color")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LGUIPlayTween_Color")
-	}
-	static class ULGUIPlayTween_Color* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULGUIPlayTween_Color>();
-	}
-};
-DUMPER7_ASSERTS_ULGUIPlayTween_Color;
-
 // Class LGUI.LGUIPlayTween_Int
 // 0x0020 (0x00E0 - 0x00C0)
 class ULGUIPlayTween_Int final : public ULGUIPlayTween
@@ -2217,77 +2564,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ULGUIPlayTween_Int;
-
-// Class LGUI.UIEventTriggerComponent
-// 0x02C8 (0x0388 - 0x00C0)
-class UUIEventTriggerComponent final : public UActorComponent
-{
-public:
-	uint8                                         Pad_C0[0x38];                                      // 0x00C0(0x0038)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          AllowEventBubbleUp;                                // 0x00F8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_F9[0x7];                                       // 0x00F9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FLGUIDrawableEvent                     OnPointerEnter;                                    // 0x0100(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     OnPointerExit;                                     // 0x0118(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     OnPointerDown;                                     // 0x0130(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     OnPointerUp;                                       // 0x0148(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     OnPointerCancel;                                   // 0x0160(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     OnPointerClick;                                    // 0x0178(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     OnPointerBeginDrag;                                // 0x0190(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     OnPointerDrag;                                     // 0x01A8(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     OnPointerEndDrag;                                  // 0x01C0(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     OnPointerDragEnter;                                // 0x01D8(0x0018)(Deprecated, Protected, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     OnPointerDragExit;                                 // 0x01F0(0x0018)(Deprecated, Protected, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     OnPointerDragDrop;                                 // 0x0208(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     OnPointerScroll;                                   // 0x0220(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     OnPointerSelect;                                   // 0x0238(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     OnPointerDeselect;                                 // 0x0250(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_268[0x120];                                    // 0x0268(0x0120)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	struct FLGUIDelegateHandleWrapper RegisterOnPointerBeginDrag(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
-	struct FLGUIDelegateHandleWrapper RegisterOnPointerClick(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
-	struct FLGUIDelegateHandleWrapper RegisterOnPointerDeselect(const TDelegate<void(class ULGUIBaseEventData* eventData)>& InDelegate);
-	struct FLGUIDelegateHandleWrapper RegisterOnPointerDown(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
-	struct FLGUIDelegateHandleWrapper RegisterOnPointerDrag(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
-	struct FLGUIDelegateHandleWrapper RegisterOnPointerDragDrop(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
-	struct FLGUIDelegateHandleWrapper RegisterOnPointerDragEnter(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
-	struct FLGUIDelegateHandleWrapper RegisterOnPointerDragExit(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
-	struct FLGUIDelegateHandleWrapper RegisterOnPointerEndDrag(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
-	struct FLGUIDelegateHandleWrapper RegisterOnPointerEnter(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
-	struct FLGUIDelegateHandleWrapper RegisterOnPointerExit(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
-	struct FLGUIDelegateHandleWrapper RegisterOnPointerScroll(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
-	struct FLGUIDelegateHandleWrapper RegisterOnPointerSelect(const TDelegate<void(class ULGUIBaseEventData* eventData)>& InDelegate);
-	struct FLGUIDelegateHandleWrapper RegisterOnPointerUp(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
-	void UnregisterOnPointerBeginDrag(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-	void UnregisterOnPointerClick(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-	void UnregisterOnPointerDeselect(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-	void UnregisterOnPointerDown(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-	void UnregisterOnPointerDrag(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-	void UnregisterOnPointerDragDrop(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-	void UnregisterOnPointerDragEnter(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-	void UnregisterOnPointerDragExit(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-	void UnregisterOnPointerEndDrag(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-	void UnregisterOnPointerEnter(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-	void UnregisterOnPointerExit(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-	void UnregisterOnPointerScroll(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-	void UnregisterOnPointerSelect(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-	void UnregisterOnPointerUp(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIEventTriggerComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIEventTriggerComponent")
-	}
-	static class UUIEventTriggerComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIEventTriggerComponent>();
-	}
-};
-DUMPER7_ASSERTS_UUIEventTriggerComponent;
 
 // Class LGUI.LGUIPlayTween_LinearColor
 // 0x0038 (0x00F8 - 0x00C0)
@@ -2340,67 +2616,6 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIPlayTween_Quaternion;
 
-// Class LGUI.UIEffectTextAnimation_PropertyWithWave
-// 0x0020 (0x0050 - 0x0030)
-class UUIEffectTextAnimation_PropertyWithWave : public UUIEffectTextAnimation_Property
-{
-public:
-	float                                         frequency;                                         // 0x0030(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         speed;                                             // 0x0034(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          flipDirection;                                     // 0x0038(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_39[0xF];                                       // 0x0039(0x000F)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUIText*                                uiText;                                            // 0x0048(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-
-public:
-	void SetFrequency(float value);
-
-	float GetFrequency() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIEffectTextAnimation_PropertyWithWave")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIEffectTextAnimation_PropertyWithWave")
-	}
-	static class UUIEffectTextAnimation_PropertyWithWave* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIEffectTextAnimation_PropertyWithWave>();
-	}
-};
-DUMPER7_ASSERTS_UUIEffectTextAnimation_PropertyWithWave;
-
-// Class LGUI.UIEffectTextAnimation_ScaleWaveProperty
-// 0x0010 (0x0060 - 0x0050)
-class UUIEffectTextAnimation_ScaleWaveProperty final : public UUIEffectTextAnimation_PropertyWithWave
-{
-public:
-	struct FVector                                scale;                                             // 0x0050(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetScale(const struct FVector& value);
-
-	struct FVector GetScale() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIEffectTextAnimation_ScaleWaveProperty")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIEffectTextAnimation_ScaleWaveProperty")
-	}
-	static class UUIEffectTextAnimation_ScaleWaveProperty* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIEffectTextAnimation_ScaleWaveProperty>();
-	}
-};
-DUMPER7_ASSERTS_UUIEffectTextAnimation_ScaleWaveProperty;
-
 // Class LGUI.LGUIPlayTween_Rotator
 // 0x0030 (0x00F0 - 0x00C0)
 class ULGUIPlayTween_Rotator final : public ULGUIPlayTween
@@ -2451,6 +2666,31 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIPlayTween_Vector2;
 
+// Class LGUI.LGUIPlayTween_Vector3
+// 0x0030 (0x00F0 - 0x00C0)
+class ULGUIPlayTween_Vector3 final : public ULGUIPlayTween
+{
+public:
+	struct FVector                                from;                                              // 0x00C0(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FVector                                to;                                                // 0x00CC(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     onUpdateValue;                                     // 0x00D8(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LGUIPlayTween_Vector3")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LGUIPlayTween_Vector3")
+	}
+	static class ULGUIPlayTween_Vector3* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULGUIPlayTween_Vector3>();
+	}
+};
+DUMPER7_ASSERTS_ULGUIPlayTween_Vector3;
+
 // Class LGUI.UIExtendToggleGroup
 // 0x0048 (0x0108 - 0x00C0)
 class UUIExtendToggleGroup final : public UActorComponent
@@ -2491,31 +2731,6 @@ public:
 };
 DUMPER7_ASSERTS_UUIExtendToggleGroup;
 
-// Class LGUI.LGUIPlayTween_Vector3
-// 0x0030 (0x00F0 - 0x00C0)
-class ULGUIPlayTween_Vector3 final : public ULGUIPlayTween
-{
-public:
-	struct FVector                                from;                                              // 0x00C0(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FVector                                to;                                                // 0x00CC(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FLGUIDrawableEvent                     onUpdateValue;                                     // 0x00D8(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LGUIPlayTween_Vector3")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LGUIPlayTween_Vector3")
-	}
-	static class ULGUIPlayTween_Vector3* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULGUIPlayTween_Vector3>();
-	}
-};
-DUMPER7_ASSERTS_ULGUIPlayTween_Vector3;
-
 // Class LGUI.LGUIPlayTween_Vector4
 // 0x0040 (0x0100 - 0x00C0)
 class ULGUIPlayTween_Vector4 final : public ULGUIPlayTween
@@ -2541,6 +2756,117 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ULGUIPlayTween_Vector4;
+
+// Class LGUI.LGUIPlayTweenComponent
+// 0x0020 (0x00E0 - 0x00C0)
+class ULGUIPlayTweenComponent final : public UActorComponent
+{
+public:
+	bool                                          playOnStart;                                       // 0x00C0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_C1[0x7];                                       // 0x00C1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULGUIPlayTween*                         playTween;                                         // 0x00C8(0x0008)(Edit, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, Protected, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          activeOptimized;                                   // 0x00D0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_D1[0x3];                                       // 0x00D1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class UPlayTweenActiveOpt>     ControllerComp;                                    // 0x00D4(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_DC[0x4];                                       // 0x00DC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void Pause();
+	void Play();
+	void Resume();
+	void Stop();
+
+	class ULGUIPlayTween* GetPlayTween() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LGUIPlayTweenComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LGUIPlayTweenComponent")
+	}
+	static class ULGUIPlayTweenComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULGUIPlayTweenComponent>();
+	}
+};
+DUMPER7_ASSERTS_ULGUIPlayTweenComponent;
+
+// Class LGUI.UILayoutBase
+// 0x0070 (0x0170 - 0x0100)
+class UUILayoutBase : public ULGUIBehaviour
+{
+public:
+	uint8                                         Pad_100[0x20];                                     // 0x0100(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         GridAnimationStartTime;                            // 0x0120(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         GridAnimationInterval;                             // 0x0124(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          IsInAnimation;                                     // 0x0128(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bIsScaleCalculated;                                // 0x0129(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bUseOriginalChildrenOrder;                         // 0x012A(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_12B[0x1D];                                     // 0x012B(0x001D)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(class UUILayoutBase* Layout)>  OnRebuildLayoutDelegate;                           // 0x0148(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+
+public:
+	void SetGridAnimationInterval(float value);
+	void SetGridAnimationStartTime(float value);
+	void SetInAnimation(bool state);
+
+	float GetGridAnimationInterval() const;
+	float GetGridAnimationStartTime() const;
+	bool GetInAnimation() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UILayoutBase")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UILayoutBase")
+	}
+	static class UUILayoutBase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUILayoutBase>();
+	}
+};
+DUMPER7_ASSERTS_UUILayoutBase;
+
+// Class LGUI.UILayoutWithAnimation
+// 0x0020 (0x0190 - 0x0170)
+class UUILayoutWithAnimation : public UUILayoutBase
+{
+public:
+	EUILayoutChangePositionAnimationType          AnimationType;                                     // 0x0170(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_171[0x3];                                      // 0x0171(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         AnimationDuration;                                 // 0x0174(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TArray<class ULTweener*>                      TweenerArray;                                      // 0x0178(0x0010)(ZeroConstructor, Transient, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_188[0x8];                                      // 0x0188(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void CancelAnimation(bool callComplete);
+	void SetAnimationDuration(float value);
+	void SetAnimationType(EUILayoutChangePositionAnimationType value);
+
+	float GetAnimationDuration() const;
+	EUILayoutChangePositionAnimationType GetAnimationType() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UILayoutWithAnimation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UILayoutWithAnimation")
+	}
+	static class UUILayoutWithAnimation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUILayoutWithAnimation>();
+	}
+};
+DUMPER7_ASSERTS_UUILayoutWithAnimation;
 
 // Class LGUI.UIGridLayout
 // 0x0040 (0x01D0 - 0x0190)
@@ -2610,43 +2936,6 @@ public:
 };
 DUMPER7_ASSERTS_UUIGridLayout;
 
-// Class LGUI.LGUIPlayTweenComponent
-// 0x0020 (0x00E0 - 0x00C0)
-class ULGUIPlayTweenComponent final : public UActorComponent
-{
-public:
-	bool                                          playOnStart;                                       // 0x00C0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_C1[0x7];                                       // 0x00C1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULGUIPlayTween*                         playTween;                                         // 0x00C8(0x0008)(Edit, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, Protected, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          activeOptimized;                                   // 0x00D0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_D1[0x3];                                       // 0x00D1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class UPlayTweenActiveOpt>     ControllerComp;                                    // 0x00D4(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_DC[0x4];                                       // 0x00DC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void Pause();
-	void Play();
-	void Resume();
-	void Stop();
-
-	class ULGUIPlayTween* GetPlayTween() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LGUIPlayTweenComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LGUIPlayTweenComponent")
-	}
-	static class ULGUIPlayTweenComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULGUIPlayTweenComponent>();
-	}
-};
-DUMPER7_ASSERTS_ULGUIPlayTweenComponent;
-
 // Class LGUI.PlayTweenActiveOpt
 // 0x0008 (0x0108 - 0x0100)
 class UPlayTweenActiveOpt final : public ULGUIBehaviour
@@ -2669,36 +2958,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UPlayTweenActiveOpt;
-
-// Class LGUI.UIFlyoutMenu
-// 0x0038 (0x00F8 - 0x00C0)
-class UUIFlyoutMenu final : public UActorComponent
-{
-public:
-	uint8                                         Pad_C0[0x8];                                       // 0x00C0(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	class AUIBaseActor*                           _RootUIActor;                                      // 0x00C8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class AUIBaseActor*                           _SrcItemActor;                                     // 0x00D0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TArray<class UUIFlyoutMenuItem*>              _CreatedItemArray;                                 // 0x00D8(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_E8[0x10];                                      // 0x00E8(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UUIFlyoutMenu* CreateFlyoutMenuFromArray(const TArray<class FString>& InItemNameArray, const TDelegate<void(int32 InSelectIndex, const class FString& InSelectItem)>& InCallback, class AUIBaseActor* InParentActor, int32 InWidth, EFlyoutMenuVerticalPosition InVerticalPosition, EFlyoutMenuHorizontalAlignment InHorizontalAlign);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIFlyoutMenu")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIFlyoutMenu")
-	}
-	static class UUIFlyoutMenu* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIFlyoutMenu>();
-	}
-};
-DUMPER7_ASSERTS_UUIFlyoutMenu;
 
 // Class LGUI.LGUIPlayTweenSequenceComponent
 // 0x0038 (0x00F8 - 0x00C0)
@@ -2730,6 +2989,36 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ULGUIPlayTweenSequenceComponent;
+
+// Class LGUI.UIFlyoutMenu
+// 0x0038 (0x00F8 - 0x00C0)
+class UUIFlyoutMenu final : public UActorComponent
+{
+public:
+	uint8                                         Pad_C0[0x8];                                       // 0x00C0(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	class AUIBaseActor*                           _RootUIActor;                                      // 0x00C8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class AUIBaseActor*                           _SrcItemActor;                                     // 0x00D0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TArray<class UUIFlyoutMenuItem*>              _CreatedItemArray;                                 // 0x00D8(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_E8[0x10];                                      // 0x00E8(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UUIFlyoutMenu* CreateFlyoutMenuFromArray(const TArray<class FString>& InItemNameArray, const TDelegate<void(int32 InSelectIndex, const class FString& InSelectItem)>& InCallback, class AUIBaseActor* InParentActor, int32 InWidth, EFlyoutMenuVerticalPosition InVerticalPosition, EFlyoutMenuHorizontalAlignment InHorizontalAlign);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIFlyoutMenu")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIFlyoutMenu")
+	}
+	static class UUIFlyoutMenu* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIFlyoutMenu>();
+	}
+};
+DUMPER7_ASSERTS_UUIFlyoutMenu;
 
 // Class LGUI.LGUIPointerClickInterface
 // 0x0000 (0x0000 - 0x0000)
@@ -2895,35 +3184,6 @@ public:
 };
 DUMPER7_ASSERTS_ILGUIPointerDragInterface;
 
-// Class LGUI.UILayoutInterface
-// 0x0000 (0x0000 - 0x0000)
-class IUILayoutInterface final
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UILayoutInterface")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UILayoutInterface")
-	}
-	static class IUILayoutInterface* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<IUILayoutInterface>();
-	}
-
-	class UObject* AsUObject()
-	{
-		return reinterpret_cast<UObject*>(this);
-	}
-	const class UObject* AsUObject() const
-	{
-		return reinterpret_cast<const UObject*>(this);
-	}
-};
-DUMPER7_ASSERTS_IUILayoutInterface;
-
 // Class LGUI.LGUIPointerEnterExitInterface
 // 0x0000 (0x0000 - 0x0000)
 class ILGUIPointerEnterExitInterface final
@@ -2956,6 +3216,48 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ILGUIPointerEnterExitInterface;
+
+// Class LGUI.UILayoutElement
+// 0x0018 (0x0118 - 0x0100)
+class UUILayoutElement final : public ULGUIBehaviour
+{
+public:
+	class UUILayoutBase*                          ParentLayout;                                      // 0x0100(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	ELayoutElementType                            LayoutElementType;                                 // 0x0108(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_109[0x3];                                      // 0x0109(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ConstantSize;                                      // 0x010C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	float                                         RatioSize;                                         // 0x0110(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          bIgnoreWidth;                                      // 0x0114(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          bIgnoreHeight;                                     // 0x0115(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_116[0x2];                                      // 0x0116(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetConstantSize(float value);
+	void SetLayoutType(ELayoutElementType InType);
+	void SetRatioSize(float value);
+
+	float GetConstantSize() const;
+	bool GetIgnoreLayout() const;
+	ELayoutElementType GetLayoutType() const;
+	float GetRatioSize() const;
+	bool IsIgnoredHeight() const;
+	bool IsIgnoredWidth() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UILayoutElement")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UILayoutElement")
+	}
+	static class UUILayoutElement* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUILayoutElement>();
+	}
+};
+DUMPER7_ASSERTS_UUILayoutElement;
 
 // Class LGUI.LGUIPointerEventData
 // 0x01C0 (0x0200 - 0x0040)
@@ -3065,6 +3367,58 @@ public:
 };
 DUMPER7_ASSERTS_ILGUIPointerInterruptInterface;
 
+// Class LGUI.UIHorizontalLayout
+// 0x0040 (0x01D0 - 0x0190)
+class UUIHorizontalLayout final : public UUILayoutWithAnimation
+{
+public:
+	struct FMargin                                Padding;                                           // 0x0190(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	float                                         Spacing;                                           // 0x01A0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bAutoSpacing;                                      // 0x01A4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	ELGUILayoutAlignmentType                      Align;                                             // 0x01A5(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          ExpendChildrenWidth;                               // 0x01A6(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bControlWidthCalculatedScale;                      // 0x01A7(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bExcludeWidthZeroSpace;                            // 0x01A8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          ExpendChildrenHeight;                              // 0x01A9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bControlHeightCalculatedScale;                     // 0x01AA(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          WidthFitToChildren;                                // 0x01AB(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          HeightFitToChildren;                               // 0x01AC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1AD[0x23];                                     // 0x01AD(0x0023)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetAlign(ELGUILayoutAlignmentType value);
+	void SetExpendChildrenHeight(bool value);
+	void SetExpendChildrenWidth(bool value);
+	void SetHeightFitToChildren(bool value);
+	void SetPadding(const struct FMargin& value);
+	void SetSpacing(float value);
+	void SetWidthFitToChildren(bool value);
+
+	float GetActuralRange() const;
+	ELGUILayoutAlignmentType GetAlign() const;
+	bool GetExpendChildrenHeight() const;
+	bool GetExpendChildrenWidth() const;
+	bool GetHeightFitToChildren() const;
+	struct FMargin GetPadding() const;
+	float GetSpacing() const;
+	bool GetWidthFitToChildren() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIHorizontalLayout")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIHorizontalLayout")
+	}
+	static class UUIHorizontalLayout* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIHorizontalLayout>();
+	}
+};
+DUMPER7_ASSERTS_UUIHorizontalLayout;
+
 // Class LGUI.LGUIPointerScrollInterface
 // 0x0000 (0x0000 - 0x0000)
 class ILGUIPointerScrollInterface final
@@ -3130,6 +3484,49 @@ public:
 };
 DUMPER7_ASSERTS_ILGUIPointerSelectDeselectInterface;
 
+// Class LGUI.UIForcesCursor
+// 0x00F0 (0x0310 - 0x0220)
+class UUIForcesCursor final : public USceneComponent
+{
+public:
+	bool                                          IsOrthographic;                                    // 0x0218(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_219[0x3];                                      // 0x0219(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         ScreenSizeX;                                       // 0x021C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ScreenSizeY;                                       // 0x0220(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FRotator                               RotatorInfo;                                       // 0x0224(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FVector                                MoveVector;                                        // 0x0230(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                OriginPos;                                         // 0x023C(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         FrameStepping;                                     // 0x0248(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         MaxAngleX;                                         // 0x024C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         MaxAngleY;                                         // 0x0250(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         MouseX;                                            // 0x0254(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         MouseY;                                            // 0x0258(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                OffsetVector;                                      // 0x025C(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                AroundPoint;                                       // 0x0268(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         GamepadRightX;                                     // 0x0274(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         GamepadRightY;                                     // 0x0278(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Tilt;                                              // 0x027C(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Gravity;                                           // 0x0288(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                RotationRate;                                      // 0x0294(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Acceleration;                                      // 0x02A0(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2AC[0x64];                                     // 0x02AC(0x0064)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIForcesCursor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIForcesCursor")
+	}
+	static class UUIForcesCursor* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIForcesCursor>();
+	}
+};
+DUMPER7_ASSERTS_UUIForcesCursor;
+
 // Class LGUI.LGUIPrefab
 // 0x0078 (0x00A8 - 0x0030)
 class ULGUIPrefab final : public UObject
@@ -3163,197 +3560,8 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIPrefab;
 
-// Class LGUI.UIInteractionGroup
-// 0x0010 (0x00D0 - 0x00C0)
-class UUIInteractionGroup final : public UActorComponent
-{
-public:
-	bool                                          bInteractable;                                     // 0x00C0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bIgnoreParentGroup;                                // 0x00C1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_C2[0x6];                                       // 0x00C2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUIItem*                                CacheUIItem;                                       // 0x00C8(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-
-public:
-	void SetIgnoreParentGroup(bool value);
-	void SetInteractable(bool value);
-
-	bool GetIgnoreParentGroup() const;
-	bool GetInteractable() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIInteractionGroup")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIInteractionGroup")
-	}
-	static class UUIInteractionGroup* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIInteractionGroup>();
-	}
-};
-DUMPER7_ASSERTS_UUIInteractionGroup;
-
-// Class LGUI.LGUIPrefabV2
-// 0x0058 (0x0088 - 0x0030)
-class ULGUIPrefabV2 final : public UObject
-{
-public:
-	TArray<class UObject*>                        ReferenceAssetListForBuild;                        // 0x0030(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<class UClass*>                         ReferenceClassListForBuild;                        // 0x0040(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<class FName>                           ReferenceNameListForBuild;                         // 0x0050(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
-	EPrefabVersion                                PrefabVersion;                                     // 0x0060(0x0001)(Edit, BlueprintVisible, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_61[0x3];                                       // 0x0061(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FGuid                                  Guid;                                              // 0x0064(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_74[0x4];                                       // 0x0074(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<uint8>                                 BinaryDataForBuild;                                // 0x0078(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-
-public:
-	class AActor* LoadPrefab(class UObject* WorldContextObject, class USceneComponent* InParent, bool bForceUseRuntimeData, bool SetRelativeTransformToIdentity);
-	class AActor* LoadPrefabWithTransform(class UObject* WorldContextObject, class USceneComponent* InParent, bool bForceUseRuntimeData, const struct FVector& Location, const struct FRotator& Rotation, const struct FVector& Scale);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LGUIPrefabV2")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LGUIPrefabV2")
-	}
-	static class ULGUIPrefabV2* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULGUIPrefabV2>();
-	}
-};
-DUMPER7_ASSERTS_ULGUIPrefabV2;
-
-// Class LGUI.LGUIScaleAdaptation
-// 0x0008 (0x0108 - 0x0100)
-class ULGUIScaleAdaptation final : public ULGUIBehaviour
-{
-public:
-	float                                         ScaleAdapatationPercent;                           // 0x0100(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         StartRadio;                                        // 0x0104(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LGUIScaleAdaptation")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LGUIScaleAdaptation")
-	}
-	static class ULGUIScaleAdaptation* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULGUIScaleAdaptation>();
-	}
-};
-DUMPER7_ASSERTS_ULGUIScaleAdaptation;
-
-// Class LGUI.UINavigationTextChangeListener
-// 0x0008 (0x0108 - 0x0100)
-class UUINavigationTextChangeListener final : public ULGUIBehaviour
-{
-public:
-	class AActor*                                 TextActor;                                         // 0x0100(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-
-public:
-	void OnNotifyTextChangeBP(const class FString& NotifyText);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UINavigationTextChangeListener")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UINavigationTextChangeListener")
-	}
-	static class UUINavigationTextChangeListener* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUINavigationTextChangeListener>();
-	}
-};
-DUMPER7_ASSERTS_UUINavigationTextChangeListener;
-
-// Class LGUI.LGUIScreenSpaceInteraction
-// 0x0010 (0x0280 - 0x0270)
-class ULGUIScreenSpaceInteraction final : public ULGUI_UIRaycaster
-{
-public:
-	float                                         clickThreshold;                                    // 0x0268(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          holdToDrag;                                        // 0x026C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_26D[0x3];                                      // 0x026D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         holdToDragTime;                                    // 0x0270(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_274[0xC];                                      // 0x0274(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetClickThreshold(float value);
-	void SetHoldToDrag(bool value);
-	void SetHoldToDragTime(float value);
-
-	float GetClickThreshold() const;
-	bool GetHoldToDrag() const;
-	float GetHoldToDragTime() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LGUIScreenSpaceInteraction")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LGUIScreenSpaceInteraction")
-	}
-	static class ULGUIScreenSpaceInteraction* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULGUIScreenSpaceInteraction>();
-	}
-};
-DUMPER7_ASSERTS_ULGUIScreenSpaceInteraction;
-
-// Class LGUI.LGUIScreenSpaceInteractionForNoneUI
-// 0x0010 (0x0270 - 0x0260)
-class ULGUIScreenSpaceInteractionForNoneUI final : public ULGUI_WorldRaycaster
-{
-public:
-	float                                         clickThreshold;                                    // 0x0260(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          holdToDrag;                                        // 0x0264(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_265[0x3];                                      // 0x0265(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         holdToDragTime;                                    // 0x0268(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_26C[0x4];                                      // 0x026C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetClickThreshold(float value);
-	void SetHoldToDrag(bool value);
-	void SetHoldToDragTime(float value);
-
-	float GetClickThreshold() const;
-	bool GetHoldToDrag() const;
-	float GetHoldToDragTime() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LGUIScreenSpaceInteractionForNoneUI")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LGUIScreenSpaceInteractionForNoneUI")
-	}
-	static class ULGUIScreenSpaceInteractionForNoneUI* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULGUIScreenSpaceInteractionForNoneUI>();
-	}
-};
-DUMPER7_ASSERTS_ULGUIScreenSpaceInteractionForNoneUI;
-
 // Class LGUI.UIItem
-// 0x0340 (0x0560 - 0x0220)
+// 0x0350 (0x0570 - 0x0220)
 class UUIItem : public USceneComponent
 {
 public:
@@ -3389,17 +3597,21 @@ public:
 	uint8                                         Pad_4C9[0x7];                                      // 0x04C9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	int32                                         hierarchyIndex;                                    // 0x04D0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 	int32                                         flattenHierarchyIndex;                             // 0x04D4(0x0004)(Edit, ZeroConstructor, Transient, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         AdditionalIndexDelta;                              // 0x04D8(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_4DC[0x4];                                      // 0x04DC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 displayName;                                       // 0x04E0(0x0010)(Edit, ZeroConstructor, EditConst, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          bRaycastTarget;                                    // 0x04F0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bBubbleUpToParent;                                 // 0x04F1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	ETraceTypeQuery                               traceChannel;                                      // 0x04F2(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_4F3[0x65];                                     // 0x04F3(0x0065)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class AUIBaseActor>            DebugCollisionLine;                                // 0x0558(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         inCanvasFlattenHierarchyIndex;                     // 0x04D8(0x0004)(Edit, ZeroConstructor, Transient, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         AdditionalIndexDelta;                              // 0x04DC(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_4E0[0x8];                                      // 0x04E0(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 displayName;                                       // 0x04E8(0x0010)(Edit, ZeroConstructor, EditConst, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          bRaycastTarget;                                    // 0x04F8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bBubbleUpToParent;                                 // 0x04F9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	ETraceTypeQuery                               traceChannel;                                      // 0x04FA(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_4FB[0x65];                                     // 0x04FB(0x0065)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class AUIBaseActor>            DebugCollisionLine;                                // 0x0560(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         AdditionalRenderOrder;                             // 0x0568(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_56C[0x4];                                      // 0x056C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void GetAllAttachUIChildren(TArray<class UUIItem*>* OutArray);
+	int32 GetFlattenHierarchyIndexClassic();
 	const struct FVector GetLGUISpaceAbsolutePosition();
 	const struct FVector GetLGUISpaceAbsolutePositionByPivot(const struct FVector2D& Pivot);
 	const struct FVector GetLGUISpaceCenterAbsolutePosition();
@@ -3420,6 +3632,7 @@ public:
 	void PlayUIItemAlphaTween(float StartValue, float EndValue, float Duration);
 	void PlayUIItemScaleTween(float StartValue, float EndValue, float Duration);
 	void ReverseChildrenIndex();
+	void SetAdditionalRenderOrder(int32 InAdditionalRenderOrder);
 	void SetAlpha(float newAlpha);
 	void SetAnchorAlign(EUIAnchorHorizontalAlign HAlign, EUIAnchorVerticalAlign VAlign);
 	void SetAnchorHAlign(EUIAnchorHorizontalAlign align);
@@ -3431,6 +3644,7 @@ public:
 	void SetAsLastHierarchy();
 	void SetBubbleUpToParent(bool NewBool);
 	void SetChangeColor(bool bUseChangeColor, const struct FColor& NewColor);
+	void SetChildrenAdditionalRenderOrder(int32 InAdditionalRenderOrder, bool bIncludeSelf);
 	void SetColor(const struct FColor& NewColor);
 	void SetDepth(int32 depth, bool propagateToChildren);
 	void SetDisplayName(const class FString& InName);
@@ -3464,6 +3678,7 @@ public:
 	void SetWidget(const struct FUIWidget& inWidget);
 	void SetWidth(float NewWidth);
 
+	int32 GetAdditionalRenderOrder() const;
 	float GetAlpha() const;
 	EUIAnchorHorizontalAlign GetAnchorHAlign() const;
 	struct FVector2D GetAnchorOffset() const;
@@ -3479,8 +3694,10 @@ public:
 	int32 GetDepth() const;
 	class FString GetDisplayName() const;
 	int32 GetFlattenHierarchyIndex() const;
+	int32 GetFlattenHierarchyIndexV2() const;
 	float GetHeight() const;
 	int32 GetHierarchyIndex() const;
+	int32 GetInCanvasFlattenHierarchyIndex() const;
 	bool GetInheritAlpha() const;
 	float GetLocalSpaceBottom() const;
 	struct FVector2D GetLocalSpaceCenter() const;
@@ -3522,21 +3739,21 @@ public:
 DUMPER7_ASSERTS_UUIItem;
 
 // Class LGUI.UIBaseRenderable
-// 0x0050 (0x05B0 - 0x0560)
+// 0x0050 (0x05C0 - 0x0570)
 class UUIBaseRenderable : public UUIItem
 {
 public:
-	uint8                                         Pad_560[0x14];                                     // 0x0560(0x0014)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         BatchDepth;                                        // 0x0574(0x0004)(Edit, ZeroConstructor, Transient, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         LayerDepth;                                        // 0x0578(0x0004)(Edit, ZeroConstructor, Transient, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ExtraBatchDepth;                                   // 0x057C(0x0004)(Edit, ZeroConstructor, Transient, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bIsRenderAfterBlurPartial;                         // 0x0580(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_581[0x17];                                     // 0x0581(0x0017)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          bIsAlphaZeroClip;                                  // 0x0598(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_599[0x3];                                      // 0x0599(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class AUI2DLineActor>          DebugBoundingBoxLine;                              // 0x059C(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_5A4[0x4];                                      // 0x05A4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUIRenderableMask*                      RenderableMask;                                    // 0x05A8(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_570[0x14];                                     // 0x0570(0x0014)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         BatchDepth;                                        // 0x0584(0x0004)(Edit, ZeroConstructor, Transient, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         LayerDepth;                                        // 0x0588(0x0004)(Edit, ZeroConstructor, Transient, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ExtraBatchDepth;                                   // 0x058C(0x0004)(Edit, ZeroConstructor, Transient, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bIsRenderAfterBlurPartial;                         // 0x0590(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_591[0x17];                                     // 0x0591(0x0017)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          bIsAlphaZeroClip;                                  // 0x05A8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_5A9[0x3];                                      // 0x05A9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class AUI2DLineActor>          DebugBoundingBoxLine;                              // 0x05AC(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_5B4[0x4];                                      // 0x05B4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUIRenderableMask*                      RenderableMask;                                    // 0x05B8(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 
 public:
 	void LogBatchDepthParents();
@@ -3561,25 +3778,446 @@ public:
 };
 DUMPER7_ASSERTS_UUIBaseRenderable;
 
+// Class LGUI.UINiagara
+// 0x0880 (0x0E40 - 0x05C0)
+class UUINiagara final : public UUIBaseRenderable
+{
+public:
+	class UNiagaraSystem*                         NiagaraSystemReference;                            // 0x05C0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          IsNiagaraActive;                                   // 0x05C8(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5C9[0x3];                                      // 0x05C9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         StartTime;                                         // 0x05CC(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         LoopTime;                                          // 0x05D0(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         EndTime;                                           // 0x05D4(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FKuroCurveVector                       NiagaraLocation;                                   // 0x05D8(0x01A8)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
+	struct FKuroCurveVector                       NiagaraRotation;                                   // 0x0780(0x01A8)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
+	struct FKuroCurveVector                       NiagaraScale;                                      // 0x0928(0x01A8)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
+	TMap<class FString, int32>                    IntParameter;                                      // 0x0AD0(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
+	TMap<class FString, struct FKuroCurveFloat>   FloatParameter;                                    // 0x0B20(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
+	TMap<class FString, struct FKuroCurveVector>  VectorParameter;                                   // 0x0B70(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
+	TMap<class FString, struct FKuroCurveLinearColor> ColorParameter;                                // 0x0BC0(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
+	bool                                          bAdaptPosAndSizeChanged;                           // 0x0C10(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bEnableCircleClip;                                 // 0x0C11(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_C12[0x2];                                      // 0x0C12(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FCircleClipParameters                  CircleClipParameters;                              // 0x0C14(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_C24[0x4];                                      // 0x0C24(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULGUINiagaraComponent*                  NiagaraComponent;                                  // 0x0C28(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_C30[0x1F0];                                    // 0x0C30(0x01F0)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          bResetNiagara;                                     // 0x0E20(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bIgnoreGlobalUINiagaraPause;                       // 0x0E21(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E22[0x3];                                      // 0x0E22(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          bAdvancedInitNiagaraComp;                          // 0x0E25(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_E26[0x2];                                      // 0x0E26(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAkAudioEvent*                          StartEvent;                                        // 0x0E28(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bCanInterupt;                                      // 0x0E30(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_E31[0x3];                                      // 0x0E31(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         FadeOutMs;                                         // 0x0E34(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_E38[0x8];                                      // 0x0E38(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void ActivateSystem(bool Reset);
+	void DeactivateSystem();
+	bool GetIsActive();
+	class ULGUINiagaraComponent* GetNiagaraComponent();
+	bool IsCircleClipEnable();
+	void ReinitializeSystem();
+	void ResetOverrideParameters();
+	void ResetOverrideParametersAndActivate();
+	void SetCircleClipEnable(bool Enable);
+	void SetCircleClipParameters(const struct FCircleClipParameters& NewCircleClipParameters);
+	void SetNiagaraEmitterCustomTexture(const class FString& InEmitterName, const class FString& InVariableName, class UTexture* InTexture);
+	void SetNiagaraEmitterFloatParam(const class FString& InEmitterName, const class FString& InVariableName, float InValue);
+	void SetNiagaraEmitterVectorParam(const class FString& InEmitterName, const class FString& InVariableName, const struct FVector4& InVector);
+	void SetNiagaraSystem(class UNiagaraSystem* InSystem);
+	void SetNiagaraUIActive(bool active, bool bInResetNiagara);
+	void SetNiagaraVarFloat(const class FString& VarName, float Value);
+	void SetNiagaraVarInt(const class FString& VarName, int32 Value);
+	void SetNiagaraVarLinearColor(const class FString& VarName, const struct FLinearColor& Value);
+	void SwitchToStop();
+
+	struct FCircleClipParameters GetCircleClipParameters() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UINiagara")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UINiagara")
+	}
+	static class UUINiagara* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUINiagara>();
+	}
+};
+DUMPER7_ASSERTS_UUINiagara;
+
+// Class LGUI.LGUIPrefabHelperObject
+// 0x0000 (0x0030 - 0x0030)
+class ULGUIPrefabHelperObject final : public UObject
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LGUIPrefabHelperObject")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LGUIPrefabHelperObject")
+	}
+	static class ULGUIPrefabHelperObject* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULGUIPrefabHelperObject>();
+	}
+};
+DUMPER7_ASSERTS_ULGUIPrefabHelperObject;
+
+// Class LGUI.LGUIPrefabHelperActor
+// 0x0000 (0x02B0 - 0x02B0)
+class ALGUIPrefabHelperActor final : public AActor
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LGUIPrefabHelperActor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LGUIPrefabHelperActor")
+	}
+	static class ALGUIPrefabHelperActor* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ALGUIPrefabHelperActor>();
+	}
+};
+DUMPER7_ASSERTS_ALGUIPrefabHelperActor;
+
+// Class LGUI.UILoopScrollViewComponent
+// 0x01B8 (0x0480 - 0x02C8)
+class UUILoopScrollViewComponent final : public UUIScrollViewWithScrollbarComponent
+{
+public:
+	uint8                                         Pad_2C8[0x38];                                     // 0x02C8(0x0038)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<TWeakObjectPtr<class AUIBaseActor>>    GridArray;                                         // 0x0300(0x0010)(ZeroConstructor, UObjectWrapper, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_310[0x50];                                     // 0x0310(0x0050)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class AUIBaseActor>            TemplateGrid;                                      // 0x0360(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	int32                                         DisplayGridNum;                                    // 0x0368(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	int32                                         TotalGridNum;                                      // 0x036C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          GridDefaultUIActive;                               // 0x0370(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          IsGridShrinkStrech;                                // 0x0371(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_372[0x2];                                      // 0x0372(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         SpacingHorizontal;                                 // 0x0374(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         SpacingVertical;                                   // 0x0378(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         PaddingHorizontal;                                 // 0x037C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         PaddingVertical;                                   // 0x0380(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bForceSingleLine;                                  // 0x0384(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_385[0x3];                                      // 0x0385(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         GridAnimationStartTime;                            // 0x0388(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         GridAnimationInterval;                             // 0x038C(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          IsInAnimation;                                     // 0x0390(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_391[0x7];                                      // 0x0391(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(int32 DisplayIndex, class AUIBaseActor* Actor)> OnGridCreate;                     // 0x0398(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+	TDelegate<void(int32 StartIndex, int32 EndIndex)> OnGridsUpdate;                                 // 0x03C0(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+	TDelegate<void()>                             OnDestroyCallBack;                                 // 0x03E8(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+	uint8                                         Pad_410[0x50];                                     // 0x0410(0x0050)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         NavigationIndex;                                   // 0x0460(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_464[0x1C];                                     // 0x0464(0x001C)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void Refresh();
+	void RefreshByData(class AUIBaseActor* UIItem, int32 GridNum, bool KeepContentPosition);
+	void ResetPreview();
+	void ScrollToGridIndex(int32 GridIndex, bool bTweenAnim);
+	void ScrollToGridIndexLater(int32 GridIndex, bool bTweenAnim);
+	void ScrollToNextLine(bool bReversed);
+	void ScrollToNextLineLater(bool bReversed);
+	void SetGridAnimationInterval(float value);
+	void SetGridAnimationStartTime(float value);
+	void SetInAnimation(bool state);
+	void SetNavigationIndex(int32 GridIndex);
+
+	class AUIBaseActor* GetGrid(int32 GridIndex) const;
+	float GetGridAnimationInterval() const;
+	float GetGridAnimationStartTime() const;
+	bool GetInAnimation() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UILoopScrollViewComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UILoopScrollViewComponent")
+	}
+	static class UUILoopScrollViewComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUILoopScrollViewComponent>();
+	}
+};
+DUMPER7_ASSERTS_UUILoopScrollViewComponent;
+
+// Class LGUI.LGUIPrefabHelperComponent
+// 0x0000 (0x0220 - 0x0220)
+class ULGUIPrefabHelperComponent final : public USceneComponent
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LGUIPrefabHelperComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LGUIPrefabHelperComponent")
+	}
+	static class ULGUIPrefabHelperComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULGUIPrefabHelperComponent>();
+	}
+};
+DUMPER7_ASSERTS_ULGUIPrefabHelperComponent;
+
+// Class LGUI.LGUIPrefabV2
+// 0x0058 (0x0088 - 0x0030)
+class ULGUIPrefabV2 final : public UObject
+{
+public:
+	TArray<class UObject*>                        ReferenceAssetListForBuild;                        // 0x0030(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<class UClass*>                         ReferenceClassListForBuild;                        // 0x0040(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<class FName>                           ReferenceNameListForBuild;                         // 0x0050(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
+	EPrefabVersion                                PrefabVersion;                                     // 0x0060(0x0001)(Edit, BlueprintVisible, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_61[0x3];                                       // 0x0061(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FGuid                                  Guid;                                              // 0x0064(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_74[0x4];                                       // 0x0074(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<uint8>                                 BinaryDataForBuild;                                // 0x0078(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+
+public:
+	class AActor* LoadPrefab(class UObject* WorldContextObject, class USceneComponent* InParent, bool bForceUseRuntimeData, bool SetRelativeTransformToIdentity);
+	class AActor* LoadPrefabWithTransform(class UObject* WorldContextObject, class USceneComponent* InParent, bool bForceUseRuntimeData, const struct FVector& Location, const struct FRotator& Rotation, const struct FVector& Scale);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LGUIPrefabV2")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LGUIPrefabV2")
+	}
+	static class ULGUIPrefabV2* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULGUIPrefabV2>();
+	}
+};
+DUMPER7_ASSERTS_ULGUIPrefabV2;
+
+// Class LGUI.UIInteractionGroup
+// 0x0010 (0x00D0 - 0x00C0)
+class UUIInteractionGroup final : public UActorComponent
+{
+public:
+	bool                                          bInteractable;                                     // 0x00C0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bIgnoreParentGroup;                                // 0x00C1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bGroupEnabled;                                     // 0x00C2(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_C3[0x5];                                       // 0x00C3(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUIItem*                                CacheUIItem;                                       // 0x00C8(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+
+public:
+	void SetIgnoreParentGroup(bool value);
+	void SetInteractable(bool value);
+
+	bool GetIgnoreParentGroup() const;
+	bool GetInteractable() const;
+	bool IsGroupEnabled() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIInteractionGroup")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIInteractionGroup")
+	}
+	static class UUIInteractionGroup* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIInteractionGroup>();
+	}
+};
+DUMPER7_ASSERTS_UUIInteractionGroup;
+
+// Class LGUI.LGUIScaleAdaptation
+// 0x0008 (0x0108 - 0x0100)
+class ULGUIScaleAdaptation final : public ULGUIBehaviour
+{
+public:
+	float                                         ScaleAdapatationPercent;                           // 0x0100(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         StartRadio;                                        // 0x0104(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LGUIScaleAdaptation")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LGUIScaleAdaptation")
+	}
+	static class ULGUIScaleAdaptation* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULGUIScaleAdaptation>();
+	}
+};
+DUMPER7_ASSERTS_ULGUIScaleAdaptation;
+
+// Class LGUI.LGUIScreenSpaceInteraction
+// 0x0010 (0x0280 - 0x0270)
+class ULGUIScreenSpaceInteraction final : public ULGUI_UIRaycaster
+{
+public:
+	float                                         clickThreshold;                                    // 0x0268(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          holdToDrag;                                        // 0x026C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_26D[0x3];                                      // 0x026D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         holdToDragTime;                                    // 0x0270(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_274[0xC];                                      // 0x0274(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetClickThreshold(float value);
+	void SetHoldToDrag(bool value);
+	void SetHoldToDragTime(float value);
+
+	float GetClickThreshold() const;
+	bool GetHoldToDrag() const;
+	float GetHoldToDragTime() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LGUIScreenSpaceInteraction")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LGUIScreenSpaceInteraction")
+	}
+	static class ULGUIScreenSpaceInteraction* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULGUIScreenSpaceInteraction>();
+	}
+};
+DUMPER7_ASSERTS_ULGUIScreenSpaceInteraction;
+
+// Class LGUI.UIViewTweenParams
+// 0x0020 (0x00E0 - 0x00C0)
+class UUIViewTweenParams final : public UActorComponent
+{
+public:
+	float                                         TweenSize;                                         // 0x00C0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	float                                         TweenAlpha;                                        // 0x00C4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	float                                         TweenTime;                                         // 0x00C8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_CC[0x4];                                       // 0x00CC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class FString>                         ViewNameBlackList;                                 // 0x00D0(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPrivate)
+
+public:
+	float GetTweenAlpha() const;
+	float GetTweenSize() const;
+	float GetTweenTime() const;
+	const TArray<class FString> GetViewNameBlackList() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIViewTweenParams")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIViewTweenParams")
+	}
+	static class UUIViewTweenParams* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIViewTweenParams>();
+	}
+};
+DUMPER7_ASSERTS_UUIViewTweenParams;
+
+// Class LGUI.LGUIScreenSpaceInteractionForNoneUI
+// 0x0010 (0x0270 - 0x0260)
+class ULGUIScreenSpaceInteractionForNoneUI final : public ULGUI_WorldRaycaster
+{
+public:
+	float                                         clickThreshold;                                    // 0x0260(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          holdToDrag;                                        // 0x0264(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_265[0x3];                                      // 0x0265(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         holdToDragTime;                                    // 0x0268(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_26C[0x4];                                      // 0x026C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetClickThreshold(float value);
+	void SetHoldToDrag(bool value);
+	void SetHoldToDragTime(float value);
+
+	float GetClickThreshold() const;
+	bool GetHoldToDrag() const;
+	float GetHoldToDragTime() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LGUIScreenSpaceInteractionForNoneUI")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LGUIScreenSpaceInteractionForNoneUI")
+	}
+	static class ULGUIScreenSpaceInteractionForNoneUI* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULGUIScreenSpaceInteractionForNoneUI>();
+	}
+};
+DUMPER7_ASSERTS_ULGUIScreenSpaceInteractionForNoneUI;
+
+// Class LGUI.LGUISequenceBindingMgr
+// 0x0050 (0x0080 - 0x0030)
+class ULGUISequenceBindingMgr final : public UObject
+{
+public:
+	TMap<class UMovieSceneSequence*, struct FActorBindings> BindingMaps;                             // 0x0030(0x0050)(Protected, NativeAccessSpecifierProtected)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LGUISequenceBindingMgr")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LGUISequenceBindingMgr")
+	}
+	static class ULGUISequenceBindingMgr* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULGUISequenceBindingMgr>();
+	}
+};
+DUMPER7_ASSERTS_ULGUISequenceBindingMgr;
+
 // Class LGUI.UIBatchGeometryRenderable
-// 0x0200 (0x07B0 - 0x05B0)
+// 0x0200 (0x07C0 - 0x05C0)
 #pragma pack(push, 0x1)
 class SDK_ALIGN(0x10) UUIBatchGeometryRenderable : public UUIBaseRenderable
 {
 public:
-	uint8                                         Pad_5B0[0xE0];                                     // 0x05B0(0x00E0)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<class FName, float>                      CustomScalarParameterTMap;                         // 0x0690(0x0050)(NativeAccessSpecifierPublic)
-	TMap<class FName, class UTexture*>            CustomTextureParameterTMap;                        // 0x06E0(0x0050)(NativeAccessSpecifierPublic)
-	TMap<class FName, struct FLinearColor>        CustomVectorParameterTMap;                         // 0x0730(0x0050)(NativeAccessSpecifierPublic)
-	class UMaterialInterface*                     CustomUIMaterial;                                  // 0x0780(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bIsSelfRender;                                     // 0x0788(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bIsGray;                                           // 0x0789(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bIsColorRevert;                                    // 0x078A(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bRaycastComplex;                                   // 0x078B(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_78C[0x4];                                      // 0x078C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUIDrawcallMesh*                        uiMesh;                                            // 0x0790(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UMaterialInstanceDynamic*               uiMaterial;                                        // 0x0798(0x0008)(Edit, ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7A0[0x8];                                      // 0x07A0(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_5C0[0xE0];                                     // 0x05C0(0x00E0)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class FName, float>                      CustomScalarParameterTMap;                         // 0x06A0(0x0050)(NativeAccessSpecifierPublic)
+	TMap<class FName, class UTexture*>            CustomTextureParameterTMap;                        // 0x06F0(0x0050)(NativeAccessSpecifierPublic)
+	TMap<class FName, struct FLinearColor>        CustomVectorParameterTMap;                         // 0x0740(0x0050)(NativeAccessSpecifierPublic)
+	class UMaterialInterface*                     CustomUIMaterial;                                  // 0x0790(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bIsSelfRender;                                     // 0x0798(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bIsGray;                                           // 0x0799(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bIsColorRevert;                                    // 0x079A(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bRaycastComplex;                                   // 0x079B(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_79C[0x4];                                      // 0x079C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUIDrawcallMesh*                        uiMesh;                                            // 0x07A0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UMaterialInstanceDynamic*               uiMaterial;                                        // 0x07A8(0x0008)(Edit, ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7B0[0x8];                                      // 0x07B0(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void ClearCustomMaterialParameterInMap();
@@ -3619,13 +4257,13 @@ public:
 DUMPER7_ASSERTS_UUIBatchGeometryRenderable;
 
 // Class LGUI.UISpriteBase
-// 0x0010 (0x07C0 - 0x07B0)
+// 0x0010 (0x07D0 - 0x07C0)
 class UUISpriteBase : public UUIBatchGeometryRenderable
 {
 public:
-	class ULGUISpriteData_BaseObject*             sprite;                                            // 0x07A8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bNotUseDynamicSpriteAtlas;                         // 0x07B0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7B1[0xF];                                      // 0x07B1(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class ULGUISpriteData_BaseObject*             sprite;                                            // 0x07B8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bNotUseDynamicSpriteAtlas;                         // 0x07C0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7C1[0xF];                                      // 0x07C1(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void SetSizeFromSpriteData();
@@ -3650,20 +4288,26 @@ public:
 DUMPER7_ASSERTS_UUISpriteBase;
 
 // Class LGUI.UI2DLineRendererBase
-// 0x0020 (0x07E0 - 0x07C0)
-#pragma pack(push, 0x1)
-class SDK_ALIGN(0x10) UUI2DLineRendererBase : public UUISpriteBase
+// 0x0020 (0x07F0 - 0x07D0)
+class UUI2DLineRendererBase : public UUISpriteBase
 {
 public:
-	float                                         LineWidth;                                         // 0x07C0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EUI2DLineRenderer_EndType                     EndType;                                           // 0x07C4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7C5[0x3];                                      // 0x07C5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         LineWidthOffset;                                   // 0x07C8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bFixedThickness;                                   // 0x07CC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7CD[0xB];                                      // 0x07CD(0x000B)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	float                                         LineWidth;                                         // 0x07D0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EUI2DLineRenderer_EndType                     EndType;                                           // 0x07D4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7D5[0x3];                                      // 0x07D5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         LineWidthOffset;                                   // 0x07D8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bFixedThickness;                                   // 0x07DC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bEnableDash;                                       // 0x07DD(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7DE[0x2];                                      // 0x07DE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         DashLength;                                        // 0x07E0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         DashGapRatio;                                      // 0x07E4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7E8[0x8];                                      // 0x07E8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	class ULTweener* LineWidthTo(float endValue, float duration, float delay, ELTweenEase easeType);
+	void SetDashEnabled(bool bNewValue);
+	void SetDashGapRatio(float newValue);
+	void SetDashLength(float newValue);
 	void SetEndType(EUI2DLineRenderer_EndType newValue);
 	void SetLineWidth(float newValue);
 	void SetLineWidthOffset(float newValue);
@@ -3686,73 +4330,52 @@ public:
 		return GetDefaultObjImpl<UUI2DLineRendererBase>();
 	}
 };
-#pragma pack(pop)
 DUMPER7_ASSERTS_UUI2DLineRendererBase;
 
-// Class LGUI.UIRing
-// 0x0020 (0x0800 - 0x07E0)
-class UUIRing final : public UUI2DLineRendererBase
+// Class LGUI.UIPolygonLine
+// 0x0030 (0x0820 - 0x07F0)
+class UUIPolygonLine final : public UUI2DLineRendererBase
 {
 public:
-	float                                         StartAngle;                                        // 0x07D8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         EndAngle;                                          // 0x07DC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         Segment;                                           // 0x07E0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7E4[0x4];                                      // 0x07E4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FVector2D>                      CurrentPointArray;                                 // 0x07E8(0x0010)(Edit, ZeroConstructor, Transient, EditConst, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7F8[0x8];                                      // 0x07F8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          FullCycle;                                         // 0x07F0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7F1[0x3];                                      // 0x07F1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         StartAngle;                                        // 0x07F4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         EndAngle;                                          // 0x07F8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         Sides;                                             // 0x07FC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TArray<float>                                 VertexOffsetArray;                                 // 0x0800(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	TArray<struct FVector2D>                      CurrentPointArray;                                 // 0x0810(0x0010)(Edit, ZeroConstructor, Transient, EditConst, Protected, NativeAccessSpecifierProtected)
 
 public:
 	class ULTweener* EndAngleTo(float endValue, float duration, float delay, ELTweenEase easeType);
-	void SetEndAngle(float newValue);
-	void SetSegment(int32 newValue);
-	void SetStartAngle(float newValue);
+	void SetEndAngle(float value);
+	void SetSides(int32 value);
+	void SetStartAngle(float value);
+	void SetVertexOffsetArray(const TArray<float>& value);
 	class ULTweener* StartAngleTo(float endValue, float duration, float delay, ELTweenEase easeType);
 
 	float GetEndAngle() const;
-	int32 GetSegment() const;
+	int32 GetSides() const;
 	float GetStartAngle() const;
+	const TArray<float> GetVertexOffsetArray() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UIRing")
+		STATIC_CLASS_IMPL("UIPolygonLine")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UIRing")
+		STATIC_NAME_IMPL(L"UIPolygonLine")
 	}
-	static class UUIRing* GetDefaultObj()
+	static class UUIPolygonLine* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUIRing>();
+		return GetDefaultObjImpl<UUIPolygonLine>();
 	}
 };
-DUMPER7_ASSERTS_UUIRing;
-
-// Class LGUI.LGUISequenceBindingMgr
-// 0x0050 (0x0080 - 0x0030)
-class ULGUISequenceBindingMgr final : public UObject
-{
-public:
-	TMap<class UMovieSceneSequence*, struct FActorBindings> BindingMaps;                             // 0x0030(0x0050)(Protected, NativeAccessSpecifierProtected)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LGUISequenceBindingMgr")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LGUISequenceBindingMgr")
-	}
-	static class ULGUISequenceBindingMgr* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULGUISequenceBindingMgr>();
-	}
-};
-DUMPER7_ASSERTS_ULGUISequenceBindingMgr;
+DUMPER7_ASSERTS_UUIPolygonLine;
 
 // Class LGUI.LGUISettings
-// 0x01D0 (0x0200 - 0x0030)
+// 0x01F0 (0x0220 - 0x0030)
 class ULGUISettings final : public UObject
 {
 public:
@@ -3774,24 +4397,26 @@ public:
 	class FString                                 DefaultFontPath;                                   // 0x0118(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint32                                        MaxTextInput;                                      // 0x0128(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_12C[0x4];                                      // 0x012C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 PcPrefix;                                          // 0x0130(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 MobilePrefix;                                      // 0x0140(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 BasePrefabItemName;                                // 0x0150(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 PlatformReplacePath;                               // 0x0160(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 PlatformSequenceReplacePath;                       // 0x0170(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 PcDirectory;                                       // 0x0180(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 PcSequenceDirectory;                               // 0x0190(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FSoftObjectPath                        PcSequenceTmpPath;                                 // 0x01A0(0x0020)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 PcSequencePostfix;                                 // 0x01C0(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 MobileDirectory;                                   // 0x01D0(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         MaxSequenceActorTriggerCollect;                    // 0x01E0(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         SequenceActorTriggerCollectInterval;               // 0x01E4(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector2D                              MaxDiscreteTextureSize;                            // 0x01E8(0x0008)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         DynamicAtlasFailAttemptSecs;                       // 0x01F0(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint32                                        DynamicAtlasNum;                                   // 0x01F4(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint32                                        MaxAttemptInsertTime;                              // 0x01F8(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bUseNewSequenceBinding;                            // 0x01FC(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1FD[0x3];                                      // 0x01FD(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FString                                 ThDict;                                            // 0x0130(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 ThFontSetting;                                     // 0x0140(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 PcPrefix;                                          // 0x0150(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 MobilePrefix;                                      // 0x0160(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 BasePrefabItemName;                                // 0x0170(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 PlatformReplacePath;                               // 0x0180(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 PlatformSequenceReplacePath;                       // 0x0190(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 PcDirectory;                                       // 0x01A0(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 PcSequenceDirectory;                               // 0x01B0(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FSoftObjectPath                        PcSequenceTmpPath;                                 // 0x01C0(0x0020)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 PcSequencePostfix;                                 // 0x01E0(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 MobileDirectory;                                   // 0x01F0(0x0010)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         MaxSequenceActorTriggerCollect;                    // 0x0200(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         SequenceActorTriggerCollectInterval;               // 0x0204(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector2D                              MaxDiscreteTextureSize;                            // 0x0208(0x0008)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         DynamicAtlasFailAttemptSecs;                       // 0x0210(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint32                                        DynamicAtlasNum;                                   // 0x0214(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint32                                        MaxAttemptInsertTime;                              // 0x0218(0x0004)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bUseNewSequenceBinding;                            // 0x021C(0x0001)(Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_21D[0x3];                                      // 0x021D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
@@ -3808,52 +4433,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ULGUISettings;
-
-// Class LGUI.UIPolygon
-// 0x0030 (0x07F0 - 0x07C0)
-class UUIPolygon final : public UUISpriteBase
-{
-public:
-	bool                                          FullCycle;                                         // 0x07C0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7C1[0x3];                                      // 0x07C1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         StartAngle;                                        // 0x07C4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         EndAngle;                                          // 0x07C8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         Sides;                                             // 0x07CC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EUIPolygonUVType                              UVType;                                            // 0x07D0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7D1[0x7];                                      // 0x07D1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<float>                                 VertexOffsetArray;                                 // 0x07D8(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7E8[0x8];                                      // 0x07E8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	class ULTweener* EndAngleTo(float endValue, float duration, float delay, ELTweenEase easeType);
-	void SetEndAngle(float value);
-	void SetSides(int32 value);
-	void SetStartAngle(float value);
-	void SetUVType(EUIPolygonUVType value);
-	void SetVertexOffsetArray(const TArray<float>& value);
-	class ULTweener* StartAngleTo(float endValue, float duration, float delay, ELTweenEase easeType);
-
-	float GetEndAngle() const;
-	int32 GetSides() const;
-	float GetStartAngle() const;
-	EUIPolygonUVType GetUVType() const;
-	const TArray<float> GetVertexOffsetArray() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIPolygon")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIPolygon")
-	}
-	static class UUIPolygon* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIPolygon>();
-	}
-};
-DUMPER7_ASSERTS_UUIPolygon;
 
 // Class LGUI.LGUIEditorSettings
 // 0x0000 (0x0030 - 0x0030)
@@ -3875,63 +4454,32 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIEditorSettings;
 
-// Class LGUI.LGUISpriteData_BaseObject
-// 0x0000 (0x0030 - 0x0030)
-class ULGUISpriteData_BaseObject : public UObject
+// Class LGUI.WwiseAudioComponent
+// 0x0008 (0x00C8 - 0x00C0)
+class UWwiseAudioComponent final : public UActorComponent
 {
 public:
-	class UTexture2D* GetAtlasTexture();
-	struct FLGUISpriteInfo GetSpriteInfo();
+	int32                                         AudioStateSystemLevel;                             // 0x00C0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_C4[0x4];                                       // 0x00C4(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
-	bool IsIndividual() const;
+public:
+	int32 GetAudioStateSystemLevel() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("LGUISpriteData_BaseObject")
+		STATIC_CLASS_IMPL("WwiseAudioComponent")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"LGUISpriteData_BaseObject")
+		STATIC_NAME_IMPL(L"WwiseAudioComponent")
 	}
-	static class ULGUISpriteData_BaseObject* GetDefaultObj()
+	static class UWwiseAudioComponent* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<ULGUISpriteData_BaseObject>();
+		return GetDefaultObjImpl<UWwiseAudioComponent>();
 	}
 };
-DUMPER7_ASSERTS_ULGUISpriteData_BaseObject;
-
-// Class LGUI.UINavigationBehaviour
-// 0x0008 (0x0108 - 0x0100)
-class UUINavigationBehaviour final : public ULGUIBehaviour
-{
-public:
-	int32                                         LoopScrollViewGridIndex;                           // 0x0100(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_104[0x4];                                      // 0x0104(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	bool OnCheckCanSetNavigationBP();
-	bool OnCheckLoopScrollChangeNavigationBP();
-	void OnNotifyInteractiveBP();
-	void OnNotifyNavigationEnterBP(class ULGUIPointerEventData* eventData);
-	void OnNotifyNavigationSelectBP(class ULGUIPointerEventData* eventData);
-	void OnNotifyNotInteractiveBP();
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UINavigationBehaviour")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UINavigationBehaviour")
-	}
-	static class UUINavigationBehaviour* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUINavigationBehaviour>();
-	}
-};
-DUMPER7_ASSERTS_UUINavigationBehaviour;
+DUMPER7_ASSERTS_UWwiseAudioComponent;
 
 // Class LGUI.LGUISpriteData
 // 0x00B0 (0x00E0 - 0x0030)
@@ -3967,6 +4515,58 @@ public:
 };
 DUMPER7_ASSERTS_ULGUISpriteData;
 
+// Class LGUI.UIVerticalLayout
+// 0x0040 (0x01D0 - 0x0190)
+class UUIVerticalLayout final : public UUILayoutWithAnimation
+{
+public:
+	struct FMargin                                Padding;                                           // 0x0190(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	float                                         Spacing;                                           // 0x01A0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bAutoSpacing;                                      // 0x01A4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	ELGUILayoutAlignmentType                      Align;                                             // 0x01A5(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          ExpendChildrenWidth;                               // 0x01A6(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bControlWidthCalculatedScale;                      // 0x01A7(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bExcludeHeightZeroSpace;                           // 0x01A8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          ExpendChildrenHeight;                              // 0x01A9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bControlHeightCalculatedScale;                     // 0x01AA(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          HeightFitToChildren;                               // 0x01AB(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          WidthFitToChildren;                                // 0x01AC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1AD[0x23];                                     // 0x01AD(0x0023)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetAlign(ELGUILayoutAlignmentType value);
+	void SetExpendChildrenHeight(bool value);
+	void SetExpendChildrenWidth(bool value);
+	void SetHeightFitToChildren(bool value);
+	void SetPadding(const struct FMargin& value);
+	void SetSpacing(float value);
+	void SetWidthFitToChildren(bool value);
+
+	float GetActuralRange() const;
+	ELGUILayoutAlignmentType GetAlign() const;
+	bool GetExpendChildrenHeight() const;
+	bool GetExpendChildrenWidth() const;
+	bool GetHeightFitToChildren() const;
+	struct FMargin GetPadding() const;
+	float GetSpacing() const;
+	bool GetWidthFitToChildren() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIVerticalLayout")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIVerticalLayout")
+	}
+	static class UUIVerticalLayout* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIVerticalLayout>();
+	}
+};
+DUMPER7_ASSERTS_UUIVerticalLayout;
+
 // Class LGUI.LGUISpriteData_BaseImporter
 // 0x0000 (0x0030 - 0x0030)
 class ULGUISpriteData_BaseImporter : public UObject
@@ -3986,32 +4586,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ULGUISpriteData_BaseImporter;
-
-// Class LGUI.UIRaycastRangeComponent
-// 0x0020 (0x0120 - 0x0100)
-class UUIRaycastRangeComponent final : public ULGUIBehaviour
-{
-public:
-	float                                         PointSize;                                         // 0x0100(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         DragDistance;                                      // 0x0104(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<struct FVector2D>                      Points;                                            // 0x0108(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_118[0x8];                                      // 0x0118(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIRaycastRangeComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIRaycastRangeComponent")
-	}
-	static class UUIRaycastRangeComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIRaycastRangeComponent>();
-	}
-};
-DUMPER7_ASSERTS_UUIRaycastRangeComponent;
 
 // Class LGUI.LGUITextureData
 // 0x0098 (0x00C8 - 0x0030)
@@ -4037,6 +4611,52 @@ public:
 };
 DUMPER7_ASSERTS_ULGUITextureData;
 
+// Class LGUI.UIPolygon
+// 0x0030 (0x0800 - 0x07D0)
+class UUIPolygon final : public UUISpriteBase
+{
+public:
+	bool                                          FullCycle;                                         // 0x07D0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7D1[0x3];                                      // 0x07D1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         StartAngle;                                        // 0x07D4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         EndAngle;                                          // 0x07D8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         Sides;                                             // 0x07DC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EUIPolygonUVType                              UVType;                                            // 0x07E0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7E1[0x7];                                      // 0x07E1(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<float>                                 VertexOffsetArray;                                 // 0x07E8(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7F8[0x8];                                      // 0x07F8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	class ULTweener* EndAngleTo(float endValue, float duration, float delay, ELTweenEase easeType);
+	void SetEndAngle(float value);
+	void SetSides(int32 value);
+	void SetStartAngle(float value);
+	void SetUVType(EUIPolygonUVType value);
+	void SetVertexOffsetArray(const TArray<float>& value);
+	class ULTweener* StartAngleTo(float endValue, float duration, float delay, ELTweenEase easeType);
+
+	float GetEndAngle() const;
+	int32 GetSides() const;
+	float GetStartAngle() const;
+	EUIPolygonUVType GetUVType() const;
+	const TArray<float> GetVertexOffsetArray() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIPolygon")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIPolygon")
+	}
+	static class UUIPolygon* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIPolygon>();
+	}
+};
+DUMPER7_ASSERTS_UUIPolygon;
+
 // Class LGUI.LGUIThaiCharConfigAsset
 // 0x0018 (0x0050 - 0x0038)
 class ULGUIThaiCharConfigAsset final : public UDataAsset
@@ -4059,41 +4679,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ULGUIThaiCharConfigAsset;
-
-// Class LGUI.UISelectableGroupComponent
-// 0x0030 (0x0130 - 0x0100)
-class UUISelectableGroupComponent final : public ULGUIBehaviour
-{
-public:
-	uint8                                         Pad_100[0x8];                                      // 0x0100(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          AllowEventBubbleUp;                                // 0x0108(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_109[0x3];                                      // 0x0109(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class UUISelectableComponent>  Selected;                                          // 0x010C(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	TWeakObjectPtr<class UUISelectableComponent>  Highlighted;                                       // 0x0114(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_11C[0x4];                                      // 0x011C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<TWeakObjectPtr<class UUISelectableComponent>> SelectableComponents;                       // 0x0120(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, UObjectWrapper, NativeAccessSpecifierPrivate)
-
-public:
-	void OnComponentHighlighted(class UUISelectableComponent* Component);
-	void OnComponentSelected(class UUISelectableComponent* Component);
-	void OnComponentUnhighlighted();
-	void OnComponentUnselected();
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UISelectableGroupComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UISelectableGroupComponent")
-	}
-	static class UUISelectableGroupComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUISelectableGroupComponent>();
-	}
-};
-DUMPER7_ASSERTS_UUISelectableGroupComponent;
 
 // Class LGUI.LGUIWorldSpaceInteraction
 // 0x0010 (0x0280 - 0x0270)
@@ -4134,6 +4719,44 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIWorldSpaceInteraction;
 
+// Class LGUI.UISafeZone
+// 0x0118 (0x0218 - 0x0100)
+class UUISafeZone final : public ULGUIBehaviour
+{
+public:
+	ESafeZoneAdaptionStrategy                     AdaptionStrategy;                                  // 0x0100(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_101[0x3];                                      // 0x0101(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FMargin                                Padding;                                           // 0x0104(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_114[0x10];                                     // 0x0114(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FMargin                                DefaultMargin;                                     // 0x0124(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	struct FMargin                                PadMargin;                                         // 0x0134(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	struct FMargin                                DefFoldableSquareMargin;                           // 0x0144(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_154[0x4];                                      // 0x0154(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class FString, struct FMargin>           CustomDeviceMargins;                               // 0x0158(0x0050)(Edit, Protected, NativeAccessSpecifierProtected)
+	class ULGUICustomDeviceMarginsParam*          CustomDeviceMarginsParam;                          // 0x01A8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TMap<class FString, struct FFoldableMargins>  FoldableDeviceMargins;                             // 0x01B0(0x0050)(Edit, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_200[0x18];                                     // 0x0200(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void ForceApplyScreenAdaptation();
+	void SetWidthAndHeightRadio(float Left, float Right, float Top, float Bottom);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UISafeZone")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UISafeZone")
+	}
+	static class UUISafeZone* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUISafeZone>();
+	}
+};
+DUMPER7_ASSERTS_UUISafeZone;
+
 // Class LGUI.LGUIWorldSpaceInteractionForNoneUI
 // 0x0010 (0x0270 - 0x0260)
 class ULGUIWorldSpaceInteractionForNoneUI final : public ULGUI_WorldRaycaster
@@ -4173,33 +4796,6 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIWorldSpaceInteractionForNoneUI;
 
-// Class LGUI.UIRoundedLayout
-// 0x0010 (0x0180 - 0x0170)
-class UUIRoundedLayout final : public UUILayoutBase
-{
-public:
-	float                                         Radius;                                            // 0x0170(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         StartAngle;                                        // 0x0174(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         EndAngle;                                          // 0x0178(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bSetChildAngle;                                    // 0x017C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_17D[0x3];                                      // 0x017D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIRoundedLayout")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIRoundedLayout")
-	}
-	static class UUIRoundedLayout* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIRoundedLayout>();
-	}
-};
-DUMPER7_ASSERTS_UUIRoundedLayout;
-
 // Class LGUI.RootTextItemMapDataV2
 // 0x0100 (0x01C0 - 0x00C0)
 class URootTextItemMapDataV2 final : public UActorComponent
@@ -4227,6 +4823,32 @@ public:
 	}
 };
 DUMPER7_ASSERTS_URootTextItemMapDataV2;
+
+// Class LGUI.UIRaycastRangeComponent
+// 0x0020 (0x0120 - 0x0100)
+class UUIRaycastRangeComponent final : public ULGUIBehaviour
+{
+public:
+	float                                         PointSize;                                         // 0x0100(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         DragDistance;                                      // 0x0104(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<struct FVector2D>                      Points;                                            // 0x0108(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_118[0x8];                                      // 0x0118(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIRaycastRangeComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIRaycastRangeComponent")
+	}
+	static class UUIRaycastRangeComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIRaycastRangeComponent>();
+	}
+};
+DUMPER7_ASSERTS_UUIRaycastRangeComponent;
 
 // Class LGUI.SequencePlayContext
 // 0x0178 (0x01A8 - 0x0030)
@@ -4269,49 +4891,6 @@ public:
 };
 DUMPER7_ASSERTS_USequencePlayContext;
 
-// Class LGUI.UIPolygonLine
-// 0x0030 (0x0810 - 0x07E0)
-class UUIPolygonLine final : public UUI2DLineRendererBase
-{
-public:
-	bool                                          FullCycle;                                         // 0x07D8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7D9[0x3];                                      // 0x07D9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         StartAngle;                                        // 0x07DC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         EndAngle;                                          // 0x07E0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         Sides;                                             // 0x07E4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TArray<float>                                 VertexOffsetArray;                                 // 0x07E8(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-	TArray<struct FVector2D>                      CurrentPointArray;                                 // 0x07F8(0x0010)(Edit, ZeroConstructor, Transient, EditConst, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_808[0x8];                                      // 0x0808(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	class ULTweener* EndAngleTo(float endValue, float duration, float delay, ELTweenEase easeType);
-	void SetEndAngle(float value);
-	void SetSides(int32 value);
-	void SetStartAngle(float value);
-	void SetVertexOffsetArray(const TArray<float>& value);
-	class ULTweener* StartAngleTo(float endValue, float duration, float delay, ELTweenEase easeType);
-
-	float GetEndAngle() const;
-	int32 GetSides() const;
-	float GetStartAngle() const;
-	const TArray<float> GetVertexOffsetArray() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIPolygonLine")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIPolygonLine")
-	}
-	static class UUIPolygonLine* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIPolygonLine>();
-	}
-};
-DUMPER7_ASSERTS_UUIPolygonLine;
-
 // Class LGUI.SequencerManager
 // 0x0180 (0x01B0 - 0x0030)
 class USequencerManager final : public UObject
@@ -4351,14 +4930,66 @@ public:
 };
 DUMPER7_ASSERTS_USequencerManager;
 
+// Class LGUI.UITransitionBase
+// 0x01C0 (0x02D0 - 0x0110)
+class UUITransitionBase : public UUISelectableTransitionComponent
+{
+public:
+	struct FWidgetTransitionInfo                  WidgetTransitionInfo;                              // 0x0110(0x0154)(Edit, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_264[0x6C];                                     // 0x0264(0x006C)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UITransitionBase")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UITransitionBase")
+	}
+	static class UUITransitionBase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUITransitionBase>();
+	}
+};
+DUMPER7_ASSERTS_UUITransitionBase;
+
+// Class LGUI.UINiagaraTransition
+// 0x0068 (0x0338 - 0x02D0)
+class UUINiagaraTransition final : public UUITransitionBase
+{
+public:
+	struct FNiagaraTransitionInfo                 TransitionInfo;                                    // 0x02D0(0x0060)(Edit, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	class ULTweener*                              ColorTweener;                                      // 0x0330(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+
+public:
+	void SetAllTransitionNiagaraSystem(class UNiagaraSystem* NewSystem);
+	void SetStateNiagaraSystem(EUISelectableSelectionState State, class UNiagaraSystem* NewSystem);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UINiagaraTransition")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UINiagaraTransition")
+	}
+	static class UUINiagaraTransition* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUINiagaraTransition>();
+	}
+};
+DUMPER7_ASSERTS_UUINiagaraTransition;
+
 // Class LGUI.SpineRenderBufferCache
-// 0x01A0 (0x01D0 - 0x0030)
+// 0x01C0 (0x01F0 - 0x0030)
 class USpineRenderBufferCache final : public UObject
 {
 public:
 	uint8                                         Pad_30[0x8];                                       // 0x0030(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSpineRenderBuffer                     Buffers[0x2];                                      // 0x0038(0x00C8)(Edit, EditConst, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_1C8[0x8];                                      // 0x01C8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FSpineRenderBuffer                     Buffers[0x2];                                      // 0x0038(0x00D8)(Edit, EditConst, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_1E8[0x8];                                      // 0x01E8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
@@ -4376,38 +5007,180 @@ public:
 };
 DUMPER7_ASSERTS_USpineRenderBufferCache;
 
-// Class LGUI.UISpineActor
-// 0x0008 (0x03F8 - 0x03F0)
-class AUISpineActor final : public AUIBaseActor
+// Class LGUI.UIRoundedLayout
+// 0x0010 (0x0180 - 0x0170)
+class UUIRoundedLayout final : public UUILayoutBase
 {
 public:
-	class UUISpineRenderable*                     UISpine;                                           // 0x03F0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	float                                         Radius;                                            // 0x0170(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         StartAngle;                                        // 0x0174(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         EndAngle;                                          // 0x0178(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bSetChildAngle;                                    // 0x017C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_17D[0x3];                                      // 0x017D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UISpineActor")
+		STATIC_CLASS_IMPL("UIRoundedLayout")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UISpineActor")
+		STATIC_NAME_IMPL(L"UIRoundedLayout")
 	}
-	static class AUISpineActor* GetDefaultObj()
+	static class UUIRoundedLayout* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<AUISpineActor>();
+		return GetDefaultObjImpl<UUIRoundedLayout>();
 	}
 };
-DUMPER7_ASSERTS_AUISpineActor;
+DUMPER7_ASSERTS_UUIRoundedLayout;
+
+// Class LGUI.UISelectableGroupComponent
+// 0x0030 (0x0130 - 0x0100)
+class UUISelectableGroupComponent final : public ULGUIBehaviour
+{
+public:
+	uint8                                         Pad_100[0x8];                                      // 0x0100(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          AllowEventBubbleUp;                                // 0x0108(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_109[0x3];                                      // 0x0109(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class UUISelectableComponent>  Selected;                                          // 0x010C(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	TWeakObjectPtr<class UUISelectableComponent>  Highlighted;                                       // 0x0114(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_11C[0x4];                                      // 0x011C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<TWeakObjectPtr<class UUISelectableComponent>> SelectableComponents;                       // 0x0120(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, UObjectWrapper, NativeAccessSpecifierPrivate)
+
+public:
+	void OnComponentHighlighted(class UUISelectableComponent* Component);
+	void OnComponentSelected(class UUISelectableComponent* Component);
+	void OnComponentUnhighlighted();
+	void OnComponentUnselected();
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UISelectableGroupComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UISelectableGroupComponent")
+	}
+	static class UUISelectableGroupComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUISelectableGroupComponent>();
+	}
+};
+DUMPER7_ASSERTS_UUISelectableGroupComponent;
+
+// Class LGUI.UITextureBase
+// 0x0040 (0x0800 - 0x07C0)
+#pragma pack(push, 0x1)
+class SDK_ALIGN(0x10) UUITextureBase : public UUIBatchGeometryRenderable
+{
+public:
+	class UTexture*                               texture;                                           // 0x07B8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7C0[0x38];                                     // 0x07C0(0x0038)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void OnDynamicAtlasSlotBuilt(const struct FDynamicAtlasSlotManagedHandle& ManagedHandle);
+	void SetDynamicAtlasTextureAsync(const class FString& InAtlasTag, const struct FSoftObjectPath& InSoftObjectPath);
+	void SetSizeFromTexture();
+	void SetTexture(class UTexture* newTexture);
+
+	class UTexture* GetTexture() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UITextureBase")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UITextureBase")
+	}
+	static class UUITextureBase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUITextureBase>();
+	}
+};
+#pragma pack(pop)
+DUMPER7_ASSERTS_UUITextureBase;
+
+// Class LGUI.UITexture
+// 0x0110 (0x0910 - 0x0800)
+class UUITexture : public UUITextureBase
+{
+public:
+	EUITextureType                                type;                                              // 0x07F8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7F9[0x7];                                      // 0x07F9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FLGUISpriteInfo                        spriteData;                                        // 0x0800(0x0090)(Edit, Protected, NativeAccessSpecifierProtected)
+	class ULGUITextureData*                       textureData;                                       // 0x0890(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_898[0x8];                                      // 0x0898(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector4                               uvRect;                                            // 0x08A0(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EUISpriteFillMethod                           fillMethod;                                        // 0x08B0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         fillOrigin;                                        // 0x08B1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          fillDirectionFlip;                                 // 0x08B2(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_8B3[0x1];                                      // 0x08B3(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         fillAmount;                                        // 0x08B4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bTileAutoFit;                                      // 0x08B8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_8B9[0x3];                                      // 0x08B9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         clampEdge;                                         // 0x08BC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         tileX;                                             // 0x08C0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         tileY;                                             // 0x08C4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         offsetX;                                           // 0x08C8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         offsetY;                                           // 0x08CC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UMaterialInterface*                     HistoryCustomMaterial;                             // 0x08D0(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bIsFrameAnimate;                                   // 0x08D8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bUseFrameSize;                                     // 0x08D9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_8DA[0x2];                                      // 0x08DA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         FrameAnimateRows;                                  // 0x08DC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         FrameAnimateColumn;                                // 0x08E0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         CurFrame;                                          // 0x08E4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FVector2D                              FrameSize;                                         // 0x08E8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UTexture*                               DynamicAtlasTexture;                               // 0x08F0(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_8F8[0x18];                                     // 0x08F8(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetCurFrame(float newCurFrame);
+	void SetFillAmount(float newValue);
+	void SetFillDirectionFlip(bool newValue);
+	void SetFillMethod(EUISpriteFillMethod newValue);
+	void SetFillOrigin(uint8 newValue);
+	void SetSpriteData(const struct FLGUISpriteInfo& newSpriteData);
+	void SetTextureData(class ULGUITextureData* NewTextureData);
+	void SetTextureType(EUITextureType newType);
+	void SetUVRect(const struct FVector4& newUVRect);
+
+	float GetFillAmount() const;
+	bool GetFillDirectionFlip() const;
+	EUISpriteFillMethod GetFillMethod() const;
+	uint8 GetFillOrigin() const;
+	struct FLGUISpriteInfo GetSpriteData() const;
+	class ULGUITextureData* GetTextureData() const;
+	EUITextureType GetTextureType() const;
+	struct FVector4 GetUVRect() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UITexture")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UITexture")
+	}
+	static class UUITexture* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUITexture>();
+	}
+};
+DUMPER7_ASSERTS_UUITexture;
 
 // Class LGUI.UI2DLineChildrenAsPoints
-// 0x0030 (0x0810 - 0x07E0)
+// 0x0030 (0x0820 - 0x07F0)
 class UUI2DLineChildrenAsPoints final : public UUI2DLineRendererBase
 {
 public:
-	uint8                                         Pad_7D8[0x10];                                     // 0x07D8(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FVector2D>                      CurrentPointArray;                                 // 0x07E8(0x0010)(Edit, ZeroConstructor, Transient, EditConst, Protected, NativeAccessSpecifierProtected)
-	TArray<class UUIItem*>                        SortedItemArray;                                   // 0x07F8(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_808[0x8];                                      // 0x0808(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_7F0[0x10];                                     // 0x07F0(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FVector2D>                      CurrentPointArray;                                 // 0x0800(0x0010)(Edit, ZeroConstructor, Transient, EditConst, Protected, NativeAccessSpecifierProtected)
+	TArray<class UUIItem*>                        SortedItemArray;                                   // 0x0810(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
 
 public:
 	static class UClass* StaticClass()
@@ -4424,6 +5197,44 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UUI2DLineChildrenAsPoints;
+
+// Class LGUI.UIRing
+// 0x0020 (0x0810 - 0x07F0)
+class UUIRing final : public UUI2DLineRendererBase
+{
+public:
+	float                                         StartAngle;                                        // 0x07F0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         EndAngle;                                          // 0x07F4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         Segment;                                           // 0x07F8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7FC[0x4];                                      // 0x07FC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FVector2D>                      CurrentPointArray;                                 // 0x0800(0x0010)(Edit, ZeroConstructor, Transient, EditConst, Protected, NativeAccessSpecifierProtected)
+
+public:
+	class ULTweener* EndAngleTo(float endValue, float duration, float delay, ELTweenEase easeType);
+	void SetEndAngle(float newValue);
+	void SetSegment(int32 newValue);
+	void SetStartAngle(float newValue);
+	class ULTweener* StartAngleTo(float endValue, float duration, float delay, ELTweenEase easeType);
+
+	float GetEndAngle() const;
+	int32 GetSegment() const;
+	float GetStartAngle() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIRing")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIRing")
+	}
+	static class UUIRing* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIRing>();
+	}
+};
+DUMPER7_ASSERTS_UUIRing;
 
 // Class LGUI.UI2DLineChildrenAsPointsActor
 // 0x0008 (0x03F8 - 0x03F0)
@@ -4448,63 +5259,13 @@ public:
 };
 DUMPER7_ASSERTS_AUI2DLineChildrenAsPointsActor;
 
-// Class LGUI.UISizeControlByOther
-// 0x0038 (0x01A8 - 0x0170)
-class UUISizeControlByOther final : public UUILayoutBase
-{
-public:
-	TWeakObjectPtr<class AUIBaseActor>            TargetActor;                                       // 0x0170(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          ControlWidth;                                      // 0x0178(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          ControlHeight;                                     // 0x0179(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          UseWidthRange;                                     // 0x017A(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          UseHeightRange;                                    // 0x017B(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         MaxWidth;                                          // 0x017C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         MinWidth;                                          // 0x0180(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         MaxHeight;                                         // 0x0184(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         MinHeight;                                         // 0x0188(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         AdditionalWidth;                                   // 0x018C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         AdditionalHeight;                                  // 0x0190(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bSizeZeroWhenNotActive;                            // 0x0194(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_195[0x3];                                      // 0x0195(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class UUIItem>                 TargetUIItem;                                      // 0x0198(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TWeakObjectPtr<class UUISizeControlByOtherHelper> HelperComp;                                    // 0x01A0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-
-public:
-	void SetAdditionalHeight(float value);
-	void SetAdditionalWidth(float value);
-	void SetControlHeight(bool value);
-	void SetControlWidth(bool value);
-	void SetTargetActor(class AUIBaseActor* NewTargetActor);
-
-	float GetAdditionalHeight() const;
-	float GetAdditionalWidth() const;
-	bool GetControlHeight() const;
-	bool GetControlWidth() const;
-	class AUIBaseActor* GetTargetActor() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UISizeControlByOther")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UISizeControlByOther")
-	}
-	static class UUISizeControlByOther* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUISizeControlByOther>();
-	}
-};
-DUMPER7_ASSERTS_UUISizeControlByOther;
-
 // Class LGUI.UI2DLineRaw
-// 0x0010 (0x07F0 - 0x07E0)
+// 0x0020 (0x0810 - 0x07F0)
 class UUI2DLineRaw final : public UUI2DLineRendererBase
 {
 public:
-	TArray<struct FVector2D>                      PointArray;                                        // 0x07D8(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7E8[0x8];                                      // 0x07E8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	TArray<struct FVector2D>                      PointArray;                                        // 0x07F0(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_800[0x10];                                     // 0x0800(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void AdjustSize();
@@ -4525,6 +5286,29 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UUI2DLineRaw;
+
+// Class LGUI.UIScrollViewHelper
+// 0x0008 (0x0108 - 0x0100)
+class UUIScrollViewHelper final : public ULGUIBehaviour
+{
+public:
+	TWeakObjectPtr<class UUIScrollViewComponent>  TargetComp;                                        // 0x0100(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIScrollViewHelper")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIScrollViewHelper")
+	}
+	static class UUIScrollViewHelper* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIScrollViewHelper>();
+	}
+};
+DUMPER7_ASSERTS_UUIScrollViewHelper;
 
 // Class LGUI.UI2DLineActor
 // 0x0008 (0x03F8 - 0x03F0)
@@ -4548,37 +5332,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_AUI2DLineActor;
-
-// Class LGUI.UISpriteBase_BP
-// 0x0010 (0x07D0 - 0x07C0)
-class UUISpriteBase_BP final : public UUISpriteBase
-{
-public:
-	class ULGUICreateGeometryHelper*              createGeometryHelper;                              // 0x07C0(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class ULGUIUpdateGeometryHelper*              updateGeometryHelper;                              // 0x07C8(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-
-public:
-	void MarkRebuildGeometry_BP();
-	void MarkVertexChanged_BP();
-	void OnBeforeCreateOrUpdateGeometry_BP();
-	void OnCreateGeometry_BP(class ULGUICreateGeometryHelper* InCreateGeometryHelper, class ULGUISpriteData_BaseObject* InSpriteData);
-	void OnUpdateGeometry_BP(class ULGUIUpdateGeometryHelper* InUpdateGoemetryHelper, class ULGUISpriteData_BaseObject* InSpriteData, bool InVertexPositionChanged, bool InVertexUVChanged, bool InVertexColorChanged);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UISpriteBase_BP")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UISpriteBase_BP")
-	}
-	static class UUISpriteBase_BP* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUISpriteBase_BP>();
-	}
-};
-DUMPER7_ASSERTS_UUISpriteBase_BP;
 
 // Class LGUI.UIAndroidBackComponent
 // 0x0008 (0x0108 - 0x0100)
@@ -4608,18 +5361,45 @@ public:
 };
 DUMPER7_ASSERTS_UUIAndroidBackComponent;
 
+// Class LGUI.UISpineBoneAnchor
+// 0x0070 (0x0170 - 0x0100)
+class UUISpineBoneAnchor final : public ULGUIBehaviour
+{
+public:
+	TArray<struct FAnchorInfo>                    AnchorInfos;                                       // 0x0100(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	class USpineSkeletonComponent*                SpineSkeletonComponent;                            // 0x0110(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class USpineSkeletonDataAsset*                CurrSkeletonData;                                  // 0x0118(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_120[0x50];                                     // 0x0120(0x0050)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UISpineBoneAnchor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UISpineBoneAnchor")
+	}
+	static class UUISpineBoneAnchor* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUISpineBoneAnchor>();
+	}
+};
+DUMPER7_ASSERTS_UUISpineBoneAnchor;
+
 // Class LGUI.UIArtText
-// 0x00A0 (0x0850 - 0x07B0)
+// 0x00B0 (0x0870 - 0x07C0)
 class UUIArtText final : public UUIBatchGeometryRenderable
 {
 public:
-	class ULGUIArtTextData*                       ArtTextData;                                       // 0x07A8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class FString                                 Text;                                              // 0x07B0(0x0010)(Edit, ZeroConstructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         Size;                                              // 0x07C0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FVector2D                              Space;                                             // 0x07C4(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EUIArtTextHorizontalAlign                     HorizontalAlign;                                   // 0x07CC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          IsWidthControlledByText;                           // 0x07CD(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7CE[0x82];                                     // 0x07CE(0x0082)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_7B8[0x8];                                      // 0x07B8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULGUIArtTextData*                       ArtTextData;                                       // 0x07C0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class FString                                 Text;                                              // 0x07C8(0x0010)(Edit, ZeroConstructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         Size;                                              // 0x07D8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FVector2D                              Space;                                             // 0x07DC(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EUIArtTextHorizontalAlign                     HorizontalAlign;                                   // 0x07E4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          IsWidthControlledByText;                           // 0x07E5(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7E6[0x8A];                                     // 0x07E6(0x008A)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	bool CheckTextValid();
@@ -4653,36 +5433,6 @@ public:
 };
 DUMPER7_ASSERTS_UUIArtText;
 
-// Class LGUI.UISpineManager
-// 0x0068 (0x0098 - 0x0030)
-class UUISpineManager final : public UObject
-{
-public:
-	TArray<class USpineSkeletonAnimationComponent*> SpineSkeletonAnimationComponents;                // 0x0030(0x0010)(ExportObject, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	TMap<class USpineSkeletonAnimationComponent*, float> SpinePlayRates;                             // 0x0040(0x0050)(ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_90[0x8];                                       // 0x0090(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetGlobalPlayRate(float NewPlayRate);
-
-	float GetGlobalPlayRate(float NewPlayRate) const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UISpineManager")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UISpineManager")
-	}
-	static class UUISpineManager* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUISpineManager>();
-	}
-};
-DUMPER7_ASSERTS_UUISpineManager;
-
 // Class LGUI.UIArtTextActor
 // 0x0008 (0x03F8 - 0x03F0)
 class AUIArtTextActor final : public AUIBaseActor
@@ -4706,6 +5456,29 @@ public:
 };
 DUMPER7_ASSERTS_AUIArtTextActor;
 
+// Class LGUI.UISizeControlByAspectRatioHelper
+// 0x0008 (0x0108 - 0x0100)
+class UUISizeControlByAspectRatioHelper final : public ULGUIBehaviour
+{
+public:
+	TWeakObjectPtr<class UUISizeControlByAspectRatio> TargetComp;                                    // 0x0100(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UISizeControlByAspectRatioHelper")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UISizeControlByAspectRatioHelper")
+	}
+	static class UUISizeControlByAspectRatioHelper* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUISizeControlByAspectRatioHelper>();
+	}
+};
+DUMPER7_ASSERTS_UUISizeControlByAspectRatioHelper;
+
 // Class LGUI.UIAudioDataAsset
 // 0x0050 (0x0088 - 0x0038)
 class UUIAudioDataAsset final : public UDataAsset
@@ -4728,45 +5501,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UUIAudioDataAsset;
-
-// Class LGUI.UISizeControlByAspectRatio
-// 0x0028 (0x0198 - 0x0170)
-class UUISizeControlByAspectRatio final : public UUILayoutBase
-{
-public:
-	EUISizeControlByAspectRatioMode               ControlMode;                                       // 0x0170(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_171[0x3];                                      // 0x0171(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         AspectRatio;                                       // 0x0174(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_178[0xC];                                      // 0x0178(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class UUISizeControlByAspectRatioHelper> HelperComp;                              // 0x0184(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FVector2D                              Pivot;                                             // 0x018C(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bChangeChildrenOffset;                             // 0x0194(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bChangeChildrenSize;                               // 0x0195(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bChangeChildrenAlign;                              // 0x0196(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_197[0x1];                                      // 0x0197(0x0001)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetAspectRatio(float value);
-	void SetControlMode(EUISizeControlByAspectRatioMode value);
-
-	float GetAspectRatio() const;
-	EUISizeControlByAspectRatioMode GetControlMode() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UISizeControlByAspectRatio")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UISizeControlByAspectRatio")
-	}
-	static class UUISizeControlByAspectRatio* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUISizeControlByAspectRatio>();
-	}
-};
-DUMPER7_ASSERTS_UUISizeControlByAspectRatio;
 
 // Class LGUI.UIAudioManager
 // 0x0060 (0x0160 - 0x0100)
@@ -4803,14 +5537,40 @@ public:
 };
 DUMPER7_ASSERTS_UUIAudioManager;
 
+// Class LGUI.UISceneViewActor
+// 0x0008 (0x03F8 - 0x03F0)
+class AUISceneViewActor final : public AUIBaseActor
+{
+public:
+	class UUISceneView*                           UISceneView;                                       // 0x03F0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	class UUISceneView* GetUISceneView();
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UISceneViewActor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UISceneViewActor")
+	}
+	static class AUISceneViewActor* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<AUISceneViewActor>();
+	}
+};
+DUMPER7_ASSERTS_AUISceneViewActor;
+
 // Class LGUI.UIPostProcessRenderable
-// 0x0050 (0x0600 - 0x05B0)
+// 0x0050 (0x0610 - 0x05C0)
 class UUIPostProcessRenderable : public UUIBaseRenderable
 {
 public:
-	uint8                                         Pad_5B0[0x10];                                     // 0x05B0(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	class UTexture2D*                             maskTexture;                                       // 0x05C0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_5C8[0x38];                                     // 0x05C8(0x0038)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_5C0[0x10];                                     // 0x05C0(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	class UTexture2D*                             maskTexture;                                       // 0x05D0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_5D8[0x38];                                     // 0x05D8(0x0038)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void SetMaskTexture(class UTexture2D* newValue);
@@ -4833,41 +5593,18 @@ public:
 };
 DUMPER7_ASSERTS_UUIPostProcessRenderable;
 
-// Class LGUI.UISpriteActor
-// 0x0008 (0x03F8 - 0x03F0)
-class AUISpriteActor final : public AUIBaseActor
-{
-public:
-	class UUISprite*                              UISprite;                                          // 0x03F0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UISpriteActor")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UISpriteActor")
-	}
-	static class AUISpriteActor* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<AUISpriteActor>();
-	}
-};
-DUMPER7_ASSERTS_AUISpriteActor;
-
 // Class LGUI.UIBackgroundBlur
-// 0x0020 (0x0620 - 0x0600)
+// 0x0020 (0x0630 - 0x0610)
 class UUIBackgroundBlur final : public UUIPostProcessRenderable
 {
 public:
-	float                                         blurStrength;                                      // 0x0600(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          applyAlphaToBlur;                                  // 0x0604(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_605[0x3];                                      // 0x0605(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         maxDownSampleLevel;                                // 0x0608(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_60C[0x4];                                      // 0x060C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UTexture2D*                             strengthTexture;                                   // 0x0610(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_618[0x8];                                      // 0x0618(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	float                                         blurStrength;                                      // 0x0610(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          applyAlphaToBlur;                                  // 0x0614(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_615[0x3];                                      // 0x0615(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         maxDownSampleLevel;                                // 0x0618(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_61C[0x4];                                      // 0x061C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UTexture2D*                             strengthTexture;                                   // 0x0620(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_628[0x8];                                      // 0x0628(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void SetApplyAlphaToBlur(bool newValue);
@@ -4896,6 +5633,41 @@ public:
 };
 DUMPER7_ASSERTS_UUIBackgroundBlur;
 
+// Class LGUI.UIEffectTextAnimation_RandomSelector
+// 0x0010 (0x0048 - 0x0038)
+class UUIEffectTextAnimation_RandomSelector final : public UUIEffectTextAnimation_Selector
+{
+public:
+	int32                                         seed;                                              // 0x0038(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	float                                         start;                                             // 0x003C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	float                                         end;                                               // 0x0040(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetEnd(float value);
+	void SetSeed(int32 value);
+	void SetStart(float value);
+
+	float GetEnd() const;
+	int32 GetSeed() const;
+	float GetStart() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIEffectTextAnimation_RandomSelector")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIEffectTextAnimation_RandomSelector")
+	}
+	static class UUIEffectTextAnimation_RandomSelector* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIEffectTextAnimation_RandomSelector>();
+	}
+};
+DUMPER7_ASSERTS_UUIEffectTextAnimation_RandomSelector;
+
 // Class LGUI.UIPostProcessBaseActor
 // 0x0000 (0x03F0 - 0x03F0)
 class AUIPostProcessBaseActor : public AUIBaseActor
@@ -4915,31 +5687,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_AUIPostProcessBaseActor;
-
-// Class LGUI.UITextClickComponent
-// 0x0060 (0x0160 - 0x0100)
-class UUITextClickComponent final : public ULGUIBehaviour
-{
-public:
-	uint8                                         Pad_100[0x10];                                     // 0x0100(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class UUIText>                 Target;                                            // 0x0110(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_118[0x48];                                     // 0x0118(0x0048)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UITextClickComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UITextClickComponent")
-	}
-	static class UUITextClickComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUITextClickComponent>();
-	}
-};
-DUMPER7_ASSERTS_UUITextClickComponent;
 
 // Class LGUI.UIBackgroundBlurActor
 // 0x0008 (0x03F8 - 0x03F0)
@@ -4964,14 +5711,43 @@ public:
 };
 DUMPER7_ASSERTS_AUIBackgroundBlurActor;
 
+// Class LGUI.UISpriteSequencePlayer
+// 0x0018 (0x00F8 - 0x00E0)
+class UUISpriteSequencePlayer final : public ULGUIImageSequencePlayer
+{
+public:
+	TWeakObjectPtr<class UUISpriteBase>           sprite;                                            // 0x00E0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TArray<class ULGUISpriteData_BaseObject*>     spriteSequence;                                    // 0x00E8(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+
+public:
+	void SetSpriteSequence(const TArray<class ULGUISpriteData_BaseObject*>& value);
+
+	const TArray<class ULGUISpriteData_BaseObject*> GetSpriteSequence() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UISpriteSequencePlayer")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UISpriteSequencePlayer")
+	}
+	static class UUISpriteSequencePlayer* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUISpriteSequencePlayer>();
+	}
+};
+DUMPER7_ASSERTS_UUISpriteSequencePlayer;
+
 // Class LGUI.UIBackgroundPixelate
-// 0x0010 (0x0610 - 0x0600)
+// 0x0010 (0x0620 - 0x0610)
 class UUIBackgroundPixelate final : public UUIPostProcessRenderable
 {
 public:
-	float                                         pixelateStrength;                                  // 0x0600(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          applyAlphaToStrength;                              // 0x0604(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_605[0xB];                                      // 0x0605(0x000B)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	float                                         pixelateStrength;                                  // 0x0610(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          applyAlphaToStrength;                              // 0x0614(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_615[0xB];                                      // 0x0615(0x000B)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void SetApplyAlphaToStrength(bool newValue);
@@ -4996,39 +5772,6 @@ public:
 };
 DUMPER7_ASSERTS_UUIBackgroundPixelate;
 
-// Class LGUI.UISpriteSheetTexturePlayer
-// 0x0018 (0x00F8 - 0x00E0)
-class UUISpriteSheetTexturePlayer final : public ULGUIImageSequencePlayer
-{
-public:
-	TWeakObjectPtr<class UUITexture>              texture;                                           // 0x00E0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         widthCount;                                        // 0x00E8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         heightCount;                                       // 0x00EC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_F0[0x8];                                       // 0x00F0(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetHeightCount(int32 value);
-	void SetWidthCount(int32 value);
-
-	int32 GetHeightCount() const;
-	int32 GetWidthCount() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UISpriteSheetTexturePlayer")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UISpriteSheetTexturePlayer")
-	}
-	static class UUISpriteSheetTexturePlayer* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUISpriteSheetTexturePlayer>();
-	}
-};
-DUMPER7_ASSERTS_UUISpriteSheetTexturePlayer;
-
 // Class LGUI.UIBackgroundPixelateActor
 // 0x0008 (0x03F8 - 0x03F0)
 class AUIBackgroundPixelateActor final : public AUIPostProcessBaseActor
@@ -5052,40 +5795,6 @@ public:
 };
 DUMPER7_ASSERTS_AUIBackgroundPixelateActor;
 
-// Class LGUI.UISpineSequenceController
-// 0x0030 (0x00F0 - 0x00C0)
-class UUISpineSequenceController final : public UActorComponent
-{
-public:
-	class FString                                 AnimName;                                          // 0x00C0(0x0010)(Edit, ZeroConstructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         AnimTime;                                          // 0x00D0(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         AnimDuration;                                      // 0x00D4(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         MixDuration;                                       // 0x00D8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         MixTime;                                           // 0x00DC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class USpineSkeletonAnimationComponent*       SpineSkeletonAnimationComponent;                   // 0x00E0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class UTrackEntry*                            TrackEntry;                                        // 0x00E8(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-
-public:
-	void SetAnimTime(float NewAnimTime);
-
-	float GetAnimTime() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UISpineSequenceController")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UISpineSequenceController")
-	}
-	static class UUISpineSequenceController* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUISpineSequenceController>();
-	}
-};
-DUMPER7_ASSERTS_UUISpineSequenceController;
-
 // Class LGUI.LevelSequencePrefabData
 // 0x0010 (0x0040 - 0x0030)
 class ULevelSequencePrefabData final : public UAssetUserData
@@ -5108,6 +5817,68 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ULevelSequencePrefabData;
+
+// Class LGUI.UIEffectTextAnimation_PropertyWithWave
+// 0x0028 (0x0058 - 0x0030)
+class UUIEffectTextAnimation_PropertyWithWave : public UUIEffectTextAnimation_Property
+{
+public:
+	float                                         frequency;                                         // 0x0030(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         speed;                                             // 0x0034(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          flipDirection;                                     // 0x0038(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_39[0xF];                                       // 0x0039(0x000F)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUIItem*                                targetObject;                                      // 0x0048(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_50[0x8];                                       // 0x0050(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetFrequency(float value);
+
+	float GetFrequency() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIEffectTextAnimation_PropertyWithWave")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIEffectTextAnimation_PropertyWithWave")
+	}
+	static class UUIEffectTextAnimation_PropertyWithWave* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIEffectTextAnimation_PropertyWithWave>();
+	}
+};
+DUMPER7_ASSERTS_UUIEffectTextAnimation_PropertyWithWave;
+
+// Class LGUI.UIEffectTextAnimation_ScaleWaveProperty
+// 0x0010 (0x0068 - 0x0058)
+class UUIEffectTextAnimation_ScaleWaveProperty final : public UUIEffectTextAnimation_PropertyWithWave
+{
+public:
+	struct FVector                                scale;                                             // 0x0058(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_64[0x4];                                       // 0x0064(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetScale(const struct FVector& value);
+
+	struct FVector GetScale() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIEffectTextAnimation_ScaleWaveProperty")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIEffectTextAnimation_ScaleWaveProperty")
+	}
+	static class UUIEffectTextAnimation_ScaleWaveProperty* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIEffectTextAnimation_ScaleWaveProperty>();
+	}
+};
+DUMPER7_ASSERTS_UUIEffectTextAnimation_ScaleWaveProperty;
 
 // Class LGUI.LGUICreateGeometryHelper
 // 0x0010 (0x0040 - 0x0030)
@@ -5138,72 +5909,6 @@ public:
 };
 DUMPER7_ASSERTS_ULGUICreateGeometryHelper;
 
-// Class LGUI.UIDirectMeshRenderable
-// 0x0020 (0x05D0 - 0x05B0)
-#pragma pack(push, 0x1)
-class SDK_ALIGN(0x10) UUIDirectMeshRenderable : public UUIBaseRenderable
-{
-public:
-	class UUIDrawcallMesh*                        UIMesh;                                            // 0x05B0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UMaterialInterface*                     CustomUIMaterial;                                  // 0x05B8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UMaterialInstanceDynamic*               MaterialInstanceDynamic;                           // 0x05C0(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-
-public:
-	void SetCustormUIMaterial(class UMaterialInterface* NewMaterial);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIDirectMeshRenderable")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIDirectMeshRenderable")
-	}
-	static class UUIDirectMeshRenderable* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIDirectMeshRenderable>();
-	}
-};
-#pragma pack(pop)
-DUMPER7_ASSERTS_UUIDirectMeshRenderable;
-
-// Class LGUI.UIStaticMesh
-// 0x0070 (0x0640 - 0x05D0)
-class UUIStaticMesh final : public UUIDirectMeshRenderable
-{
-public:
-	class UStaticMesh*                            mesh;                                              // 0x05C8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EUIStaticMeshVertexColorType                  vertexColorType;                                   // 0x05D0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bAutoAdjustSize;                                   // 0x05D1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_5D2[0x6];                                      // 0x05D2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FCacheMeshData                         CachedMeshData;                                    // 0x05D8(0x0058)(Edit, Protected, NativeAccessSpecifierProtected)
-	bool                                          bCacheMeshData;                                    // 0x0630(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_631[0xF];                                      // 0x0631(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetMesh(class UStaticMesh* value);
-	void SetVertexColorType(EUIStaticMeshVertexColorType value);
-
-	class UStaticMesh* GetMesh() const;
-	EUIStaticMeshVertexColorType GetVertexColorType() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIStaticMesh")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIStaticMesh")
-	}
-	static class UUIStaticMesh* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIStaticMesh>();
-	}
-};
-DUMPER7_ASSERTS_UUIStaticMesh;
-
 // Class LGUI.LGUIUpdateGeometryHelper
 // 0x0020 (0x0050 - 0x0030)
 class ULGUIUpdateGeometryHelper final : public UObject
@@ -5232,14 +5937,47 @@ public:
 };
 DUMPER7_ASSERTS_ULGUIUpdateGeometryHelper;
 
+// Class LGUI.UISpriteAnimator
+// 0x0028 (0x0128 - 0x0100)
+class UUISpriteAnimator final : public ULGUIBehaviour
+{
+public:
+	float                                         CurFrame;                                          // 0x0100(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_104[0x4];                                      // 0x0104(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUISprite*                              Sprite;                                            // 0x0108(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class ULGUISpriteData_BaseImporter*           CurSpriteImporter;                                 // 0x0110(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TArray<class ULGUISpriteData_BaseObject*>     SpriteDatas;                                       // 0x0118(0x0010)(Edit, ZeroConstructor, EditConst, Protected, NativeAccessSpecifierProtected)
+
+public:
+	void ResetSpriteImporter();
+	void SetCurFrame(float newCurFrame);
+
+	float GetCurFrame() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UISpriteAnimator")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UISpriteAnimator")
+	}
+	static class UUISpriteAnimator* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUISpriteAnimator>();
+	}
+};
+DUMPER7_ASSERTS_UUISpriteAnimator;
+
 // Class LGUI.UIBatchGeometryRenderable_BP
-// 0x0010 (0x07C0 - 0x07B0)
+// 0x0010 (0x07D0 - 0x07C0)
 class UUIBatchGeometryRenderable_BP final : public UUIBatchGeometryRenderable
 {
 public:
-	class ULGUICreateGeometryHelper*              createGeometryHelper;                              // 0x07A8(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class ULGUIUpdateGeometryHelper*              updateGeometryHelper;                              // 0x07B0(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_7B8[0x8];                                      // 0x07B8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class ULGUICreateGeometryHelper*              createGeometryHelper;                              // 0x07B8(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class ULGUIUpdateGeometryHelper*              updateGeometryHelper;                              // 0x07C0(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_7C8[0x8];                                      // 0x07C8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void MarkRebuildGeometry_BP();
@@ -5263,29 +6001,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UUIBatchGeometryRenderable_BP;
-
-// Class LGUI.UITextureActor
-// 0x0008 (0x03F8 - 0x03F0)
-class AUITextureActor final : public AUIBaseActor
-{
-public:
-	class UUITexture*                             UITexture;                                         // 0x03F0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UITextureActor")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UITextureActor")
-	}
-	static class AUITextureActor* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<AUITextureActor>();
-	}
-};
-DUMPER7_ASSERTS_AUITextureActor;
 
 // Class LGUI.UISelectableComponent
 // 0x02F8 (0x03F8 - 0x0100)
@@ -5434,6 +6149,29 @@ public:
 };
 DUMPER7_ASSERTS_UUISelectableComponent;
 
+// Class LGUI.UITextActor
+// 0x0008 (0x03F8 - 0x03F0)
+class AUITextActor final : public AUIBaseActor
+{
+public:
+	class UUIText*                                UIText;                                            // 0x03F0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UITextActor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UITextActor")
+	}
+	static class AUITextActor* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<AUITextActor>();
+	}
+};
+DUMPER7_ASSERTS_AUITextActor;
+
 // Class LGUI.UIButtonComponent
 // 0x0288 (0x0680 - 0x03F8)
 class UUIButtonComponent : public UUISelectableComponent
@@ -5480,29 +6218,6 @@ public:
 };
 DUMPER7_ASSERTS_UUIButtonComponent;
 
-// Class LGUI.UITextActor
-// 0x0008 (0x03F8 - 0x03F0)
-class AUITextActor final : public AUIBaseActor
-{
-public:
-	class UUIText*                                UIText;                                            // 0x03F0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UITextActor")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UITextActor")
-	}
-	static class AUITextActor* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<AUITextActor>();
-	}
-};
-DUMPER7_ASSERTS_AUITextActor;
-
 // Class LGUI.UIComboBox
 // 0x0038 (0x00F8 - 0x00C0)
 class UUIComboBox final : public UActorComponent
@@ -5532,57 +6247,6 @@ public:
 };
 DUMPER7_ASSERTS_UUIComboBox;
 
-// Class LGUI.UIComboBoxItem
-// 0x0030 (0x00F0 - 0x00C0)
-class UUIComboBoxItem final : public UActorComponent
-{
-public:
-	uint8                                         Pad_C0[0x8];                                       // 0x00C0(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	class AUIBaseActor*                           _RootUIActor;                                      // 0x00C8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class AUITextActor*                           _TextActor;                                        // 0x00D0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class AUISpriteActor*                         _HighlightSpriteActor;                             // 0x00D8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_E0[0x10];                                      // 0x00E0(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIComboBoxItem")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIComboBoxItem")
-	}
-	static class UUIComboBoxItem* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIComboBoxItem>();
-	}
-};
-DUMPER7_ASSERTS_UUIComboBoxItem;
-
-// Class LGUI.UITransitionBase
-// 0x01C0 (0x02D0 - 0x0110)
-class UUITransitionBase : public UUISelectableTransitionComponent
-{
-public:
-	struct FWidgetTransitionInfo                  WidgetTransitionInfo;                              // 0x0110(0x0154)(Edit, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_264[0x6C];                                     // 0x0264(0x006C)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UITransitionBase")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UITransitionBase")
-	}
-	static class UUITransitionBase* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUITransitionBase>();
-	}
-};
-DUMPER7_ASSERTS_UUITransitionBase;
-
 // Class LGUI.UISpriteTransition
 // 0x0088 (0x0358 - 0x02D0)
 class UUISpriteTransition final : public UUITransitionBase
@@ -5611,39 +6275,98 @@ public:
 };
 DUMPER7_ASSERTS_UUISpriteTransition;
 
-// Class LGUI.UIContainerActor
-// 0x0008 (0x03F8 - 0x03F0)
-class AUIContainerActor : public AUIBaseActor
+// Class LGUI.UIComboBoxItem
+// 0x0030 (0x00F0 - 0x00C0)
+class UUIComboBoxItem final : public UActorComponent
 {
 public:
-	class UUIItem*                                UIItem;                                            // 0x03F0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_C0[0x8];                                       // 0x00C0(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	class AUIBaseActor*                           _RootUIActor;                                      // 0x00C8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class AUITextActor*                           _TextActor;                                        // 0x00D0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class AUISpriteActor*                         _HighlightSpriteActor;                             // 0x00D8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_E0[0x10];                                      // 0x00E0(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UIContainerActor")
+		STATIC_CLASS_IMPL("UIComboBoxItem")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UIContainerActor")
+		STATIC_NAME_IMPL(L"UIComboBoxItem")
 	}
-	static class AUIContainerActor* GetDefaultObj()
+	static class UUIComboBoxItem* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<AUIContainerActor>();
+		return GetDefaultObjImpl<UUIComboBoxItem>();
 	}
 };
-DUMPER7_ASSERTS_AUIContainerActor;
+DUMPER7_ASSERTS_UUIComboBoxItem;
+
+// Class LGUI.UISprite
+// 0x0040 (0x0810 - 0x07D0)
+class UUISprite final : public UUISpriteBase
+{
+public:
+	EUISpriteType                                 type;                                              // 0x07D0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EUISpriteFillMethod                           fillMethod;                                        // 0x07D1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         fillOrigin;                                        // 0x07D2(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          fillDirectionFlip;                                 // 0x07D3(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         fillAmount;                                        // 0x07D4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          hideHeadAtEndAndTailAtStart;                       // 0x07D8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bTileAutoFit;                                      // 0x07D9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7DA[0x2];                                      // 0x07DA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         clampEdge;                                         // 0x07DC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         tileX;                                             // 0x07E0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         tileY;                                             // 0x07E4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         offsetX;                                           // 0x07E8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         offsetY;                                           // 0x07EC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UMaterialInterface*                     HistoryCustomMaterial;                             // 0x07F0(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7F8[0x18];                                     // 0x07F8(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetFillAmount(float newValue);
+	void SetFillDirectionFlip(bool newValue);
+	void SetFillMethod(EUISpriteFillMethod newValue);
+	void SetFillOrigin(uint8 newValue);
+	void SetOffsetX(float newValue);
+	void SetOffsetY(float newValue);
+	void SetSpriteType(EUISpriteType newType);
+	void SetTileOffset(const struct FLinearColor& In);
+	void SetTileX(float newValue);
+	void SetTileY(float newValue);
+
+	float GetFillAmount() const;
+	bool GetFillDirectionFlip() const;
+	EUISpriteFillMethod GetFillMethod() const;
+	uint8 GetFillOrigin() const;
+	EUISpriteType GetSpriteType() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UISprite")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UISprite")
+	}
+	static class UUISprite* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUISprite>();
+	}
+};
+DUMPER7_ASSERTS_UUISprite;
 
 // Class LGUI.UICustomDepthStencilMask
-// 0x0010 (0x0610 - 0x0600)
+// 0x0010 (0x0620 - 0x0610)
 class UUICustomDepthStencilMask final : public UUIPostProcessRenderable
 {
 public:
-	bool                                          bFullScreen;                                       // 0x0600(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EUICustomDepthStencilMaskSourceType           sourceType;                                        // 0x0601(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_602[0x2];                                      // 0x0602(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         stencilValue;                                      // 0x0604(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_608[0x8];                                      // 0x0608(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          bFullScreen;                                       // 0x0610(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EUICustomDepthStencilMaskSourceType           sourceType;                                        // 0x0611(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_612[0x2];                                      // 0x0612(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         stencilValue;                                      // 0x0614(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_618[0x8];                                      // 0x0618(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void SetFullScreen(bool value);
@@ -5693,17 +6416,42 @@ public:
 };
 DUMPER7_ASSERTS_AUICustomDepthStencilMaskActor;
 
+// Class LGUI.UITextClickComponent
+// 0x0060 (0x0160 - 0x0100)
+class UUITextClickComponent final : public ULGUIBehaviour
+{
+public:
+	uint8                                         Pad_100[0x10];                                     // 0x0100(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class UUIText>                 Target;                                            // 0x0110(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_118[0x48];                                     // 0x0118(0x0048)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UITextClickComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UITextClickComponent")
+	}
+	static class UUITextClickComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUITextClickComponent>();
+	}
+};
+DUMPER7_ASSERTS_UUITextClickComponent;
+
 // Class LGUI.UICustomMesh
-// 0x0050 (0x0800 - 0x07B0)
+// 0x0050 (0x0810 - 0x07C0)
 class UUICustomMesh final : public UUIBatchGeometryRenderable
 {
 public:
-	TArray<struct FVector>                        originPositions;                                   // 0x07A8(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FVector>                        originNormals;                                     // 0x07B8(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FVector>                        originTangents;                                    // 0x07C8(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FVector2D>                      originUV0;                                         // 0x07D8(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<uint16>                                originTriangles;                                   // 0x07E8(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
-	class UStaticMesh*                            StaticMesh;                                        // 0x07F8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<struct FVector>                        originPositions;                                   // 0x07B8(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FVector>                        originNormals;                                     // 0x07C8(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FVector>                        originTangents;                                    // 0x07D8(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FVector2D>                      originUV0;                                         // 0x07E8(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<uint16>                                originTriangles;                                   // 0x07F8(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	class UStaticMesh*                            StaticMesh;                                        // 0x0808(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	void CleanData();
@@ -5725,58 +6473,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UUICustomMesh;
-
-// Class LGUI.UIVerticalLayout
-// 0x0040 (0x01D0 - 0x0190)
-class UUIVerticalLayout final : public UUILayoutWithAnimation
-{
-public:
-	struct FMargin                                Padding;                                           // 0x0190(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	float                                         Spacing;                                           // 0x01A0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bAutoSpacing;                                      // 0x01A4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	ELGUILayoutAlignmentType                      Align;                                             // 0x01A5(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          ExpendChildrenWidth;                               // 0x01A6(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bControlWidthCalculatedScale;                      // 0x01A7(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bExcludeHeightZeroSpace;                           // 0x01A8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          ExpendChildrenHeight;                              // 0x01A9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bControlHeightCalculatedScale;                     // 0x01AA(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          HeightFitToChildren;                               // 0x01AB(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          WidthFitToChildren;                                // 0x01AC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_1AD[0x23];                                     // 0x01AD(0x0023)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetAlign(ELGUILayoutAlignmentType value);
-	void SetExpendChildrenHeight(bool value);
-	void SetExpendChildrenWidth(bool value);
-	void SetHeightFitToChildren(bool value);
-	void SetPadding(const struct FMargin& value);
-	void SetSpacing(float value);
-	void SetWidthFitToChildren(bool value);
-
-	float GetActuralRange() const;
-	ELGUILayoutAlignmentType GetAlign() const;
-	bool GetExpendChildrenHeight() const;
-	bool GetExpendChildrenWidth() const;
-	bool GetHeightFitToChildren() const;
-	struct FMargin GetPadding() const;
-	float GetSpacing() const;
-	bool GetWidthFitToChildren() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIVerticalLayout")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIVerticalLayout")
-	}
-	static class UUIVerticalLayout* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIVerticalLayout>();
-	}
-};
-DUMPER7_ASSERTS_UUIVerticalLayout;
 
 // Class LGUI.UICustomMeshActor
 // 0x0008 (0x03F8 - 0x03F0)
@@ -5801,57 +6497,62 @@ public:
 };
 DUMPER7_ASSERTS_AUICustomMeshActor;
 
-// Class LGUI.UIHorizontalLayout
-// 0x0040 (0x01D0 - 0x0190)
-class UUIHorizontalLayout final : public UUILayoutWithAnimation
+// Class LGUI.UITextureTransitionComponent
+// 0x00A0 (0x0370 - 0x02D0)
+class UUITextureTransitionComponent final : public UUITransitionBase
 {
 public:
-	struct FMargin                                Padding;                                           // 0x0190(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	float                                         Spacing;                                           // 0x01A0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bAutoSpacing;                                      // 0x01A4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	ELGUILayoutAlignmentType                      Align;                                             // 0x01A5(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          ExpendChildrenWidth;                               // 0x01A6(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bControlWidthCalculatedScale;                      // 0x01A7(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bExcludeWidthZeroSpace;                            // 0x01A8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          ExpendChildrenHeight;                              // 0x01A9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bControlHeightCalculatedScale;                     // 0x01AA(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          WidthFitToChildren;                                // 0x01AB(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          HeightFitToChildren;                               // 0x01AC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_1AD[0x23];                                     // 0x01AD(0x0023)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FTextureTransitionInfo                 Transition;                                        // 0x02D0(0x00A0)(Edit, NoDestructor, Protected, NativeAccessSpecifierProtected)
 
 public:
-	void SetAlign(ELGUILayoutAlignmentType value);
-	void SetExpendChildrenHeight(bool value);
-	void SetExpendChildrenWidth(bool value);
-	void SetHeightFitToChildren(bool value);
-	void SetPadding(const struct FMargin& value);
-	void SetSpacing(float value);
-	void SetWidthFitToChildren(bool value);
-
-	float GetActuralRange() const;
-	ELGUILayoutAlignmentType GetAlign() const;
-	bool GetExpendChildrenHeight() const;
-	bool GetExpendChildrenWidth() const;
-	bool GetHeightFitToChildren() const;
-	struct FMargin GetPadding() const;
-	float GetSpacing() const;
-	bool GetWidthFitToChildren() const;
+	void SetAllStateTexture(class UTexture* NewTexture);
+	void SetStateTexture(EUISelectableSelectionState State, class UTexture* NewTexture);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UIHorizontalLayout")
+		STATIC_CLASS_IMPL("UITextureTransitionComponent")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UIHorizontalLayout")
+		STATIC_NAME_IMPL(L"UITextureTransitionComponent")
 	}
-	static class UUIHorizontalLayout* GetDefaultObj()
+	static class UUITextureTransitionComponent* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUIHorizontalLayout>();
+		return GetDefaultObjImpl<UUITextureTransitionComponent>();
 	}
 };
-DUMPER7_ASSERTS_UUIHorizontalLayout;
+DUMPER7_ASSERTS_UUITextureTransitionComponent;
+
+// Class LGUI.UIDirectMeshRenderable
+// 0x0020 (0x05E0 - 0x05C0)
+#pragma pack(push, 0x1)
+class SDK_ALIGN(0x10) UUIDirectMeshRenderable : public UUIBaseRenderable
+{
+public:
+	class UUIDrawcallMesh*                        UIMesh;                                            // 0x05C0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UMaterialInterface*                     CustomUIMaterial;                                  // 0x05C8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UMaterialInstanceDynamic*               MaterialInstanceDynamic;                           // 0x05D0(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+
+public:
+	void SetCustormUIMaterial(class UMaterialInterface* NewMaterial);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIDirectMeshRenderable")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIDirectMeshRenderable")
+	}
+	static class UUIDirectMeshRenderable* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIDirectMeshRenderable>();
+	}
+};
+#pragma pack(pop)
+DUMPER7_ASSERTS_UUIDirectMeshRenderable;
 
 // Class LGUI.UIDraggableComponent
 // 0x01F0 (0x02F0 - 0x0100)
@@ -5893,12 +6594,91 @@ public:
 };
 DUMPER7_ASSERTS_UUIDraggableComponent;
 
+// Class LGUI.UITextInputComponent
+// 0x0308 (0x0700 - 0x03F8)
+class UUITextInputComponent final : public UUISelectableComponent
+{
+public:
+	uint8                                         Pad_3F8[0x10];                                     // 0x03F8(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class AUITextActor>            TextActor;                                         // 0x0408(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class FString                                 Text;                                              // 0x0410(0x0010)(Edit, ZeroConstructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	ELGUITextInputType                            InputType;                                         // 0x0420(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_421[0x7];                                      // 0x0421(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 PasswordChar;                                      // 0x0428(0x0010)(Edit, ZeroConstructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bAllowMultiLine;                                   // 0x0438(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_439[0x3];                                      // 0x0439(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class AUIBaseActor>            PlaceHolderActor;                                  // 0x043C(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         CaretBlinkRate;                                    // 0x0444(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         CaretWidth;                                        // 0x0448(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          IsShowDefaultText;                                 // 0x044C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_44D[0x3];                                      // 0x044D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FColor                                 CaretColor;                                        // 0x0450(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FColor                                 SelectionColor;                                    // 0x0454(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FVirtualKeyboardOptions                VirtualKeyboradOptions;                            // 0x0458(0x0001)(Edit, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_459[0x7];                                      // 0x0459(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FKey>                           IgnoreKeys;                                        // 0x0460(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_470[0x18];                                     // 0x0470(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FLGUIDrawableEvent                     OnValueChange;                                     // 0x0488(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_4A0[0x18];                                     // 0x04A0(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FLGUIDrawableEvent                     OnSubmit;                                          // 0x04B8(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_4D0[0x18];                                     // 0x04D0(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FLGUIDrawableEvent                     OnInputActivate;                                   // 0x04E8(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	TDelegate<void(const class FString& InString)> OnCheckTextInputDelegate;                         // 0x0500(0x0028)(Edit, ZeroConstructor, InstancedReference, Protected, NativeAccessSpecifierProtected)
+	uint32                                        MaxInput;                                          // 0x0528(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_52C[0x8C];                                     // 0x052C(0x008C)(Fixing Size After Last Property [ Dumper-7 ])
+	class APlayerController*                      PlayerController;                                  // 0x05B8(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_5C0[0x18];                                     // 0x05C0(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class UUISprite>               CaretObject;                                       // 0x05D8(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	TArray<TWeakObjectPtr<class UUISprite>>       SelectionMaskObjectArray;                          // 0x05E0(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, UObjectWrapper, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_5F0[0x70];                                     // 0x05F0(0x0070)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(const class FString& InString)> OnTextChange;                                     // 0x0660(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+	TDelegate<void(const class FString& InString)> OnTextSubmit;                                     // 0x0688(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+	TDelegate<void(const class FString& InString)> OnTextClip;                                       // 0x06B0(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+	TDelegate<void(bool InActivate)>              OnInputActivateDelegate;                           // 0x06D8(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+
+public:
+	static void SetShowKeyboardDelegate(const TDelegate<void(bool state)>& InDelegate);
+
+	void ActivateInputText();
+	void ClearCustomInputTypeEvent();
+	void DeactivateInputText();
+	bool IsInputActive();
+	struct FLGUIDelegateHandleWrapper RegisterInputActivateEvent(const TDelegate<void(bool InActivate)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterSubmitEvent(const TDelegate<void(const class FString& InString)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterValueChangeEvent(const TDelegate<void(const class FString& InString)>& InDelegate);
+	void SetCustomInputTypeFunction(const TDelegate<void(const class FString& InString)>& InFunction);
+	void SetInputType(ELGUITextInputType newValue);
+	void SetText(const class FString& InText, bool InFireEvent);
+	void UnregisterInputActivateEvent(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+	void UnregisterSubmitEvent(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+	void UnregisterValueChangeEvent(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+
+	ELGUITextInputType GetInputType() const;
+	class FString GetText() const;
+	class UUIText* GetTextComponent() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UITextInputComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UITextInputComponent")
+	}
+	static class UUITextInputComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUITextInputComponent>();
+	}
+};
+DUMPER7_ASSERTS_UUITextInputComponent;
+
 // Class LGUI.UIDrawcallMesh
-// 0x0010 (0x0620 - 0x0610)
+// 0x0010 (0x0640 - 0x0630)
 class UUIDrawcallMesh final : public ULGUIMeshComponent
 {
 public:
-	uint8                                         Pad_610[0x10];                                     // 0x0610(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_630[0x10];                                     // 0x0630(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
@@ -5915,49 +6695,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UUIDrawcallMesh;
-
-// Class LGUI.UIForcesCursor
-// 0x00F0 (0x0310 - 0x0220)
-class UUIForcesCursor final : public USceneComponent
-{
-public:
-	bool                                          IsOrthographic;                                    // 0x0218(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_219[0x3];                                      // 0x0219(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         ScreenSizeX;                                       // 0x021C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ScreenSizeY;                                       // 0x0220(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FRotator                               RotatorInfo;                                       // 0x0224(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	struct FVector                                MoveVector;                                        // 0x0230(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                OriginPos;                                         // 0x023C(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         FrameStepping;                                     // 0x0248(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         MaxAngleX;                                         // 0x024C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         MaxAngleY;                                         // 0x0250(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         MouseX;                                            // 0x0254(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         MouseY;                                            // 0x0258(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                OffsetVector;                                      // 0x025C(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                AroundPoint;                                       // 0x0268(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         GamepadRightX;                                     // 0x0274(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         GamepadRightY;                                     // 0x0278(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Tilt;                                              // 0x027C(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Gravity;                                           // 0x0288(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                RotationRate;                                      // 0x0294(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Acceleration;                                      // 0x02A0(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2AC[0x64];                                     // 0x02AC(0x0064)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIForcesCursor")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIForcesCursor")
-	}
-	static class UUIForcesCursor* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIForcesCursor>();
-	}
-};
-DUMPER7_ASSERTS_UUIForcesCursor;
 
 // Class LGUI.UIDropdownComponent
 // 0x0108 (0x0500 - 0x03F8)
@@ -6022,6 +6759,42 @@ public:
 };
 DUMPER7_ASSERTS_UUIDropdownComponent;
 
+// Class LGUI.UIStaticMesh
+// 0x0070 (0x0650 - 0x05E0)
+class UUIStaticMesh final : public UUIDirectMeshRenderable
+{
+public:
+	class UStaticMesh*                            mesh;                                              // 0x05D8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EUIStaticMeshVertexColorType                  vertexColorType;                                   // 0x05E0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bAutoAdjustSize;                                   // 0x05E1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_5E2[0x6];                                      // 0x05E2(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FCacheMeshData                         CachedMeshData;                                    // 0x05E8(0x0058)(Edit, Protected, NativeAccessSpecifierProtected)
+	bool                                          bCacheMeshData;                                    // 0x0640(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_641[0xF];                                      // 0x0641(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetMesh(class UStaticMesh* value);
+	void SetVertexColorType(EUIStaticMeshVertexColorType value);
+
+	class UStaticMesh* GetMesh() const;
+	EUIStaticMeshVertexColorType GetVertexColorType() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIStaticMesh")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIStaticMesh")
+	}
+	static class UUIStaticMesh* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIStaticMesh>();
+	}
+};
+DUMPER7_ASSERTS_UUIStaticMesh;
+
 // Class LGUI.UIDropdownItemComponent
 // 0x0050 (0x0110 - 0x00C0)
 class UUIDropdownItemComponent final : public UActorComponent
@@ -6049,6 +6822,217 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UUIDropdownItemComponent;
+
+// Class LGUI.GeometryHandle
+// 0x0020 (0x0050 - 0x0030)
+class UGeometryHandle final : public UObject
+{
+public:
+	uint8                                         Pad_30[0x20];                                      // 0x0030(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetAdditionalUV(int32 AdditionalUVChannel, const struct FVector2D& UV);
+
+	bool IsGeometryValid() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("GeometryHandle")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"GeometryHandle")
+	}
+	static class UGeometryHandle* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UGeometryHandle>();
+	}
+};
+DUMPER7_ASSERTS_UGeometryHandle;
+
+// Class LGUI.UITextureBox
+// 0x0010 (0x0810 - 0x0800)
+class UUITextureBox final : public UUITextureBase
+{
+public:
+	float                                         thickness;                                         // 0x07F8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          seperateFrontColor;                                // 0x07FC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7FD[0x3];                                      // 0x07FD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FColor                                 frontFaceColor;                                    // 0x0800(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_804[0xC];                                      // 0x0804(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UITextureBox")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UITextureBox")
+	}
+	static class UUITextureBox* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUITextureBox>();
+	}
+};
+DUMPER7_ASSERTS_UUITextureBox;
+
+// Class LGUI.UIDynamicBatchMesh
+// 0x01D0 (0x0790 - 0x05C0)
+class UUIDynamicBatchMesh final : public UUIBaseRenderable
+{
+public:
+	uint8                                         Pad_5C0[0x140];                                    // 0x05C0(0x0140)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<int32, class UGeometryHandle*>           GeometryHandleMap;                                 // 0x0700(0x0050)(Transient, Protected, NativeAccessSpecifierProtected)
+	TArray<class UGeometryHandle*>                GeometryHandlePool;                                // 0x0750(0x0010)(ZeroConstructor, Transient, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_760[0x4];                                      // 0x0760(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          bGenerateGeometryHandle;                           // 0x0764(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_765[0x3];                                      // 0x0765(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         GeometryHandleMaxCount;                            // 0x0768(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_76C[0xC];                                      // 0x076C(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         SingleGeometryExistTime;                           // 0x0778(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         MaxVerticeCount;                                   // 0x077C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_780[0x10];                                     // 0x0780(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	class UGeometryHandle* AddBatchGeometryRenderable(class UUIBatchGeometryRenderable* Renderable);
+	void AddContainerNode(class UUIItem* ContainerNode, bool bClearTransformChanged);
+	void ClearAllGeometries();
+	void MarkAllItemGeometryDirty(class UUIItem* ContainerNode);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIDynamicBatchMesh")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIDynamicBatchMesh")
+	}
+	static class UUIDynamicBatchMesh* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIDynamicBatchMesh>();
+	}
+};
+DUMPER7_ASSERTS_UUIDynamicBatchMesh;
+
+// Class LGUI.UIDynamicBatchMeshActor
+// 0x0008 (0x03F8 - 0x03F0)
+class AUIDynamicBatchMeshActor final : public AUIBaseActor
+{
+public:
+	class UUIDynamicBatchMesh*                    UIDynamicBatchMesh;                                // 0x03F0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIDynamicBatchMeshActor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIDynamicBatchMeshActor")
+	}
+	static class AUIDynamicBatchMeshActor* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<AUIDynamicBatchMeshActor>();
+	}
+};
+DUMPER7_ASSERTS_AUIDynamicBatchMeshActor;
+
+// Class LGUI.ViewportUITexture
+// 0x0010 (0x0920 - 0x0910)
+class UViewportUITexture final : public UUITexture
+{
+public:
+	class ASceneCapture2D*                        SceneCaptureActor;                                 // 0x0910(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bSyncSizeToRT;                                     // 0x0918(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_919[0x7];                                      // 0x0919(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	class USceneCaptureComponent2D* GetSceneCapture() const;
+	void ViewPointToWorld(const struct FVector2D& InViewPoint, struct FVector* OutWorldLocation, struct FVector* OutWorldDirection) const;
+	bool WorldToViewPoint(const struct FVector& InWorldLocation, struct FVector2D* OutViewPoint) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ViewportUITexture")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ViewportUITexture")
+	}
+	static class UViewportUITexture* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UViewportUITexture>();
+	}
+};
+DUMPER7_ASSERTS_UViewportUITexture;
+
+// Class LGUI.UIDynamicSpriteAtlasMgr
+// 0x03E8 (0x0418 - 0x0030)
+class UUIDynamicSpriteAtlasMgr final : public UObject
+{
+public:
+	uint8                                         Pad_30[0x18];                                      // 0x0030(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<struct FSoftObjectPath, struct FSpriteCollection> PathSpriteMap;                            // 0x0048(0x0050)(Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	TMap<struct FSoftObjectPath, struct FIntPoint> DiffSrcPositions;                                 // 0x0098(0x0050)(Transient, NativeAccessSpecifierPrivate)
+	TMap<struct FSoftObjectPath, class UUIDynSpriteData*> SpriteDatas;                               // 0x00E8(0x0050)(Transient, NativeAccessSpecifierPrivate)
+	TArray<class UUIDynSpriteData*>               SpritePool;                                        // 0x0138(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
+	TMap<class UUISpriteBase*, class UUIDynSpriteDataProxy*> SpriteToDynSpriteProxy;                 // 0x0148(0x0050)(ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_198[0x280];                                    // 0x0198(0x0280)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	class UUIDynSpriteData* GetSpriteData(const class FString& SpritePath);
+	void OnDynamicAtlasExpandCallback(const struct FTextureExpandParam& TextureExpandParam);
+	void OnDynamicAtlasSlotBuilt(const TArray<struct FDynamicAtlasSlotManagedHandle>& Handles);
+	void TestRebuildAtlas();
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIDynamicSpriteAtlasMgr")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIDynamicSpriteAtlasMgr")
+	}
+	static class UUIDynamicSpriteAtlasMgr* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIDynamicSpriteAtlasMgr>();
+	}
+};
+DUMPER7_ASSERTS_UUIDynamicSpriteAtlasMgr;
+
+// Class LGUI.UIDynmaicTextureAtlasMgr
+// 0x0150 (0x0180 - 0x0030)
+class UUIDynmaicTextureAtlasMgr final : public UObject
+{
+public:
+	TMap<struct FSoftObjectPath, struct FRenderableCollection> PathRenderableMap;                    // 0x0030(0x0050)(ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	TMap<struct FSoftObjectPath, struct FRenderableCollection> FailInsertRenderableMap;              // 0x0080(0x0050)(ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	TMap<int32, struct FLoadingPathRenderableMap> BatchLoadingPathRenderableMap;                     // 0x00D0(0x0050)(ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_120[0x60];                                     // 0x0120(0x0060)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void OnDynamicAtlasExpandCallback(const struct FTextureExpandParam& TextureExpandParam);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIDynmaicTextureAtlasMgr")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIDynmaicTextureAtlasMgr")
+	}
+	static class UUIDynmaicTextureAtlasMgr* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIDynmaicTextureAtlasMgr>();
+	}
+};
+DUMPER7_ASSERTS_UUIDynmaicTextureAtlasMgr;
 
 // Class LGUI.UIToggleComponent
 // 0x00C8 (0x04C0 - 0x03F8)
@@ -6107,364 +7091,28 @@ public:
 };
 DUMPER7_ASSERTS_UUIToggleComponent;
 
-// Class LGUI.GeometryHandle
-// 0x0020 (0x0050 - 0x0030)
-class UGeometryHandle final : public UObject
-{
-public:
-	uint8                                         Pad_30[0x20];                                      // 0x0030(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetAdditionalUV(int32 AdditionalUVChannel, const struct FVector2D& UV);
-
-	bool IsGeometryValid() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("GeometryHandle")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"GeometryHandle")
-	}
-	static class UGeometryHandle* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UGeometryHandle>();
-	}
-};
-DUMPER7_ASSERTS_UGeometryHandle;
-
-// Class LGUI.UIDynamicBatchMesh
-// 0x01D0 (0x0780 - 0x05B0)
-class UUIDynamicBatchMesh final : public UUIBaseRenderable
-{
-public:
-	uint8                                         Pad_5B0[0x140];                                    // 0x05B0(0x0140)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<int32, class UGeometryHandle*>           GeometryHandleMap;                                 // 0x06F0(0x0050)(Transient, Protected, NativeAccessSpecifierProtected)
-	TArray<class UGeometryHandle*>                GeometryHandlePool;                                // 0x0740(0x0010)(ZeroConstructor, Transient, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_750[0x4];                                      // 0x0750(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          bGenerateGeometryHandle;                           // 0x0754(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_755[0x3];                                      // 0x0755(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         GeometryHandleMaxCount;                            // 0x0758(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_75C[0xC];                                      // 0x075C(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         SingleGeometryExistTime;                           // 0x0768(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         MaxVerticeCount;                                   // 0x076C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_770[0x10];                                     // 0x0770(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	class UGeometryHandle* AddBatchGeometryRenderable(class UUIBatchGeometryRenderable* Renderable);
-	void AddContainerNode(class UUIItem* ContainerNode, bool bClearTransformChanged);
-	void ClearAllGeometries();
-	void MarkAllItemGeometryDirty(class UUIItem* ContainerNode);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIDynamicBatchMesh")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIDynamicBatchMesh")
-	}
-	static class UUIDynamicBatchMesh* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIDynamicBatchMesh>();
-	}
-};
-DUMPER7_ASSERTS_UUIDynamicBatchMesh;
-
-// Class LGUI.UIDynamicBatchMeshActor
+// Class LGUI.UITextureActor
 // 0x0008 (0x03F8 - 0x03F0)
-class AUIDynamicBatchMeshActor final : public AUIBaseActor
+class AUITextureActor final : public AUIBaseActor
 {
 public:
-	class UUIDynamicBatchMesh*                    UIDynamicBatchMesh;                                // 0x03F0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class UUITexture*                             UITexture;                                         // 0x03F0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UIDynamicBatchMeshActor")
+		STATIC_CLASS_IMPL("UITextureActor")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UIDynamicBatchMeshActor")
+		STATIC_NAME_IMPL(L"UITextureActor")
 	}
-	static class AUIDynamicBatchMeshActor* GetDefaultObj()
+	static class AUITextureActor* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<AUIDynamicBatchMeshActor>();
+		return GetDefaultObjImpl<AUITextureActor>();
 	}
 };
-DUMPER7_ASSERTS_AUIDynamicBatchMeshActor;
-
-// Class LGUI.UIDynamicSpriteAtlasMgr
-// 0x0398 (0x03C8 - 0x0030)
-class UUIDynamicSpriteAtlasMgr final : public UObject
-{
-public:
-	uint8                                         Pad_30[0x18];                                      // 0x0030(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<struct FSoftObjectPath, struct FSpriteCollection> PathSpriteMap;                            // 0x0048(0x0050)(Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	TMap<struct FSoftObjectPath, struct FIntPoint> DiffSrcPositions;                                 // 0x0098(0x0050)(Transient, NativeAccessSpecifierPrivate)
-	TMap<struct FSoftObjectPath, class UUIDynSpriteData*> SpriteDatas;                               // 0x00E8(0x0050)(Transient, NativeAccessSpecifierPrivate)
-	TArray<class UUIDynSpriteData*>               SpritePool;                                        // 0x0138(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_148[0x280];                                    // 0x0148(0x0280)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	class UUIDynSpriteData* GetSpriteData(const class FString& SpritePath);
-	void OnDynamicAtlasExpandCallback(const struct FTextureExpandParam& TextureExpandParam);
-	void OnDynamicAtlasSlotBuilt(const TArray<struct FDynamicAtlasSlotManagedHandle>& Handles);
-	void TestRebuildAtlas();
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIDynamicSpriteAtlasMgr")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIDynamicSpriteAtlasMgr")
-	}
-	static class UUIDynamicSpriteAtlasMgr* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIDynamicSpriteAtlasMgr>();
-	}
-};
-DUMPER7_ASSERTS_UUIDynamicSpriteAtlasMgr;
-
-// Class LGUI.UIViewTweenParams
-// 0x0020 (0x00E0 - 0x00C0)
-class UUIViewTweenParams final : public UActorComponent
-{
-public:
-	float                                         TweenSize;                                         // 0x00C0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	float                                         TweenAlpha;                                        // 0x00C4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	float                                         TweenTime;                                         // 0x00C8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_CC[0x4];                                       // 0x00CC(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class FString>                         ViewNameBlackList;                                 // 0x00D0(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPrivate)
-
-public:
-	float GetTweenAlpha() const;
-	float GetTweenSize() const;
-	float GetTweenTime() const;
-	const TArray<class FString> GetViewNameBlackList() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIViewTweenParams")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIViewTweenParams")
-	}
-	static class UUIViewTweenParams* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIViewTweenParams>();
-	}
-};
-DUMPER7_ASSERTS_UUIViewTweenParams;
-
-// Class LGUI.UIDynmaicTextureAtlasMgr
-// 0x0150 (0x0180 - 0x0030)
-class UUIDynmaicTextureAtlasMgr final : public UObject
-{
-public:
-	TMap<struct FSoftObjectPath, struct FRenderableCollection> PathRenderableMap;                    // 0x0030(0x0050)(ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	TMap<struct FSoftObjectPath, struct FRenderableCollection> FailInsertRenderableMap;              // 0x0080(0x0050)(ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	TMap<int32, struct FLoadingPathRenderableMap> BatchLoadingPathRenderableMap;                     // 0x00D0(0x0050)(ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_120[0x60];                                     // 0x0120(0x0060)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void OnDynamicAtlasExpandCallback(const struct FTextureExpandParam& TextureExpandParam);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIDynmaicTextureAtlasMgr")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIDynmaicTextureAtlasMgr")
-	}
-	static class UUIDynmaicTextureAtlasMgr* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIDynmaicTextureAtlasMgr>();
-	}
-};
-DUMPER7_ASSERTS_UUIDynmaicTextureAtlasMgr;
-
-// Class LGUI.UIScrollViewComponent
-// 0x0180 (0x0280 - 0x0100)
-class UUIScrollViewComponent : public ULGUIBehaviour
-{
-public:
-	uint8                                         Pad_100[0x20];                                     // 0x0100(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class AUIBaseActor>            Content;                                           // 0x0120(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          Horizontal;                                        // 0x0128(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          Vertical;                                          // 0x0129(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_12A[0x2];                                      // 0x012A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         ScrollSensitivity;                                 // 0x012C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          AllowEventBubbleUp;                                // 0x0130(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_131[0x3];                                      // 0x0131(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         DecelerationRate;                                  // 0x0134(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	ELTweenEase                                   ScrollToEaseType;                                  // 0x0138(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_139[0x3];                                      // 0x0139(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         ScrollToDuration;                                  // 0x013C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         Elasticity;                                        // 0x0140(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         ScrollOutOfRangeModulus;                           // 0x0144(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bUnderSizeScrollEnabled;                           // 0x0148(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          CanScroll;                                         // 0x0149(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          RayCastTargetForScrollView;                        // 0x014A(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_14B[0x5];                                      // 0x014B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(class ULGUIPointerEventData* eventData)> OnPointerBeginDragCallBack;              // 0x0150(0x0028)(Edit, ZeroConstructor, InstancedReference, Protected, NativeAccessSpecifierProtected)
-	TDelegate<void(class ULGUIPointerEventData* eventData)> OnPointerEndDragCallBack;                // 0x0178(0x0028)(Edit, ZeroConstructor, InstancedReference, Protected, NativeAccessSpecifierProtected)
-	TDelegate<void(class ULGUIPointerEventData* EventData)> OnScrollViewDownUpCallback;              // 0x01A0(0x0028)(Edit, ZeroConstructor, InstancedReference, Protected, NativeAccessSpecifierProtected)
-	TWeakObjectPtr<class UUIItem>                 ContentUIItem;                                     // 0x01C8(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TWeakObjectPtr<class UUIItem>                 ContentParentUIItem;                               // 0x01D0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FVector2D                              Progress;                                          // 0x01D8(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_1E0[0x68];                                     // 0x01E0(0x0068)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULTweener*                              Tweener;                                           // 0x0248(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_250[0x8];                                      // 0x0250(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(const struct FVector2D& InVector2)> OnScrollValueChange;                          // 0x0258(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-
-public:
-	static float GetDecelerationRateDegbug();
-	static float GetElasticityDegbug();
-	static float GetScrollOutOfRangeModulusDebug();
-	static float GetScrollSensitivityDebug();
-	static bool GetScrollUseDebug();
-	static void SetDecelerationRateDebug(float value);
-	static void SetElasticityDebug(float value);
-	static void SetScrollOutOfRangeModulusDebug(float value);
-	static void SetScrollSensitivityDebug(float value);
-	static void SetScrollUseDebug(bool value);
-
-	void SetCanScroll(bool bCanScroll);
-	void SetHorizontal(bool Value);
-	void SetHorizontalVelocity(float Value);
-	void SetRayCastTargetForScrollView(bool newRayCastTarget);
-	void SetScrollProgress(float Value);
-	void SetScrollProgressIncrement(float Value);
-	void SetScrollValue(const struct FVector2D& Value);
-	void SetUnderSizeScrollEnabled(bool bEnabled);
-	void SetVelocity(float Value);
-	void SetVertical(bool Value);
-	void SetVerticalVelocity(float Value);
-	void StopMovement();
-
-	bool CheckContentUnderSize() const;
-	bool GetCanScroll() const;
-	class AUIBaseActor* GetContent() const;
-	bool GetHorizontal() const;
-	bool GetRayCastTargetForScrollView() const;
-	bool GetUnderSizeScrollEnabled() const;
-	struct FVector2D GetVelocity() const;
-	bool GetVertical() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIScrollViewComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIScrollViewComponent")
-	}
-	static class UUIScrollViewComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIScrollViewComponent>();
-	}
-};
-DUMPER7_ASSERTS_UUIScrollViewComponent;
-
-// Class LGUI.UITextureTransitionComponent
-// 0x00A0 (0x0370 - 0x02D0)
-class UUITextureTransitionComponent final : public UUITransitionBase
-{
-public:
-	struct FTextureTransitionInfo                 Transition;                                        // 0x02D0(0x00A0)(Edit, NoDestructor, Protected, NativeAccessSpecifierProtected)
-
-public:
-	void SetAllStateTexture(class UTexture* NewTexture);
-	void SetStateTexture(EUISelectableSelectionState State, class UTexture* NewTexture);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UITextureTransitionComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UITextureTransitionComponent")
-	}
-	static class UUITextureTransitionComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUITextureTransitionComponent>();
-	}
-};
-DUMPER7_ASSERTS_UUITextureTransitionComponent;
-
-// Class LGUI.UIScrollViewWithScrollbarComponent
-// 0x0048 (0x02C8 - 0x0280)
-class UUIScrollViewWithScrollbarComponent : public UUIScrollViewComponent
-{
-public:
-	TWeakObjectPtr<class AUIBaseActor>            Viewport;                                          // 0x0280(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TWeakObjectPtr<class AUIBaseActor>            HorizontalScrollbar;                               // 0x0288(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EScrollViewScrollbarVisibility                HorizontalScrollbarVisibility;                     // 0x0290(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_291[0x3];                                      // 0x0291(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class AUIBaseActor>            VerticalScrollbar;                                 // 0x0294(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EScrollViewScrollbarVisibility                VerticalScrollbarVisibility;                       // 0x029C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_29D[0x3];                                      // 0x029D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class UUIScrollbarComponent>   HorizontalScrollbarComp;                           // 0x02A0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TWeakObjectPtr<class UUIScrollbarComponent>   VerticalScrollbarComp;                             // 0x02A8(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_2B0[0x2];                                      // 0x02B0(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          IsChangeNavigation;                                // 0x02B2(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_2B3[0x11];                                     // 0x02B3(0x0011)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          AllowScrollEventBubbleUp;                          // 0x02C4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2C5[0x3];                                      // 0x02C5(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void BindParentUIItem(class UUISelectableComponent* Component);
-	class UUISelectableComponent* FindNavigationComponent(class UUISelectableComponent* Component, const struct FVector& Direction, EUINavigationWrapMode Mode, bool bHasOtherNode);
-	void GetOutOfBottomBoundsType(class UUIItem* UIItem, EOutOfBoundsType* OutOfTopOrBottomType, EOutOfBoundsType* OutOfLeftOrRightType, float ErrorTolerance);
-	void ResetIsChangeNavigation();
-	void ScrollTo(class UUIItem* UIItem, bool bTweenAnim);
-	void ScrollToBottom(struct FVector2D* NewPosition, class UUIItem* UIItem, bool bTweenAnim);
-	void ScrollToBottomLater(class UUIItem* UIItem, bool bTweenAnim);
-	void ScrollToEnd();
-	void ScrollToLeft(struct FVector2D* NewPosition, class UUIItem* UIItem, bool bTweenAnim);
-	void ScrollToLeftLater(class UUIItem* UIItem, bool bTweenAnim);
-	void ScrollToRight(struct FVector2D* NewPosition, class UUIItem* UIItem, bool bTweenAnim);
-	void ScrollToRightLater(class UUIItem* UIItem, bool bTweenAnim);
-	void ScrollToSelectableComponent(class UUISelectableComponent* Component);
-	void ScrollToTop(struct FVector2D* NewPosition, class UUIItem* UIItem, bool bTweenAnim);
-	void ScrollToTopLater(class UUIItem* UIItem, bool bTweenAnim);
-	void SetHorizontalScrollbarVisibility(EScrollViewScrollbarVisibility value);
-	void SetVerticalScrollbarVisibility(EScrollViewScrollbarVisibility value);
-	void UnBindParentUIItem(class UUISelectableComponent* Component);
-
-	class AUIBaseActor* GetHorizontalScrollbar() const;
-	EScrollViewScrollbarVisibility GetHorizontalScrollbarVisibility() const;
-	class AUIBaseActor* GetVerticalScrollbar() const;
-	EScrollViewScrollbarVisibility GetVerticalScrollbarVisibility() const;
-	class AUIBaseActor* GetViewport() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIScrollViewWithScrollbarComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIScrollViewWithScrollbarComponent")
-	}
-	static class UUIScrollViewWithScrollbarComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIScrollViewWithScrollbarComponent>();
-	}
-};
-DUMPER7_ASSERTS_UUIScrollViewWithScrollbarComponent;
+DUMPER7_ASSERTS_AUITextureActor;
 
 // Class LGUI.UIDynScrollViewComponent
 // 0x0280 (0x0548 - 0x02C8)
@@ -6486,9 +7134,9 @@ public:
 	bool                                          SizeMatchContent;                                  // 0x0301(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_302[0x6];                                      // 0x0302(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
 	TDelegate<void(int32 DisplayIndex, class AUIBaseActor* Actor)> OnItemCreate;                     // 0x0308(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-	TDelegate<void(int32 Index, class AUIBaseActor* Actor)> OnItemUpdate;                            // 0x0330(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-	TDelegate<void(int32 Index)>                  ItemSizeDelegate;                                  // 0x0358(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-	TDelegate<void(int32 Index, class AUIBaseActor* Actor)> OnItemClear;                             // 0x0380(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+	TDelegate<void(int32 Index_0, class AUIBaseActor* Actor)> OnItemUpdate;                          // 0x0330(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+	TDelegate<void(int32 Index_0)>                ItemSizeDelegate;                                  // 0x0358(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+	TDelegate<void(int32 Index_0, class AUIBaseActor* Actor)> OnItemClear;                           // 0x0380(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
 	TDelegate<void()>                             OnDestroyCallBack;                                 // 0x03A8(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
 	int32                                         StartItemIndex;                                    // 0x03D0(0x0004)(Edit, ZeroConstructor, Transient, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 	int32                                         EndItemIndex;                                      // 0x03D4(0x0004)(Edit, ZeroConstructor, Transient, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -6561,98 +7209,46 @@ public:
 };
 DUMPER7_ASSERTS_UUIDynScrollViewComponent;
 
-// Class LGUI.WwiseAudioComponent
-// 0x0008 (0x00C8 - 0x00C0)
-class UWwiseAudioComponent final : public UActorComponent
+// Class LGUI.UIDynSpriteDataProxy
+// 0x0028 (0x0058 - 0x0030)
+class UUIDynSpriteDataProxy final : public ULGUISpriteData_BaseObject
 {
 public:
-	int32                                         AudioStateSystemLevel;                             // 0x00C0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_C4[0x4];                                       // 0x00C4(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UUIDynSpriteData*                       InternalSpriteData;                                // 0x0030(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_38[0x20];                                      // 0x0038(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	int32 GetAudioStateSystemLevel() const;
+	bool IsDynamicSpriteDataValid() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("WwiseAudioComponent")
+		STATIC_CLASS_IMPL("UIDynSpriteDataProxy")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"WwiseAudioComponent")
+		STATIC_NAME_IMPL(L"UIDynSpriteDataProxy")
 	}
-	static class UWwiseAudioComponent* GetDefaultObj()
+	static class UUIDynSpriteDataProxy* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UWwiseAudioComponent>();
+		return GetDefaultObjImpl<UUIDynSpriteDataProxy>();
 	}
 };
-DUMPER7_ASSERTS_UWwiseAudioComponent;
-
-// Class LGUI.UIDynSpriteData
-// 0x00C0 (0x00F0 - 0x0030)
-class UUIDynSpriteData final : public ULGUISpriteData_BaseObject
-{
-public:
-	class UTexture2D*                             DynAtlasTexture;                                   // 0x0030(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FLGUISpriteInfo                        SpriteInfo;                                        // 0x0038(0x0090)(Edit, EditConst, Protected, NativeAccessSpecifierProtected)
-	struct FSoftObjectPath                        OriginSpritePath;                                  // 0x00C8(0x0020)(Edit, ZeroConstructor, EditConst, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         CustomUVOffsetX;                                   // 0x00E8(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         CustomUVOffsetY;                                   // 0x00EC(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIDynSpriteData")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIDynSpriteData")
-	}
-	static class UUIDynSpriteData* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIDynSpriteData>();
-	}
-};
-DUMPER7_ASSERTS_UUIDynSpriteData;
-
-// Class LGUI.UIGeometryModifierBase
-// 0x0018 (0x00D8 - 0x00C0)
-class UUIGeometryModifierBase : public UActorComponent
-{
-public:
-	int32                                         executeOrder;                                      // 0x00C0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class FName                                   componentName;                                     // 0x00C4(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_D0[0x8];                                       // 0x00D0(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIGeometryModifierBase")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIGeometryModifierBase")
-	}
-	static class UUIGeometryModifierBase* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIGeometryModifierBase>();
-	}
-};
-DUMPER7_ASSERTS_UUIGeometryModifierBase;
+DUMPER7_ASSERTS_UUIDynSpriteDataProxy;
 
 // Class LGUI.UIEffectGradientColor
-// 0x0018 (0x00F0 - 0x00D8)
+// 0x0018 (0x00F8 - 0x00E0)
 class UUIEffectGradientColor final : public UUIGeometryModifierBase
 {
 public:
-	EUIEffectGradientColorDirection               directionType;                                     // 0x00D8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          multiplySourceAlpha;                               // 0x00D9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_DA[0x2];                                       // 0x00DA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FColor                                 color1;                                            // 0x00DC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FColor                                 color2;                                            // 0x00E0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FColor                                 color3;                                            // 0x00E4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FColor                                 color4;                                            // 0x00E8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_EC[0x4];                                       // 0x00EC(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	EUIEffectGradientColorDirection               directionType;                                     // 0x00E0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          multiplySourceAlpha;                               // 0x00E1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_E2[0x2];                                       // 0x00E2(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FColor                                 color1;                                            // 0x00E4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FColor                                 color2;                                            // 0x00E8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FColor                                 color3;                                            // 0x00EC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FColor                                 color4;                                            // 0x00F0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_F4[0x4];                                       // 0x00F4(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
@@ -6670,59 +7266,16 @@ public:
 };
 DUMPER7_ASSERTS_UUIEffectGradientColor;
 
-// Class LGUI.UIEffectLongShadow
-// 0x0020 (0x00F8 - 0x00D8)
-class UUIEffectLongShadow final : public UUIGeometryModifierBase
-{
-public:
-	struct FColor                                 shadowColor;                                       // 0x00D8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FVector                                shadowSize;                                        // 0x00DC(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         shadowSegment;                                     // 0x00E8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          useGradientColor;                                  // 0x00E9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_EA[0x2];                                       // 0x00EA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FColor                                 gradientColor;                                     // 0x00EC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          multiplySourceAlpha;                               // 0x00F0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_F1[0x7];                                       // 0x00F1(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetGradientColor(const struct FColor& newColor);
-	void SetShadowColor(const struct FColor& newColor);
-	void SetShadowSegment(uint8 newSegment);
-	void SetShadowSize(const struct FVector& newSize);
-	void SetUseGradientColor(bool newBool);
-
-	struct FColor GetGradientColor() const;
-	struct FColor GetShadowColor() const;
-	uint8 GetShadowSegments() const;
-	struct FVector GetShadowSize() const;
-	bool GetUseGradientColor() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIEffectLongShadow")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIEffectLongShadow")
-	}
-	static class UUIEffectLongShadow* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIEffectLongShadow>();
-	}
-};
-DUMPER7_ASSERTS_UUIEffectLongShadow;
-
 // Class LGUI.UIEffectOutline
-// 0x0010 (0x00E8 - 0x00D8)
+// 0x0010 (0x00F0 - 0x00E0)
 class UUIEffectOutline final : public UUIGeometryModifierBase
 {
 public:
-	struct FColor                                 outlineColor;                                      // 0x00D8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FVector2D                              outlineSize;                                       // 0x00DC(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          multiplySourceAlpha;                               // 0x00E4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          use8Direction;                                     // 0x00E5(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_E6[0x2];                                       // 0x00E6(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FColor                                 outlineColor;                                      // 0x00E0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FVector2D                              outlineSize;                                       // 0x00E4(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          multiplySourceAlpha;                               // 0x00EC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          use8Direction;                                     // 0x00ED(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_EE[0x2];                                       // 0x00EE(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void SetOutlineColor(const struct FColor& newColor);
@@ -6749,173 +7302,15 @@ public:
 };
 DUMPER7_ASSERTS_UUIEffectOutline;
 
-// Class LGUI.UIEffectPositionAsUV
-// 0x0008 (0x00E0 - 0x00D8)
-class UUIEffectPositionAsUV final : public UUIGeometryModifierBase
-{
-public:
-	uint8                                         uvChannel;                                         // 0x00D8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_D9[0x7];                                       // 0x00D9(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIEffectPositionAsUV")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIEffectPositionAsUV")
-	}
-	static class UUIEffectPositionAsUV* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIEffectPositionAsUV>();
-	}
-};
-DUMPER7_ASSERTS_UUIEffectPositionAsUV;
-
-// Class LGUI.UITextureBase
-// 0x0040 (0x07F0 - 0x07B0)
-#pragma pack(push, 0x1)
-class SDK_ALIGN(0x10) UUITextureBase : public UUIBatchGeometryRenderable
-{
-public:
-	class UTexture*                               texture;                                           // 0x07A8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7B0[0x38];                                     // 0x07B0(0x0038)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void OnDynamicAtlasSlotBuilt(const struct FDynamicAtlasSlotManagedHandle& ManagedHandle);
-	void SetDynamicAtlasTextureAsync(const class FString& InAtlasTag, const struct FSoftObjectPath& InSoftObjectPath);
-	void SetSizeFromTexture();
-	void SetTexture(class UTexture* newTexture);
-
-	class UTexture* GetTexture() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UITextureBase")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UITextureBase")
-	}
-	static class UUITextureBase* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUITextureBase>();
-	}
-};
-#pragma pack(pop)
-DUMPER7_ASSERTS_UUITextureBase;
-
-// Class LGUI.UITexture
-// 0x0110 (0x0900 - 0x07F0)
-class UUITexture : public UUITextureBase
-{
-public:
-	EUITextureType                                type;                                              // 0x07E8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7E9[0x7];                                      // 0x07E9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FLGUISpriteInfo                        spriteData;                                        // 0x07F0(0x0090)(Edit, Protected, NativeAccessSpecifierProtected)
-	class ULGUITextureData*                       textureData;                                       // 0x0880(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_888[0x8];                                      // 0x0888(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector4                               uvRect;                                            // 0x0890(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EUISpriteFillMethod                           fillMethod;                                        // 0x08A0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         fillOrigin;                                        // 0x08A1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          fillDirectionFlip;                                 // 0x08A2(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_8A3[0x1];                                      // 0x08A3(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         fillAmount;                                        // 0x08A4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bTileAutoFit;                                      // 0x08A8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_8A9[0x3];                                      // 0x08A9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         clampEdge;                                         // 0x08AC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         tileX;                                             // 0x08B0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         tileY;                                             // 0x08B4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         offsetX;                                           // 0x08B8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         offsetY;                                           // 0x08BC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UMaterialInterface*                     HistoryCustomMaterial;                             // 0x08C0(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bIsFrameAnimate;                                   // 0x08C8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bUseFrameSize;                                     // 0x08C9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_8CA[0x2];                                      // 0x08CA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         FrameAnimateRows;                                  // 0x08CC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         FrameAnimateColumn;                                // 0x08D0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         CurFrame;                                          // 0x08D4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FVector2D                              FrameSize;                                         // 0x08D8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UTexture*                               DynamicAtlasTexture;                               // 0x08E0(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_8E8[0x18];                                     // 0x08E8(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetCurFrame(float newCurFrame);
-	void SetFillAmount(float newValue);
-	void SetFillDirectionFlip(bool newValue);
-	void SetFillMethod(EUISpriteFillMethod newValue);
-	void SetFillOrigin(uint8 newValue);
-	void SetSpriteData(const struct FLGUISpriteInfo& newSpriteData);
-	void SetTextureData(class ULGUITextureData* NewTextureData);
-	void SetTextureType(EUITextureType newType);
-	void SetUVRect(const struct FVector4& newUVRect);
-
-	float GetFillAmount() const;
-	bool GetFillDirectionFlip() const;
-	EUISpriteFillMethod GetFillMethod() const;
-	uint8 GetFillOrigin() const;
-	struct FLGUISpriteInfo GetSpriteData() const;
-	class ULGUITextureData* GetTextureData() const;
-	EUITextureType GetTextureType() const;
-	struct FVector4 GetUVRect() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UITexture")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UITexture")
-	}
-	static class UUITexture* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUITexture>();
-	}
-};
-DUMPER7_ASSERTS_UUITexture;
-
-// Class LGUI.ViewportUITexture
-// 0x0010 (0x0910 - 0x0900)
-class UViewportUITexture final : public UUITexture
-{
-public:
-	class ASceneCapture2D*                        SceneCaptureActor;                                 // 0x0900(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bSyncSizeToRT;                                     // 0x0908(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_909[0x7];                                      // 0x0909(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	class USceneCaptureComponent2D* GetSceneCapture() const;
-	void ViewPointToWorld(const struct FVector2D& InViewPoint, struct FVector* OutWorldLocation, struct FVector* OutWorldDirection) const;
-	bool WorldToViewPoint(const struct FVector& InWorldLocation, struct FVector2D* OutViewPoint) const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ViewportUITexture")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ViewportUITexture")
-	}
-	static class UViewportUITexture* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UViewportUITexture>();
-	}
-};
-DUMPER7_ASSERTS_UViewportUITexture;
-
 // Class LGUI.UIEffectShadow
-// 0x0010 (0x00E8 - 0x00D8)
+// 0x0010 (0x00F0 - 0x00E0)
 class UUIEffectShadow final : public UUIGeometryModifierBase
 {
 public:
-	struct FColor                                 shadowColor;                                       // 0x00D8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          multiplySourceAlpha;                               // 0x00DC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_DD[0x3];                                       // 0x00DD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector2D                              shadowOffset;                                      // 0x00E0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FColor                                 shadowColor;                                       // 0x00E0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          multiplySourceAlpha;                               // 0x00E4(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_E5[0x3];                                       // 0x00E5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              shadowOffset;                                      // 0x00E8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 
 public:
 	void SetShadowColor(const struct FColor& newColor);
@@ -6939,72 +7334,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UUIEffectShadow;
-
-// Class LGUI.UIEffectTextAnimation
-// 0x0038 (0x0110 - 0x00D8)
-class UUIEffectTextAnimation final : public UUIGeometryModifierBase
-{
-public:
-	class UUIEffectTextAnimation_Selector*        selector;                                          // 0x00D8(0x0008)(Edit, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, Protected, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TArray<class UUIEffectTextAnimation_Property*> properties;                                       // 0x00E0(0x0010)(Edit, ExportObject, ZeroConstructor, ContainsInstancedReference, Protected, NativeAccessSpecifierProtected)
-	class UUIText*                                uiText;                                            // 0x00F0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_F8[0x18];                                      // 0x00F8(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetProperties(const TArray<class UUIEffectTextAnimation_Property*>& value);
-	void SetProperty(int32 index, class UUIEffectTextAnimation_Property* value);
-	void SetSelector(class UUIEffectTextAnimation_Selector* value);
-	void SetSelectorOffset(float value);
-
-	const TArray<class UUIEffectTextAnimation_Property*> GetProperties() const;
-	class UUIEffectTextAnimation_Property* GetProperty(int32 index) const;
-	class UUIEffectTextAnimation_Selector* GetSelector() const;
-	float GetSelectorOffset() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIEffectTextAnimation")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIEffectTextAnimation")
-	}
-	static class UUIEffectTextAnimation* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIEffectTextAnimation>();
-	}
-};
-DUMPER7_ASSERTS_UUIEffectTextAnimation;
-
-// Class LGUI.UIEffectTextAnimation_PositionProperty
-// 0x0010 (0x0060 - 0x0050)
-class UUIEffectTextAnimation_PositionProperty final : public UUIEffectTextAnimation_PropertyWithEase
-{
-public:
-	struct FVector                                position;                                          // 0x0050(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetPosition(const struct FVector& value);
-
-	struct FVector GetPosition() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIEffectTextAnimation_PositionProperty")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIEffectTextAnimation_PositionProperty")
-	}
-	static class UUIEffectTextAnimation_PositionProperty* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIEffectTextAnimation_PositionProperty>();
-	}
-};
-DUMPER7_ASSERTS_UUIEffectTextAnimation_PositionProperty;
 
 // Class LGUI.UIEffectTextAnimation_PositionRandomProperty
 // 0x0020 (0x0070 - 0x0050)
@@ -7041,35 +7370,6 @@ public:
 };
 DUMPER7_ASSERTS_UUIEffectTextAnimation_PositionRandomProperty;
 
-// Class LGUI.UIEffectTextAnimation_RotationProperty
-// 0x0010 (0x0060 - 0x0050)
-class UUIEffectTextAnimation_RotationProperty final : public UUIEffectTextAnimation_PropertyWithEase
-{
-public:
-	struct FRotator                               rotator;                                           // 0x0050(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetRotator(const struct FRotator& value);
-
-	struct FRotator GetRotator() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIEffectTextAnimation_RotationProperty")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIEffectTextAnimation_RotationProperty")
-	}
-	static class UUIEffectTextAnimation_RotationProperty* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIEffectTextAnimation_RotationProperty>();
-	}
-};
-DUMPER7_ASSERTS_UUIEffectTextAnimation_RotationProperty;
-
 // Class LGUI.UIEffectTextAnimation_RotationRandomProperty
 // 0x0020 (0x0070 - 0x0050)
 class UUIEffectTextAnimation_RotationRandomProperty final : public UUIEffectTextAnimation_PropertyWithEase
@@ -7104,35 +7404,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UUIEffectTextAnimation_RotationRandomProperty;
-
-// Class LGUI.UIEffectTextAnimation_ScaleProperty
-// 0x0010 (0x0060 - 0x0050)
-class UUIEffectTextAnimation_ScaleProperty final : public UUIEffectTextAnimation_PropertyWithEase
-{
-public:
-	struct FVector                                scale;                                             // 0x0050(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	void SetScale(const struct FVector& value);
-
-	struct FVector GetScale() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIEffectTextAnimation_ScaleProperty")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIEffectTextAnimation_ScaleProperty")
-	}
-	static class UUIEffectTextAnimation_ScaleProperty* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUIEffectTextAnimation_ScaleProperty>();
-	}
-};
-DUMPER7_ASSERTS_UUIEffectTextAnimation_ScaleProperty;
 
 // Class LGUI.UIEffectTextAnimation_ScaleRandomProperty
 // 0x0020 (0x0070 - 0x0050)
@@ -7202,12 +7473,12 @@ public:
 DUMPER7_ASSERTS_UUIEffectTextAnimation_ColorProperty;
 
 // Class LGUI.UIEffectTextAnimation_PositionWaveProperty
-// 0x0010 (0x0060 - 0x0050)
+// 0x0010 (0x0068 - 0x0058)
 class UUIEffectTextAnimation_PositionWaveProperty final : public UUIEffectTextAnimation_PropertyWithWave
 {
 public:
-	struct FVector                                position;                                          // 0x0050(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FVector                                position;                                          // 0x0058(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_64[0x4];                                       // 0x0064(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void SetPosition(const struct FVector& value);
@@ -7231,12 +7502,12 @@ public:
 DUMPER7_ASSERTS_UUIEffectTextAnimation_PositionWaveProperty;
 
 // Class LGUI.UIEffectTextAnimation_RotationWaveProperty
-// 0x0010 (0x0060 - 0x0050)
+// 0x0010 (0x0068 - 0x0058)
 class UUIEffectTextAnimation_RotationWaveProperty final : public UUIEffectTextAnimation_PropertyWithWave
 {
 public:
-	struct FRotator                               rotator;                                           // 0x0050(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FRotator                               rotator;                                           // 0x0058(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_64[0x4];                                       // 0x0064(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void SetRotator(const struct FRotator& value);
@@ -7334,29 +7605,6 @@ public:
 };
 DUMPER7_ASSERTS_UUIEffectTextAnimation_RichTextTagSelector;
 
-// Class LGUI.UIEventBlocker
-// 0x0010 (0x0408 - 0x03F8)
-class AUIEventBlocker final : public AUIContainerActor
-{
-public:
-	uint8                                         Pad_3F8[0x10];                                     // 0x03F8(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UIEventBlocker")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UIEventBlocker")
-	}
-	static class AUIEventBlocker* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<AUIEventBlocker>();
-	}
-};
-DUMPER7_ASSERTS_AUIEventBlocker;
-
 // Class LGUI.UIEventBlockerComponent
 // 0x0040 (0x0100 - 0x00C0)
 class UUIEventBlockerComponent final : public UActorComponent
@@ -7381,6 +7629,77 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UUIEventBlockerComponent;
+
+// Class LGUI.UIEventTriggerComponent
+// 0x02C8 (0x0388 - 0x00C0)
+class UUIEventTriggerComponent final : public UActorComponent
+{
+public:
+	uint8                                         Pad_C0[0x38];                                      // 0x00C0(0x0038)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          AllowEventBubbleUp;                                // 0x00F8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_F9[0x7];                                       // 0x00F9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FLGUIDrawableEvent                     OnPointerEnter;                                    // 0x0100(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     OnPointerExit;                                     // 0x0118(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     OnPointerDown;                                     // 0x0130(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     OnPointerUp;                                       // 0x0148(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     OnPointerCancel;                                   // 0x0160(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     OnPointerClick;                                    // 0x0178(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     OnPointerBeginDrag;                                // 0x0190(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     OnPointerDrag;                                     // 0x01A8(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     OnPointerEndDrag;                                  // 0x01C0(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     OnPointerDragEnter;                                // 0x01D8(0x0018)(Deprecated, Protected, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     OnPointerDragExit;                                 // 0x01F0(0x0018)(Deprecated, Protected, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     OnPointerDragDrop;                                 // 0x0208(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     OnPointerScroll;                                   // 0x0220(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     OnPointerSelect;                                   // 0x0238(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	struct FLGUIDrawableEvent                     OnPointerDeselect;                                 // 0x0250(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_268[0x120];                                    // 0x0268(0x0120)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	struct FLGUIDelegateHandleWrapper RegisterOnPointerBeginDrag(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterOnPointerClick(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterOnPointerDeselect(const TDelegate<void(class ULGUIBaseEventData* eventData)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterOnPointerDown(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterOnPointerDrag(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterOnPointerDragDrop(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterOnPointerDragEnter(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterOnPointerDragExit(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterOnPointerEndDrag(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterOnPointerEnter(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterOnPointerExit(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterOnPointerScroll(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterOnPointerSelect(const TDelegate<void(class ULGUIBaseEventData* eventData)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterOnPointerUp(const TDelegate<void(class ULGUIPointerEventData* pointerEventData)>& InDelegate);
+	void UnregisterOnPointerBeginDrag(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+	void UnregisterOnPointerClick(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+	void UnregisterOnPointerDeselect(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+	void UnregisterOnPointerDown(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+	void UnregisterOnPointerDrag(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+	void UnregisterOnPointerDragDrop(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+	void UnregisterOnPointerDragEnter(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+	void UnregisterOnPointerDragExit(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+	void UnregisterOnPointerEndDrag(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+	void UnregisterOnPointerEnter(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+	void UnregisterOnPointerExit(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+	void UnregisterOnPointerScroll(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+	void UnregisterOnPointerSelect(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+	void UnregisterOnPointerUp(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UIEventTriggerComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UIEventTriggerComponent")
+	}
+	static class UUIEventTriggerComponent* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUIEventTriggerComponent>();
+	}
+};
+DUMPER7_ASSERTS_UUIEventTriggerComponent;
 
 // Class LGUI.UIExtendButtonComponent
 // 0x0008 (0x0688 - 0x0680)
@@ -7705,293 +8024,196 @@ public:
 };
 DUMPER7_ASSERTS_UUIInturnAnimController;
 
-// Class LGUI.UILayoutElement
+// Class LGUI.UILangTexture
 // 0x0018 (0x0118 - 0x0100)
-class UUILayoutElement final : public ULGUIBehaviour
+class UUILangTexture final : public ULGUIBehaviour
 {
 public:
-	class UUILayoutBase*                          ParentLayout;                                      // 0x0100(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	ELayoutElementType                            LayoutElementType;                                 // 0x0108(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_109[0x3];                                      // 0x0109(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         ConstantSize;                                      // 0x010C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	float                                         RatioSize;                                         // 0x0110(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_114[0x4];                                      // 0x0114(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class ULGUILangTextureData*                   LangTextureData;                                   // 0x0100(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class UUITexture>              TextureComp;                                       // 0x0108(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_110[0x8];                                      // 0x0110(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	void SetConstantSize(float value);
-	void SetLayoutType(ELayoutElementType InType);
-	void SetRatioSize(float value);
+	static void NotifyLanguageChange(ELangTextureLanguageType NewLang);
 
-	float GetConstantSize() const;
-	bool GetIgnoreLayout() const;
-	ELayoutElementType GetLayoutType() const;
-	float GetRatioSize() const;
+	void SetLangTextureData(class ULGUILangTextureData* NewData);
+
+	class ULGUILangTextureData* GetLangTextureData() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UILayoutElement")
+		STATIC_CLASS_IMPL("UILangTexture")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UILayoutElement")
+		STATIC_NAME_IMPL(L"UILangTexture")
 	}
-	static class UUILayoutElement* GetDefaultObj()
+	static class UUILangTexture* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUILayoutElement>();
+		return GetDefaultObjImpl<UUILangTexture>();
 	}
 };
-DUMPER7_ASSERTS_UUILayoutElement;
+DUMPER7_ASSERTS_UUILangTexture;
 
-// Class LGUI.UILoopScrollViewComponent
-// 0x01B8 (0x0480 - 0x02C8)
-class UUILoopScrollViewComponent final : public UUIScrollViewWithScrollbarComponent
+// Class LGUI.UILayoutInterface
+// 0x0000 (0x0000 - 0x0000)
+class IUILayoutInterface final
 {
 public:
-	uint8                                         Pad_2C8[0x38];                                     // 0x02C8(0x0038)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<TWeakObjectPtr<class AUIBaseActor>>    GridArray;                                         // 0x0300(0x0010)(ZeroConstructor, UObjectWrapper, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_310[0x50];                                     // 0x0310(0x0050)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class AUIBaseActor>            TemplateGrid;                                      // 0x0360(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	int32                                         DisplayGridNum;                                    // 0x0368(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	int32                                         TotalGridNum;                                      // 0x036C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          GridDefaultUIActive;                               // 0x0370(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          IsGridShrinkStrech;                                // 0x0371(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_372[0x2];                                      // 0x0372(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         SpacingHorizontal;                                 // 0x0374(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         SpacingVertical;                                   // 0x0378(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         PaddingHorizontal;                                 // 0x037C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         PaddingVertical;                                   // 0x0380(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bForceSingleLine;                                  // 0x0384(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_385[0x3];                                      // 0x0385(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         GridAnimationStartTime;                            // 0x0388(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         GridAnimationInterval;                             // 0x038C(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          IsInAnimation;                                     // 0x0390(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_391[0x7];                                      // 0x0391(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(int32 DisplayIndex, class AUIBaseActor* Actor)> OnGridCreate;                     // 0x0398(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-	TDelegate<void(int32 StartIndex, int32 EndIndex)> OnGridsUpdate;                                 // 0x03C0(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-	TDelegate<void()>                             OnDestroyCallBack;                                 // 0x03E8(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-	uint8                                         Pad_410[0x50];                                     // 0x0410(0x0050)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         NavigationIndex;                                   // 0x0460(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_464[0x1C];                                     // 0x0464(0x001C)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UILayoutInterface")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UILayoutInterface")
+	}
+	static class IUILayoutInterface* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<IUILayoutInterface>();
+	}
+
+	class UObject* AsUObject()
+	{
+		return reinterpret_cast<UObject*>(this);
+	}
+	const class UObject* AsUObject() const
+	{
+		return reinterpret_cast<const UObject*>(this);
+	}
+};
+DUMPER7_ASSERTS_IUILayoutInterface;
+
+// Class LGUI.UIMultiTemplateLayout
+// 0x0040 (0x01D0 - 0x0190)
+class UUIMultiTemplateLayout final : public UUILayoutWithAnimation
+{
+public:
+	ELGUILayoutDirectionType                      DirectionType;                                     // 0x0190(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_191[0x3];                                      // 0x0191(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FMargin                                Padding;                                           // 0x0194(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	struct FVector2D                              Spacing;                                           // 0x01A4(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          SizeFitToChildren;                                 // 0x01AC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bAutoAdjustScale;                                  // 0x01AD(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1AE[0x22];                                     // 0x01AE(0x0022)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	void Refresh();
-	void RefreshByData(class AUIBaseActor* UIItem, int32 GridNum, bool KeepContentPosition);
-	void ResetPreview();
-	void ScrollToGridIndex(int32 GridIndex, bool bTweenAnim);
-	void ScrollToGridIndexLater(int32 GridIndex, bool bTweenAnim);
-	void ScrollToNextLine(bool bReversed);
-	void ScrollToNextLineLater(bool bReversed);
-	void SetGridAnimationInterval(float value);
-	void SetGridAnimationStartTime(float value);
-	void SetInAnimation(bool state);
-	void SetNavigationIndex(int32 GridIndex);
+	void SetAutoAdjustScale(bool Value);
+	void SetDirectionType(ELGUILayoutDirectionType NewDirectionType);
+	void SetPadding(const struct FMargin& value);
+	void SetSizeFitToChildren(bool Value);
+	void SetSpacing(const struct FVector2D& value);
 
-	class AUIBaseActor* GetGrid(int32 GridIndex) const;
-	float GetGridAnimationInterval() const;
-	float GetGridAnimationStartTime() const;
-	bool GetInAnimation() const;
+	bool GetAutoAdjustScale() const;
+	ELGUILayoutDirectionType GetDirectionType() const;
+	struct FMargin GetPadding() const;
+	bool GetSizeFitToChildren() const;
+	struct FVector2D GetSpacing() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UILoopScrollViewComponent")
+		STATIC_CLASS_IMPL("UIMultiTemplateLayout")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UILoopScrollViewComponent")
+		STATIC_NAME_IMPL(L"UIMultiTemplateLayout")
 	}
-	static class UUILoopScrollViewComponent* GetDefaultObj()
+	static class UUIMultiTemplateLayout* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUILoopScrollViewComponent>();
+		return GetDefaultObjImpl<UUIMultiTemplateLayout>();
 	}
 };
-DUMPER7_ASSERTS_UUILoopScrollViewComponent;
+DUMPER7_ASSERTS_UUIMultiTemplateLayout;
 
-// Class LGUI.UIMultiTemplateScrollViewComponent
-// 0x01A0 (0x0468 - 0x02C8)
-class UUIMultiTemplateScrollViewComponent final : public UUIScrollViewWithScrollbarComponent
+// Class LGUI.UINavigationBehaviour
+// 0x0008 (0x0108 - 0x0100)
+class UUINavigationBehaviour : public ULGUIBehaviour
 {
 public:
-	TArray<struct FMultiTemplateScrollViewTemplateInfo> TemplateInfoArray;                           // 0x02C8(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPrivate)
-	float                                         ViewportSizeTolerance;                             // 0x02D8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_2DC[0xBC];                                     // 0x02DC(0x00BC)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         AreaSpacing;                                       // 0x0398(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_39C[0x4];                                      // 0x039C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(int32 GridIndex, class AUIBaseActor* Actor)> OnItemCreate;                        // 0x03A0(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-	TDelegate<void(int32 GridIndex, class AUIBaseActor* Actor)> OnItemRefresh;                       // 0x03C8(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-	TDelegate<void(int32 GridIndex, class AUIBaseActor* Actor)> OnItemClear;                         // 0x03F0(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-	uint8                                         Pad_418[0x50];                                     // 0x0418(0x0050)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         LoopScrollViewGridIndex;                           // 0x0100(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_104[0x4];                                      // 0x0104(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	int32 FindNavigationIndex(class UUISelectableComponent* Component, const struct FVector& Direction, EUINavigationWrapMode WrapMode, EUINavigationPriorityMode PriorityMode, float NavigateTolerance, float NavigateToleranceReverse);
-	int32 GetGridIndexByChildComponent(class UUISelectableComponent* Component);
-	class UUIItem* GetGridItem(int32 GridIndex);
-	class UUIItem* GetGridItemByChildComponent(class UUISelectableComponent* Component);
-	class UUISelectableComponent* GetNavigationComponentByGridIndex(int32 GridIndex);
-	bool IsAllItemDisplayed();
-	bool IsInDisplayRange(int32 GridIndex, bool OnlyCheckData);
-	void Refresh();
-	void RefreshByData(const TArray<int32>& InTemplateIndexArray, bool KeepContentPosition, int32 ScrollToItemIndex);
-	void ScrollToGridIndex(int32 GridIndex, bool bScrollToTop);
-	void ScrollToGridIndexLater(int32 GridIndex, bool bScrollToTop);
-	void TryScrollToGridIndex(int32 GridIndex, bool bScrollToTop);
-
-	bool CheckScrollViewValid() const;
-	void GetAreaGridIndexRange(int32 InAreaIndex, int32* OutStartGridIndex, int32* OutEndGridIndex) const;
-	struct FMargin GetAreaPadding(int32 InAreaIndex) const;
-	void GetAreaSize(int32 InAreaIndex, float* OutWidth, float* OutHeight) const;
-	int32 GetEndDisplayGridIndex() const;
-	struct FVector2D GetGridSpacingInArea(int32 InAreaIndex) const;
-	int32 GetGridTemplateIndexInArea(int32 InAreaIndex) const;
-	float GetLineHeightWhenVertical(int32 InLineIndex) const;
-	float GetLineWidthWhenHorizontal(int32 InLineIndex) const;
-	int32 GetStartDisplayGridIndex() const;
-	void SetContentOffsetAlignGrid(int32 GridIndex, bool bClamp, bool bScrollToTop) const;
-	void SetContentOffsetXWhenHorizontal(float NewOffset, bool bClamp) const;
-	void SetContentOffsetYWhenVertical(float NewOffset, bool bClamp) const;
+	bool OnCheckCanSetNavigationBP();
+	bool OnCheckLoopScrollChangeNavigationBP();
+	void OnNotifyInteractiveBP();
+	void OnNotifyNavigationEnterBP(class ULGUIPointerEventData* eventData);
+	void OnNotifyNavigationSelectBP(class ULGUIPointerEventData* eventData);
+	void OnNotifyNotInteractiveBP();
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UIMultiTemplateScrollViewComponent")
+		STATIC_CLASS_IMPL("UINavigationBehaviour")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UIMultiTemplateScrollViewComponent")
+		STATIC_NAME_IMPL(L"UINavigationBehaviour")
 	}
-	static class UUIMultiTemplateScrollViewComponent* GetDefaultObj()
+	static class UUINavigationBehaviour* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUIMultiTemplateScrollViewComponent>();
+		return GetDefaultObjImpl<UUINavigationBehaviour>();
 	}
 };
-DUMPER7_ASSERTS_UUIMultiTemplateScrollViewComponent;
+DUMPER7_ASSERTS_UUINavigationBehaviour;
 
-// Class LGUI.UINavigationGroupComponent
-// 0x0108 (0x0208 - 0x0100)
-class UUINavigationGroupComponent final : public ULGUIBehaviour
+// Class LGUI.UINavigationTextChangeListener
+// 0x0008 (0x0108 - 0x0100)
+class UUINavigationTextChangeListener : public ULGUIBehaviour
 {
 public:
-	uint8                                         Pad_100[0xA0];                                     // 0x0100(0x00A0)(Fixing Size After Last Property [ Dumper-7 ])
-	EUINavigationWrapMode                         HorizontalWrapMode;                                // 0x01A0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EUINavigationPriorityMode                     HorizontalPriorityMode;                            // 0x01A1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EUINavigationWrapMode                         VerticalWrapMode;                                  // 0x01A2(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EUINavigationPriorityMode                     VerticalPriorityMode;                              // 0x01A3(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TWeakObjectPtr<class AActor>                  PrevNavigationGroupActor;                          // 0x01A4(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TWeakObjectPtr<class UUINavigationGroupComponent> PrevNavigationGroup;                           // 0x01AC(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TWeakObjectPtr<class AActor>                  NextNavigationGroupActor;                          // 0x01B4(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TWeakObjectPtr<class UUINavigationGroupComponent> NextNavigationGroup;                           // 0x01BC(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   PrevNavigationGroupName;                           // 0x01C4(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   NextNavigationGroupName;                           // 0x01D0(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   NavigationGroupName;                               // 0x01DC(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<TWeakObjectPtr<class AActor>>          DefaultNavigateActors;                             // 0x01E8(0x0010)(Edit, ZeroConstructor, UObjectWrapper, NativeAccessSpecifierPublic)
-	bool                                          BookMark;                                          // 0x01F8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ScrollBall;                                        // 0x01F9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          MouseCanJump;                                      // 0x01FA(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          AutoSearch;                                        // 0x01FB(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          SelectableMemory;                                  // 0x01FC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1FD[0x3];                                      // 0x01FD(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         ViewId;                                            // 0x0200(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_204[0x4];                                      // 0x0204(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class AActor*                                 TextActor;                                         // 0x0100(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 
 public:
-	static void ResetNavigateGroupDelegate();
-	static void SetNavigateGroupDelegate(const TDelegate<void(class UUINavigationGroupComponent* NavigationGroupComponent, EUINavigationGroupMode mode)>& Delegate);
-	static void SetNavigateTolerance(const float Tolerance);
-
-	void GetRootNavigationGrade(TArray<class UUISelectableComponent*>* Result);
-	void Navigate();
-	void NavigateToNextGroup();
-	void NavigateToPrevGroup();
+	void OnNotifyTextChangeBP(const class FString& NotifyText);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UINavigationGroupComponent")
+		STATIC_CLASS_IMPL("UINavigationTextChangeListener")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UINavigationGroupComponent")
+		STATIC_NAME_IMPL(L"UINavigationTextChangeListener")
 	}
-	static class UUINavigationGroupComponent* GetDefaultObj()
+	static class UUINavigationTextChangeListener* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUINavigationGroupComponent>();
+		return GetDefaultObjImpl<UUINavigationTextChangeListener>();
 	}
 };
-DUMPER7_ASSERTS_UUINavigationGroupComponent;
+DUMPER7_ASSERTS_UUINavigationTextChangeListener;
 
-// Class LGUI.UINiagara
-// 0x0880 (0x0E30 - 0x05B0)
-class UUINiagara final : public UUIBaseRenderable
+// Class LGUI.UINiagaraActor
+// 0x0008 (0x03F8 - 0x03F0)
+class AUINiagaraActor final : public AUIBaseActor
 {
 public:
-	class UNiagaraSystem*                         NiagaraSystemReference;                            // 0x05B0(0x0008)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          IsNiagaraActive;                                   // 0x05B8(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5B9[0x3];                                      // 0x05B9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         StartTime;                                         // 0x05BC(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         LoopTime;                                          // 0x05C0(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         EndTime;                                           // 0x05C4(0x0004)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FKuroCurveVector                       NiagaraLocation;                                   // 0x05C8(0x01A8)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
-	struct FKuroCurveVector                       NiagaraRotation;                                   // 0x0770(0x01A8)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
-	struct FKuroCurveVector                       NiagaraScale;                                      // 0x0918(0x01A8)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
-	TMap<class FString, int32>                    IntParameter;                                      // 0x0AC0(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
-	TMap<class FString, struct FKuroCurveFloat>   FloatParameter;                                    // 0x0B10(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
-	TMap<class FString, struct FKuroCurveVector>  VectorParameter;                                   // 0x0B60(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
-	TMap<class FString, struct FKuroCurveLinearColor> ColorParameter;                                // 0x0BB0(0x0050)(Edit, BlueprintVisible, BlueprintReadOnly, NativeAccessSpecifierPublic)
-	bool                                          bAdaptPosAndSizeChanged;                           // 0x0C00(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bEnableCircleClip;                                 // 0x0C01(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_C02[0x2];                                      // 0x0C02(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FCircleClipParameters                  CircleClipParameters;                              // 0x0C04(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_C14[0x4];                                      // 0x0C14(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULGUINiagaraComponent*                  NiagaraComponent;                                  // 0x0C18(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_C20[0x1F0];                                    // 0x0C20(0x01F0)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          bResetNiagara;                                     // 0x0E10(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bIgnoreGlobalUINiagaraPause;                       // 0x0E11(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E12[0x6];                                      // 0x0E12(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAkAudioEvent*                          StartEvent;                                        // 0x0E18(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bCanInterupt;                                      // 0x0E20(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_E21[0x3];                                      // 0x0E21(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         FadeOutMs;                                         // 0x0E24(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_E28[0x8];                                      // 0x0E28(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UUINiagara*                             UINiagara;                                         // 0x03F0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 
 public:
-	void ActivateSystem(bool Reset);
+	void ActivateSystem();
 	void DeactivateSystem();
-	bool GetIsActive();
-	class ULGUINiagaraComponent* GetNiagaraComponent();
-	bool IsCircleClipEnable();
-	void ReinitializeSystem();
-	void ResetOverrideParameters();
-	void ResetOverrideParametersAndActivate();
-	void SetCircleClipEnable(bool Enable);
-	void SetCircleClipParameters(const struct FCircleClipParameters& NewCircleClipParameters);
-	void SetNiagaraEmitterCustomTexture(const class FString& InEmitterName, const class FString& InVariableName, class UTexture* InTexture);
-	void SetNiagaraEmitterFloatParam(const class FString& InEmitterName, const class FString& InVariableName, float InValue);
-	void SetNiagaraEmitterVectorParam(const class FString& InEmitterName, const class FString& InVariableName, const struct FVector4& InVector);
-	void SetNiagaraSystem(class UNiagaraSystem* InSystem);
-	void SetNiagaraUIActive(bool active, bool bInResetNiagara);
-	void SetNiagaraVarFloat(const class FString& VarName, float Value);
-	void SetNiagaraVarInt(const class FString& VarName, int32 Value);
-	void SetNiagaraVarLinearColor(const class FString& VarName, const struct FLinearColor& Value);
 	void SwitchToStop();
 
-	struct FCircleClipParameters GetCircleClipParameters() const;
+	class UUINiagara* GetUINiagara() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UINiagara")
+		STATIC_CLASS_IMPL("UINiagaraActor")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UINiagara")
+		STATIC_NAME_IMPL(L"UINiagaraActor")
 	}
-	static class UUINiagara* GetDefaultObj()
+	static class AUINiagaraActor* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUINiagara>();
+		return GetDefaultObjImpl<AUINiagaraActor>();
 	}
 };
-DUMPER7_ASSERTS_UUINiagara;
+DUMPER7_ASSERTS_AUINiagaraActor;
 
 // Class LGUI.UINumberLerpComponent
 // 0x0038 (0x00F8 - 0x00C0)
@@ -8095,7 +8317,15 @@ public:
 	bool                                          bEnableSliceBorder;                                // 0x0137(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 	uint8                                         Pad_138[0x8];                                      // 0x0138(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FVector4                               SliceBorder;                                       // 0x0140(0x0010)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_150[0x30];                                     // 0x0150(0x0030)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          bScreenSpaceRectClip;                              // 0x0150(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          bEnableRotationClip;                               // 0x0151(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_152[0x2E];                                     // 0x0152(0x002E)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetClipTexture(class UTexture* NewClipTexture);
+
+	class UTexture* GetClipTexture() const;
+	ELGUICanvasClipType GetClipType() const;
 
 public:
 	static class UClass* StaticClass()
@@ -8162,6 +8392,36 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ULGUICustomDeviceMarginsParam;
+
+// Class LGUI.UISceneView
+// 0x0010 (0x0920 - 0x0910)
+class UUISceneView final : public UUITexture
+{
+public:
+	class ASceneCapture2D*                        SceneCaptureActor;                                 // 0x0910(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bSyncSizeToRT;                                     // 0x0918(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_919[0x7];                                      // 0x0919(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	class USceneCaptureComponent2D* GetSceneCapture() const;
+	void ViewPointToWorld(const struct FVector2D& InViewPoint, struct FVector* OutWorldLocation, struct FVector* OutWorldDirection) const;
+	bool WorldToViewPoint(const struct FVector& InWorldLocation, struct FVector2D* OutViewPoint) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UISceneView")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UISceneView")
+	}
+	static class UUISceneView* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUISceneView>();
+	}
+};
+DUMPER7_ASSERTS_UUISceneView;
 
 // Class LGUI.UIScrollbarComponent
 // 0x0080 (0x0478 - 0x03F8)
@@ -8241,28 +8501,72 @@ public:
 };
 DUMPER7_ASSERTS_UUISelectableButtonComponent;
 
-// Class LGUI.UISizeControlByAspectRatioHelper
-// 0x0008 (0x0108 - 0x0100)
-class UUISizeControlByAspectRatioHelper final : public ULGUIBehaviour
+// Class LGUI.UISelectableStateHolder
+// 0x0018 (0x0128 - 0x0110)
+class UUISelectableStateHolder final : public UUISelectableTransitionComponent
 {
 public:
-	TWeakObjectPtr<class UUISizeControlByAspectRatio> TargetComp;                                    // 0x0100(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_110[0x10];                                     // 0x0110(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	EStateTransitionType                          TransitionType;                                    // 0x0120(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_121[0x7];                                      // 0x0121(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetAllTransitionsEnable(bool bEnable);
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UISizeControlByAspectRatioHelper")
+		STATIC_CLASS_IMPL("UISelectableStateHolder")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UISizeControlByAspectRatioHelper")
+		STATIC_NAME_IMPL(L"UISelectableStateHolder")
 	}
-	static class UUISizeControlByAspectRatioHelper* GetDefaultObj()
+	static class UUISelectableStateHolder* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUISizeControlByAspectRatioHelper>();
+		return GetDefaultObjImpl<UUISelectableStateHolder>();
 	}
 };
-DUMPER7_ASSERTS_UUISizeControlByAspectRatioHelper;
+DUMPER7_ASSERTS_UUISelectableStateHolder;
+
+// Class LGUI.UISizeControlByAspectRatio
+// 0x0028 (0x0198 - 0x0170)
+class UUISizeControlByAspectRatio final : public UUILayoutBase
+{
+public:
+	EUISizeControlByAspectRatioMode               ControlMode;                                       // 0x0170(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_171[0x3];                                      // 0x0171(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         AspectRatio;                                       // 0x0174(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_178[0xC];                                      // 0x0178(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class UUISizeControlByAspectRatioHelper> HelperComp;                              // 0x0184(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FVector2D                              Pivot;                                             // 0x018C(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bChangeChildrenOffset;                             // 0x0194(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bChangeChildrenSize;                               // 0x0195(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bChangeChildrenAlign;                              // 0x0196(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_197[0x1];                                      // 0x0197(0x0001)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetAspectRatio(float value);
+	void SetControlMode(EUISizeControlByAspectRatioMode value);
+
+	float GetAspectRatio() const;
+	EUISizeControlByAspectRatioMode GetControlMode() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UISizeControlByAspectRatio")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UISizeControlByAspectRatio")
+	}
+	static class UUISizeControlByAspectRatio* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUISizeControlByAspectRatio>();
+	}
+};
+DUMPER7_ASSERTS_UUISizeControlByAspectRatio;
 
 // Class LGUI.UISizeControlByOtherHelper
 // 0x0008 (0x0108 - 0x0100)
@@ -8287,8 +8591,58 @@ public:
 };
 DUMPER7_ASSERTS_UUISizeControlByOtherHelper;
 
+// Class LGUI.UISizeControlByOther
+// 0x0038 (0x01A8 - 0x0170)
+class UUISizeControlByOther final : public UUILayoutBase
+{
+public:
+	TWeakObjectPtr<class AUIBaseActor>            TargetActor;                                       // 0x0170(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          ControlWidth;                                      // 0x0178(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          ControlHeight;                                     // 0x0179(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          UseWidthRange;                                     // 0x017A(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          UseHeightRange;                                    // 0x017B(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         MaxWidth;                                          // 0x017C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         MinWidth;                                          // 0x0180(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         MaxHeight;                                         // 0x0184(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         MinHeight;                                         // 0x0188(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         AdditionalWidth;                                   // 0x018C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         AdditionalHeight;                                  // 0x0190(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bSizeZeroWhenNotActive;                            // 0x0194(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_195[0x3];                                      // 0x0195(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TWeakObjectPtr<class UUIItem>                 TargetUIItem;                                      // 0x0198(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class UUISizeControlByOtherHelper> HelperComp;                                    // 0x01A0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+
+public:
+	void SetAdditionalHeight(float value);
+	void SetAdditionalWidth(float value);
+	void SetControlHeight(bool value);
+	void SetControlWidth(bool value);
+	void SetTargetActor(class AUIBaseActor* NewTargetActor);
+
+	float GetAdditionalHeight() const;
+	float GetAdditionalWidth() const;
+	bool GetControlHeight() const;
+	bool GetControlWidth() const;
+	class AUIBaseActor* GetTargetActor() const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UISizeControlByOther")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UISizeControlByOther")
+	}
+	static class UUISizeControlByOther* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUISizeControlByOther>();
+	}
+};
+DUMPER7_ASSERTS_UUISizeControlByOther;
+
 // Class LGUI.UISliderComponent
-// 0x00F8 (0x04F0 - 0x03F8)
+// 0x0120 (0x0518 - 0x03F8)
 class UUISliderComponent final : public UUISelectableComponent
 {
 public:
@@ -8304,17 +8658,18 @@ public:
 	uint8                                         Pad_421[0x7];                                      // 0x0421(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	TDelegate<void(float InFloat)>                OnValueChangeCb;                                   // 0x0428(0x0028)(Edit, ZeroConstructor, InstancedReference, Protected, NativeAccessSpecifierProtected)
 	TDelegate<void()>                             OnEndDragCb;                                       // 0x0450(0x0028)(Edit, ZeroConstructor, InstancedReference, Protected, NativeAccessSpecifierProtected)
-	class UAkAudioEvent*                          DragBeginAudioEvent;                               // 0x0478(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UAkAudioEvent*                          DragEndAudioEvent;                                 // 0x0480(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UAkAudioEvent*                          DraggingAudioEvent;                                // 0x0488(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         DraggingAudioEventInterval;                        // 0x0490(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TWeakObjectPtr<class UUIItem>                 Fill;                                              // 0x0494(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TWeakObjectPtr<class UUIItem>                 FillArea;                                          // 0x049C(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TWeakObjectPtr<class UUIItem>                 Handle;                                            // 0x04A4(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TWeakObjectPtr<class UUIItem>                 HandleArea;                                        // 0x04AC(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_4B4[0x1C];                                     // 0x04B4(0x001C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FLGUIDrawableEvent                     OnValueChange;                                     // 0x04D0(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_4E8[0x8];                                      // 0x04E8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	TDelegate<void(class ULGUIPointerEventData* eventData)> OnPointUpCallBack;                       // 0x0478(0x0028)(Edit, ZeroConstructor, InstancedReference, Protected, NativeAccessSpecifierProtected)
+	class UAkAudioEvent*                          DragBeginAudioEvent;                               // 0x04A0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UAkAudioEvent*                          DragEndAudioEvent;                                 // 0x04A8(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UAkAudioEvent*                          DraggingAudioEvent;                                // 0x04B0(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         DraggingAudioEventInterval;                        // 0x04B8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class UUIItem>                 Fill;                                              // 0x04BC(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class UUIItem>                 FillArea;                                          // 0x04C4(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class UUIItem>                 Handle;                                            // 0x04CC(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class UUIItem>                 HandleArea;                                        // 0x04D4(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_4DC[0x1C];                                     // 0x04DC(0x001C)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FLGUIDrawableEvent                     OnValueChange;                                     // 0x04F8(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_510[0x8];                                      // 0x0510(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	struct FLGUIDelegateHandleWrapper RegisterSlideEvent(const TDelegate<void(float InFloat)>& InDelegate);
@@ -8345,59 +8700,86 @@ public:
 };
 DUMPER7_ASSERTS_UUISliderComponent;
 
-// Class LGUI.UISpineBoneAnchor
-// 0x0070 (0x0170 - 0x0100)
-class UUISpineBoneAnchor final : public ULGUIBehaviour
+// Class LGUI.UISpineActor
+// 0x0008 (0x03F8 - 0x03F0)
+class AUISpineActor final : public AUIBaseActor
 {
 public:
-	TArray<struct FAnchorInfo>                    AnchorInfos;                                       // 0x0100(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-	class USpineSkeletonComponent*                SpineSkeletonComponent;                            // 0x0110(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class USpineSkeletonDataAsset*                CurrSkeletonData;                                  // 0x0118(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_120[0x50];                                     // 0x0120(0x0050)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UUISpineRenderable*                     UISpine;                                           // 0x03F0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UISpineBoneAnchor")
+		STATIC_CLASS_IMPL("UISpineActor")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UISpineBoneAnchor")
+		STATIC_NAME_IMPL(L"UISpineActor")
 	}
-	static class UUISpineBoneAnchor* GetDefaultObj()
+	static class AUISpineActor* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUISpineBoneAnchor>();
+		return GetDefaultObjImpl<AUISpineActor>();
 	}
 };
-DUMPER7_ASSERTS_UUISpineBoneAnchor;
+DUMPER7_ASSERTS_AUISpineActor;
+
+// Class LGUI.UISpineManager
+// 0x0068 (0x0098 - 0x0030)
+class UUISpineManager final : public UObject
+{
+public:
+	TArray<class USpineSkeletonAnimationComponent*> SpineSkeletonAnimationComponents;                // 0x0030(0x0010)(ExportObject, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	TMap<class USpineSkeletonAnimationComponent*, float> SpinePlayRates;                             // 0x0040(0x0050)(ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_90[0x8];                                       // 0x0090(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	void SetGlobalPlayRate(float NewPlayRate);
+
+	float GetGlobalPlayRate(float NewPlayRate) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UISpineManager")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UISpineManager")
+	}
+	static class UUISpineManager* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUISpineManager>();
+	}
+};
+DUMPER7_ASSERTS_UUISpineManager;
 
 // Class LGUI.UISpineRenderable
-// 0x0430 (0x09E0 - 0x05B0)
+// 0x0430 (0x09F0 - 0x05C0)
 class UUISpineRenderable final : public UUIBaseRenderable
 {
 public:
-	float                                         DepthOffset;                                       // 0x05B0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   TextureParameterName;                              // 0x05B4(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bAdjustSizeWithAnimation;                          // 0x05C0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bUseOptUpdateMeshSection;                          // 0x05C1(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bIgnoreUpdateViewportClipSpine;                    // 0x05C2(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5C3[0x5];                                      // 0x05C3(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<class FString, struct FSpineAudioControl> AudioMap;                                         // 0x05C8(0x0050)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	uint8                                         Pad_618[0x20];                                     // 0x0618(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
-	class USpineRenderBufferCache*                RenderBufferCache;                                 // 0x0638(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          bNeedParallelUpdate;                               // 0x0640(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_641[0x7];                                      // 0x0641(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UUIDrawcallMesh*>                SpineMeshes;                                       // 0x0648(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	TMap<ELGUICanvasClipType, class UMaterialInterface*> NormalBlendMaterials;                       // 0x0658(0x0050)(Edit, NativeAccessSpecifierPrivate)
-	TMap<ELGUICanvasClipType, class UMaterialInterface*> AdditiveBlendMaterials;                     // 0x06A8(0x0050)(Edit, NativeAccessSpecifierPrivate)
-	TMap<ELGUICanvasClipType, class UMaterialInterface*> MultiplyBlendMaterials;                     // 0x06F8(0x0050)(Edit, NativeAccessSpecifierPrivate)
-	TMap<ELGUICanvasClipType, class UMaterialInterface*> ScreenBlendMaterials;                       // 0x0748(0x0050)(Edit, NativeAccessSpecifierPrivate)
-	TArray<class UMaterialInstanceDynamic*>       AtlasNormalBlendMaterialArray;                     // 0x0798(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
-	TArray<class UMaterialInstanceDynamic*>       AtlasAdditiveBlendMaterialArray;                   // 0x07A8(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
-	TArray<class UMaterialInstanceDynamic*>       AtlasMultiplyBlendMaterialArray;                   // 0x07B8(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
-	TArray<class UMaterialInstanceDynamic*>       AtlasScreenBlendMaterialArray;                     // 0x07C8(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
-	class USpineSkeletonDataAsset*                CurrSkeletonData;                                  // 0x07D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_7E0[0x200];                                    // 0x07E0(0x0200)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	float                                         DepthOffset;                                       // 0x05C0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   TextureParameterName;                              // 0x05C4(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAdjustSizeWithAnimation;                          // 0x05D0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bUseOptUpdateMeshSection;                          // 0x05D1(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bIgnoreUpdateViewportClipSpine;                    // 0x05D2(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_5D3[0x5];                                      // 0x05D3(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class FString, struct FSpineAudioControl> AudioMap;                                         // 0x05D8(0x0050)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	uint8                                         Pad_628[0x20];                                     // 0x0628(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
+	class USpineRenderBufferCache*                RenderBufferCache;                                 // 0x0648(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	bool                                          bNeedParallelUpdate;                               // 0x0650(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_651[0x7];                                      // 0x0651(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UUIDrawcallMesh*>                SpineMeshes;                                       // 0x0658(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	TMap<ELGUICanvasClipType, class UMaterialInterface*> NormalBlendMaterials;                       // 0x0668(0x0050)(Edit, NativeAccessSpecifierPrivate)
+	TMap<ELGUICanvasClipType, class UMaterialInterface*> AdditiveBlendMaterials;                     // 0x06B8(0x0050)(Edit, NativeAccessSpecifierPrivate)
+	TMap<ELGUICanvasClipType, class UMaterialInterface*> MultiplyBlendMaterials;                     // 0x0708(0x0050)(Edit, NativeAccessSpecifierPrivate)
+	TMap<ELGUICanvasClipType, class UMaterialInterface*> ScreenBlendMaterials;                       // 0x0758(0x0050)(Edit, NativeAccessSpecifierPrivate)
+	TArray<class UMaterialInstanceDynamic*>       AtlasNormalBlendMaterialArray;                     // 0x07A8(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
+	TArray<class UMaterialInstanceDynamic*>       AtlasAdditiveBlendMaterialArray;                   // 0x07B8(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
+	TArray<class UMaterialInstanceDynamic*>       AtlasMultiplyBlendMaterialArray;                   // 0x07C8(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
+	TArray<class UMaterialInstanceDynamic*>       AtlasScreenBlendMaterialArray;                     // 0x07D8(0x0010)(ZeroConstructor, Transient, NativeAccessSpecifierPrivate)
+	class USpineSkeletonDataAsset*                CurrSkeletonData;                                  // 0x07E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_7F0[0x200];                                    // 0x07F0(0x0200)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void AdjustSize();
@@ -8424,122 +8806,126 @@ public:
 };
 DUMPER7_ASSERTS_UUISpineRenderable;
 
-// Class LGUI.UISprite
-// 0x0040 (0x0800 - 0x07C0)
-class UUISprite final : public UUISpriteBase
+// Class LGUI.UISpineSequenceController
+// 0x0030 (0x00F0 - 0x00C0)
+class UUISpineSequenceController final : public UActorComponent
 {
 public:
-	EUISpriteType                                 type;                                              // 0x07C0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EUISpriteFillMethod                           fillMethod;                                        // 0x07C1(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         fillOrigin;                                        // 0x07C2(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          fillDirectionFlip;                                 // 0x07C3(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         fillAmount;                                        // 0x07C4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          hideHeadAtEndAndTailAtStart;                       // 0x07C8(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bTileAutoFit;                                      // 0x07C9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7CA[0x2];                                      // 0x07CA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         clampEdge;                                         // 0x07CC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         tileX;                                             // 0x07D0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         tileY;                                             // 0x07D4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         offsetX;                                           // 0x07D8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         offsetY;                                           // 0x07DC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UMaterialInterface*                     HistoryCustomMaterial;                             // 0x07E0(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7E8[0x18];                                     // 0x07E8(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FString                                 AnimName;                                          // 0x00C0(0x0010)(Edit, ZeroConstructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         AnimTime;                                          // 0x00D0(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         AnimDuration;                                      // 0x00D4(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         MixDuration;                                       // 0x00D8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         MixTime;                                           // 0x00DC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class USpineSkeletonAnimationComponent*       SpineSkeletonAnimationComponent;                   // 0x00E0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class UTrackEntry*                            TrackEntry;                                        // 0x00E8(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 
 public:
-	void SetFillAmount(float newValue);
-	void SetFillDirectionFlip(bool newValue);
-	void SetFillMethod(EUISpriteFillMethod newValue);
-	void SetFillOrigin(uint8 newValue);
-	void SetOffsetX(float newValue);
-	void SetOffsetY(float newValue);
-	void SetSpriteType(EUISpriteType newType);
-	void SetTileOffset(const struct FLinearColor& In);
-	void SetTileX(float newValue);
-	void SetTileY(float newValue);
+	void SetAnimTime(float NewAnimTime);
 
-	float GetFillAmount() const;
-	bool GetFillDirectionFlip() const;
-	EUISpriteFillMethod GetFillMethod() const;
-	uint8 GetFillOrigin() const;
-	EUISpriteType GetSpriteType() const;
+	float GetAnimTime() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UISprite")
+		STATIC_CLASS_IMPL("UISpineSequenceController")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UISprite")
+		STATIC_NAME_IMPL(L"UISpineSequenceController")
 	}
-	static class UUISprite* GetDefaultObj()
+	static class UUISpineSequenceController* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUISprite>();
+		return GetDefaultObjImpl<UUISpineSequenceController>();
 	}
 };
-DUMPER7_ASSERTS_UUISprite;
+DUMPER7_ASSERTS_UUISpineSequenceController;
 
-// Class LGUI.UISpriteAnimator
-// 0x0028 (0x0128 - 0x0100)
-class UUISpriteAnimator final : public ULGUIBehaviour
+// Class LGUI.UISpriteActor
+// 0x0008 (0x03F8 - 0x03F0)
+class AUISpriteActor final : public AUIBaseActor
 {
 public:
-	float                                         CurFrame;                                          // 0x0100(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_104[0x4];                                      // 0x0104(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUISprite*                              Sprite;                                            // 0x0108(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class ULGUISpriteData_BaseImporter*           CurSpriteImporter;                                 // 0x0110(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TArray<class ULGUISpriteData_BaseObject*>     SpriteDatas;                                       // 0x0118(0x0010)(Edit, ZeroConstructor, EditConst, Protected, NativeAccessSpecifierProtected)
-
-public:
-	void ResetSpriteImporter();
-	void SetCurFrame(float newCurFrame);
-
-	float GetCurFrame() const;
+	class UUISprite*                              UISprite;                                          // 0x03F0(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, EditConst, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UISpriteAnimator")
+		STATIC_CLASS_IMPL("UISpriteActor")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UISpriteAnimator")
+		STATIC_NAME_IMPL(L"UISpriteActor")
 	}
-	static class UUISpriteAnimator* GetDefaultObj()
+	static class AUISpriteActor* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUISpriteAnimator>();
+		return GetDefaultObjImpl<AUISpriteActor>();
 	}
 };
-DUMPER7_ASSERTS_UUISpriteAnimator;
+DUMPER7_ASSERTS_AUISpriteActor;
 
-// Class LGUI.UISpriteSequencePlayer
+// Class LGUI.UISpriteBase_BP
+// 0x0010 (0x07E0 - 0x07D0)
+class UUISpriteBase_BP final : public UUISpriteBase
+{
+public:
+	class ULGUICreateGeometryHelper*              createGeometryHelper;                              // 0x07D0(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class ULGUIUpdateGeometryHelper*              updateGeometryHelper;                              // 0x07D8(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
+public:
+	void MarkRebuildGeometry_BP();
+	void MarkVertexChanged_BP();
+	void OnBeforeCreateOrUpdateGeometry_BP();
+	void OnCreateGeometry_BP(class ULGUICreateGeometryHelper* InCreateGeometryHelper, class ULGUISpriteData_BaseObject* InSpriteData);
+	void OnUpdateGeometry_BP(class ULGUIUpdateGeometryHelper* InUpdateGoemetryHelper, class ULGUISpriteData_BaseObject* InSpriteData, bool InVertexPositionChanged, bool InVertexUVChanged, bool InVertexColorChanged);
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("UISpriteBase_BP")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UISpriteBase_BP")
+	}
+	static class UUISpriteBase_BP* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UUISpriteBase_BP>();
+	}
+};
+DUMPER7_ASSERTS_UUISpriteBase_BP;
+
+// Class LGUI.UISpriteSheetTexturePlayer
 // 0x0018 (0x00F8 - 0x00E0)
-class UUISpriteSequencePlayer final : public ULGUIImageSequencePlayer
+class UUISpriteSheetTexturePlayer final : public ULGUIImageSequencePlayer
 {
 public:
-	TWeakObjectPtr<class UUISpriteBase>           sprite;                                            // 0x00E0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TArray<class ULGUISpriteData_BaseObject*>     spriteSequence;                                    // 0x00E8(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	TWeakObjectPtr<class UUITexture>              texture;                                           // 0x00E0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         widthCount;                                        // 0x00E8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         heightCount;                                       // 0x00EC(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_F0[0x8];                                       // 0x00F0(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
-	void SetSpriteSequence(const TArray<class ULGUISpriteData_BaseObject*>& value);
+	void SetHeightCount(int32 value);
+	void SetWidthCount(int32 value);
 
-	const TArray<class ULGUISpriteData_BaseObject*> GetSpriteSequence() const;
+	int32 GetHeightCount() const;
+	int32 GetWidthCount() const;
 
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("UISpriteSequencePlayer")
+		STATIC_CLASS_IMPL("UISpriteSheetTexturePlayer")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"UISpriteSequencePlayer")
+		STATIC_NAME_IMPL(L"UISpriteSheetTexturePlayer")
 	}
-	static class UUISpriteSequencePlayer* GetDefaultObj()
+	static class UUISpriteSheetTexturePlayer* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UUISpriteSequencePlayer>();
+		return GetDefaultObjImpl<UUISpriteSheetTexturePlayer>();
 	}
 };
-DUMPER7_ASSERTS_UUISpriteSequencePlayer;
+DUMPER7_ASSERTS_UUISpriteSheetTexturePlayer;
 
 // Class LGUI.SpriteTransitionUtil
 // 0x0000 (0x0030 - 0x0030)
@@ -8590,74 +8976,74 @@ public:
 DUMPER7_ASSERTS_AUIStaticMeshActor;
 
 // Class LGUI.UIText
-// 0x0360 (0x0B10 - 0x07B0)
+// 0x0390 (0x0B50 - 0x07C0)
 class UUIText final : public UUIBatchGeometryRenderable
 {
 public:
-	uint8                                         Pad_7A8[0x60];                                     // 0x07A8(0x0060)(Fixing Size After Last Property [ Dumper-7 ])
-	class ULGUIFontData_BaseObject*               font;                                              // 0x0808(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class FString                                 text;                                              // 0x0810(0x0010)(Edit, ZeroConstructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         size;                                              // 0x0820(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FVector2D                              spacePercentage;                                   // 0x0824(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FVector2D                              space;                                             // 0x082C(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         outlineSize;                                       // 0x0834(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FColor                                 outlineColor;                                      // 0x0838(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int16                                         glowSize;                                          // 0x083C(0x0002)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_83E[0x2];                                      // 0x083E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FColor                                 glowColor;                                         // 0x0840(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EUITextParagraphHorizontalAlign               hAlign;                                            // 0x0844(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EUITextParagraphVerticalAlign                 vAlign;                                            // 0x0845(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EUITextOverflowType                           overflowType;                                      // 0x0846(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          verticalOverflowBestFitSwitch;                     // 0x0847(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         maxWidth;                                          // 0x0848(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	int32                                         maxHeight;                                         // 0x084C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bMaxWidthLimited;                                  // 0x0850(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bMaxHeightLimited;                                 // 0x0851(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          adjustWidth;                                       // 0x0852(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          adjustHeight;                                      // 0x0853(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          NeedCustomerLimitWidth;                            // 0x0854(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_855[0x3];                                      // 0x0855(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CustomerLimitWidth;                                // 0x0858(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	EUITextFontStyle                              fontStyle;                                         // 0x085C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          richText;                                          // 0x085D(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bApplyAlphaOnRichText;                             // 0x085E(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bFilterAnoRichTag;                                 // 0x085F(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bBestFit;                                          // 0x0860(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bRichTextTextureBestFit;                           // 0x0861(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bAlignCenter;                                      // 0x0862(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bIgnoreWordRules;                                  // 0x0863(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bAutoEllipsis;                                     // 0x0864(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bAutoEllipsisSplitWord;                            // 0x0865(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_866[0x2];                                      // 0x0866(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         BestFitMinSize;                                    // 0x0868(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bCalculateOutlineSize;                             // 0x086C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_7B8[0x68];                                     // 0x07B8(0x0068)(Fixing Size After Last Property [ Dumper-7 ])
+	class ULGUIFontData_BaseObject*               font;                                              // 0x0820(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class FString                                 text;                                              // 0x0828(0x0010)(Edit, ZeroConstructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	float                                         size;                                              // 0x0838(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FVector2D                              spacePercentage;                                   // 0x083C(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FVector2D                              space;                                             // 0x0844(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         outlineSize;                                       // 0x084C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	struct FColor                                 outlineColor;                                      // 0x0850(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int16                                         glowSize;                                          // 0x0854(0x0002)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_856[0x2];                                      // 0x0856(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FColor                                 glowColor;                                         // 0x0858(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EUITextParagraphHorizontalAlign               hAlign;                                            // 0x085C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EUITextParagraphVerticalAlign                 vAlign;                                            // 0x085D(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EUITextOverflowType                           overflowType;                                      // 0x085E(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          verticalOverflowBestFitSwitch;                     // 0x085F(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         maxWidth;                                          // 0x0860(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	int32                                         maxHeight;                                         // 0x0864(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bMaxWidthLimited;                                  // 0x0868(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bMaxHeightLimited;                                 // 0x0869(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          adjustWidth;                                       // 0x086A(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          adjustHeight;                                      // 0x086B(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          NeedCustomerLimitWidth;                            // 0x086C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 	uint8                                         Pad_86D[0x3];                                      // 0x086D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class FString>                         hyperlinks;                                        // 0x0870(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-	bool                                          bFilterHyperLinks;                                 // 0x0880(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_881[0x3];                                      // 0x0881(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         hyperLinksClickAreaRatio;                          // 0x0884(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bEnableHyperLinksHighlight;                        // 0x0888(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_889[0x3];                                      // 0x0889(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FColor                                 HyperLinksHoverColor;                              // 0x088C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_890[0x1];                                      // 0x0890(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          bUseGradientUV2;                                   // 0x0891(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bOutlineAlphaIndependent;                          // 0x0892(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bOutlineUV3SetOriginTextUV;                        // 0x0893(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bGlowAlphaInherit;                                 // 0x0894(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bGlowAlphaIndependent;                             // 0x0895(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_896[0x2];                                      // 0x0896(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(const class FString& HyperLink)> OnHyperLinkClickCallBack;                        // 0x0898(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-	uint8                                         Pad_8C0[0x80];                                     // 0x08C0(0x0080)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          bEnableTextRenderSystemV2;                         // 0x0940(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_941[0x11F];                                    // 0x0941(0x011F)(Fixing Size After Last Property [ Dumper-7 ])
-	class UUITextClickComponent*                  ClickComponent;                                    // 0x0A60(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_A68[0x28];                                     // 0x0A68(0x0028)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void()>                             OnSelfLanguageChange;                              // 0x0A90(0x0028)(Edit, ZeroConstructor, DisableEditOnInstance, EditConst, InstancedReference, NativeAccessSpecifierPublic)
-	TDelegate<void()>                             OnTextureAsyncLoaded;                              // 0x0AB8(0x0028)(Edit, ZeroConstructor, DisableEditOnInstance, EditConst, InstancedReference, NativeAccessSpecifierPublic)
-	uint32                                        TranslateId;                                       // 0x0AE0(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_AE4[0x24];                                     // 0x0AE4(0x0024)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          bGameRichText;                                     // 0x0B08(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_B09[0x7];                                      // 0x0B09(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	float                                         CustomerLimitWidth;                                // 0x0870(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	EUITextFontStyle                              fontStyle;                                         // 0x0874(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          richText;                                          // 0x0875(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bApplyAlphaOnRichText;                             // 0x0876(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bFilterAnoRichTag;                                 // 0x0877(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bBestFit;                                          // 0x0878(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bRichTextTextureBestFit;                           // 0x0879(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bAlignCenter;                                      // 0x087A(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bIgnoreWordRules;                                  // 0x087B(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bAutoEllipsis;                                     // 0x087C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bAutoEllipsisSplitWord;                            // 0x087D(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_87E[0x2];                                      // 0x087E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         BestFitMinSize;                                    // 0x0880(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bCalculateOutlineSize;                             // 0x0884(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_885[0x3];                                      // 0x0885(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class FString>                         hyperlinks;                                        // 0x0888(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	bool                                          bFilterHyperLinks;                                 // 0x0898(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_899[0x3];                                      // 0x0899(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         hyperLinksClickAreaRatio;                          // 0x089C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bEnableHyperLinksHighlight;                        // 0x08A0(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_8A1[0x3];                                      // 0x08A1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FColor                                 HyperLinksHoverColor;                              // 0x08A4(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_8A8[0x1];                                      // 0x08A8(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          bUseGradientUV2;                                   // 0x08A9(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bOutlineAlphaIndependent;                          // 0x08AA(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bOutlineUV3SetOriginTextUV;                        // 0x08AB(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bGlowAlphaInherit;                                 // 0x08AC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	bool                                          bGlowAlphaIndependent;                             // 0x08AD(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_8AE[0x2];                                      // 0x08AE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void(const class FString& HyperLink)> OnHyperLinkClickCallBack;                        // 0x08B0(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+	uint8                                         Pad_8D8[0x80];                                     // 0x08D8(0x0080)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          bEnableTextRenderSystemV2;                         // 0x0958(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_959[0x11F];                                    // 0x0959(0x011F)(Fixing Size After Last Property [ Dumper-7 ])
+	class UUITextClickComponent*                  ClickComponent;                                    // 0x0A78(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_A80[0x50];                                     // 0x0A80(0x0050)(Fixing Size After Last Property [ Dumper-7 ])
+	TDelegate<void()>                             OnSelfLanguageChange;                              // 0x0AD0(0x0028)(Edit, ZeroConstructor, DisableEditOnInstance, EditConst, InstancedReference, NativeAccessSpecifierPublic)
+	TDelegate<void()>                             OnTextureAsyncLoaded;                              // 0x0AF8(0x0028)(Edit, ZeroConstructor, DisableEditOnInstance, EditConst, InstancedReference, NativeAccessSpecifierPublic)
+	uint32                                        TranslateId;                                       // 0x0B20(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_B24[0x24];                                     // 0x0B24(0x0024)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          bGameRichText;                                     // 0x0B48(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_B49[0x7];                                      // 0x0B49(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static void OnTsLanguageChange();
@@ -8665,7 +9051,7 @@ public:
 	static void SetLocalTextDelegate(const TDelegate<void(const class FString& TableName, int32 TextKey, class UUIText* uiText)>& Delegate);
 	static void SetLocalTextNewDelegate(const TDelegate<void(const class FString& TextKey, class UUIText* uiText, const bool isMainText)>& Delegate);
 	static void SetTextTranslateDelegate(const TDelegate<void(class UUIText* uiText)>& Delegate);
-	static void SetTsGameRichTextDelegate(const TDelegate<void(const class FString& RichTextType, const TArray<class FString>& Params)>& Delegate);
+	static void SetTsGameRichTextDelegate(const TDelegate<void(const class FString& RichTextType, const TArray<class FString>& Params_0)>& Delegate);
 
 	void AddFloatArgs(float Value);
 	void AddFormatTableInfo(const class FString& ConfigTableName, int32 Key);
@@ -8748,11 +9134,11 @@ public:
 DUMPER7_ASSERTS_UUIText;
 
 // Class LGUI.UITextAdditionalUVModifier
-// 0x0018 (0x00F0 - 0x00D8)
+// 0x0018 (0x00F8 - 0x00E0)
 class UUITextAdditionalUVModifier final : public UUIGeometryModifierBase
 {
 public:
-	uint8                                         Pad_D8[0x18];                                      // 0x00D8(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_E0[0x18];                                      // 0x00E0(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void SetAdditionalUV(int32 AdditionalUVChannel, const struct FVector2D& UV);
@@ -8772,85 +9158,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UUITextAdditionalUVModifier;
-
-// Class LGUI.UITextInputComponent
-// 0x0308 (0x0700 - 0x03F8)
-class UUITextInputComponent final : public UUISelectableComponent
-{
-public:
-	uint8                                         Pad_3F8[0x10];                                     // 0x03F8(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class AUITextActor>            TextActor;                                         // 0x0408(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class FString                                 Text;                                              // 0x0410(0x0010)(Edit, ZeroConstructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	ELGUITextInputType                            InputType;                                         // 0x0420(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_421[0x7];                                      // 0x0421(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 PasswordChar;                                      // 0x0428(0x0010)(Edit, ZeroConstructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          bAllowMultiLine;                                   // 0x0438(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_439[0x3];                                      // 0x0439(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class AUIBaseActor>            PlaceHolderActor;                                  // 0x043C(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         CaretBlinkRate;                                    // 0x0444(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	float                                         CaretWidth;                                        // 0x0448(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          IsShowDefaultText;                                 // 0x044C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_44D[0x3];                                      // 0x044D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FColor                                 CaretColor;                                        // 0x0450(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FColor                                 SelectionColor;                                    // 0x0454(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	struct FVirtualKeyboardOptions                VirtualKeyboradOptions;                            // 0x0458(0x0001)(Edit, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_459[0x7];                                      // 0x0459(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FKey>                           IgnoreKeys;                                        // 0x0460(0x0010)(Edit, ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_470[0x18];                                     // 0x0470(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FLGUIDrawableEvent                     OnValueChange;                                     // 0x0488(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_4A0[0x18];                                     // 0x04A0(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FLGUIDrawableEvent                     OnSubmit;                                          // 0x04B8(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_4D0[0x18];                                     // 0x04D0(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FLGUIDrawableEvent                     OnInputActivate;                                   // 0x04E8(0x0018)(Edit, Protected, NativeAccessSpecifierProtected)
-	TDelegate<void(const class FString& InString)> OnCheckTextInputDelegate;                         // 0x0500(0x0028)(Edit, ZeroConstructor, InstancedReference, Protected, NativeAccessSpecifierProtected)
-	uint32                                        MaxInput;                                          // 0x0528(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_52C[0x8C];                                     // 0x052C(0x008C)(Fixing Size After Last Property [ Dumper-7 ])
-	class APlayerController*                      PlayerController;                                  // 0x05B8(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_5C0[0x18];                                     // 0x05C0(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
-	TWeakObjectPtr<class UUISprite>               CaretObject;                                       // 0x05D8(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	TArray<TWeakObjectPtr<class UUISprite>>       SelectionMaskObjectArray;                          // 0x05E0(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, UObjectWrapper, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_5F0[0x70];                                     // 0x05F0(0x0070)(Fixing Size After Last Property [ Dumper-7 ])
-	TDelegate<void(const class FString& InString)> OnTextChange;                                     // 0x0660(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-	TDelegate<void(const class FString& InString)> OnTextSubmit;                                     // 0x0688(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-	TDelegate<void(const class FString& InString)> OnTextClip;                                       // 0x06B0(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-	TDelegate<void(bool InActivate)>              OnInputActivateDelegate;                           // 0x06D8(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-
-public:
-	static void SetShowKeyboardDelegate(const TDelegate<void(bool state)>& InDelegate);
-
-	void ActivateInputText();
-	void ClearCustomInputTypeEvent();
-	void DeactivateInputText();
-	bool IsInputActive();
-	struct FLGUIDelegateHandleWrapper RegisterInputActivateEvent(const TDelegate<void(bool InActivate)>& InDelegate);
-	struct FLGUIDelegateHandleWrapper RegisterSubmitEvent(const TDelegate<void(const class FString& InString)>& InDelegate);
-	struct FLGUIDelegateHandleWrapper RegisterValueChangeEvent(const TDelegate<void(const class FString& InString)>& InDelegate);
-	void SetCustomInputTypeFunction(const TDelegate<void(const class FString& InString)>& InFunction);
-	void SetInputType(ELGUITextInputType newValue);
-	void SetText(const class FString& InText, bool InFireEvent);
-	void UnregisterInputActivateEvent(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-	void UnregisterSubmitEvent(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-	void UnregisterValueChangeEvent(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);
-
-	ELGUITextInputType GetInputType() const;
-	class FString GetText() const;
-	class UUIText* GetTextComponent() const;
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UITextInputComponent")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UITextInputComponent")
-	}
-	static class UUITextInputComponent* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUITextInputComponent>();
-	}
-};
-DUMPER7_ASSERTS_UUITextInputComponent;
 
 // Class LGUI.UITextTransition
 // 0x0070 (0x0340 - 0x02D0)
@@ -8878,13 +9185,13 @@ public:
 DUMPER7_ASSERTS_UUITextTransition;
 
 // Class LGUI.UITextureBase_BP
-// 0x0010 (0x0800 - 0x07F0)
+// 0x0010 (0x0810 - 0x0800)
 class UUITextureBase_BP final : public UUITextureBase
 {
 public:
-	class ULGUICreateGeometryHelper*              createGeometryHelper;                              // 0x07E8(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class ULGUIUpdateGeometryHelper*              updateGeometryHelper;                              // 0x07F0(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_7F8[0x8];                                      // 0x07F8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class ULGUICreateGeometryHelper*              createGeometryHelper;                              // 0x07F8(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class ULGUIUpdateGeometryHelper*              updateGeometryHelper;                              // 0x0800(0x0008)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_808[0x8];                                      // 0x0808(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void MarkRebuildGeometry_BP();
@@ -8908,33 +9215,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UUITextureBase_BP;
-
-// Class LGUI.UITextureBox
-// 0x0010 (0x0800 - 0x07F0)
-class UUITextureBox final : public UUITextureBase
-{
-public:
-	float                                         thickness;                                         // 0x07E8(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	bool                                          seperateFrontColor;                                // 0x07EC(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7ED[0x3];                                      // 0x07ED(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FColor                                 frontFaceColor;                                    // 0x07F0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_7F4[0xC];                                      // 0x07F4(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("UITextureBox")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"UITextureBox")
-	}
-	static class UUITextureBox* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UUITextureBox>();
-	}
-};
-DUMPER7_ASSERTS_UUITextureBox;
 
 // Class LGUI.UITextureBoxActor
 // 0x0008 (0x03F8 - 0x03F0)
@@ -9007,7 +9287,7 @@ public:
 	void OnComponentSelected(class UUIToggleComponent* Component);
 	void OnComponentUnhighlighted();
 	void OnComponentUnselected();
-	struct FLGUIDelegateHandleWrapper RegisterToggleEvent(const TDelegate<void(int32 Index)>& InDelegate);
+	struct FLGUIDelegateHandleWrapper RegisterToggleEvent(const TDelegate<void(int32 Index_0)>& InDelegate);
 	void SetAllowNoneSelected(bool InBool);
 	void SetSelection(class UUIToggleComponent* Target);
 	void UnregisterToggleEvent(const struct FLGUIDelegateHandleWrapper& InDelegateHandle);

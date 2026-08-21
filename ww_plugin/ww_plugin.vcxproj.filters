@@ -122,6 +122,9 @@
     <ClInclude Include="src\MinHook\include\MinHook.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\UEOffsets.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ext\CppSDK\Assertions.inl">

@@ -86,11 +86,13 @@ namespace Offsets
 	constexpr int32 GNames            = 0x00000000;
 	constexpr int32 GWorld            = 0x00000000;
 	//constexpr int32 ProcessEvent      = 0x00000000;
-	constexpr int32 ProcessEventIdx   = 0x00000049;
+	// constexpr int32 ProcessEventIdx   = 0x00000049;
+	inline int32 ProcessEventIdx      = 0x00000049;
 
 	static void SetGObjects(int32 offset) { GObjects = offset; }
 	static void SetAppendString(int32 offset) { AppendString = offset; }
 	static void SetProcessEvent(int32 offset) { ProcessEvent = offset; }
+	static void SetProcessEventIdx(int32 idx) { if (idx > 0) ProcessEventIdx = idx; }
 }
 
 namespace InSDKUtils
@@ -850,6 +852,14 @@ inline EEnumClassType& operator|=(EEnumClassType& Left, EEnumClassType Right)			
     using EnumUnderlayingType = std::underlying_type<EEnumClassType>::type;																					\
 																																							\
     reinterpret_cast<EnumUnderlayingType&>(Left) |= static_cast<EnumUnderlayingType>(Right);																\
+	return Left;																																			\
+}																																							\
+																																							\
+inline EEnumClassType& operator|=(EEnumClassType& Left, std::underlying_type<EEnumClassType>::type Right)													\
+{																																							\
+	using EnumUnderlayingType = std::underlying_type<EEnumClassType>::type;																					\
+																																							\
+	reinterpret_cast<EnumUnderlayingType&>(Left) |= Right;																									\
 	return Left;																																			\
 }																																							\
 																																							\

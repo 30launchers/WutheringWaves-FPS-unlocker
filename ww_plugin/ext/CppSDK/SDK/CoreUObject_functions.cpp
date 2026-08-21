@@ -190,6 +190,45 @@ bool UStruct::IsSubclassOf(const FName& BaseClassName) const
 // Predefined Function
 // Gets a UFunction from this UClasses' 'Children' list
 
+class UFunction* UClass::GetFunction(const FName& ClassName, const FName& FuncName) const
+{
+	for (const UStruct* Clss = this; Clss; Clss = Clss->SuperStruct)
+	{
+		if (Clss->Name != ClassName)
+			continue;
+
+		for (UField* Field = Clss->Children; Field; Field = Field->Next)
+		{
+			if (Field->HasTypeFlag(EClassCastFlags::Function) && Field->Name == FuncName)
+				return static_cast<class UFunction*>(Field);
+		}
+	}
+
+	return nullptr;
+}
+
+
+// Predefined Function
+// Gets the first UFunction from the UClass inheritance hierarchy
+
+class UFunction* UClass::GetFunction(const FName& FuncName) const
+{
+	for (const UStruct* Clss = this; Clss; Clss = Clss->SuperStruct)
+	{
+		for (UField* Field = Clss->Children; Field; Field = Field->Next)
+		{
+			if (Field->HasTypeFlag(EClassCastFlags::Function) && Field->Name == FuncName)
+				return static_cast<class UFunction*>(Field);
+		}
+	}
+
+	return nullptr;
+}
+
+
+// Predefined Function
+// Gets a UFunction from this UClasses' 'Children' list
+
 class UFunction* UClass::GetFunction(const char* ClassName, const char* FuncName) const
 {
 	for(const UStruct* Clss = this; Clss; Clss = Clss->SuperStruct)

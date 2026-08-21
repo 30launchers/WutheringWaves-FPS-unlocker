@@ -9,9 +9,103 @@
 // FORWARD DECLARATIONS
 
 
+namespace KuroRenderingRuntimeBPPlugin { enum class ECharacterControllerUVSwitch : uint8; }
+
+namespace Ani_BtnHome_Float { class USequenceDirector_C; }
+
+namespace Ani_UiView_Quest_start16 { class USequenceDirector_C; }
+
+namespace KuroSceneInteraction_25 { class ATPrefab_SM_Gat_55A_C; }
+
+namespace GachaShowSequence_Weapon { class USequenceDirector_C; }
+
+namespace KuroSceneInteraction_26 { class ATPrefab_SM_Gat_55A_C; }
+
+namespace KuroSceneInteraction_27 { class ATPrefab_SM_Gat_55A_C; }
+
 namespace GameplayAbilities { struct FServerAbilityRPCBatch; }
 
-namespace KuroRenderingRuntimeBPPlugin { enum class ECharacterControllerUVSwitch : uint8; }
+namespace TPrefab_SM_Pro_SmallTow_2_0 { class ATPrefab_SM_Pro_SmallTow_2_0_C; }
+
+namespace Ani_Ui_ItemBaseB_SelectedStart { class USequenceDirector_C; }
+
+namespace Ani_Ui_ItemBaseB_SelectedEnd { class USequenceDirector_C; }
+
+namespace Ani_BtnHome_LoopA_PC { class USequenceDirector_C; }
+
+namespace Ani_UiItem_CommonBreachStars01 { class USequenceDirector_C; }
+
+namespace Ani_Uiltem_ItemC_Float { class USequenceDirector_C; }
+
+namespace Ani_BtnFightEnter_Phone_Icon_In { class USequenceDirector_C; }
+
+namespace Ani_UiView_LuckdrawEnter_Switch_PC { class USequenceDirector_C; }
+
+namespace KuroSceneInteraction_5 { class ATPrefab_SM_Gat_55A_C; }
+
+namespace TPrefab_SM_Pro_Healing_Haichu { class ATPrefab_SM_Pro_Healing_Haichu_C; }
+
+namespace KuroSceneInteraction_16 { class ATPrefab_SM_Gat_55A_C; }
+
+namespace KuroSceneInteraction_24 { class ATPrefab_SM_Gat_55A_C; }
+
+namespace Ani_MissionPnlProcess_StartWithChild { class USequenceDirector_C; }
+
+namespace Ani_UiView_LuckdrawEnter_Close { class USequenceDirector_C; }
+
+namespace KuroSceneInteraction_23 { class ATPrefab_SM_Gat_55A_C; }
+
+namespace Ani_MissionPnlProcess_Finish { class USequenceDirector_C; }
+
+namespace Ani_MissionPnlProcess_StartNew { class USequenceDirector_C; }
+
+namespace KuroSceneInteraction_7 { class ATPrefab_SM_Gat_55A_C; }
+
+namespace KuroSceneInteraction_4 { class ATPrefab_SM_Gat_55A_C; }
+
+namespace Ani_MissionPnlProcess_Unlock { class USequenceDirector_C; }
+
+namespace KuroSceneInteraction_17 { class ATPrefab_SM_Gat_55A_C; }
+
+namespace Ani_UiView_LuckdrawEnter_Start { class USequenceDirector_C; }
+
+namespace KuroSceneInteraction_19 { class ATPrefab_SM_Gat_55A_C; }
+
+namespace KuroSceneInteraction_6 { class ATPrefab_SM_Gat_55A_C; }
+
+namespace Ani_BtnFightEnter_Phone_Icon_Out { class USequenceDirector_C; }
+
+namespace Ani_UiView_LuckdrawEnter_Switch { class USequenceDirector_C; }
+
+namespace Ani_MissionPnlProcess_Start { class USequenceDirector_C; }
+
+namespace KuroSceneInteraction_18 { class ATPrefab_SM_Gat_55A_C; }
+
+namespace Ani_BtnFightEnter_Phone_Circle_In { class USequenceDirector_C; }
+
+namespace Ani_UiView_LuckdrawEnter_Start_PC { class USequenceDirector_C; }
+
+namespace Ani_NewLevelSequence_Up { class USequenceDirector_C; }
+
+namespace Ani_RoleHeadLink_Loop { class USequenceDirector_C; }
+
+namespace Ani_MissionPnlProcess_Finish_Close { class USequenceDirector_C; }
+
+namespace TPrefab_SM_Gat_55A { class ATPrefab_SM_Gat_55A_C; }
+
+namespace KuroSceneInteraction_10 { class ATPrefab_SM_Pro_Healing_Haichu_C; }
+
+namespace Ani_BtnHome_Move { class USequenceDirector_C; }
+
+namespace KuroSceneInteraction_21 { class ATPrefab_SM_Gat_55A_C; }
+
+namespace Ani_UiView_LuckdrawEnter_Close_PC { class USequenceDirector_C; }
+
+namespace KuroSceneInteraction_30 { class ATPrefab_SM_Pro_SmallTow_2_0_C; }
+
+namespace Ani_UiView_LuckdrawEnter_Start1_PC { class USequenceDirector_C; }
+
+namespace Ani_UiView_LuckdrawEnter_Start1 { class USequenceDirector_C; }
 
 namespace ECharacterControllerUVSwitch { enum class ECharacterControllerUVSwitch : uint8; }
 

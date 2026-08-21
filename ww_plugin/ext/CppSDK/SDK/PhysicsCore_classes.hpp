@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "Chaos_structs.hpp"
-#include "CoreUObject_classes.hpp"
 #include "PhysicsCore_structs.hpp"
+#include "CoreUObject_classes.hpp"
+#include "Chaos_structs.hpp"
 #include "DeveloperSettings_classes.hpp"
 
 

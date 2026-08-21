@@ -12,6 +12,7 @@
 
 #include "PatternScanner.hpp"
 #include "HookUtility.h"
+#include "UEOffsets.hpp"
 
 #include <SDK.hpp>
 #include "src/MinHookManager.h"
@@ -351,6 +352,8 @@ APlayerController* GetPlayerController() {
     return nullptr;
 }
 
+bool scanOffsetsDone = false;
+
 void ScanAndInitOffsets() {
 
     auto _gobjects_code = XorString::decrypt(encrypted_strings::gobjects_code.data(), encrypted_strings::gobjects_code.size());
@@ -366,6 +369,56 @@ void ScanAndInitOffsets() {
     const auto timeout_duration = std::chrono::minutes(2);
     // 记录开始时间
     auto start_time = std::chrono::steady_clock::now();
+
+
+    // 260821
+    // ==================== Plan 1: Dumper-7 style structural scan ====================
+    // Identifies GObjects / AppendString / GNames / GWorld / ProcessEvent by
+    // structural characteristics instead of hardcoded byte patterns, so it
+    // keeps working after game updates.
+    bool dynamicScanOk = false;
+    while (true) {
+        auto result = UEOffsets::Scan(nullptr);
+
+        if (result.has_value() && result->GObjects != 0 && result->AppendString != 0) {
+            SDK::Offsets::SetGObjects(static_cast<int32>(result->GObjects));
+            SDK::Offsets::SetAppendString(static_cast<int32>(result->AppendString));
+
+            if (result->ProcessEvent != 0) {
+                SDK::Offsets::SetProcessEvent(static_cast<int32>(result->ProcessEvent));
+            }
+            SDK::Offsets::SetProcessEventIdx(result->ProcessEventIdx);
+
+            // Force-refresh the absolute addresses cached inside the SDK,
+            // in case another thread lazily initialized them with a zero
+            // offset before the scan completed.
+            UObject::GObjects.InitManually(reinterpret_cast<void*>(baseAddress + result->GObjects));
+            FName::InitManually(reinterpret_cast<void*>(baseAddress + result->AppendString));
+
+            char dbgBuf[256];
+            sprintf_s(dbgBuf, "[Scan] GObjects=0x%X AppendString=0x%X ProcessEvent=0x%X Idx=0x%X GWorld=0x%X\n",
+                result->GObjects, result->AppendString, result->ProcessEvent, result->ProcessEventIdx, result->GWorld);
+            //OutputDebugStringA(dbgBuf);
+
+            dynamicScanOk = true;
+            break;
+        }
+
+        // The game may not have loaded enough UObjects yet; retry later
+        auto current_time = std::chrono::steady_clock::now();
+        if (current_time - start_time >= timeout_duration) {
+            break; // timed out, fall back to legacy pattern scan
+        }
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    }
+
+    if (dynamicScanOk) {
+        scanOffsetsDone = true;
+        return;
+    }
+
+
 
     // ==================== 扫描 Pattern 1 ====================
     bool pattern1_found = false;
@@ -422,6 +475,9 @@ void ScanAndInitOffsets() {
         // 没找到且没超时，稍微休眠避免CPU占用过高
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
+
+	// 标记扫描完成 260821
+	scanOffsetsDone = true;
 }
 
 bool IsUIDWidgetName(const wchar_t* name) {
@@ -1234,6 +1290,11 @@ DWORD WINAPI HookInitThread(LPVOID)
     }
 
     Sleep(1015); 
+    
+	// 检查是否已经完成了偏移量扫描，如果没有完成，则等待
+    while(!scanOffsetsDone) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(21));
+	}
 
     // Wait for GObjects to initialize, then dynamically calculate the ProcessEvent RVA through the vtable.
     int maxRetry = 60;
