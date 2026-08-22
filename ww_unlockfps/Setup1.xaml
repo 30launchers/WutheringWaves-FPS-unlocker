@@ -65,7 +65,7 @@
 
             <!-- Path_EXE 替换为Grid布局中的第1行第1列 -->
             <!--TextBox x:Name="Param_EXE" TextWrapping="NoWrap" Text="-RTX"  Grid.Row="1" Grid.Column="0" Height="25" VerticalContentAlignment="Center"  Grid.ColumnSpan="3" Margin="140,9,0,0" Width="261" /-->
-            <TextBox x:Name="Param_EXE" TextWrapping="NoWrap" Text="-RTX" Grid.Row="1" Grid.Column="0" Height="25" VerticalContentAlignment="Center" Grid.ColumnSpan="3" Margin="140,9,0,0" Width="261">
+            <TextBox x:Name="Param_EXE" TextWrapping="NoWrap" Text="-RTX" Grid.Row="1" Grid.Column="0" Height="25" VerticalContentAlignment="Center" Grid.ColumnSpan="3" Margin="140,9,0,0" Width="261" ToolTip="Preset launch parameters:&#x0a;-SkipSplash&#x0a;-OpenFileLog&#x0a;-ForceEnableCSharpEnvironment">
                 <TextBox.Resources>
                     <VisualBrush x:Key="HintText" TileMode="None" Opacity="1" Stretch="None" AlignmentX="Left" AlignmentY="Center">
                         <VisualBrush.Visual>

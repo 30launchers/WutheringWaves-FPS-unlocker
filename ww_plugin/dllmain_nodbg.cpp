@@ -1285,31 +1285,53 @@ DWORD WINAPI HookInitThread(LPVOID)
     InitConsole();
 #endif
 
-    while (!FindWindowA("UnrealWindow", nullptr)) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
-    }
+    //while (!FindWindowA("UnrealWindow", nullptr)) {
+    //    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    //}
 
-    Sleep(1015); 
+    while(!scanOffsetsDone) {
+        Sleep(5);
+	}
+	Sleep(50);
+
+    //Sleep(1015); 
     
     // Wait for GObjects to initialize, then dynamically calculate the ProcessEvent RVA through the vtable.
-    int maxRetry = 155;
-    while (maxRetry-- > 0)
-    {
-        int32 rva = ResolveProcessEventRVA();
-        if (rva != 0)
-        {
-            Offsets::SetProcessEvent(rva);
-            break;
-        }
-        Sleep(500);
-    }
+    //int maxRetry = 155;
+    //while (maxRetry-- > 0)
+    //{
+    //    int32 rva = ResolveProcessEventRVA();
+    //    if (rva != 0)
+    //    {
+    //        Offsets::SetProcessEvent(rva);
+    //        break;
+    //    }
+    //    Sleep(500);
+    //}
 
-    if (Offsets::ProcessEvent == 0)
-    {
-        //LOG(L"[WWremoveblur] ResolveProcessEventRVA failed");
-        MessageBoxA(NULL, "ResolveProcessEventRVA timed out!", "Error", MB_OK | MB_ICONERROR);
-        return 1;
-    }
+    // Wait for GObjects to initialize, then dynamically calculate the ProcessEvent RVA through the vtable.
+    //auto startTime = std::chrono::steady_clock::now();
+    //auto timeout = std::chrono::seconds(30);
+
+    //while (std::chrono::steady_clock::now() - startTime < timeout)
+    //{
+    //    int32 rva = ResolveProcessEventRVA();
+    //    if (rva != 0)
+    //    {
+    //        Offsets::SetProcessEvent(rva);
+    //        break;
+    //    }
+
+    //    Sleep(5);
+    //}
+
+
+    //if (Offsets::ProcessEvent == 0)
+    //{
+    //    //LOG(L"[WWremoveblur] ResolveProcessEventRVA failed");
+    //    MessageBoxA(NULL, "ResolveProcessEventRVA timed out!", "Error", MB_OK | MB_ICONERROR);
+    //    return 1;
+    //}
 
     uintptr_t base = (uintptr_t)GetModuleHandleA(NULL);
     void* addr = (void*)(base + Offsets::ProcessEvent);  
@@ -1339,7 +1361,7 @@ DWORD WINAPI HookInitThread(LPVOID)
             return 1;
         }
 
-        Sleep(500);
+        Sleep(5);
     }
 
 

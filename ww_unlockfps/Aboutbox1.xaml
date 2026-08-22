@@ -12,7 +12,7 @@
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" >
 
             <Label Content="Wuthering Waves FPS unlocker" VerticalAlignment="Center" FontFamily="Meiryo" FontSize="15" HorizontalAlignment="Center"/>
-            <Label Content="v1.6.7 _beta date:20260821" FontFamily="Meiryo" FontSize="13" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center" Foreground="DarkBlue" Margin="5"/>
+            <Label Content="v1.6.8 _beta date:20260822" FontFamily="Meiryo" FontSize="13" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center" Foreground="DarkBlue" Margin="5"/>
             <Label Content="Please keep the program in the background otherwise" FontFamily="Meiryo" FontSize="13" Foreground="#FFD51515" HorizontalAlignment="Center" FontWeight="Bold" Margin="5"/>
             <Label Content="the unlocking frame rate will not work!" HorizontalAlignment="Center" FontFamily="Meiryo" FontSize="13" Foreground="#FFE72A2A" FontWeight="Bold"/>
 
