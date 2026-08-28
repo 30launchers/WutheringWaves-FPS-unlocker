@@ -353,6 +353,7 @@ APlayerController* GetPlayerController() {
 }
 
 bool scanOffsetsDone = false;
+bool isscanmode1ok = false;
 
 void ScanAndInitOffsets() {
 
@@ -410,11 +411,13 @@ void ScanAndInitOffsets() {
             break; // timed out, fall back to legacy pattern scan
         }
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        //std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        Sleep(1);
     }
 
     if (dynamicScanOk) {
         scanOffsetsDone = true;
+		isscanmode1ok = true;
         return;
     }
 
@@ -1290,9 +1293,29 @@ DWORD WINAPI HookInitThread(LPVOID)
     //}
 
     while(!scanOffsetsDone) {
-        Sleep(5);
+        Sleep(1);
 	}
-	Sleep(50);
+	//Sleep(1);
+
+    // Wait for GObjects to initialize, then dynamically calculate the ProcessEvent RVA through the vtable.
+    if (!isscanmode1ok)
+    {
+        auto startTime = std::chrono::steady_clock::now();
+        constexpr auto timeout = std::chrono::seconds(30);
+
+        while (std::chrono::steady_clock::now() - startTime < timeout)
+        {
+            int32 rva = ResolveProcessEventRVA();
+
+            if (rva != 0)
+            {
+                Offsets::SetProcessEvent(rva);
+                break;
+            }
+
+            Sleep(5);
+        }
+    }
 
     //Sleep(1015); 
     
@@ -1307,22 +1330,6 @@ DWORD WINAPI HookInitThread(LPVOID)
     //        break;
     //    }
     //    Sleep(500);
-    //}
-
-    // Wait for GObjects to initialize, then dynamically calculate the ProcessEvent RVA through the vtable.
-    //auto startTime = std::chrono::steady_clock::now();
-    //auto timeout = std::chrono::seconds(30);
-
-    //while (std::chrono::steady_clock::now() - startTime < timeout)
-    //{
-    //    int32 rva = ResolveProcessEventRVA();
-    //    if (rva != 0)
-    //    {
-    //        Offsets::SetProcessEvent(rva);
-    //        break;
-    //    }
-
-    //    Sleep(5);
     //}
 
 
@@ -1361,7 +1368,7 @@ DWORD WINAPI HookInitThread(LPVOID)
             return 1;
         }
 
-        Sleep(5);
+        Sleep(1);
     }
 
 

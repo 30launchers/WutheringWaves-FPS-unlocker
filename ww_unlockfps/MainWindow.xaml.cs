@@ -74,6 +74,7 @@ namespace ww_unlockfps
         private const string OptionKey10 = "HideUidEnabled";
         private const string OptionKey11 = "FovValue";
         private const string OptionKey12 = "RemoveBlurEnabled";
+        private const string OptionKey13 = "AutoCloseEnabled";
 
         private bool ShouldCenterWindow { get; set; }
         private bool checkautostart = false;
@@ -483,6 +484,7 @@ namespace ww_unlockfps
                 var data = parser.ReadFile(ConfigFileName);
                 Tb_main.Text = data[Section][InputKey];
                 check_auto_start.IsChecked = bool.Parse(data[Section][OptionKey2]);
+                check_auto_close.IsChecked = bool.Parse(data[Section][OptionKey13]);
                 check_power_saving.IsChecked = bool.Parse(data[Section][OptionKey3]);
                 check_dx11.IsChecked = bool.Parse(data[Section][OptionKey]);
                 string value = data[Section][InputKey];
@@ -604,6 +606,7 @@ namespace ww_unlockfps
             data[Section][OptionKey10] = false.ToString();
             data[Section][OptionKey11] = 45.ToString("F1");
             data[Section][OptionKey12] = false.ToString();
+            data[Section][OptionKey13] = true.ToString();
             check_auto_start.IsChecked = false;
             check_power_saving.IsChecked = false;
             ck_default.IsChecked = true;
@@ -614,6 +617,7 @@ namespace ww_unlockfps
             sli_main.Value = 165;
             Tb_fov.Value = 45;
             sli_fov.Value = 45;
+            check_auto_close.IsChecked = true;
             parser.WriteFile(ConfigFileName, data);
         }
 
@@ -645,6 +649,7 @@ namespace ww_unlockfps
             data[Section][OptionKey10] = check_hideuid.IsChecked.ToString();
             data[Section][OptionKey11] = sli_fov.Value.ToString("F1");
             data[Section][OptionKey12] = check_removeblur.IsChecked.ToString();
+            data[Section][OptionKey13] = check_auto_close.IsChecked.ToString();
             parser.WriteFile(ConfigFileName, data);
         }
 
@@ -2691,15 +2696,33 @@ namespace ww_unlockfps
                         {
                             Application.Current.Dispatcher.Invoke(() =>
                             {
-                                // 订阅应用程序的退出事件
-                                Application.Current.Exit += (sender, e) =>
+                                if (check_auto_close.IsChecked)
                                 {
-                                    // 当应用程序退出时，将 isShutdownCompleted 设置为 true
-                                    isShutdownCompleted = true;
-                                };
+                                    // 订阅应用程序的退出事件
+                                    Application.Current.Exit += (sender, e) =>
+                                    {
+                                        // 当应用程序退出时，将 isShutdownCompleted 设置为 true
+                                        isShutdownCompleted = true;
+                                    };
 
-                                // 关闭应用程序
-                                Application.Current.Shutdown();
+                                    // 关闭应用程序
+                                    Application.Current.Shutdown();
+                                }
+                                else 
+                                {
+                                    try
+                                    {
+                                        // Show the window
+                                        this.Show();
+                                        this.WindowState = WindowState.Normal;
+                                        start_but.IsEnabled = true;
+                                        start_but.Content = "Start Game";
+                                        mcklIsRunning = false;
+                                    }
+                                    catch
+                                    {
+                                    }
+                                }
                             });
                         }
                         else
