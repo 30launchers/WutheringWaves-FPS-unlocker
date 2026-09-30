@@ -16,6 +16,19 @@
 
 SDK_NAMESPACE_START
 
+// ScriptStruct KuroCurve.KuroCurveVector2D
+// 0x0120 (0x0120 - 0x0000)
+struct FKuroCurveVector2D final
+{
+public:
+	uint8                                         bUseCurve : 1;                                     // 0x0000(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              Constant;                                          // 0x0004(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRuntimeFloatCurve                     Curve[0x2];                                        // 0x0010(0x0088)(NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FKuroCurveVector2D;
+
 // ScriptStruct KuroCurve.KuroCurveFloat
 // 0x0090 (0x0090 - 0x0000)
 struct FKuroCurveFloat final
@@ -52,18 +65,5 @@ public:
 	struct FRuntimeCurveLinearColor               Curve;                                             // 0x0018(0x0208)(NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FKuroCurveLinearColor;
-
-// ScriptStruct KuroCurve.KuroCurveVector2D
-// 0x0120 (0x0120 - 0x0000)
-struct FKuroCurveVector2D final
-{
-public:
-	uint8                                         bUseCurve : 1;                                     // 0x0000(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector2D                              Constant;                                          // 0x0004(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FRuntimeFloatCurve                     Curve[0x2];                                        // 0x0010(0x0088)(NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FKuroCurveVector2D;
 
 SDK_NAMESPACE_END

@@ -152,6 +152,20 @@ enum class ESendStage : uint8
 	ESS_MAX                                  = 5,
 };
 
+// ScriptStruct KuroUtility.XboxMultiplayerEvent
+// 0x0018 (0x0018 - 0x0000)
+struct FXboxMultiplayerEvent final
+{
+public:
+	bool                                          bValid;                                            // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         EventType;                                         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         Result;                                            // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         SessionType;                                       // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int64                                         EventArgsHandle;                                   // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FXboxMultiplayerEvent;
+
 // ScriptStruct KuroUtility.TrophyDetailData
 // 0x0058 (0x0058 - 0x0000)
 struct FTrophyDetailData final
@@ -199,6 +213,17 @@ public:
 };
 DUMPER7_ASSERTS_FTrophyInfoData;
 
+// ScriptStruct KuroUtility.XboxUserIdResult
+// 0x0010 (0x0010 - 0x0000)
+struct FXboxUserIdResult final
+{
+public:
+	bool                                          bSuccess;                                          // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	int64                                         UserId;                                            // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FXboxUserIdResult;
+
 // ScriptStruct KuroUtility.XboxPermissionCheckResult
 // 0x0020 (0x0020 - 0x0000)
 struct FXboxPermissionCheckResult final
@@ -238,17 +263,6 @@ public:
 };
 DUMPER7_ASSERTS_FXboxAvoidListResult;
 
-// ScriptStruct KuroUtility.XboxUserIdResult
-// 0x0010 (0x0010 - 0x0000)
-struct FXboxUserIdResult final
-{
-public:
-	bool                                          bSuccess;                                          // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	int64                                         UserId;                                            // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FXboxUserIdResult;
-
 // ScriptStruct KuroUtility.XboxTokenAndSignatureResult
 // 0x0028 (0x0028 - 0x0000)
 struct FXboxTokenAndSignatureResult final
@@ -261,6 +275,15 @@ public:
 };
 DUMPER7_ASSERTS_FXboxTokenAndSignatureResult;
 
+// ScriptStruct KuroUtility.PreloadObjectCollection
+// 0x0010 (0x0010 - 0x0000)
+struct FPreloadObjectCollection final
+{
+public:
+	TArray<class UObject*>                        Assets;                                            // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FPreloadObjectCollection;
+
 // ScriptStruct KuroUtility.XboxUserStoreIdResult
 // 0x0018 (0x0018 - 0x0000)
 struct FXboxUserStoreIdResult final
@@ -272,16 +295,17 @@ public:
 };
 DUMPER7_ASSERTS_FXboxUserStoreIdResult;
 
-// ScriptStruct KuroUtility.PropertyPair
-// 0x0010 (0x0010 - 0x0000)
-struct FPropertyPair final
+// ScriptStruct KuroUtility.BasicPresenceData
+// 0x0018 (0x0018 - 0x0000)
+struct FBasicPresenceData final
 {
 public:
-	class FName                                   Name;                                              // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bBelongsToActor;                                   // 0x000C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FString                                 accountId;                                         // 0x0000(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         OnlineState;                                       // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          Context;                                           // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_FPropertyPair;
+DUMPER7_ASSERTS_FBasicPresenceData;
 
 // ScriptStruct KuroUtility.XboxInviteInfo
 // 0x0058 (0x0058 - 0x0000)
@@ -311,14 +335,16 @@ public:
 };
 DUMPER7_ASSERTS_FXboxAchievementInfo;
 
-// ScriptStruct KuroUtility.PreloadObjectCollection
+// ScriptStruct KuroUtility.PropertyPair
 // 0x0010 (0x0010 - 0x0000)
-struct FPreloadObjectCollection final
+struct FPropertyPair final
 {
 public:
-	TArray<class UObject*>                        Assets;                                            // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	class FName                                   Name;                                              // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bBelongsToActor;                                   // 0x000C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-DUMPER7_ASSERTS_FPreloadObjectCollection;
+DUMPER7_ASSERTS_FPropertyPair;
 
 // ScriptStruct KuroUtility.OverlapActorInfo
 // 0x0050 (0x0050 - 0x0000)
@@ -391,32 +417,6 @@ public:
 	struct FDateTime                              endData;                                           // 0x0088(0x0008)(ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FProductData;
-
-// ScriptStruct KuroUtility.BasicPresenceData
-// 0x0018 (0x0018 - 0x0000)
-struct FBasicPresenceData final
-{
-public:
-	class FString                                 accountId;                                         // 0x0000(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         OnlineState;                                       // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          Context;                                           // 0x0014(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FBasicPresenceData;
-
-// ScriptStruct KuroUtility.XboxMultiplayerEvent
-// 0x0018 (0x0018 - 0x0000)
-struct FXboxMultiplayerEvent final
-{
-public:
-	bool                                          bValid;                                            // 0x0000(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         EventType;                                         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         Result;                                            // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         SessionType;                                       // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int64                                         EventArgsHandle;                                   // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FXboxMultiplayerEvent;
 
 // ScriptStruct KuroUtility.XboxMultiplayerPrivilegeResult
 // 0x000C (0x000C - 0x0000)

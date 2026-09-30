@@ -79,6 +79,19 @@ enum class ELifetimeCondition : uint8
 	COND_MAX                                 = 17,
 };
 
+// Enum CoreUObject.EDataValidationUsecase
+// NumValues: 0x0007
+enum class EDataValidationUsecase : uint8
+{
+	None                                     = 0,
+	Manual                                   = 1,
+	Commandlet                               = 2,
+	Save                                     = 3,
+	PreSubmit                                = 4,
+	Script                                   = 5,
+	EDataValidationUsecase_MAX               = 6,
+};
+
 // Enum CoreUObject.EDataValidationResult
 // NumValues: 0x0004
 enum class EDataValidationResult : uint8
@@ -210,7 +223,7 @@ enum class EMouseCursor : uint8
 };
 
 // Enum CoreUObject.EPixelFormat
-// NumValues: 0x004A
+// NumValues: 0x004B
 enum class EPixelFormat : uint8
 {
 	PF_Unknown                               = 0,
@@ -286,7 +299,8 @@ enum class EPixelFormat : uint8
 	PF_ETC2_RG11_EAC                         = 70,
 	PF_R8                                    = 71,
 	PF_P010                                  = 72,
-	PF_MAX_0                                 = 73,
+	PF_BC6H_SF16                             = 73,
+	PF_MAX_0                                 = 74,
 };
 
 // Enum CoreUObject.EAxis

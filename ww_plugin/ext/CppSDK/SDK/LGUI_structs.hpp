@@ -11,9 +11,9 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_structs.hpp"
+#include "SlateCore_structs.hpp"
 #include "Engine_structs.hpp"
 #include "MovieScene_structs.hpp"
-#include "SlateCore_structs.hpp"
 
 
 SDK_NAMESPACE_START
@@ -99,6 +99,26 @@ enum class EUINavigationGroupMode : uint8
 	Hide                                     = 3,
 	Navigation                               = 4,
 	UINavigationGroupMode_MAX                = 5,
+};
+
+// Enum LGUI.EUILanguageType
+// NumValues: 0x000E
+enum class EUILanguageType : uint8
+{
+	Zh                                       = 0,
+	En                                       = 1,
+	Ja                                       = 2,
+	Ko                                       = 3,
+	Ru                                       = 4,
+	Zht                                      = 5,
+	De                                       = 6,
+	Es                                       = 7,
+	Pt                                       = 8,
+	Id                                       = 9,
+	Fr                                       = 10,
+	Vi                                       = 11,
+	Th                                       = 12,
+	EUILanguageType_MAX                      = 13,
 };
 
 // Enum LGUI.EInputKeyType
@@ -321,26 +341,6 @@ enum class ELGUIDynamicFontDataType : uint8
 	ELGUIDynamicFontDataType_MAX             = 2,
 };
 
-// Enum LGUI.ELangTextureLanguageType
-// NumValues: 0x000E
-enum class ELangTextureLanguageType : uint8
-{
-	Zh                                       = 0,
-	En                                       = 1,
-	Ja                                       = 2,
-	Ko                                       = 3,
-	Ru                                       = 4,
-	Zht                                      = 5,
-	De                                       = 6,
-	Es                                       = 7,
-	Pt                                       = 8,
-	Id                                       = 9,
-	Fr                                       = 10,
-	Vi                                       = 11,
-	Th                                       = 12,
-	ELangTextureLanguageType_MAX             = 13,
-};
-
 // Enum LGUI.EPrefabVersion
 // NumValues: 0x0007
 enum class EPrefabVersion : uint8
@@ -473,7 +473,7 @@ enum class EUIArtTextHorizontalAlign : uint8
 };
 
 // Enum LGUI.EUIAudioDataType
-// NumValues: 0x0007
+// NumValues: 0x0008
 enum class EUIAudioDataType : uint8
 {
 	Default                                  = 0,
@@ -482,7 +482,8 @@ enum class EUIAudioDataType : uint8
 	UUIExtendToggle                          = 3,
 	UUIAudioManager                          = 4,
 	UUINiagara                               = 5,
-	EUIAudioDataType_MAX                     = 6,
+	UUISliderComponent                       = 6,
+	EUIAudioDataType_MAX                     = 7,
 };
 
 // Enum LGUI.EUIRenderableType
@@ -1100,25 +1101,6 @@ enum class EUIAnchorHorizontalAlign : uint8
 	UIAnchorHorizontalAlign_MAX              = 5,
 };
 
-// ScriptStruct LGUI.SpriteSlot
-// 0x0018 (0x0018 - 0x0000)
-struct FSpriteSlot final
-{
-public:
-	class UUISpriteBase*                          Sprite;                                            // 0x0000(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_8[0x10];                                       // 0x0008(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FSpriteSlot;
-
-// ScriptStruct LGUI.SpriteCollection
-// 0x0010 (0x0010 - 0x0000)
-struct FSpriteCollection final
-{
-public:
-	TArray<struct FSpriteSlot>                    SpriteSlots;                                       // 0x0000(0x0010)(ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FSpriteCollection;
-
 // ScriptStruct LGUI.UIArtTextInfo
 // 0x0018 (0x0018 - 0x0000)
 struct FUIArtTextInfo final
@@ -1164,6 +1146,18 @@ public:
 };
 DUMPER7_ASSERTS_FLGUIComponentReference;
 
+// ScriptStruct LGUI.SpineAudioControl
+// 0x0010 (0x0010 - 0x0000)
+struct FSpineAudioControl final
+{
+public:
+	class UAkAudioEvent*                          StartAkEvent;                                      // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bInterruptOnEnd;                                   // 0x0008(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         FadeOutMs;                                         // 0x000C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FSpineAudioControl;
+
 // ScriptStruct LGUI.UIItemInfo
 // 0x0001 (0x0001 - 0x0000)
 struct FUIItemInfo final
@@ -1206,14 +1200,19 @@ public:
 };
 DUMPER7_ASSERTS_FRegisteredComponents;
 
-// ScriptStruct LGUI.LGUIDelegateHandleWrapper
-// 0x0008 (0x0008 - 0x0000)
-struct alignas(0x08) FLGUIDelegateHandleWrapper final
+// ScriptStruct LGUI.SequenceInfo
+// 0x0038 (0x0038 - 0x0000)
+struct FSequenceInfo final
 {
 public:
-	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FSoftObjectPath                        LevelSequence;                                     // 0x0000(0x0020)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bUseAsHardRef;                                     // 0x0020(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          ChildrenInteractiveDuringPlaying;                  // 0x0021(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          BlockAllEventWhilePlaying;                         // 0x0022(0x0001)(Edit, BlueprintVisible, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_23[0x1];                                       // 0x0023(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FMovieSceneSequencePlaybackSettings    PlaySetting;                                       // 0x0024(0x0014)(Edit, BlueprintVisible, BlueprintReadOnly, NoDestructor, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_FLGUIDelegateHandleWrapper;
+DUMPER7_ASSERTS_FSequenceInfo;
 
 // ScriptStruct LGUI.LGUIDrawableEventData
 // 0x0080 (0x0080 - 0x0000)
@@ -1249,6 +1248,52 @@ public:
 };
 DUMPER7_ASSERTS_FLGUIDrawableEvent;
 
+// ScriptStruct LGUI.LGUIDrawableEvent_Vector2
+// 0x0018 (0x0030 - 0x0018)
+struct FLGUIDrawableEvent_Vector2 final : public FLGUIDrawableEvent
+{
+public:
+	uint8                                         Pad_18[0x18];                                      // 0x0018(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FLGUIDrawableEvent_Vector2;
+
+// ScriptStruct LGUI.SpriteSlot
+// 0x0018 (0x0018 - 0x0000)
+struct FSpriteSlot final
+{
+public:
+	class UUISpriteBase*                          Sprite;                                            // 0x0000(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_8[0x10];                                       // 0x0008(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FSpriteSlot;
+
+// ScriptStruct LGUI.SpriteCollection
+// 0x0010 (0x0010 - 0x0000)
+struct FSpriteCollection final
+{
+public:
+	TArray<struct FSpriteSlot>                    SpriteSlots;                                       // 0x0000(0x0010)(ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FSpriteCollection;
+
+// ScriptStruct LGUI.LGUIDelegateHandleWrapper
+// 0x0008 (0x0008 - 0x0000)
+struct alignas(0x08) FLGUIDelegateHandleWrapper final
+{
+public:
+	uint8                                         Pad_0[0x8];                                        // 0x0000(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FLGUIDelegateHandleWrapper;
+
+// ScriptStruct LGUI.LGUIDrawableEvent_String
+// 0x0018 (0x0030 - 0x0018)
+struct FLGUIDrawableEvent_String final : public FLGUIDrawableEvent
+{
+public:
+	uint8                                         Pad_18[0x18];                                      // 0x0018(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FLGUIDrawableEvent_String;
+
 // ScriptStruct LGUI.LGUIDrawableEvent_Rotator
 // 0x0018 (0x0030 - 0x0018)
 struct FLGUIDrawableEvent_Rotator final : public FLGUIDrawableEvent
@@ -1267,6 +1312,15 @@ public:
 };
 DUMPER7_ASSERTS_FLGUIDrawableEvent_Class;
 
+// ScriptStruct LGUI.LGUIDrawableEvent_Vector4
+// 0x0018 (0x0030 - 0x0018)
+struct FLGUIDrawableEvent_Vector4 final : public FLGUIDrawableEvent
+{
+public:
+	uint8                                         Pad_18[0x18];                                      // 0x0018(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FLGUIDrawableEvent_Vector4;
+
 // ScriptStruct LGUI.LGUIDrawableEvent_PointerEvent
 // 0x0018 (0x0030 - 0x0018)
 struct FLGUIDrawableEvent_PointerEvent final : public FLGUIDrawableEvent
@@ -1275,6 +1329,16 @@ public:
 	uint8                                         Pad_18[0x18];                                      // 0x0018(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FLGUIDrawableEvent_PointerEvent;
+
+// ScriptStruct LGUI.AudioPlayInfo
+// 0x0048 (0x0048 - 0x0000)
+struct FAudioPlayInfo final
+{
+public:
+	struct FSoftObjectPath                        AkAudioEvent;                                      // 0x0000(0x0020)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TDelegate<void(const class FString& eventName)> OnPostAudioEvent;                                // 0x0020(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FAudioPlayInfo;
 
 // ScriptStruct LGUI.LGUIDrawableEvent_Actor
 // 0x0018 (0x0030 - 0x0018)
@@ -1293,15 +1357,6 @@ public:
 	uint8                                         Pad_18[0x18];                                      // 0x0018(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FLGUIDrawableEvent_Object;
-
-// ScriptStruct LGUI.LGUIDrawableEvent_String
-// 0x0018 (0x0030 - 0x0018)
-struct FLGUIDrawableEvent_String final : public FLGUIDrawableEvent
-{
-public:
-	uint8                                         Pad_18[0x18];                                      // 0x0018(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FLGUIDrawableEvent_String;
 
 // ScriptStruct LGUI.LGUIDrawableEvent_Quaternion
 // 0x0018 (0x0030 - 0x0018)
@@ -1330,15 +1385,6 @@ public:
 };
 DUMPER7_ASSERTS_FLGUIDrawableEvent_Color;
 
-// ScriptStruct LGUI.LGUIDrawableEvent_Vector4
-// 0x0018 (0x0030 - 0x0018)
-struct FLGUIDrawableEvent_Vector4 final : public FLGUIDrawableEvent
-{
-public:
-	uint8                                         Pad_18[0x18];                                      // 0x0018(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FLGUIDrawableEvent_Vector4;
-
 // ScriptStruct LGUI.LGUIDrawableEvent_Vector3
 // 0x0018 (0x0030 - 0x0018)
 struct FLGUIDrawableEvent_Vector3 final : public FLGUIDrawableEvent
@@ -1347,15 +1393,6 @@ public:
 	uint8                                         Pad_18[0x18];                                      // 0x0018(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FLGUIDrawableEvent_Vector3;
-
-// ScriptStruct LGUI.LGUIDrawableEvent_Vector2
-// 0x0018 (0x0030 - 0x0018)
-struct FLGUIDrawableEvent_Vector2 final : public FLGUIDrawableEvent
-{
-public:
-	uint8                                         Pad_18[0x18];                                      // 0x0018(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FLGUIDrawableEvent_Vector2;
 
 // ScriptStruct LGUI.LGUIDrawableEvent_UInt64
 // 0x0018 (0x0030 - 0x0018)
@@ -1506,11 +1543,20 @@ DUMPER7_ASSERTS_FLGUICharData;
 struct FLangTextureInfo final
 {
 public:
-	ELangTextureLanguageType                      Language;                                          // 0x0000(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EUILanguageType                               Language;                                          // 0x0000(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	TSoftObjectPtr<class UTexture2D>              Texture;                                           // 0x0008(0x0030)(Edit, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FLangTextureInfo;
+
+// ScriptStruct LGUI.UINiagaraPostTickFunction
+// 0x0010 (0x0038 - 0x0028)
+struct FUINiagaraPostTickFunction final : public FTickFunction
+{
+public:
+	TArray<class UUINiagara*>                     UINiagaras;                                        // 0x0028(0x0010)(ExportObject, ZeroConstructor, Transient, ContainsInstancedReference, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FUINiagaraPostTickFunction;
 
 // ScriptStruct LGUI.LGUIPostTickFunction
 // 0x0008 (0x0030 - 0x0028)
@@ -1721,20 +1767,6 @@ public:
 };
 DUMPER7_ASSERTS_FLGUILevelSequenceBindings;
 
-// ScriptStruct LGUI.SequenceInfo
-// 0x0038 (0x0038 - 0x0000)
-struct FSequenceInfo final
-{
-public:
-	struct FSoftObjectPath                        LevelSequence;                                     // 0x0000(0x0020)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bUseAsHardRef;                                     // 0x0020(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          ChildrenInteractiveDuringPlaying;                  // 0x0021(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          BlockAllEventWhilePlaying;                         // 0x0022(0x0001)(Edit, BlueprintVisible, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_23[0x1];                                       // 0x0023(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FMovieSceneSequencePlaybackSettings    PlaySetting;                                       // 0x0024(0x0014)(Edit, BlueprintVisible, BlueprintReadOnly, NoDestructor, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FSequenceInfo;
-
 // ScriptStruct LGUI.SpineRenderBuffer
 // 0x00D8 (0x00D8 - 0x0000)
 struct FSpineRenderBuffer final
@@ -1763,20 +1795,8 @@ public:
 };
 DUMPER7_ASSERTS_FAudioControl;
 
-// ScriptStruct LGUI.SpineAudioControl
-// 0x0010 (0x0010 - 0x0000)
-struct FSpineAudioControl final
-{
-public:
-	class UAkAudioEvent*                          StartAkEvent;                                      // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bInterruptOnEnd;                                   // 0x0008(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         FadeOutMs;                                         // 0x000C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FSpineAudioControl;
-
 // ScriptStruct LGUI.UIAudioDataAssetInfo
-// 0x0178 (0x0178 - 0x0000)
+// 0x0198 (0x0198 - 0x0000)
 struct FUIAudioDataAssetInfo final
 {
 public:
@@ -1788,6 +1808,11 @@ public:
 	TMap<EToggleAudioTransitionState, struct FSoftObjectPath> AudioToggleConfig;                     // 0x00F8(0x0050)(Edit, NativeAccessSpecifierPublic)
 	struct FSoftObjectPath                        LongPressAudioEvent;                               // 0x0148(0x0020)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FAudioControl                          NiagaraAudio;                                      // 0x0168(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	class UAkAudioEvent*                          DragBeginAudioEvent;                               // 0x0178(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UAkAudioEvent*                          DragEndAudioEvent;                                 // 0x0180(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UAkAudioEvent*                          DraggingAudioEvent;                                // 0x0188(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         DraggingAudioEventInterval;                        // 0x0190(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_194[0x4];                                      // 0x0194(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FUIAudioDataAssetInfo;
 
@@ -1806,16 +1831,6 @@ public:
 	struct FVector                                tagent;                                            // 0x003C(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FLGUIGeometryVertex;
-
-// ScriptStruct LGUI.AudioPlayInfo
-// 0x0048 (0x0048 - 0x0000)
-struct FAudioPlayInfo final
-{
-public:
-	struct FSoftObjectPath                        AkAudioEvent;                                      // 0x0000(0x0020)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TDelegate<void(const class FString& eventName)> OnPostAudioEvent;                                // 0x0020(0x0028)(Edit, ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FAudioPlayInfo;
 
 // ScriptStruct LGUI.UIDropdownOptionData
 // 0x0030 (0x0030 - 0x0000)

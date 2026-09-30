@@ -599,7 +599,9 @@ namespace ww_unlockfps
             int DefaultPriorityMode = 0;
             data[Section][OptionKey4] = DefaultPriorityMode.ToString();
             data[Section][OptionKey5] = 2.ToString();
-            data[Section][OptionKey6] = string.Empty;
+            //data[Section][OptionKey6] = string.Empty;
+            // 261001 默认为启动参数为 "-krqlv=hd"
+            data[Section][OptionKey6] = "-krqlv=hd";
             data[Section][OptionKey7] = 0.ToString();
             data[Section][OptionKey8] = false.ToString();
             data[Section][OptionKey9] = false.ToString();
