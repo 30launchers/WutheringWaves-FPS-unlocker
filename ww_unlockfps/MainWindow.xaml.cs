@@ -75,6 +75,7 @@ namespace ww_unlockfps
         private const string OptionKey11 = "FovValue";
         private const string OptionKey12 = "RemoveBlurEnabled";
         private const string OptionKey13 = "AutoCloseEnabled";
+        private const string OptionKey14 = "UseMobileUI";
 
         private bool ShouldCenterWindow { get; set; }
         private bool checkautostart = false;
@@ -132,7 +133,7 @@ namespace ww_unlockfps
                 string filePath = Path.Combine(dir, "configww.ini");
                 if (!File.Exists(filePath))
                 {
-                    File.WriteAllText(filePath,"[Configs]" + Environment.NewLine + "EnableRemoveBlur=0" + Environment.NewLine + "RemoveBlurMode=0");
+                    File.WriteAllText(filePath,"[Configs]" + Environment.NewLine + "EnableRemoveBlur=0" + Environment.NewLine + "RemoveBlurMode=0" + Environment.NewLine + "UseMobileUI=0");
                 }
             }
             catch (Exception ex)
@@ -485,6 +486,7 @@ namespace ww_unlockfps
                 Tb_main.Text = data[Section][InputKey];
                 check_auto_start.IsChecked = bool.Parse(data[Section][OptionKey2]);
                 check_auto_close.IsChecked = bool.Parse(data[Section][OptionKey13]);
+                check_use_mbui.IsChecked = bool.Parse(data[Section][OptionKey14]);
                 check_power_saving.IsChecked = bool.Parse(data[Section][OptionKey3]);
                 check_dx11.IsChecked = bool.Parse(data[Section][OptionKey]);
                 string value = data[Section][InputKey];
@@ -609,6 +611,7 @@ namespace ww_unlockfps
             data[Section][OptionKey11] = 45.ToString("F1");
             data[Section][OptionKey12] = false.ToString();
             data[Section][OptionKey13] = true.ToString();
+            data[Section][OptionKey14] = false.ToString();
             check_auto_start.IsChecked = false;
             check_power_saving.IsChecked = false;
             ck_default.IsChecked = true;
@@ -620,6 +623,7 @@ namespace ww_unlockfps
             Tb_fov.Value = 45;
             sli_fov.Value = 45;
             check_auto_close.IsChecked = true;
+            check_use_mbui.IsChecked = false;
             parser.WriteFile(ConfigFileName, data);
         }
 
@@ -652,6 +656,7 @@ namespace ww_unlockfps
             data[Section][OptionKey11] = sli_fov.Value.ToString("F1");
             data[Section][OptionKey12] = check_removeblur.IsChecked.ToString();
             data[Section][OptionKey13] = check_auto_close.IsChecked.ToString();
+            data[Section][OptionKey14] = check_use_mbui.IsChecked.ToString();
             parser.WriteFile(ConfigFileName, data);
         }
 
@@ -1004,6 +1009,7 @@ namespace ww_unlockfps
         private async void Start_Game(object sender, RoutedEventArgs e)
         {
             string exeparam1 = "";
+            string mbuiparam = " -CloudGame -CloudGamePlatform" + " -ini:Engine:[MobileSlateUI]:bTouchFallbackToMouse=False" + " -ini:Input:[/Script/Engine.InputSettings]:bUseMouseForTouch=False";
             bool exeparam1open = true;
             int exechose = 1517;
             IniData data = null; // 在try块外部声明变量
@@ -1038,6 +1044,8 @@ namespace ww_unlockfps
             {
                 string filePath = Path.Combine(AppContext.BaseDirectory, "ulk_ww_tools", "configww.ini");
                 WritePrivateProfileString("Configs", "EnableRemoveBlur", check_removeblur.IsChecked == true ? "1" : "0", filePath);
+                // 写入是否使用移动端UI的设置到configww.ini，供插件读取 261023
+                WritePrivateProfileString("Configs", "UseMobileUI", check_use_mbui.IsChecked == true ? "1" : "0", filePath);
             }
             catch (Exception ex)
             {
@@ -1097,6 +1105,13 @@ namespace ww_unlockfps
                     else
                     {
                         Console.WriteLine(exeparam1 + "启动参数1");
+
+                        // 261023 添加移动端UI参数
+                        if (check_use_mbui.IsChecked == true)
+                        {
+                            exeparam1 += mbuiparam;
+                        }
+
                         args = "-dx11 " + exeparam1;
                         //process.StartInfo.Arguments = "-dx11 " + exeparam1;
                     }
@@ -1239,6 +1254,13 @@ namespace ww_unlockfps
                     {
                         Console.WriteLine(exeparam1 + "启动参数1");
                         //process_non_dx11.StartInfo.Arguments = exeparam1;
+
+                        // 261023 添加移动端UI参数
+                        if (check_use_mbui.IsChecked == true)
+                        {
+                            exeparam1 += mbuiparam;
+                        }
+
                         args = exeparam1;
                     }
 
@@ -3002,6 +3024,8 @@ namespace ww_unlockfps
             {
                 string filePath = Path.Combine(AppContext.BaseDirectory, "ulk_ww_tools", "configww.ini");
                 WritePrivateProfileString("Configs", "EnableRemoveBlur", check_removeblur.IsChecked == true ? "1" : "0", filePath);
+                // 写入是否使用移动端UI的设置到configww.ini，供插件读取 261023
+                WritePrivateProfileString("Configs", "UseMobileUI", check_use_mbui.IsChecked == true ? "1" : "0", filePath);
             }
             catch (Exception ex)
             {

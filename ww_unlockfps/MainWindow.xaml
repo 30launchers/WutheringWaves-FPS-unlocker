@@ -17,6 +17,7 @@
                 <MenuItem x:Name="check_auto_close" Header="_Auto Close" IsCheckable="True" ToolTip="Automatically close the application when the game exits"/>
                 <MenuItem x:Name="check_power_saving" Header="_Power Saving" IsCheckable="True" ToolTip="Auto set FPS to 15 and low process priority upon game losing focus" Checked="Power_Saving_Checked" Unchecked="Power_Saving_Unchecked"/>
                 <MenuItem x:Name="check_clearcache" Header="_Clear Cache" Click="ClearCache_Click" ToolTip="Reset Advanced Features Cache"/>
+                <MenuItem x:Name="check_use_mbui" Header="_Enable Mobile UI" IsCheckable="True" ToolTip="(Experimental) Enable before starting the game, otherwise it won’t work"/>
                 <MenuItem x:Name="check_game_process_priority" Header="_Game Process Priority">
                     <MenuItem x:Name="ck_realtime" Header="_Realtime" IsCheckable="True" Click="Priority_Click"/>
                     <MenuItem x:Name="ck_high" Header="_High" IsCheckable="True" Click="Priority_Click"/>

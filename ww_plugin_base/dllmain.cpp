@@ -17,6 +17,7 @@
 
 #include "PatternScanner.hpp"
 #include "HookUtility.h"
+#include "MobileUI.h"
 
 // 加密后的字符串数据
 namespace encrypted_strings {
@@ -389,6 +390,51 @@ void RunLogic()
     //MessageBoxA(NULL, "DLL Inject Success!", "Information", MB_OK | MB_ICONINFORMATION);
 }
 
+// 261023
+std::wstring g_ConfigPath;
+int EnableMobileUI = 0;
+
+static void InitConfig(HMODULE hModule)
+{
+    wchar_t dllPath[MAX_PATH]{};
+    GetModuleFileNameW(hModule, dllPath, MAX_PATH);
+
+    std::wstring path = dllPath;
+    size_t pos = path.find_last_of(L"\\/");
+    if (pos != std::wstring::npos) {
+        path = path.substr(0, pos + 1);
+    }
+
+    g_ConfigPath = path + L"configww.ini";
+    if (GetFileAttributesW(g_ConfigPath.c_str()) == INVALID_FILE_ATTRIBUTES)
+    {
+        WritePrivateProfileStringW(L"Configs", L"EnableRemoveBlur", L"0", g_ConfigPath.c_str());
+        WritePrivateProfileStringW(L"Configs", L"RemoveBlurMode", L"0", g_ConfigPath.c_str());
+        WritePrivateProfileStringW(L"Configs", L"UseMobileUI", L"0", g_ConfigPath.c_str());
+    }
+}
+
+static void LoadConfig()
+{
+    EnableMobileUI = GetPrivateProfileIntW(L"Configs", L"UseMobileUI", EnableMobileUI, g_ConfigPath.c_str());
+
+    if (EnableMobileUI == 1)
+    {
+        MobileUI::Start();
+    }
+}
+
+DWORD WINAPI LoadConfigThread(LPVOID lpParam)
+{
+    HMODULE hModule = (HMODULE)lpParam;
+
+    InitConfig(hModule);
+    LoadConfig();
+
+    return 0;
+}
+// 261023
+
 BOOL APIENTRY DllMain(HINSTANCE hInstance, DWORD fdwReason, LPVOID lpReserved)
 {
     if (hInstance)
@@ -406,6 +452,9 @@ BOOL APIENTRY DllMain(HINSTANCE hInstance, DWORD fdwReason, LPVOID lpReserved)
 
     if (fdwReason == DLL_PROCESS_ATTACH)
     {
+        // 261023启动ini读取线程
+        CreateThread(nullptr, 0, LoadConfigThread, hInstance, 0, nullptr);
+
         // 260202 启动逻辑线程更改
         LPTHREAD_START_ROUTINE startRoutine = nullptr;
 
@@ -439,6 +488,11 @@ BOOL APIENTRY DllMain(HINSTANCE hInstance, DWORD fdwReason, LPVOID lpReserved)
     {
         // 禁用所有钩子
         //MinHookManager::DisableAllHooks();
+
+        // 261023停用移动UI（卸载鼠标钩子并还原窗口属性）
+        if (EnableMobileUI == 1) {
+            MobileUI::Stop();
+        }
     }
 
     return TRUE;

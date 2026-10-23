@@ -26,5 +26,8 @@
     <ClInclude Include="HookUtility.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="MobileUI.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
