@@ -77,10 +77,8 @@ int totalDumpedCount = 0;
 bool debugMode = false;
 
 std::mutex uidMutex;
-std::atomic<bool> searching(false);
 std::atomic<bool> searchComplete(false);
 std::atomic<int> activeThreads(0);
-const int THREAD_COUNT = 100;
 
 
 
@@ -524,21 +522,9 @@ void MultiThreadFindUID(ULevel* level) {
         return;
     }
 
-    int actorsPerThread = (actorCount + THREAD_COUNT - 1) / THREAD_COUNT;
-    std::vector<std::thread> threads;
-
-    for (int t = 0; t < THREAD_COUNT; t++) {
-        int startIdx = t * actorsPerThread;
-        int endIdx = startIdx + actorsPerThread;
-
-        if (startIdx >= actorCount) break;
-
-        threads.emplace_back(ThreadWorker, t, startIdx, endIdx, actors, actorCount);
-    }
-
-    for (auto& th : threads) {
-        if (th.joinable()) th.join();
-    }
+    // ThreadWorker handles each actor under uidMutex, so worker threads never ran in
+    // parallel; scan on the calling thread instead of creating up to 100 threads per search.
+    ThreadWorker(0, 0, actorCount, actors, actorCount);
 
     free(actors);
     //OutputDebugStringA("[Search] All threads completed\n");
@@ -587,6 +573,13 @@ void HideUID() {
         }
     }
     else {
+        // A full search calls K2_GetComponentsByClass on every actor. While no UID widget
+        // exists (login, loading, menus) retry every 2 s instead of every 150 ms.
+        static ULONGLONG nextSearch = 0;
+        const ULONGLONG now = GetTickCount64();
+        if (!forceRefresh && now < nextSearch) {
+            return;
+        }
         forceRefresh = false;
 
         foundUIDWidgets = widgetBuffer;
@@ -627,6 +620,9 @@ void HideUID() {
             memcpy(cachedUIDWidgets, widgetBuffer, sizeof(UUIItem*) * foundCount);
             cachedCount = foundCount;
             cacheValid = true;
+        }
+        else {
+            nextSearch = now + 2000;
         }
     }
 
@@ -681,59 +677,6 @@ void ShowUID() {
     //OutputDebugStringA("[Info] UID shown!\n");
 }
 
-void BackgroundSearchLoop() {
-    searching.store(true);
-    searchComplete.store(false);
-
-    //OutputDebugStringA("[Background] Starting continuous UID search with 30 threads...\n");
-
-    while (!searchComplete.load() && !uidHidden) {
-        if (g_EnableHideUID == 1) {
-            HideUID();
-        }
-        else {
-            UWorld* world = GetWorld();
-            if (world) {
-                ULevel** levels = nullptr;
-                int levelCount = 0;
-                ULevel* persistentLevel = nullptr;
-                bool hasPersistent = false;
-
-                if (SEH_GetWorldLevels(world, &levels, &levelCount, &persistentLevel, &hasPersistent)) {
-                    if (hasPersistent && persistentLevel) {
-                        MultiThreadFindUID(persistentLevel);
-                    }
-                    else if (levels && levelCount > 0) {
-                        for (int i = 0; i < levelCount; i++) {
-                            MultiThreadFindUID(levels[i]);
-                        }
-                    }
-                    if (levels) free(levels);
-
-                    if (foundCount > 0) {
-                        memcpy(cachedUIDWidgets, widgetBuffer, sizeof(UUIItem*) * foundCount);
-                        cachedCount = foundCount;
-                        cacheValid = true;
-                        searchComplete.store(true);
-                        //OutputDebugStringA("[Background] UID widgets cached (not hidden)\n");
-                        break;
-                    }
-                }
-            }
-        }
-
-        if (foundCount > 0 && g_EnableHideUID == 1) {
-            searchComplete.store(true);
-            //OutputDebugStringA("[Background] UID found and hidden!\n");
-            break;
-        }
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    }
-
-    searching.store(false);
-}
-
 void ClearUIDCache() {
     std::lock_guard<std::mutex> lock(uidMutex);
 
@@ -763,8 +706,6 @@ DWORD WINAPI MainThreadUID(HMODULE hModule) {
     //OutputDebugStringA("Press END to exit\n");
     //OutputDebugStringA("========================================\n\n");
 
-    std::thread searchThread(BackgroundSearchLoop);
-    searchThread.detach();
 
     while (true) {
         //if (GetAsyncKeyState(VK_END) & 0x8000) {
@@ -961,7 +902,7 @@ DWORD WINAPI MainThread(HMODULE hModule) {
                 }
 
                 if (g_EnableAdvan == 0) {
-                    pc->FOV(0.0f);
+                    if (fovApplied) pc->FOV(0.0f);
                     fovApplied = false;
                 }
                 else if (g_EnableFov == 1) {
@@ -972,7 +913,7 @@ DWORD WINAPI MainThread(HMODULE hModule) {
                     }
                 }
                 else {
-                    pc->FOV(0.0f);
+                    if (fovApplied) pc->FOV(0.0f);
                     fovApplied = false;
                 }
 
